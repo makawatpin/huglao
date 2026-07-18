@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     description:
       "เที่ยวลาวครบจบในที่เดียว รถตู้ VIP จองตั๋วรถไฟลาว-จีน และไกด์นำเที่ยวมืออาชีพ",
     type: "website",
+    images: [{ url: "/assets/van-hero.webp", width: 750, height: 422 }],
   },
 };
 

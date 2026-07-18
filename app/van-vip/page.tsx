@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     description: "รถตู้ VIP 7-10 ที่นั่ง พร้อมคนขับมืออาชีพ เดินทางทั่วลาว เวียงจันทน์ วังเวียง หลวงพระบาง ปากเซ",
     url: "/van-vip",
     type: "website",
+    images: [{ url: "/assets/van-hero.webp", width: 750, height: 422 }],
   },
 };
 

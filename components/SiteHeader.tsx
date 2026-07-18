@@ -47,11 +47,11 @@ export default function SiteHeader() {
       >
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/assets/huglao-emblem.png"
-            alt="HUGLAO ฮักลาว กรุ๊ป โลโก้พระธาตุหลวง"
-            height={44}
-            width={44}
-            className="h-11 w-auto drop-shadow-[0_2px_5px_rgba(0,0,0,.4)]"
+            src="/assets/huglao-nav-logo.png"
+            alt="HUGLAO ฮักลาว กรุ๊ป"
+            height={56}
+            width={250}
+            className="h-9 w-auto drop-shadow-[0_2px_5px_rgba(0,0,0,.4)]"
           />
         </Link>
 
