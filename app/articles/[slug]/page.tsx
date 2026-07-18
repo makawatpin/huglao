@@ -137,13 +137,15 @@ export default async function ArticlePage({
           </div>
         )}
 
-        <Link
-          href="/#contact"
+        <a
+          href="https://lin.ee/xudxWlE"
+          target="_blank"
+          rel="noopener"
           className="inline-flex items-center gap-2 mt-[30px] px-7 py-3.5 rounded-full font-bold no-underline text-deep-green shadow-[0_12px_28px_rgba(168,120,21,.4)] hover:-translate-y-0.5 transition-transform"
           style={{ background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" }}
         >
           วางแผนทริปลาวกับเรา →
-        </Link>
+        </a>
       </div>
     </article>
   );

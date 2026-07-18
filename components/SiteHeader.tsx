@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const LINE_URL = "https://lin.ee/xudxWlE";
+
 const NAV_LINKS = [
   { href: "/#services", label: "บริการ" },
   { href: "/#explore", label: "เที่ยวลาว" },
-  { href: "/#vans", label: "รถตู้ VIP" },
+  { href: "/van-vip", label: "รถตู้ VIP" },
   { href: "/#process", label: "ขั้นตอนจอง" },
   { href: "/#faq", label: "คำถามที่พบบ่อย" },
   { href: "/articles", label: "บทความ" },
@@ -63,13 +65,15 @@ export default function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/#contact"
+          <a
+            href={LINE_URL}
+            target="_blank"
+            rel="noopener"
             className="inline-flex items-center gap-2 rounded-full px-[22px] py-[11px] font-bold text-[.95rem] text-deep-green shadow-[0_10px_24px_rgba(200,148,31,.35)] hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(200,148,31,.5)] transition-all"
             style={{ background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" }}
           >
             จองเลย
-          </Link>
+          </a>
         </nav>
 
         <button
@@ -122,14 +126,16 @@ export default function SiteHeader() {
             {link.label}
           </Link>
         ))}
-        <Link
-          href="/#contact"
+        <a
+          href={LINE_URL}
+          target="_blank"
+          rel="noopener"
           onClick={() => setOpen(false)}
           className="mt-4 text-center rounded-full py-[15px] font-bold text-[1.05rem] text-deep-green"
           style={{ background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" }}
         >
           จองรถตู้ลาวเลย
-        </Link>
+        </a>
       </aside>
     </>
   );

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import ContactForm from "@/components/ContactForm";
 import HeroParallax from "@/components/HeroParallax";
+import { getAllArticles } from "@/lib/contentful";
+
+const LINE_URL = "https://lin.ee/xudxWlE";
 
 const SERVICES = [
   {
@@ -52,7 +54,10 @@ const FAQS = [
   { q: "มีไกด์พูดไทยไหม?", a: "มีครับ ไกด์ของเราเป็นคนท้องถิ่นที่สื่อสารภาษาไทยได้ดี เข้าใจวัฒนธรรมทั้งสองฝั่ง ช่วยให้ทริปเที่ยวลาวของคุณสนุกและไร้กังวล" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const articles = await getAllArticles();
+  const latestArticles = articles.slice(0, 3);
+
   return (
     <div style={{ position: "relative" }}>
       {/* ===== HERO ===== */}
@@ -135,13 +140,15 @@ export default function Home() {
             รถตู้ VIP ลาว · จองตั๋วรถไฟลาว–จีน · ไกด์นำเที่ยวมืออาชีพ
           </p>
           <div className="flex flex-wrap gap-3.5 justify-center mt-[34px]">
-            <Link
-              href="#contact"
+            <a
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener"
               className="inline-flex items-center gap-2.5 rounded-full px-8 py-4 font-bold text-deep-green no-underline text-[1.05rem] shadow-[0_16px_40px_rgba(168,120,21,.5)] hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(168,120,21,.65)] transition-all"
               style={{ background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" }}
             >
               จองรถตู้ลาว
-            </Link>
+            </a>
             <Link
               href="#explore"
               className="inline-flex items-center gap-2 rounded-full px-[30px] py-4 font-semibold text-[#fffaf0] no-underline text-[1.05rem] border-[1.5px] border-white/70 bg-white/10 hover:bg-white/20 transition-colors"
@@ -177,9 +184,11 @@ export default function Home() {
           </Reveal>
           <div className="flex gap-[clamp(16px,2.4vw,30px)] items-end justify-center flex-wrap">
             {SERVICES.map((svc) => (
-              <Link
+              <a
                 key={svc.tag}
-                href="#contact"
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener"
                 className="group relative block flex-1 min-w-0 no-underline rounded-[18px] overflow-hidden shadow-[0_30px_60px_rgba(10,31,20,.22)] hover:shadow-[0_38px_80px_rgba(10,31,20,.34)] transition-shadow"
                 style={{ flexBasis: 300, maxWidth: 380, aspectRatio: "3/4.4" }}
               >
@@ -200,7 +209,7 @@ export default function Home() {
                   {svc.tag}
                   <span className="text-gold-light text-base">↗</span>
                 </span>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -252,9 +261,9 @@ export default function Home() {
                 รวมเส้นทางเที่ยวลาวสุดคลาสสิก พร้อมรถตู้ VIP และไกด์ดูแลตลอดทาง
               </p>
             </div>
-            <Link href="#contact" className="whitespace-nowrap no-underline text-gold-dark font-bold border-b-2 border-gold pb-1 hover:text-deep-green-2 transition-colors">
+            <a href={LINE_URL} target="_blank" rel="noopener" className="whitespace-nowrap no-underline text-gold-dark font-bold border-b-2 border-gold pb-1 hover:text-deep-green-2 transition-colors">
               ออกแบบทริปของคุณ →
-            </Link>
+            </a>
           </Reveal>
           <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
             {DESTINATIONS.map((dest, i) => (
@@ -308,13 +317,15 @@ export default function Home() {
               <strong className="text-[#f4ecd7]">จองรถตู้ลาว</strong> ของคุณคุ้มค่าทุกบาท
             </p>
             <div className="flex flex-wrap gap-3.5 mt-[30px]">
-              <Link
-                href="#contact"
+              <a
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener"
                 className="inline-flex items-center gap-2.5 rounded-full px-[30px] py-4 font-bold text-deep-green no-underline text-[1.02rem] shadow-[0_14px_32px_rgba(200,148,31,.38)] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(200,148,31,.52)] transition-all"
                 style={{ background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" }}
               >
                 ขอใบเสนอราคา
-              </Link>
+              </a>
               <Link
                 href="#process"
                 className="inline-flex items-center gap-2 rounded-full px-7 py-4 font-semibold no-underline text-[1.02rem] border-[1.5px] border-gold-light/50 text-[#f2e7c9] hover:bg-gold-light/[.12] transition-colors"
@@ -379,6 +390,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== ARTICLES ===== */}
+      {latestArticles.length > 0 && (
+        <section id="articles" className="py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
+          <div className="max-w-[1200px] mx-auto">
+            <Reveal className="flex flex-wrap items-end justify-between gap-5 mb-[52px]">
+              <div className="max-w-[620px]">
+                <span className="inline-block text-gold-dark font-bold tracking-[.22em] text-[.82rem] uppercase">อ่านเพิ่มเติม</span>
+                <h2 className="mt-3.5 font-serif-th font-bold text-deep-green-2 leading-tight" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)" }}>
+                  บทความแนะนำ
+                </h2>
+                <p className="mt-3.5 text-text-muted text-[1.05rem] leading-[1.7]">
+                  เคล็ดลับ เส้นทาง และเรื่องเล่าเที่ยวลาวล่าสุดจากทีมฮักลาว
+                </p>
+              </div>
+              <Link href="/articles" className="whitespace-nowrap no-underline text-gold-dark font-bold border-b-2 border-gold pb-1 hover:text-deep-green-2 transition-colors">
+                ดูบทความทั้งหมด →
+              </Link>
+            </Reveal>
+            <div className="grid gap-7" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
+              {latestArticles.map((a, i) => (
+                <Reveal key={a.slug} delay={0.1 * (i + 1)}>
+                  <Link
+                    href={`/articles/${a.slug}`}
+                    className="group no-underline flex flex-col h-full bg-white border border-border rounded-[18px] overflow-hidden shadow-[0_14px_34px_rgba(10,31,20,.08)] hover:-translate-y-1.5 hover:shadow-[0_26px_54px_rgba(10,31,20,.16)] transition-all"
+                  >
+                    <div className="relative bg-[#e8e3d6]" style={{ aspectRatio: "16/10" }}>
+                      {a.cover && (
+                        <Image src={a.cover} alt={a.title} fill sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" className="object-cover" />
+                      )}
+                      {a.tags[0] && (
+                        <span
+                          className="absolute top-3 left-3 text-[.7rem] tracking-[.14em] font-bold uppercase text-deep-green px-[13px] py-1.5 rounded-full shadow-[0_4px_12px_rgba(10,31,20,.25)]"
+                          style={{ background: "linear-gradient(135deg,#e3bd63,#c8941f)" }}
+                        >
+                          {a.tags[0]}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-col flex-1 px-[22px] pt-[22px] pb-6">
+                      <div className="flex items-center gap-2 text-[#8a8474] text-[.8rem] font-medium mb-2.5">
+                        <span className="text-gold-dark">{a.author}</span>
+                        <span className="opacity-50">·</span>
+                        <span>{a.publishDate}</span>
+                      </div>
+                      <h3 className="m-0 mb-2.5 font-serif-th font-bold text-[1.15rem] leading-[1.35] text-deep-green-2">
+                        {a.title}
+                      </h3>
+                      <p className="m-0 text-text-muted text-[.92rem] leading-[1.6] flex-1">{a.excerpt}</p>
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ===== FAQ ===== */}
       <section id="faq" className="py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)]" style={{ background: "linear-gradient(180deg,#faf8f3,#f1ece0)" }}>
         <div className="max-w-[840px] mx-auto">
@@ -425,6 +493,22 @@ export default function Home() {
             </p>
             <div className="flex flex-col gap-3.5">
               <a
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener"
+                className="flex items-center gap-3.5 no-underline bg-white/5 border border-gold-light/20 rounded-[14px] px-[18px] py-4 hover:bg-gold-light/10 transition-colors"
+              >
+                <span className="flex-none w-[46px] h-[46px] rounded-xl bg-gold-light/[.14] flex items-center justify-center text-gold-light">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l2 5v3h-2A16 16 0 0 1 4 7V4z" />
+                  </svg>
+                </span>
+                <span>
+                  <span className="block text-[#9a9588] text-[.78rem]">แชท LINE</span>
+                  <span className="text-[#f4ecd7] font-semibold">@huglao</span>
+                </span>
+              </a>
+              <a
                 href="tel:0955962525"
                 className="flex items-center gap-3.5 no-underline bg-white/5 border border-gold-light/20 rounded-[14px] px-[18px] py-4 hover:bg-gold-light/10 transition-colors"
               >
@@ -455,8 +539,24 @@ export default function Home() {
               </a>
             </div>
           </Reveal>
-          <Reveal delay={0.1}>
-            <ContactForm />
+          <Reveal delay={0.1} className="flex flex-col justify-center">
+            <div className="bg-white/[.06] border border-gold-light/25 rounded-[22px] p-[clamp(26px,4vw,38px)] text-center">
+              <h3 className="m-0 mb-2 font-serif-th text-[1.4rem] text-[#fbf7ec] font-semibold">
+                ขอใบเสนอราคา / จองรถตู้ลาว
+              </h3>
+              <p className="m-0 mb-6 text-[#cfc9b8] text-[.94rem] leading-[1.7]">
+                ทักแชท LINE บอกวันเดินทาง จำนวนคน และแผนเที่ยว ทีมงานตอบไวและเสนอราคาให้ทันที
+              </p>
+              <a
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2.5 rounded-full px-8 py-4 font-bold text-deep-green no-underline text-[1.02rem] shadow-[0_14px_32px_rgba(200,148,31,.38)] hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(200,148,31,.52)] transition-all"
+                style={{ background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" }}
+              >
+                แชทผ่าน LINE
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>

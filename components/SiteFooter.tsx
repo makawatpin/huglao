@@ -35,7 +35,7 @@ export default function SiteFooter() {
         <div>
           <h4 className="mb-4 text-[#f4ecd7] text-base font-semibold">บริการ</h4>
           <ul className="list-none p-0 m-0 flex flex-col gap-[11px] text-[.92rem]">
-            <li><Link href="/#vans" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้ VIP ลาว / จองรถตู้ลาว</Link></li>
+            <li><Link href="/van-vip" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้ VIP ลาว / จองรถตู้ลาว</Link></li>
             <li><Link href="/#services" className="no-underline text-[#b6b1a2] hover:text-gold-light">จองตั๋วรถไฟลาว–จีน</Link></li>
             <li><Link href="/#services" className="no-underline text-[#b6b1a2] hover:text-gold-light">ไกด์นำเที่ยวลาว</Link></li>
             <li><Link href="/#explore" className="no-underline text-[#b6b1a2] hover:text-gold-light">แพ็กเกจเที่ยวลาว</Link></li>
