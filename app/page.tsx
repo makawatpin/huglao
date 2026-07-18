@@ -392,7 +392,7 @@ export default async function Home() {
 
       {/* ===== ARTICLES ===== */}
       {latestArticles.length > 0 && (
-        <section id="articles" className="pt-0 pb-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
+        <section id="articles" className="py-0 px-[clamp(20px,5vw,48px)] bg-bg">
           <div className="max-w-[1200px] mx-auto">
             <Reveal className="flex flex-wrap items-end justify-between gap-5 mb-[52px]">
               <div className="max-w-[620px]">
