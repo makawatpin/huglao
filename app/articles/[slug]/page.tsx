@@ -61,7 +61,9 @@ const richTextOptions = {
     ),
     [BLOCKS.TABLE]: (_node: unknown, children: React.ReactNode) => (
       <div className="overflow-x-auto mb-[18px]">
-        <table className="w-full border-collapse text-[.95rem]">{children}</table>
+        <table className="w-full border-collapse text-[.95rem]">
+          <tbody>{children}</tbody>
+        </table>
       </div>
     ),
     [BLOCKS.TABLE_ROW]: (_node: unknown, children: React.ReactNode) => (
