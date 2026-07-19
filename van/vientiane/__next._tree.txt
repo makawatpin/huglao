@@ -1,0 +1,6 @@
+:HL["/_next/static/chunks/42xseh2cle36q.css","style"]
+:HL["/_next/static/media/890d5c8c3271b311-s.p.33bu0xzn0g3ya.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/9abe3d53283d35f1-s.p.1gbn-6w9rll2_.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/bfd813093b8ca1bb-s.p.3ok2djvs6w93k.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/f304c3cf3765fb5f-s.p.0h0-3wqrkgcb1.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"van","param":null,"prefetchHints":0,"slots":{"children":{"name":"city","param":{"type":"d","key":"vientiane","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"h6K7DmYa6kPR1c1LfsSOK"}
