@@ -333,7 +333,10 @@ export default function VanVipPage() {
         </div>
         <div className="grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
           <Reveal>
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_44px_rgba(10,31,20,.16)]" style={{ aspectRatio: "4/3" }}>
+            <div
+              className="relative rounded-2xl overflow-hidden shadow-[0_20px_44px_rgba(10,31,20,.16)] aspect-[16/9] md:aspect-auto"
+              style={{ aspectRatio: "4/3" }}
+            >
               <Image
                 src="/assets/van-vip-fleet.jpg"
                 alt="รถตู้ VIP Toyota Commuter สองคัน จอดรอบริการเที่ยวลาว"
@@ -343,7 +346,7 @@ export default function VanVipPage() {
               />
             </div>
           </Reveal>
-          <Reveal delay={0.08}>
+          <Reveal delay={0.08} className="hidden md:block">
             <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_44px_rgba(10,31,20,.16)]" style={{ aspectRatio: "4/3" }}>
               <Image
                 src="/assets/van-vip-interior.jpg"
