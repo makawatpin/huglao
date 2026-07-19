@@ -67,8 +67,9 @@ export default function BottomTabBar() {
           <Link
             key={tab.href}
             href={tab.href}
-            className="flex-1 flex flex-col items-center gap-[3px] pt-2 text-[10px] no-underline"
+            className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-[10px] no-underline"
             style={{ color: active ? "#e3bd63" : "#8a9c90" }}
+            aria-current={active ? "page" : undefined}
           >
             <span className="w-5 h-5">{tab.icon}</span>
             {tab.label}
@@ -79,7 +80,7 @@ export default function BottomTabBar() {
         href={LINE_URL}
         target="_blank"
         rel="noopener"
-        className="flex-1 flex flex-col items-center gap-[3px] pt-2 text-[10px] no-underline"
+        className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-[10px] no-underline"
         style={{ color: "#8a9c90" }}
       >
         <span className="w-5 h-5">{LINE_ICON}</span>
