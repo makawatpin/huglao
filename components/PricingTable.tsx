@@ -51,15 +51,22 @@ export default function PricingTable({
             </div>
 
             {/* mobile card stack */}
-            <div className="flex flex-col gap-3 md:hidden">
+            <div className="flex flex-col gap-2.5 md:hidden">
               {group.routes.map((r) => (
-                <div key={r.route + r.duration} className="bg-white border border-border rounded-2xl p-4">
-                  <div className="font-semibold text-deep-green-2 text-[.98rem] mb-1">{r.route}</div>
-                  <div className="text-text-muted text-[.86rem] mb-2">{r.duration}</div>
-                  <div className="text-[1.05rem] font-bold text-deep-green-2">
-                    {formatPrice(r.price)} <span className="font-normal text-text-muted text-[.85rem]">/{r.unit}</span>
+                <div key={r.route + r.duration} className="bg-white border border-border rounded-2xl p-3.5">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="font-semibold text-deep-green-2 text-[.92rem] leading-snug">{r.route}</div>
+                    <div className="text-right shrink-0">
+                      <div className="text-[1rem] font-bold text-deep-green-2 whitespace-nowrap">{formatPrice(r.price)}</div>
+                      <div className="text-text-muted text-[.76rem]">/{r.unit}</div>
+                    </div>
                   </div>
-                  {r.note && <div className="mt-1.5 text-text-muted text-[.85rem]">{r.note}</div>}
+                  {(r.duration !== "-" || r.note) && (
+                    <div className="mt-2 pt-2 border-t border-border flex flex-wrap gap-x-3 gap-y-1 text-text-muted text-[.8rem]">
+                      {r.duration !== "-" && <span>ระยะเวลา: {r.duration}</span>}
+                      {r.note && <span>{r.note}</span>}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
