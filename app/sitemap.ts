@@ -10,6 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     { url: base, lastModified: new Date() },
+    { url: `${base}/about`, lastModified: new Date() },
     { url: `${base}/van-vip`, lastModified: new Date() },
     ...cities.map((c) => ({
       url: `${base}/van/${c.slug}`,

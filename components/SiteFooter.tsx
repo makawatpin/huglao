@@ -39,6 +39,8 @@ export default function SiteFooter() {
             <li><Link href="/#services" className="no-underline text-[#b6b1a2] hover:text-gold-light">จองตั๋วรถไฟลาว–จีน</Link></li>
             <li><Link href="/#services" className="no-underline text-[#b6b1a2] hover:text-gold-light">ไกด์นำเที่ยวลาว</Link></li>
             <li><Link href="/#explore" className="no-underline text-[#b6b1a2] hover:text-gold-light">แพ็กเกจเที่ยวลาว</Link></li>
+            <li><Link href="/about" className="no-underline text-[#b6b1a2] hover:text-gold-light">เกี่ยวกับเรา</Link></li>
+            <li><Link href="/#faq" className="no-underline text-[#b6b1a2] hover:text-gold-light">คำถามที่พบบ่อย</Link></li>
           </ul>
         </div>
 
@@ -58,34 +60,18 @@ export default function SiteFooter() {
             <li>LINE: <span className="text-gold-light">@huglao</span></li>
             <li>โทร: 095-596-2525</li>
             <li>huglao@gmail.com</li>
-            <li>เวียงจันทน์ สปป.ลาว · หนองคาย ประเทศไทย</li>
+            <li>พื้นที่ให้บริการ: เวียงจันทน์ สปป.ลาว · หนองคาย ประเทศไทย</li>
+            <li>
+              ที่อยู่จดทะเบียน: 25 ถ.โนนใบบัว 3 ต.บัวใหญ่
+              <br />
+              อ.บัวใหญ่ จ.นครราชสีมา 30120
+            </li>
+            <li>เลขทะเบียนบริษัท: (ระบุเลขทะเบียนนิติบุคคล)</li>
           </ul>
         </div>
       </div>
 
-      {/* ===== TRUST BAR ===== */}
-      <div className="max-w-[1200px] mx-auto mt-10 pt-8 border-t border-gold-light/15">
-        <h4 className="mb-3.5 text-[#f4ecd7] text-base font-semibold">ข้อมูลบริษัท</h4>
-        <div className="grid gap-x-8 gap-y-2 text-[.88rem] text-[#b6b1a2]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
-          <p className="m-0">
-            บริษัท ฮักลาว กรุ๊ป จำกัด
-            <br />
-            HUGLAO GROUP CO., LTD.
-          </p>
-          <p className="m-0">
-            25 ถ.โนนใบบัว 3 ต.บัวใหญ่
-            <br />
-            อ.บัวใหญ่ จ.นครราชสีมา 30120
-          </p>
-          <p className="m-0">
-            เลขทะเบียนบริษัท: (ระบุเลขทะเบียนนิติบุคคล)
-            <br />
-            โทร 095-596-2525 · huglao@gmail.com
-          </p>
-        </div>
-      </div>
-
-      <div className="max-w-[1200px] mx-auto mt-6 pt-6 border-t border-gold-light/15 flex flex-wrap gap-2.5 justify-between text-[#7d7a6e] text-[.82rem]">
+      <div className="max-w-[1200px] mx-auto mt-10 pt-6 border-t border-gold-light/15 flex flex-wrap gap-2.5 justify-between text-[#7d7a6e] text-[.82rem]">
         <span>© 2026 บริษัท ฮักลาว กรุ๊ป จำกัด (HUGLAO GROUP CO., LTD.) สงวนลิขสิทธิ์</span>
         <span>เที่ยวลาว · รถตู้ลาว · จองรถตู้ลาว · ตั๋วรถไฟลาว–จีน</span>
       </div>

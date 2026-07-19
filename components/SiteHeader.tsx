@@ -10,8 +10,7 @@ const NAV_LINKS = [
   { href: "/#services", label: "บริการ" },
   { href: "/#explore", label: "เที่ยวลาว" },
   { href: "/van-vip", label: "รถตู้ VIP" },
-  { href: "/#process", label: "ขั้นตอนจอง" },
-  { href: "/#faq", label: "คำถามที่พบบ่อย" },
+  { href: "/about", label: "เกี่ยวกับเรา" },
   { href: "/articles", label: "บทความ" },
 ];
 
