@@ -165,7 +165,7 @@ export default async function CityVanPage({
         <h2 className="mt-3 mb-3 font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           เที่ยว{city.name} ที่ไหนดี
         </h2>
-        <div className="relative rounded-2xl overflow-hidden mb-9" style={{ aspectRatio: "16/7" }}>
+        <div className="relative rounded-2xl overflow-hidden mb-9 aspect-[16/6] md:aspect-auto" style={{ aspectRatio: "16/7" }}>
           <Image src={city.heroImage} alt={`รถตู้${city.name} พร้อมคนขับ`} fill sizes="100vw" className="object-cover" />
         </div>
         <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
