@@ -334,8 +334,7 @@ export default function VanVipPage() {
         <div className="grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
           <Reveal>
             <div
-              className="relative rounded-2xl overflow-hidden shadow-[0_20px_44px_rgba(10,31,20,.16)] aspect-[16/9] md:aspect-auto"
-              style={{ aspectRatio: "4/3" }}
+              className="relative rounded-2xl overflow-hidden shadow-[0_20px_44px_rgba(10,31,20,.16)] aspect-[16/9] md:aspect-[4/3]"
             >
               <Image
                 src="/assets/van-vip-fleet.jpg"

@@ -196,7 +196,29 @@ export default async function Home() {
               ตั้งแต่ <strong>จองรถตู้ลาว</strong> ตั๋วรถไฟ ไปจนถึงไกด์นำเที่ยว เราดูแลให้ทุกขั้นตอนของทริปคุณราบรื่นและคุ้มค่า
             </p>
           </Reveal>
-          <div className="flex gap-[clamp(16px,2.4vw,30px)] items-end justify-center flex-wrap">
+          <div className="flex md:hidden flex-col gap-3">
+            {SERVICES.map((svc) => (
+              <a
+                key={svc.tag}
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener"
+                className="flex items-center gap-3 bg-white border border-border rounded-2xl overflow-hidden no-underline"
+              >
+                <div className="relative w-[90px] h-[70px] flex-shrink-0">
+                  <Image src={svc.image} alt={svc.title.join(" ")} fill sizes="90px" className="object-cover" />
+                </div>
+                <div className="py-2 pr-3 min-w-0">
+                  <h3 className="m-0 font-serif-th font-semibold text-deep-green-2 text-[.98rem] truncate">{svc.title.join(" ")}</h3>
+                  <span className="mt-1 inline-flex items-center gap-1.5 text-gold-dark text-[.8rem] font-semibold">
+                    {svc.tag}
+                    <span>↗</span>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div className="hidden md:flex gap-[clamp(16px,2.4vw,30px)] items-end justify-center flex-wrap">
             {SERVICES.map((svc) => (
               <a
                 key={svc.tag}
@@ -248,13 +270,13 @@ export default async function Home() {
               เที่ยวลาวอย่างสบายใจ เหมือนมีเพื่อนคนลาวคอยดูแล
             </h2>
           </Reveal>
-          <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
+          <div className="grid grid-cols-2 gap-2.5 md:gap-[22px] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))]">
             {WHY_US.map((item, i) => (
               <Reveal key={item.title} delay={0.1 * (i + 1)}>
-                <div className="h-full bg-white/[.04] border border-gold-light/[.18] rounded-[18px] px-[26px] py-[30px] hover:bg-gold-light/[.08] hover:border-gold-light/40 transition-colors">
-                  <div className="text-[1.6rem] mb-3.5">{item.icon}</div>
-                  <h3 className="m-0 mb-2 text-[1.12rem] text-[#f4ecd7] font-semibold">{item.title}</h3>
-                  <p className="m-0 text-[#c4bfae] text-[.93rem] leading-[1.65]">{item.body}</p>
+                <div className="h-full bg-white/[.04] border border-gold-light/[.18] rounded-[18px] px-3.5 py-4 md:px-[26px] md:py-[30px] hover:bg-gold-light/[.08] hover:border-gold-light/40 transition-colors">
+                  <div className="text-[1.3rem] md:text-[1.6rem] mb-2 md:mb-3.5">{item.icon}</div>
+                  <h3 className="m-0 mb-1.5 md:mb-2 text-[.92rem] md:text-[1.12rem] text-[#f4ecd7] font-semibold leading-snug">{item.title}</h3>
+                  <p className="m-0 text-[#c4bfae] text-[.8rem] md:text-[.93rem] leading-[1.5] md:leading-[1.65]">{item.body}</p>
                 </div>
               </Reveal>
             ))}
