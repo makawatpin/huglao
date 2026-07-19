@@ -3,6 +3,7 @@ import { Noto_Serif_Thai, Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import BottomTabBar from "@/components/BottomTabBar";
 
 const notoSerifThai = Noto_Serif_Thai({
   variable: "--font-serif-thai",
@@ -90,8 +91,11 @@ export default function RootLayout({
       </head>
       <body>
         <SiteHeader />
-        {children}
-        <SiteFooter />
+        <div className="pb-[84px] md:pb-0">
+          {children}
+          <SiteFooter />
+        </div>
+        <BottomTabBar />
       </body>
     </html>
   );
