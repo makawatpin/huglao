@@ -44,15 +44,8 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
           <p className="m-0 text-[1.05rem]">ไม่พบบทความ</p>
         </div>
       ) : (
-        <div
-          className="grid gap-7"
-          style={{ gridTemplateColumns: "repeat(3, 1fr)" }}
-        >
-          <style>{`
-            @media (max-width: 900px) { .hla-grid-inline { grid-template-columns: repeat(2,1fr) !important; gap: 22px !important; } }
-            @media (max-width: 600px) { .hla-grid-inline { grid-template-columns: 1fr !important; gap: 20px !important; } }
-          `}</style>
-          <div className="contents hla-grid-inline">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-[22px] lg:grid-cols-3 lg:gap-7">
+          <div className="contents">
             {filtered.map((a) => (
               <Link
                 key={a.slug}
@@ -72,16 +65,16 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
                     </span>
                   )}
                 </div>
-                <div className="flex flex-col flex-1 px-[22px] pt-[22px] pb-6">
-                  <div className="flex items-center gap-2 text-[#8a8474] text-[.8rem] font-medium mb-2.5">
+                <div className="flex flex-col flex-1 px-4 pt-4 pb-4 md:px-[22px] md:pt-[22px] md:pb-6">
+                  <div className="flex items-center gap-2 text-[#8a8474] text-[.76rem] md:text-[.8rem] font-medium mb-2 md:mb-2.5">
                     <span className="text-gold-dark">{a.author}</span>
                     <span className="opacity-50">·</span>
                     <span>{a.publishDate}</span>
                   </div>
-                  <h3 className="m-0 mb-2.5 font-serif-th font-bold text-[1.26rem] leading-[1.35] text-deep-green-2">
+                  <h3 className="m-0 mb-2 md:mb-2.5 font-serif-th font-bold text-[1.05rem] md:text-[1.26rem] leading-[1.3] md:leading-[1.35] text-deep-green-2">
                     {a.title}
                   </h3>
-                  <p className="m-0 mb-[18px] text-text-muted text-[.95rem] leading-[1.65] flex-1">{a.excerpt}</p>
+                  <p className="m-0 mb-3 md:mb-[18px] text-text-muted text-[.86rem] md:text-[.95rem] leading-[1.55] md:leading-[1.65] flex-1">{a.excerpt}</p>
                   <div className="flex flex-wrap gap-[7px]">
                     {a.tags.map((t) => (
                       <span key={t} className="text-[.74rem] text-[#7a7565] bg-[#f4f0e6] border border-border px-[11px] py-1 rounded-full">

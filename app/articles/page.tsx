@@ -14,7 +14,7 @@ export default async function ArticlesPage() {
   return (
     <div>
       <section
-        className="relative overflow-hidden py-[clamp(70px,11vw,120px)] px-[clamp(20px,5vw,48px)] pb-[clamp(56px,8vw,84px)] text-[#fbf7ec]"
+        className="relative overflow-hidden py-12 md:py-[clamp(70px,11vw,120px)] px-[clamp(20px,5vw,48px)] pb-8 md:pb-[clamp(56px,8vw,84px)] text-[#fbf7ec]"
         style={{ background: "linear-gradient(165deg,#0a1f14,#123524)" }}
       >
         <div
@@ -41,7 +41,7 @@ export default async function ArticlesPage() {
         </div>
       </section>
 
-      <section className="max-w-[1180px] mx-auto py-[clamp(44px,6vw,72px)] px-[clamp(20px,5vw,48px)] pb-[clamp(80px,10vw,120px)]">
+      <section className="max-w-[1180px] mx-auto py-8 md:py-[clamp(44px,6vw,72px)] px-[clamp(20px,5vw,48px)] pb-14 md:pb-[clamp(80px,10vw,120px)]">
         <ArticleGrid articles={articles} />
       </section>
     </div>

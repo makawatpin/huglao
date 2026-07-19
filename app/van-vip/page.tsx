@@ -207,7 +207,7 @@ export default function VanVipPage() {
       {/* ===== HERO ===== */}
       <section
         id="top"
-        className="relative overflow-hidden py-[clamp(112px,15vw,152px)] px-[clamp(20px,5vw,48px)] pb-[clamp(48px,7vw,72px)]"
+        className="relative overflow-hidden py-16 md:py-[clamp(112px,15vw,152px)] px-[clamp(20px,5vw,48px)] pb-6 md:pb-[clamp(48px,7vw,72px)]"
         style={{ background: "linear-gradient(165deg,#0a1f14,#123524)", color: "#fbf7ec" }}
       >
         <div
@@ -261,7 +261,7 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== INTRO ===== */}
-      <section className="max-w-[900px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(48px,7vw,72px)]">
+      <section className="max-w-[900px] mx-auto px-[clamp(20px,5vw,48px)] pt-8 md:pt-[clamp(48px,7vw,72px)]">
         <p className="text-[1.08rem] leading-[1.9] text-[#3c3e33] mb-5">
           หากคุณกำลังวางแผนเดินทางไปประเทศลาว ไม่ว่าจะเที่ยวกับครอบครัว กลุ่มเพื่อน บริษัท หรือคณะทัวร์ การเลือกใช้บริการ <strong>เช่ารถตู้เที่ยวลาว</strong> พร้อมคนขับ ถือเป็นทางเลือกที่สะดวก ปลอดภัย และคุ้มค่าที่สุด เพราะเดินทางได้อย่างอิสระ ไม่ต้องกังวลเรื่องเส้นทาง ภาษา หรือการต่อรถสาธารณะ
         </p>
@@ -297,18 +297,18 @@ export default function VanVipPage() {
       </div>
 
       {/* ===== WHY ===== */}
-      <section id="why" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="why" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">ทำไมต้องเลือกเรา</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           ทำไมต้องเช่ารถตู้เที่ยวลาว
         </h2>
-        <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+        <div className="grid gap-3 md:gap-[22px] md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]">
           {WHY.map((item, i) => (
             <Reveal key={item.title} delay={0.06 * (i + 1)}>
-              <div className="h-full bg-white border border-border rounded-2xl p-[26px]">
-                <div className="text-[1.4rem] mb-2.5">{item.icon}</div>
-                <h3 className="m-0 mb-2 text-[1.05rem] text-deep-green-2">{item.title}</h3>
-                <p className="m-0 text-text-muted text-[.94rem] leading-[1.7]">{item.body}</p>
+              <div className="h-full bg-white border border-border rounded-2xl p-4 md:p-[26px]">
+                <div className="text-[1.2rem] md:text-[1.4rem] mb-2 md:mb-2.5">{item.icon}</div>
+                <h3 className="m-0 mb-1.5 md:mb-2 text-[.96rem] md:text-[1.05rem] text-deep-green-2">{item.title}</h3>
+                <p className="m-0 text-text-muted text-[.86rem] md:text-[.94rem] leading-[1.6] md:leading-[1.7]">{item.body}</p>
               </div>
             </Reveal>
           ))}
@@ -316,17 +316,17 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== HIGHLIGHTS ===== */}
-      <section id="highlights" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="highlights" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">รถตู้ VIP</span>
         <h2 className="mt-3 mb-3 font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           จุดเด่นบริการรถตู้ VIP ของ Huglao
         </h2>
-        <p className="mb-[30px] text-text-muted text-[1.02rem] leading-[1.8] max-w-[70ch]">
+        <p className="mb-4 md:mb-[30px] text-text-muted text-[1.02rem] leading-[1.8] max-w-[70ch]">
           รถทุกคันผ่านการตรวจสภาพก่อนออกเดินทางทุกครั้ง คัดสรรมาเพื่อความสบายและปลอดภัยตลอดทริปเที่ยวลาว
         </p>
-        <div className="grid gap-[18px] mb-9" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))" }}>
+        <div className="grid grid-cols-2 gap-2.5 mb-6 md:mb-9 sm:grid-cols-3 md:gap-[18px] md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
           {HIGHLIGHTS.map((h) => (
-            <div key={h} className="flex items-center gap-2.5 bg-[#f4f0e6] rounded-xl px-4 py-3.5 text-[.92rem] text-[#3c3e33]">
+            <div key={h} className="flex items-center gap-2 bg-[#f4f0e6] rounded-xl px-3 py-2.5 text-[.8rem] md:px-4 md:py-3.5 md:text-[.92rem] text-[#3c3e33]">
               {h}
             </div>
           ))}
@@ -360,7 +360,7 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== CITIES ===== */}
-      <section id="cities" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="cities" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">เส้นทางบริการ</span>
         <h2 className="mt-3 mb-10 font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           ให้บริการเที่ยวเมืองไหนบ้าง
@@ -403,25 +403,25 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== WHO ===== */}
-      <section id="who" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="who" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">เหมาะกับใคร</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           เหมาะกับใครบ้าง
         </h2>
-        <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))" }}>
+        <div className="grid grid-cols-3 gap-2.5 md:gap-[22px] md:grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
           {WHO.map((w) => (
-            <div key={w.label} className="text-center bg-white border border-border rounded-2xl py-7 px-5">
-              <div className="text-[1.8rem] mb-2.5">{w.icon}</div>
-              <h3 className="m-0 text-[1rem] text-deep-green-2">{w.label}</h3>
+            <div key={w.label} className="text-center bg-white border border-border rounded-2xl py-4 px-2 md:py-7 md:px-5">
+              <div className="text-[1.4rem] md:text-[1.8rem] mb-1.5 md:mb-2.5">{w.icon}</div>
+              <h3 className="m-0 text-[.8rem] md:text-[1rem] text-deep-green-2">{w.label}</h3>
             </div>
           ))}
         </div>
       </section>
 
       {/* ===== FLEET ===== */}
-      <section id="fleet" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="fleet" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">เลือกรถ</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           มีรถอะไรให้เลือก
         </h2>
         <div className="overflow-x-auto rounded-2xl" style={{ boxShadow: "0 14px 34px rgba(10,31,20,.08)" }}>
@@ -447,59 +447,59 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== PRICING ===== */}
-      <section id="pricing" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="pricing" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">ราคา</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           ราคารถตู้ลาว
         </h2>
         <PricingTable />
       </section>
 
       {/* ===== PROGRAMS ===== */}
-      <section id="programs" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="programs" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">โปรแกรมทัวร์</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           โปรแกรมยอดนิยม
         </h2>
-        <div className="grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
+        <div className="grid grid-cols-2 gap-3 md:gap-[18px] md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))]">
           {PROGRAMS.map((p) => (
-            <div key={p.title} className="rounded-2xl p-[26px] text-white" style={{ background: p.gradient }}>
-              <h3 className="mt-0 mb-2 font-serif-th text-[1.15rem]">{p.title}</h3>
-              <p className="m-0 text-[#d8d2c0] text-[.88rem] leading-[1.6]">{p.body}</p>
+            <div key={p.title} className="rounded-2xl p-3.5 md:p-[26px] text-white" style={{ background: p.gradient }}>
+              <h3 className="mt-0 mb-1.5 md:mb-2 font-serif-th text-[.98rem] md:text-[1.15rem]">{p.title}</h3>
+              <p className="m-0 text-[#d8d2c0] text-[.78rem] md:text-[.88rem] leading-[1.5] md:leading-[1.6]">{p.body}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ===== BOOKING STEPS ===== */}
-      <section id="booking" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="booking" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">จองง่าย</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           ขั้นตอนการจอง
         </h2>
-        <div className="grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))" }}>
+        <div className="grid grid-cols-3 gap-2.5 md:gap-[18px] md:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]">
           {BOOKING_STEPS.map((label, i) => (
-            <div key={label} className="bg-white border border-border rounded-2xl px-[18px] py-[22px] text-center">
-              <div className="w-9 h-9 rounded-full bg-deep-green-2 text-gold-light font-bold flex items-center justify-center mx-auto mb-3">
+            <div key={label} className="bg-white border border-border rounded-2xl px-2.5 py-3.5 md:px-[18px] md:py-[22px] text-center">
+              <div className="w-7 h-7 md:w-9 md:h-9 rounded-full bg-deep-green-2 text-gold-light font-bold text-[.85rem] md:text-base flex items-center justify-center mx-auto mb-2 md:mb-3">
                 {i + 1}
               </div>
-              <p className="m-0 text-[.92rem] text-[#3c3e33] leading-[1.5]">{label}</p>
+              <p className="m-0 text-[.74rem] md:text-[.92rem] text-[#3c3e33] leading-[1.4] md:leading-[1.5]">{label}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ===== COMPARE ===== */}
-      <section className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">ก่อนตัดสินใจ</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           รถตู้ vs รถไฟ vs รถโดยสาร แบบไหนเหมาะกับคุณ
         </h2>
-        <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+        <div className="grid gap-3 md:gap-[22px] md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]">
           {COMPARE.map((c) => (
-            <div key={c.title} className="bg-white border border-border rounded-2xl p-[26px]">
-              <h3 className="mt-0 mb-2.5 text-[1.05rem] text-deep-green-2">{c.title}</h3>
-              <p className="m-0 text-text-muted text-[.92rem] leading-[1.7]">{c.body}</p>
+            <div key={c.title} className="bg-white border border-border rounded-2xl p-4 md:p-[26px]">
+              <h3 className="mt-0 mb-2 md:mb-2.5 text-[.94rem] md:text-[1.05rem] text-deep-green-2">{c.title}</h3>
+              <p className="m-0 text-text-muted text-[.84rem] md:text-[.92rem] leading-[1.6] md:leading-[1.7]">{c.body}</p>
             </div>
           ))}
         </div>
@@ -509,20 +509,20 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== REVIEWS ===== */}
-      <section id="reviews" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="reviews" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">เสียงจากลูกค้า</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           รีวิวลูกค้า
         </h2>
-        <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+        <div className="grid gap-3 md:gap-[22px] md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]">
           {reviews.map((r) => (
-            <div key={r.name + r.body.slice(0, 8)} className="bg-white border border-border rounded-2xl p-6">
-              <div className="text-gold mb-2.5">★★★★★</div>
-              <p className="m-0 mb-3.5 text-[#3c3e33] text-[.94rem] leading-[1.7]">{r.body}</p>
-              <div className="text-[.85rem] text-[#8a8474]">
+            <div key={r.name + r.body.slice(0, 8)} className="bg-white border border-border rounded-2xl p-4 md:p-6">
+              <div className="text-gold mb-2 md:mb-2.5">★★★★★</div>
+              <p className="m-0 mb-3 md:mb-3.5 text-[#3c3e33] text-[.86rem] md:text-[.94rem] leading-[1.6] md:leading-[1.7]">{r.body}</p>
+              <div className="text-[.8rem] md:text-[.85rem] text-[#8a8474]">
                 <span className="font-semibold text-[#5e6258]">{r.name}</span> · {r.route}
               </div>
-              <div className="mt-1 text-[.8rem] text-[#a29c8c]">
+              <div className="mt-1 text-[.75rem] md:text-[.8rem] text-[#a29c8c]">
                 {r.date} · รีวิวจาก {r.source}
               </div>
             </div>
@@ -541,9 +541,9 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== ARTICLES ===== */}
-      <section id="articles" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="articles" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">อ่านเพิ่มเติม</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           บทความแนะนำ
         </h2>
         <Link
@@ -569,9 +569,9 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== FAQ ===== */}
-      <section id="faq" className="max-w-[840px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="faq" className="max-w-[840px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">คำถามที่พบบ่อย</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           FAQ
         </h2>
         <div className="flex flex-col gap-3">
@@ -588,7 +588,7 @@ export default function VanVipPage() {
       </section>
 
       {/* ===== CONTACT ===== */}
-      <section id="contact" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] mt-[clamp(64px,8vw,96px)] pb-[clamp(80px,10vw,120px)]">
+      <section id="contact" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] mt-10 md:mt-[clamp(64px,8vw,96px)] pb-14 md:pb-[clamp(80px,10vw,120px)]">
         <div
           className="rounded-[24px] p-[clamp(36px,6vw,60px)] flex flex-wrap gap-9 items-center justify-between"
           style={{ background: "linear-gradient(165deg,#0a1f14,#123524)", color: "#fbf7ec" }}

@@ -617,7 +617,7 @@ export default async function Home() {
                 </span>
               </a>
               <a
-                href="mailto:huglao@gmail.com"
+                href="mailto:huglaogroup@gmail.com"
                 className="flex items-center gap-3.5 no-underline bg-white/5 border border-gold-light/20 rounded-[14px] px-[18px] py-4 hover:bg-gold-light/10 transition-colors"
               >
                 <span className="flex-none w-[46px] h-[46px] rounded-xl bg-gold-light/[.14] flex items-center justify-center text-gold-light">
@@ -628,7 +628,7 @@ export default async function Home() {
                 </span>
                 <span>
                   <span className="block text-[#9a9588] text-[.78rem]">อีเมล</span>
-                  <span className="text-[#f4ecd7] font-semibold">huglao@gmail.com</span>
+                  <span className="text-[#f4ecd7] font-semibold">huglaogroup@gmail.com</span>
                 </span>
               </a>
             </div>

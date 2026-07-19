@@ -75,7 +75,7 @@ export default async function CityVanPage({
       {/* ===== HERO ===== */}
       <section
         id="top"
-        className="relative overflow-hidden py-[clamp(112px,15vw,152px)] px-[clamp(20px,5vw,48px)] pb-[clamp(48px,7vw,72px)]"
+        className="relative overflow-hidden py-16 md:py-[clamp(112px,15vw,152px)] px-[clamp(20px,5vw,48px)] pb-6 md:pb-[clamp(48px,7vw,72px)]"
         style={{ background: "linear-gradient(165deg,#0a1f14,#123524)", color: "#fbf7ec" }}
       >
         <div
@@ -133,7 +133,7 @@ export default async function CityVanPage({
       </section>
 
       {/* ===== INTRO ===== */}
-      <section className="max-w-[900px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(48px,7vw,72px)]">
+      <section className="max-w-[900px] mx-auto px-[clamp(20px,5vw,48px)] pt-8 md:pt-[clamp(48px,7vw,72px)]">
         {city.intro.map((p, i) => (
           <p key={i} className="text-[1.08rem] leading-[1.9] text-[#3c3e33] mb-5 last:mb-0">
             {p}
@@ -160,57 +160,57 @@ export default async function CityVanPage({
       </div>
 
       {/* ===== ATTRACTIONS ===== */}
-      <section id="attractions" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="attractions" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">สถานที่เที่ยว</span>
         <h2 className="mt-3 mb-3 font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           เที่ยว{city.name} ที่ไหนดี
         </h2>
-        <div className="relative rounded-2xl overflow-hidden mb-9 aspect-[16/6] md:aspect-[16/7]">
+        <div className="relative rounded-2xl overflow-hidden mb-5 md:mb-9 aspect-[16/9] md:aspect-[16/7]">
           <Image src={city.heroImage} alt={`รถตู้${city.name} พร้อมคนขับ`} fill sizes="100vw" className="object-cover" />
         </div>
-        <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+        <div className="grid gap-3 md:gap-[22px] md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]">
           {city.attractions.map((a, i) => (
             <Reveal key={a.name} delay={0.05 * (i + 1)}>
-              <div className="h-full bg-white border border-border rounded-2xl p-[26px]">
-                <h3 className="m-0 mb-2 text-[1.05rem] text-deep-green-2">{a.name}</h3>
-                <p className="m-0 text-text-muted text-[.94rem] leading-[1.7]">{a.desc}</p>
+              <div className="h-full bg-white border border-border rounded-2xl p-4 md:p-[26px]">
+                <h3 className="m-0 mb-1.5 md:mb-2 text-[.96rem] md:text-[1.05rem] text-deep-green-2">{a.name}</h3>
+                <p className="m-0 text-text-muted text-[.86rem] md:text-[.94rem] leading-[1.6] md:leading-[1.7]">{a.desc}</p>
               </div>
             </Reveal>
           ))}
         </div>
-        <p className="mt-8 text-[#3c3e33] text-[.98rem] leading-[1.8] max-w-[80ch]">{city.logistics}</p>
+        <p className="mt-6 md:mt-8 text-[#3c3e33] text-[.9rem] md:text-[.98rem] leading-[1.7] md:leading-[1.8] max-w-[80ch]">{city.logistics}</p>
       </section>
 
       {/* ===== PROGRAMS ===== */}
-      <section id="programs" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="programs" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">โปรแกรมแนะนำ</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           โปรแกรมแนะนำ{city.name}
         </h2>
-        <div className="grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
+        <div className="grid grid-cols-2 gap-3 md:gap-[18px] md:grid-cols-[repeat(auto-fit,minmax(240px,1fr))]">
           {city.programs.map((p) => (
-            <div key={p.title} className="bg-white border border-border rounded-2xl p-[26px]">
-              <span className="inline-block text-gold-dark font-semibold text-[.8rem] mb-2">{p.duration}</span>
-              <h3 className="mt-0 mb-2 font-serif-th text-[1.1rem] text-deep-green-2">{p.title}</h3>
-              <p className="m-0 text-text-muted text-[.92rem] leading-[1.7]">{p.body}</p>
+            <div key={p.title} className="bg-white border border-border rounded-2xl p-3.5 md:p-[26px]">
+              <span className="inline-block text-gold-dark font-semibold text-[.72rem] md:text-[.8rem] mb-1.5 md:mb-2">{p.duration}</span>
+              <h3 className="mt-0 mb-1.5 md:mb-2 font-serif-th text-[.94rem] md:text-[1.1rem] text-deep-green-2">{p.title}</h3>
+              <p className="m-0 text-text-muted text-[.78rem] md:text-[.92rem] leading-[1.5] md:leading-[1.7]">{p.body}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ===== PRICING ===== */}
-      <section id="pricing" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="pricing" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">ราคา</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           ราคารถตู้{city.name}
         </h2>
         <PricingTable groups={pricingGroups} />
       </section>
 
       {/* ===== FAQ ===== */}
-      <section id="faq" className="max-w-[840px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section id="faq" className="max-w-[840px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">คำถามที่พบบ่อย</span>
-        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+        <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           FAQ รถตู้{city.name}
         </h2>
         <div className="flex flex-col gap-3">
@@ -227,7 +227,7 @@ export default async function CityVanPage({
       </section>
 
       {/* ===== INTERNAL LINKS ===== */}
-      <section className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+      <section className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <div className="flex flex-wrap gap-3">
           <Link
             href="/van-vip"
@@ -248,7 +248,7 @@ export default async function CityVanPage({
       </section>
 
       {/* ===== CONTACT ===== */}
-      <section id="contact" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] mt-[clamp(64px,8vw,96px)] pb-[clamp(80px,10vw,120px)]">
+      <section id="contact" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] mt-10 md:mt-[clamp(64px,8vw,96px)] pb-14 md:pb-[clamp(80px,10vw,120px)]">
         <div
           className="rounded-[24px] p-[clamp(36px,6vw,60px)] flex flex-wrap gap-9 items-center justify-between"
           style={{ background: "linear-gradient(165deg,#0a1f14,#123524)", color: "#fbf7ec" }}

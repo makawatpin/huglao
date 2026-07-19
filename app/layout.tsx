@@ -65,7 +65,7 @@ export default function RootLayout({
               logo: "https://huglao.com/assets/huglao-emblem.png",
               image: "https://huglao.com/assets/huglao-emblem.png",
               telephone: "+66-95-596-2525",
-              email: "huglao@gmail.com",
+              email: "huglaogroup@gmail.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "25 ถ.โนนใบบัว 3 ต.บัวใหญ่ อ.บัวใหญ่",
