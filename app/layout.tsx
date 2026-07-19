@@ -65,6 +65,13 @@ export default function RootLayout({
               image: "https://huglao.com/assets/huglao-emblem.png",
               telephone: "+66-95-596-2525",
               email: "huglao@gmail.com",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "25 ถ.โนนใบบัว 3 ต.บัวใหญ่ อ.บัวใหญ่",
+                addressLocality: "นครราชสีมา",
+                postalCode: "30120",
+                addressCountry: "TH",
+              },
               areaServed: [
                 { "@type": "City", name: "เวียงจันทน์ สปป.ลาว" },
                 { "@type": "City", name: "หนองคาย ประเทศไทย" },
