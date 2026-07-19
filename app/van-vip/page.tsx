@@ -61,6 +61,7 @@ const CITIES = [
   {
     title: "รถตู้เที่ยวเวียงจันทน์",
     image: "/assets/dest-vientiane.webp",
+    blurb: "ประตูชัย · พระธาตุหลวง · วัดสีสะเกด · ตลาดกลางคืนริมโขง",
     paragraphs: [
       <>เวียงจันทน์คือด่านแรกของทริปเที่ยวลาวส่วนใหญ่ ด้วยระยะทางใกล้ด่านหนองคายเพียงข้ามสะพานมิตรภาพ รถตู้ VIP ของเราพาคุณชม <strong className="text-deep-green-2">ประตูชัย</strong> สัญลักษณ์แห่งเมือง <strong className="text-deep-green-2">พระธาตุหลวง</strong> เจดีย์ทองคำคู่บ้านคู่เมือง <strong className="text-deep-green-2">วัดสีสะเกด</strong> วัดเก่าแก่ที่รอดพ้นการทำลายจากสงคราม แวะเรียนรู้ประวัติศาสตร์ที่ศูนย์ <strong className="text-deep-green-2">COPE</strong> และปิดท้ายวันด้วยการช้อปที่ <strong className="text-deep-green-2">ตลาดกลางคืน</strong> ริมแม่น้ำโขง</>,
       <>โปรแกรมเวียงจันทน์เหมาะกับทริปวันเดียวหรือทริปแวะพักก่อนต่อไปเมืองอื่น คนขับของเราคุ้นเคยเส้นทางในตัวเมืองและจุดจอดรถแต่ละสถานที่เป็นอย่างดี ทำให้ไม่เสียเวลาหาที่จอดหรือหลงทาง</>,
@@ -69,6 +70,7 @@ const CITIES = [
   {
     title: "รถตู้เที่ยววังเวียง",
     image: "/assets/dest-vangvieng.webp",
+    blurb: "Blue Lagoon · ถ้ำนางฟ้า · คายัค · บอลลูน",
     reverse: true,
     paragraphs: [
       <>วังเวียงคือเมืองแห่งธรรมชาติและกิจกรรมผจญภัย รถตู้ VIP พาคุณไป <strong className="text-deep-green-2">Blue Lagoon</strong> น้ำสีฟ้าใสท่ามกลางภูเขาหินปูน ล่องเที่ยว <strong className="text-deep-green-2">ถ้ำนางฟ้า</strong> ที่ซ่อนตัวอยู่กลางหุบเขา พาย <strong className="text-deep-green-2">Kayak</strong> ล่องแม่น้ำซองยามเย็น ขึ้น <strong className="text-deep-green-2">บอลลูน</strong> ชมวิวเมืองยามเช้า และนั่งพักจิบกาแฟที่ <strong className="text-deep-green-2">คาเฟ่</strong> วิวภูเขาสวยงามหลายแห่งในเมือง</>,
@@ -78,6 +80,7 @@ const CITIES = [
   {
     title: "รถตู้เที่ยวหลวงพระบาง",
     image: "/assets/dest-luangprabang.webp",
+    blurb: "น้ำตกกวางสี · พระธาตุพูสี · ตลาดมืด · ตักบาตรข้าวเหนียว",
     paragraphs: [
       <>หลวงพระบางเป็นเมืองมรดกโลกที่ควรมาสัมผัสอย่างน้อยครั้งหนึ่งในชีวิต รถตู้ VIP พาคุณไปชม <strong className="text-deep-green-2">น้ำตกกวางสี</strong> น้ำตกสีฟ้ามรกตกลางป่าเขียว ขึ้น <strong className="text-deep-green-2">พระธาตุพูสี</strong> ชมวิวพระอาทิตย์ตกทั้งเมือง เดินเลือกซื้อของที่ <strong className="text-deep-green-2">ตลาดมืด</strong> ยามค่ำคืน และตื่นเช้าร่วมพิธี <strong className="text-deep-green-2">ตักบาตรข้าวเหนียว</strong> ที่เป็นเอกลักษณ์เฉพาะของเมืองนี้</>,
       <>โปรแกรมหลวงพระบางมีทั้งแบบนั่งรถตู้ตรงจากเวียงจันทน์และแบบต่อรถไฟความเร็วสูงลาว-จีน ทีมงานช่วยวางแผนเส้นทางที่เหมาะกับเวลาและงบประมาณของคุณ</>,
@@ -86,6 +89,7 @@ const CITIES = [
   {
     title: "รถตู้เที่ยวปากเซ",
     image: "/assets/dest-pakse.webp",
+    blurb: "โบลาเวน · คอนพะเพ็ง · วัดพู",
     reverse: true,
     paragraphs: [
       <>ปากเซคือประตูสู่ภาคใต้ของลาว เหมาะสำหรับสายธรรมชาติและน้ำตก รถตู้ VIP พาคุณขึ้นที่ราบสูง <strong className="text-deep-green-2">โบลาเวน</strong> ชมไร่กาแฟและน้ำตกหลายแห่ง ชม <strong className="text-deep-green-2">คอนพะเพ็ง</strong> น้ำตกแม่น้ำโขงที่ใหญ่ที่สุดในเอเชียตะวันออกเฉียงใต้ และเยี่ยมชม <strong className="text-deep-green-2">วัดพู</strong> ปราสาทหินโบราณมรดกโลกอายุกว่าพันปี</>,
@@ -359,7 +363,20 @@ export default function VanVipPage() {
         <h2 className="mt-3 mb-10 font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
           ให้บริการเที่ยวเมืองไหนบ้าง
         </h2>
-        <div className="flex flex-col gap-14">
+        <div className="flex md:hidden flex-col gap-3">
+          {CITIES.map((city) => (
+            <div key={city.title} className="flex items-center gap-3 bg-white border border-border rounded-2xl overflow-hidden">
+              <div className="relative w-[110px] h-[78px] flex-shrink-0">
+                <Image src={city.image} alt={city.title} fill sizes="110px" className="object-cover" />
+              </div>
+              <div className="py-2 pr-3 min-w-0">
+                <h3 className="m-0 font-serif-th font-semibold text-deep-green-2 text-[.98rem] truncate">{city.title}</h3>
+                <p className="m-0 mt-1 text-text-muted text-[.82rem] leading-[1.4] line-clamp-2">{city.blurb}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="hidden md:flex flex-col gap-14">
           {CITIES.map((city) => (
             <Reveal key={city.title}>
               <article
