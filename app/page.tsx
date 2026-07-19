@@ -183,7 +183,7 @@ export default async function Home() {
       </section>
 
       {/* ===== SERVICES ===== */}
-      <section id="services" className="relative py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
+      <section id="services" className="relative pt-10 pb-10 md:py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center max-w-[680px] mx-auto mb-[60px]">
             <span className="inline-block text-gold-dark font-bold tracking-[.22em] text-[.82rem] uppercase">
@@ -252,7 +252,7 @@ export default async function Home() {
       </section>
 
       {/* ===== WHY US ===== */}
-      <section className="relative py-[clamp(60px,8vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden" style={{ background: "linear-gradient(180deg,#0a1f14,#123524)" }}>
+      <section className="relative pt-10 pb-10 md:py-[clamp(60px,8vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden" style={{ background: "linear-gradient(180deg,#0a1f14,#123524)" }}>
         <div
           className="absolute inset-0"
           style={{
@@ -285,7 +285,7 @@ export default async function Home() {
       </section>
 
       {/* ===== EXPLORE ===== */}
-      <section id="explore" className="py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
+      <section id="explore" className="pt-10 pb-10 md:py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="flex flex-wrap items-end justify-between gap-5 mb-[52px]">
             <div className="max-w-[620px]">
@@ -377,7 +377,7 @@ export default async function Home() {
       </section>
 
       {/* ===== VANS ===== */}
-      <section id="vans" className="relative py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] overflow-hidden" style={{ background: "linear-gradient(180deg,#123524,#0a1f14)" }}>
+      <section id="vans" className="relative pt-10 pb-10 md:py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] overflow-hidden" style={{ background: "linear-gradient(180deg,#123524,#0a1f14)" }}>
         <div className="relative max-w-[1200px] mx-auto grid gap-[50px] items-center" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))" }}>
           <Reveal>
             <span className="inline-block text-gold-light font-bold tracking-[.22em] text-[.82rem] uppercase">รถตู้ VIP · จองรถตู้ลาว</span>
@@ -429,7 +429,7 @@ export default async function Home() {
       </section>
 
       {/* ===== PRICING ===== */}
-      <section id="pricing" className="py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
+      <section id="pricing" className="pt-10 pb-10 md:py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
         <div className="max-w-[1100px] mx-auto">
           <Reveal className="text-center max-w-[600px] mx-auto mb-[50px]">
             <span className="inline-block text-gold-dark font-bold tracking-[.22em] text-[.82rem] uppercase">ราคารถตู้ลาว</span>
@@ -450,15 +450,42 @@ export default async function Home() {
       </section>
 
       {/* ===== PROCESS ===== */}
-      <section id="process" className="py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
+      <section id="process" className="py-10 md:py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
         <div className="max-w-[1100px] mx-auto">
-          <Reveal className="text-center max-w-[600px] mx-auto mb-[60px]">
+          <Reveal className="text-center max-w-[600px] mx-auto mb-6 md:mb-[60px]">
             <span className="inline-block text-gold-dark font-bold tracking-[.22em] text-[.82rem] uppercase">ง่ายใน 4 ขั้นตอน</span>
             <h2 className="mt-3.5 font-serif-th font-bold text-deep-green-2 leading-tight" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)" }}>
               จองรถตู้ลาว–วางแผนทริป แบบไม่ยุ่งยาก
             </h2>
           </Reveal>
-          <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
+
+          {/* mobile: compact horizontal stepper, no body text, no page-scroll needed */}
+          <div className="relative grid grid-cols-4 gap-1.5 md:hidden">
+            <div className="absolute left-0 right-0 top-[19px] h-[2px] bg-border" style={{ marginInline: "12.5%" }} />
+            {PROCESS_STEPS.map((step, i) => (
+              <div key={step.n} className="relative text-center px-0.5">
+                <div
+                  className="relative z-10 w-[38px] h-[38px] mx-auto mb-1.5 rounded-full flex items-center justify-center font-bold text-[.95rem]"
+                  style={
+                    i === PROCESS_STEPS.length - 1
+                      ? { background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)", color: "#0a1f14", boxShadow: "0 6px 14px rgba(200,148,31,.35)" }
+                      : {
+                          background: "linear-gradient(135deg,#123524,#1b4a32)",
+                          color: "#e3bd63",
+                          boxShadow: "0 6px 14px rgba(18,53,36,.25)",
+                          border: "2px solid rgba(200,148,31,.4)",
+                        }
+                  }
+                >
+                  {step.n}
+                </div>
+                <h3 className="m-0 text-[.68rem] leading-[1.25] text-deep-green-2 font-semibold">{step.title}</h3>
+              </div>
+            ))}
+          </div>
+
+          {/* desktop: full cards with number, title, body */}
+          <div className="hidden md:grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
             {PROCESS_STEPS.map((step, i) => (
               <Reveal key={step.n} delay={0.1 * (i + 1)} className="text-center p-[18px]">
                 <div
@@ -542,7 +569,7 @@ export default async function Home() {
       )}
 
       {/* ===== FAQ ===== */}
-      <section id="faq" className="py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)]" style={{ background: "linear-gradient(180deg,#faf8f3,#f1ece0)" }}>
+      <section id="faq" className="pt-10 pb-10 md:py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)]" style={{ background: "linear-gradient(180deg,#faf8f3,#f1ece0)" }}>
         <div className="max-w-[840px] mx-auto">
           <Reveal className="text-center mb-12">
             <span className="inline-block text-gold-dark font-bold tracking-[.22em] text-[.82rem] uppercase">คำถามที่พบบ่อย</span>
@@ -565,7 +592,7 @@ export default async function Home() {
       </section>
 
       {/* ===== CTA + CONTACT ===== */}
-      <section id="contact" className="relative py-[clamp(70px,9vw,130px)] px-[clamp(20px,5vw,48px)] overflow-hidden" style={{ background: "linear-gradient(160deg,#0a1f14,#123524 60%,#0f2c1d)" }}>
+      <section id="contact" className="relative pt-10 pb-10 md:py-[clamp(70px,9vw,130px)] px-[clamp(20px,5vw,48px)] overflow-hidden" style={{ background: "linear-gradient(160deg,#0a1f14,#123524 60%,#0f2c1d)" }}>
         <div
           className="absolute inset-0"
           style={{
