@@ -279,7 +279,32 @@ export default async function Home() {
               ออกแบบทริปของคุณ →
             </a>
           </Reveal>
-          <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
+          <div className="flex md:hidden flex-col gap-3">
+            {DESTINATIONS.map((dest) => {
+              const rowInner = (
+                <>
+                  <div className="relative w-[110px] h-[78px] flex-shrink-0 rounded-xl overflow-hidden" style={{ background: dest.gradient }}>
+                    {dest.image && <Image src={dest.image} alt={dest.name} fill sizes="110px" className="object-cover" />}
+                  </div>
+                  <div className="py-2 pr-3 min-w-0">
+                    <h3 className="m-0 font-serif-th font-semibold text-deep-green-2 text-[.98rem] truncate">{dest.name}</h3>
+                    <p className="m-0 mt-1 text-text-muted text-[.82rem] leading-[1.4] line-clamp-2">{dest.desc}</p>
+                  </div>
+                </>
+              );
+              const rowClass = "flex items-center gap-3 bg-white border border-border rounded-2xl overflow-hidden no-underline";
+              return dest.citySlug ? (
+                <Link key={dest.name} href={`/van/${dest.citySlug}`} className={rowClass}>
+                  {rowInner}
+                </Link>
+              ) : (
+                <div key={dest.name} className={rowClass}>
+                  {rowInner}
+                </div>
+              );
+            })}
+          </div>
+          <div className="hidden md:grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
             {DESTINATIONS.map((dest, i) => {
               const cardClass =
                 "relative rounded-[20px] overflow-hidden flex flex-col justify-end p-[26px] text-white shadow-[0_20px_44px_rgba(10,31,20,.16)] hover:-translate-y-1.5 hover:shadow-[0_30px_60px_rgba(10,31,20,.26)] transition-all";
