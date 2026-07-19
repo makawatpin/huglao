@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import HeroParallax from "@/components/HeroParallax";
+import PricingTable from "@/components/PricingTable";
 import { getAllArticles } from "@/lib/contentful";
 
 const LINE_URL = "https://lin.ee/xudxWlE";
@@ -32,12 +33,12 @@ const WHY_US = [
 ];
 
 const DESTINATIONS = [
-  { name: "เวียงจันทน์", tag: "เมืองหลวง", desc: "พระธาตุหลวง · ประตูชัย · วัดสีเมือง · ตลาดกลางคืนริมโขง", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-vientiane.webp" },
-  { name: "หลวงพระบาง", tag: "มรดกโลก", desc: "วัดเชียงทอง · ตักบาตรข้าวเหนียว · น้ำตกตาดกวางสี · พูสี", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-luangprabang.webp" },
-  { name: "วังเวียง", tag: "ผจญภัย", desc: "บลูลากูน · ล่องเรือแม่น้ำซอง · บอลลูน · ถ้ำปูคำ", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-vangvieng.webp" },
-  { name: "ปากเซ · โบโลเวน", tag: null, desc: "ที่ราบสูงไร่กาแฟ · น้ำตกตาดฟาน · ปราสาทวัดพู", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-pakse.webp" },
-  { name: "เชียงขวาง", tag: null, desc: "ทุ่งไหหิน · ประวัติศาสตร์ · ธรรมชาติบนที่สูง", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-xiengkhouang.webp" },
-  { name: "บ่อเต็น (ชายแดนจีน)", tag: null, desc: "ปลายทางรถไฟลาว–จีน · เขตการค้าชายแดน", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-boten.webp" },
+  { name: "เวียงจันทน์", citySlug: "vientiane", tag: "เมืองหลวง", desc: "พระธาตุหลวง · ประตูชัย · วัดสีเมือง · ตลาดกลางคืนริมโขง", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-vientiane.webp" },
+  { name: "หลวงพระบาง", citySlug: "luangprabang", tag: "มรดกโลก", desc: "วัดเชียงทอง · ตักบาตรข้าวเหนียว · น้ำตกตาดกวางสี · พูสี", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-luangprabang.webp" },
+  { name: "วังเวียง", citySlug: "vangvieng", tag: "ผจญภัย", desc: "บลูลากูน · ล่องเรือแม่น้ำซอง · บอลลูน · ถ้ำปูคำ", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-vangvieng.webp" },
+  { name: "ปากเซ · โบโลเวน", citySlug: "pakse", tag: null, desc: "ที่ราบสูงไร่กาแฟ · น้ำตกตาดฟาน · ปราสาทวัดพู", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-pakse.webp" },
+  { name: "เชียงขวาง", citySlug: null, tag: null, desc: "ทุ่งไหหิน · ประวัติศาสตร์ · ธรรมชาติบนที่สูง", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-xiengkhouang.webp" },
+  { name: "บ่อเต็น (ชายแดนจีน)", citySlug: null, tag: null, desc: "ปลายทางรถไฟลาว–จีน · เขตการค้าชายแดน", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-boten.webp" },
 ];
 
 const PROCESS_STEPS = [
@@ -60,6 +61,21 @@ export default async function Home() {
 
   return (
     <div style={{ position: "relative" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQS.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
+
       {/* ===== HERO ===== */}
       <section
         id="top"
@@ -266,12 +282,11 @@ export default async function Home() {
             </a>
           </Reveal>
           <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
-            {DESTINATIONS.map((dest, i) => (
-              <Reveal key={dest.name} delay={0.1 * (i % 3 + 1)}>
-                <article
-                  className="relative rounded-[20px] overflow-hidden flex flex-col justify-end p-[26px] text-white shadow-[0_20px_44px_rgba(10,31,20,.16)] hover:-translate-y-1.5 hover:shadow-[0_30px_60px_rgba(10,31,20,.26)] transition-all"
-                  style={{ minHeight: 340, background: dest.gradient }}
-                >
+            {DESTINATIONS.map((dest, i) => {
+              const cardClass =
+                "relative rounded-[20px] overflow-hidden flex flex-col justify-end p-[26px] text-white shadow-[0_20px_44px_rgba(10,31,20,.16)] hover:-translate-y-1.5 hover:shadow-[0_30px_60px_rgba(10,31,20,.26)] transition-all";
+              const cardContent = (
+                <>
                   {dest.image && (
                     <Image src={dest.image} alt={dest.name} fill sizes="(max-width: 900px) 100vw, 33vw" className="object-cover" />
                   )}
@@ -296,9 +311,22 @@ export default async function Home() {
                     <h3 className="m-0 font-serif-th font-semibold text-[1.5rem]">{dest.name}</h3>
                     <p className="mt-2 text-[#d8d2c0] text-[.94rem] leading-[1.6]">{dest.desc}</p>
                   </div>
-                </article>
-              </Reveal>
-            ))}
+                </>
+              );
+              return (
+                <Reveal key={dest.name} delay={0.1 * (i % 3 + 1)}>
+                  {dest.citySlug ? (
+                    <Link href={`/van/${dest.citySlug}`} className={`${cardClass} no-underline`} style={{ minHeight: 340, background: dest.gradient }}>
+                      {cardContent}
+                    </Link>
+                  ) : (
+                    <article className={cardClass} style={{ minHeight: 340, background: dest.gradient }}>
+                      {cardContent}
+                    </article>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -351,6 +379,27 @@ export default async function Home() {
               className="relative w-full h-auto"
               style={{ filter: "drop-shadow(0 28px 40px rgba(0,0,0,.45))" }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PRICING ===== */}
+      <section id="pricing" className="py-[clamp(70px,9vw,120px)] px-[clamp(20px,5vw,48px)] bg-bg">
+        <div className="max-w-[1100px] mx-auto">
+          <Reveal className="text-center max-w-[600px] mx-auto mb-[50px]">
+            <span className="inline-block text-gold-dark font-bold tracking-[.22em] text-[.82rem] uppercase">ราคารถตู้ลาว</span>
+            <h2 className="mt-3.5 font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)" }}>
+              ราคาเริ่มต้น ชัดเจนตั้งแต่แรก
+            </h2>
+          </Reveal>
+          <PricingTable />
+          <div className="text-center mt-8">
+            <Link
+              href="/van-vip#pricing"
+              className="inline-flex items-center gap-2 no-underline text-deep-green-2 font-semibold border-b-2 border-gold-light hover:text-gold-dark transition-colors"
+            >
+              ดูราคาเส้นทางอื่นเพิ่มเติม →
+            </Link>
           </div>
         </div>
       </section>

@@ -60,7 +60,17 @@ export default function RootLayout({
               name: "บริษัท ฮักลาว กรุ๊ป จำกัด (HUGLAO GROUP CO., LTD.)",
               description:
                 "บริการเที่ยวลาวครบวงจร นายหน้าจัดหารถตู้ VIP ลาว จองรถตู้ลาว จองตั๋วรถไฟลาว-จีน และไกด์นำเที่ยว",
-              areaServed: ["Laos", "Thailand"],
+              url: "https://huglao.com",
+              logo: "https://huglao.com/assets/huglao-emblem.png",
+              image: "https://huglao.com/assets/huglao-emblem.png",
+              telephone: "+66-95-596-2525",
+              email: "huglao@gmail.com",
+              areaServed: [
+                { "@type": "City", name: "เวียงจันทน์ สปป.ลาว" },
+                { "@type": "City", name: "หนองคาย ประเทศไทย" },
+                "Laos",
+                "Thailand",
+              ],
               slogan: "Connecting Thailand & Laos",
               makesOffer: [
                 { "@type": "Offer", name: "รถตู้ VIP ลาว / จองรถตู้ลาว" },

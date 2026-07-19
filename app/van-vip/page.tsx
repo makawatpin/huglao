@@ -2,14 +2,18 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import PricingTable from "@/components/PricingTable";
+import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
+import { reviews, googlePlaceId } from "@/data/reviews";
 
 const LINE_URL = "https://lin.ee/xudxWlE";
 
 export const metadata: Metadata = {
-  title: "เช่ารถตู้เที่ยวลาว พร้อมคนขับ | รถตู้ VIP เที่ยวเวียงจันทน์ วังเวียง หลวงพระบาง | Huglao",
+  title: "รถตู้ลาว เช่าพร้อมคนขับ ราคาคุ้มค่า | รถตู้ VIP เที่ยวเวียงจันทน์ วังเวียง หลวงพระบาง | Huglao",
   description:
-    "เช่ารถตู้เที่ยวลาว พร้อมคนขับมืออาชีพ รถตู้ VIP 7-10 ที่นั่ง เดินทางได้ทั่วลาว เวียงจันทน์ วังเวียง หลวงพระบาง บริการรับจากไทย จองง่าย ราคาคุ้มค่า",
+    "รถตู้ลาว พร้อมคนขับมืออาชีพ รถตู้ VIP 7-10 ที่นั่ง เดินทางได้ทั่วลาว เวียงจันทน์ วังเวียง หลวงพระบาง บริการรับจากไทย ราคาคุ้มค่า จองง่าย",
   keywords: [
+    "รถตู้ลาว",
     "เช่ารถตู้เที่ยวลาว",
     "รถตู้เที่ยวลาว",
     "รถตู้พร้อมคนขับเที่ยวลาว",
@@ -21,8 +25,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/van-vip" },
   openGraph: {
-    title: "เช่ารถตู้เที่ยวลาว พร้อมคนขับ | รถตู้ VIP เที่ยวลาว | Huglao",
-    description: "รถตู้ VIP 7-10 ที่นั่ง พร้อมคนขับมืออาชีพ เดินทางทั่วลาว เวียงจันทน์ วังเวียง หลวงพระบาง ปากเซ",
+    title: "รถตู้ลาว เช่าพร้อมคนขับ ราคาคุ้มค่า | รถตู้ VIP เที่ยวลาว | Huglao",
+    description: "รถตู้ลาว พร้อมคนขับมืออาชีพ รถตู้ VIP 7-10 ที่นั่ง เดินทางทั่วลาว เวียงจันทน์ วังเวียง หลวงพระบาง ปากเซ",
     url: "/van-vip",
     type: "website",
     images: [{ url: "/assets/van-hero.webp", width: 750, height: 422 }],
@@ -120,12 +124,6 @@ const COMPARE = [
   { title: "รถโดยสารประจำทาง", body: "ประหยัดสุด แต่เวลาเดินทางไม่แน่นอนและไม่แวะจุดท่องเที่ยวระหว่างทาง" },
 ];
 
-const REVIEWS = [
-  { body: "คนขับใจดี ชำนาญเส้นทางมาก รถสะอาดสะดวกสบายตลอดทริปเวียงจันทน์-วังเวียง", source: "รีวิวจาก Google" },
-  { body: "จัดโปรแกรมให้ตรงตามที่ต้องการ ราคาชัดเจนไม่มีแอบแฝง แนะนำเลยครับ", source: "รีวิวจาก Facebook" },
-  { body: "พาครอบครัวไปหลวงพระบาง 4 วัน คนขับดูแลดีมาก ปลอดภัยสบายใจ", source: "รีวิวจาก Google" },
-];
-
 const FAQS = [
   { q: "ราคาเช่ารถตู้เที่ยวลาวเท่าไร", a: "ราคาขึ้นอยู่กับรุ่นรถ จำนวนวัน และเส้นทาง เริ่มต้นหลักพันบาทต่อวัน ทักแชทเพื่อรับใบเสนอราคาที่ตรงกับแผนเดินทางของคุณ" },
   { q: "มีคนขับให้ไหม", a: "มีคนขับมืออาชีพประจำรถทุกคัน ชำนาญเส้นทางและพูดไทยได้" },
@@ -144,20 +142,16 @@ const FAQS = [
 ];
 
 export default function VanVipPage() {
+  // ใส่ Review schema เฉพาะรีวิวที่ verify แล้วเท่านั้น (r.verified === true) — ดู data/reviews.ts
+  const verifiedReviews = reviews.filter((r) => r.verified);
+
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "หน้าแรก", item: "https://huglao.com/" },
-              { "@type": "ListItem", position: 2, name: "รถตู้ VIP เที่ยวลาว", item: "https://huglao.com/van-vip" },
-            ],
-          }),
-        }}
+      <BreadcrumbStructuredData
+        items={[
+          { name: "หน้าแรก", href: "/" },
+          { name: "รถตู้ VIP เที่ยวลาว", href: "/van-vip" },
+        ]}
       />
       <script
         type="application/ld+json"
@@ -186,6 +180,25 @@ export default function VanVipPage() {
           }),
         }}
       />
+      {verifiedReviews.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: "บริการเช่ารถตู้ VIP เที่ยวลาว",
+              review: verifiedReviews.map((r) => ({
+                "@type": "Review",
+                author: { "@type": "Person", name: r.name },
+                datePublished: r.date,
+                reviewBody: r.body,
+                reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+              })),
+            }),
+          }}
+        />
+      )}
 
       {/* ===== HERO ===== */}
       <section
@@ -216,7 +229,7 @@ export default function VanVipPage() {
               className="mt-4 font-serif-th font-bold leading-[1.2]"
               style={{ fontSize: "clamp(2rem,5.6vw,3.4rem)", letterSpacing: "-.01em" }}
             >
-              เช่ารถตู้เที่ยวลาว พร้อมคนขับ รถตู้ VIP เที่ยวได้ทั่วประเทศลาว
+              รถตู้ลาว พร้อมคนขับมืออาชีพ เที่ยวได้ทั่วประเทศลาว ระดับ VIP
             </h1>
             <p className="mt-5 max-w-[64ch]" style={{ color: "#cfc9b6", fontSize: "clamp(1rem,2vw,1.2rem)", lineHeight: 1.75 }}>
               รถตู้ VIP 7-10 ที่นั่ง พร้อมคนขับมืออาชีพ พาคุณเที่ยวเวียงจันทน์ วังเวียง หลวงพระบาง ปากเซ และทั่วประเทศลาว รับ-ส่งได้ทั้งฝั่งไทยและลาว จองง่าย ราคาคุ้มค่า
@@ -414,6 +427,15 @@ export default function VanVipPage() {
         </div>
       </section>
 
+      {/* ===== PRICING ===== */}
+      <section id="pricing" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
+        <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">ราคา</span>
+        <h2 className="mt-3 mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+          ราคารถตู้ลาว
+        </h2>
+        <PricingTable />
+      </section>
+
       {/* ===== PROGRAMS ===== */}
       <section id="programs" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">โปรแกรมทัวร์</span>
@@ -474,14 +496,29 @@ export default function VanVipPage() {
           รีวิวลูกค้า
         </h2>
         <div className="grid gap-[22px]" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
-          {REVIEWS.map((r) => (
-            <div key={r.source + r.body.slice(0, 8)} className="bg-white border border-border rounded-2xl p-6">
+          {reviews.map((r) => (
+            <div key={r.name + r.body.slice(0, 8)} className="bg-white border border-border rounded-2xl p-6">
               <div className="text-gold mb-2.5">★★★★★</div>
               <p className="m-0 mb-3.5 text-[#3c3e33] text-[.94rem] leading-[1.7]">{r.body}</p>
-              <span className="text-[.85rem] text-[#8a8474]">— {r.source}</span>
+              <div className="text-[.85rem] text-[#8a8474]">
+                <span className="font-semibold text-[#5e6258]">{r.name}</span> · {r.route}
+              </div>
+              <div className="mt-1 text-[.8rem] text-[#a29c8c]">
+                {r.date} · รีวิวจาก {r.source}
+              </div>
             </div>
           ))}
         </div>
+        {googlePlaceId && (
+          <a
+            href={`https://search.google.com/local/reviews?placeid=${googlePlaceId}`}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 mt-7 no-underline text-deep-green-2 bg-white border border-border rounded-xl px-5 py-4 font-semibold hover:border-gold-light transition-colors"
+          >
+            ดูรีวิวทั้งหมดบน Google →
+          </a>
+        )}
       </section>
 
       {/* ===== ARTICLES ===== */}

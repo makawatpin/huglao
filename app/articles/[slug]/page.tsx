@@ -6,6 +6,17 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { getAllArticles, getArticleBySlug } from "@/lib/contentful";
 
+/** จับคู่แท็กหมวดหมู่บทความกับหน้าบริการที่เกี่ยวข้อง สำหรับ internal link */
+function getRelatedServices(tags: string[]): { label: string; href: string }[] {
+  if (tags.some((t) => t.includes("รถไฟ"))) {
+    return [
+      { label: "รถตู้รับจากสถานีรถไฟวังเวียง", href: "/van/vangvieng" },
+      { label: "รถตู้รับจากสถานีรถไฟหลวงพระบาง", href: "/van/luangprabang" },
+    ];
+  }
+  return [{ label: "ดูรถตู้ VIP เที่ยวลาวทั้งหมด", href: "/van-vip" }];
+}
+
 export async function generateStaticParams() {
   const articles = await getAllArticles();
   return articles.map((a) => ({ slug: a.slug }));
@@ -84,9 +95,32 @@ export default async function ArticlePage({
   const related = allArticles
     .filter((a) => a.slug !== article.slug && a.tags.some((t) => article.tags.includes(t)))
     .slice(0, 3);
+  const relatedServices = getRelatedServices(article.tags);
+  const publishedIso = article.publishDate ? new Date(article.publishDate).toISOString() : undefined;
 
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: article.title,
+            description: article.excerpt,
+            image: article.cover ?? undefined,
+            author: { "@type": "Organization", name: article.author || "HUGLAO GROUP" },
+            publisher: {
+              "@type": "Organization",
+              name: "บริษัท ฮักลาว กรุ๊ป จำกัด",
+              logo: { "@type": "ImageObject", url: "https://huglao.com/assets/huglao-emblem.png" },
+            },
+            datePublished: publishedIso,
+            dateModified: publishedIso,
+            mainEntityOfPage: `https://huglao.com/articles/${article.slug}`,
+          }),
+        }}
+      />
       <div className="relative bg-deep-green-2" style={{ aspectRatio: "16/8" }}>
         {article.cover && (
           <Image src={article.cover} alt={article.title} fill sizes="100vw" className="object-cover" priority />
@@ -122,6 +156,17 @@ export default async function ArticlePage({
               #{t}
             </span>
           ))}
+        </div>
+
+        <div className="mt-[30px] pt-6 border-t border-border-2">
+          <p className="m-0 mb-3.5 font-bold text-deep-green-2 text-base">บริการที่เกี่ยวข้อง</p>
+          <div className="flex flex-col gap-2">
+            {relatedServices.map((s) => (
+              <Link key={s.href} href={s.href} className="no-underline text-gold-dark font-semibold text-[.95rem] hover:text-gold">
+                → {s.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {related.length > 0 && (
