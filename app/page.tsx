@@ -79,10 +79,8 @@ export default async function Home() {
       {/* ===== HERO ===== */}
       <section
         id="top"
-        className="relative overflow-hidden flex items-center justify-center text-center"
+        className="relative overflow-hidden flex items-center justify-center text-center h-[70vh] min-h-[480px] md:h-screen md:min-h-[620px]"
         style={{
-          height: "100vh",
-          minHeight: 620,
           background: "linear-gradient(#bcd9ec,#dfeaf0)",
         }}
       >
