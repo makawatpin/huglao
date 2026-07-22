@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
-import { cities } from "@/data/cities";
+import { cities, type City } from "@/data/cities";
 
 export const metadata: Metadata = {
   title: "เที่ยวลาว: เวียงจันทน์ เมืองเฟือง วังเวียง หลวงพระบาง | Huglao Group",
@@ -22,7 +22,7 @@ const featuredOrder = ["vientiane", "muangfeuang", "vangvieng", "luangprabang"];
 export default function LaosTravelPage() {
   const featuredCities = featuredOrder
     .map((slug) => cities.find((c) => c.slug === slug))
-    .filter((c): c is NonNullable<typeof c> => Boolean(c) && !c!.hidden);
+    .filter((c): c is City => !!c && !c.hidden);
 
   return (
     <div>
