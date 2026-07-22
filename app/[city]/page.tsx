@@ -201,6 +201,38 @@ export default async function CityPage({
         </div>
       </section>
 
+      {/* ===== FEATURED STORY ===== */}
+      {city.slug === "muangfeuang" && (
+        <section className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
+          <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">เรื่องเล่าจากทริปจริง</span>
+          <h2 className="mt-3 mb-4 md:mb-[30px] font-serif-th font-bold text-deep-green-2" style={{ fontSize: "clamp(1.7rem,3.6vw,2.5rem)" }}>
+            เที่ยวเมืองเฟือง 1 วัน 1 คืน จากประสบการณ์ทีมเรา
+          </h2>
+          <Link
+            href="/muangfeuang/ang-namtong-raft"
+            className="no-underline flex flex-col md:flex-row gap-4 md:gap-6 bg-white border border-border rounded-2xl overflow-hidden hover:border-gold-light transition-colors"
+          >
+            <div className="relative w-full md:w-[320px] flex-shrink-0" style={{ aspectRatio: "16/10" }}>
+              <Image
+                src="/assets/muangfeuang-ang-namtong-panorama.webp"
+                alt="บ้านพักลอยน้ำอ่างน้ำตง เมืองเฟือง"
+                fill
+                sizes="(max-width: 768px) 100vw, 320px"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4 md:py-[26px] md:pr-[26px] md:pl-0">
+              <h3 className="m-0 mb-1.5 font-serif-th font-bold text-[1.1rem] text-deep-green-2">
+                ตักบาตรริมน้ำที่แพเมืองเฟือง แล้วไปนอนอ่างน้ำตง
+              </h3>
+              <p className="m-0 text-text-muted text-[.9rem] leading-[1.7]">
+                เล่าจากทริปจริงที่ทีมพาแขกไป ตั้งแต่เช้าตักบาตรพระริมแม่น้ำที่แพเมืองเฟือง ไปจนถึงบรรยากาศเงียบสงบของบ้านพักลอยน้ำกลางอ่างน้ำตง
+              </p>
+            </div>
+          </Link>
+        </section>
+      )}
+
       {/* ===== PRICING ===== */}
       <section id="pricing" className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,48px)] pt-10 md:pt-[clamp(64px,8vw,96px)]">
         <span className="inline-block text-gold-dark font-bold tracking-[.2em] text-[.8rem] uppercase">ราคา</span>

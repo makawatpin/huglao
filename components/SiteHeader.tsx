@@ -8,7 +8,7 @@ const LINE_URL = "https://lin.ee/xudxWlE";
 
 const NAV_LINKS = [
   { href: "/#services", label: "บริการ" },
-  { href: "/#explore", label: "เที่ยวลาว" },
+  { href: "/laos-travel", label: "เที่ยวลาว" },
   { href: "/van-vip", label: "รถตู้ VIP" },
   { href: "/about", label: "เกี่ยวกับเรา" },
   { href: "/articles", label: "บทความ" },

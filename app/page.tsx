@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import HeroParallax from "@/components/HeroParallax";
 import PricingTable from "@/components/PricingTable";
 import { getAllArticles } from "@/lib/contentful";
+import { DESTINATIONS } from "@/data/destinations";
 
 const LINE_URL = "https://lin.ee/xudxWlE";
 
@@ -32,16 +33,6 @@ const WHY_US = [
   { icon: "📞", title: "ดูแล 24 ชั่วโมง", body: "มีทีมงานพร้อมช่วยเหลือทุกสถานการณ์ตลอดทริป" },
 ];
 
-const DESTINATIONS = [
-  { name: "เวียงจันทน์", citySlug: "vientiane", tag: "เมืองหลวง", desc: "พระธาตุหลวง · ประตูชัย · วัดสีเมือง · ตลาดกลางคืนริมโขง", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-vientiane.webp" },
-  { name: "หลวงพระบาง", citySlug: "luangprabang", tag: "มรดกโลก", desc: "วัดเชียงทอง · ตักบาตรข้าวเหนียว · น้ำตกตาดกวางสี · พูสี", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-luangprabang.webp" },
-  { name: "วังเวียง", citySlug: "vangvieng", tag: "ผจญภัย", desc: "บลูลากูน · ล่องเรือแม่น้ำซอง · บอลลูน · ถ้ำปูคำ", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-vangvieng.webp" },
-  { name: "เมืองเฟือง", citySlug: "muangfeuang", tag: null, desc: "ถ้ำเจียง · ภูเขาหินปูน · เงียบสงบกว่าวังเวียง", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-vangvieng.webp" },
-  { name: "ปากเซ · โบโลเวน", citySlug: null, tag: null, desc: "ที่ราบสูงไร่กาแฟ · น้ำตกตาดฟาน · ปราสาทวัดพู", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-pakse.webp" },
-  { name: "เชียงขวาง", citySlug: null, tag: null, desc: "ทุ่งไหหิน · ประวัติศาสตร์ · ธรรมชาติบนที่สูง", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-xiengkhouang.webp" },
-  { name: "บ่อเต็น (ชายแดนจีน)", citySlug: null, tag: null, desc: "ปลายทางรถไฟลาว–จีน · เขตการค้าชายแดน", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-boten.webp" },
-];
-
 const PROCESS_STEPS = [
   { n: 1, title: "ทักแชต / โทรปรึกษา", body: "บอกวันเดินทาง จุดหมาย และจำนวนคน ทีมเราตอบไว" },
   { n: 2, title: "รับใบเสนอราคา", body: "เราจัดแผนและราคาชัดเจน พร้อมคำแนะนำเส้นทาง" },
@@ -59,6 +50,8 @@ const FAQS = [
 export default async function Home() {
   const articles = await getAllArticles();
   const latestArticles = articles.slice(0, 3);
+  /** ซ่อนเมืองที่ยังไม่มีหน้าเพจของตัวเอง (citySlug: null) ออกจากหน้าโฮมไปก่อน */
+  const liveDestinations = DESTINATIONS.filter((d) => d.citySlug);
 
   return (
     <div style={{ position: "relative" }}>
@@ -303,7 +296,7 @@ export default async function Home() {
             </a>
           </Reveal>
           <div className="flex md:hidden flex-col gap-3">
-            {DESTINATIONS.map((dest) => {
+            {liveDestinations.map((dest) => {
               const rowInner = (
                 <>
                   <div className="relative w-[110px] h-[78px] flex-shrink-0 rounded-xl overflow-hidden" style={{ background: dest.gradient }}>
@@ -328,7 +321,7 @@ export default async function Home() {
             })}
           </div>
           <div className="hidden md:grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
-            {DESTINATIONS.map((dest, i) => {
+            {liveDestinations.map((dest, i) => {
               const cardClass =
                 "relative rounded-[20px] overflow-hidden flex flex-col justify-end p-[26px] text-white shadow-[0_20px_44px_rgba(10,31,20,.16)] hover:-translate-y-1.5 hover:shadow-[0_30px_60px_rgba(10,31,20,.26)] transition-all";
               const cardContent = (

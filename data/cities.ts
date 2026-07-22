@@ -182,7 +182,7 @@ export const cities: City[] = [
     slug: "muangfeuang",
     name: "เมืองเฟือง",
     tagline: "เมืองเล็กริมภูเขาหินปูน เงียบสงบกว่าวังเวียง เหมาะกับสายชิลตัวจริง",
-    heroImage: "/assets/dest-vangvieng.webp",
+    heroImage: "/assets/muangfeuang-ang-namtong-panorama.webp",
     metaTitle: "รถตู้เมืองเฟือง พร้อมคนขับ | เช่ารถตู้ VIP เที่ยวเมืองเฟือง ลาว | Huglao",
     metaDescription:
       "รถตู้เมืองเฟืองพร้อมคนขับมืออาชีพ พาเที่ยวถ้ำ น้ำตก และภูเขาหินปูนรอบเมืองเฟือง เมืองเล็กเงียบสงบใกล้วังเวียง เหมาะกับทริปพักผ่อนแบบไม่พลุกพล่าน ทักแชทขอใบเสนอราคา",
