@@ -36,6 +36,7 @@ export default async function OldCityVanRedirect({
 
   return (
     <>
+      {/* Intentional: no generateMetadata option exists for http-equiv refresh; Next hoists this <meta> into <head> at render. Don't move/remove this comment when refactoring. */}
       <meta httpEquiv="refresh" content={`0;url=${target}`} />
       <div style={{ maxWidth: 640, margin: "80px auto", padding: 24, textAlign: "center" }}>
         <p>
