@@ -10,8 +10,8 @@ import { getAllArticles, getArticleBySlug } from "@/lib/contentful";
 function getRelatedServices(tags: string[]): { label: string; href: string }[] {
   if (tags.some((t) => t.includes("รถไฟ"))) {
     return [
-      { label: "รถตู้รับจากสถานีรถไฟวังเวียง", href: "/van/vangvieng" },
-      { label: "รถตู้รับจากสถานีรถไฟหลวงพระบาง", href: "/van/luangprabang" },
+      { label: "รถตู้รับจากสถานีรถไฟวังเวียง", href: "/vangvieng" },
+      { label: "รถตู้รับจากสถานีรถไฟหลวงพระบาง", href: "/luangprabang" },
     ];
   }
   return [{ label: "ดูรถตู้ VIP เที่ยวลาวทั้งหมด", href: "/van-vip" }];
