@@ -36,7 +36,8 @@ const DESTINATIONS = [
   { name: "เวียงจันทน์", citySlug: "vientiane", tag: "เมืองหลวง", desc: "พระธาตุหลวง · ประตูชัย · วัดสีเมือง · ตลาดกลางคืนริมโขง", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-vientiane.webp" },
   { name: "หลวงพระบาง", citySlug: "luangprabang", tag: "มรดกโลก", desc: "วัดเชียงทอง · ตักบาตรข้าวเหนียว · น้ำตกตาดกวางสี · พูสี", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-luangprabang.webp" },
   { name: "วังเวียง", citySlug: "vangvieng", tag: "ผจญภัย", desc: "บลูลากูน · ล่องเรือแม่น้ำซอง · บอลลูน · ถ้ำปูคำ", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-vangvieng.webp" },
-  { name: "ปากเซ · โบโลเวน", citySlug: "pakse", tag: null, desc: "ที่ราบสูงไร่กาแฟ · น้ำตกตาดฟาน · ปราสาทวัดพู", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-pakse.webp" },
+  { name: "เมืองเฟือง", citySlug: "muangfeuang", tag: null, desc: "ถ้ำเจียง · ภูเขาหินปูน · เงียบสงบกว่าวังเวียง", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-vangvieng.webp" },
+  { name: "ปากเซ · โบโลเวน", citySlug: null, tag: null, desc: "ที่ราบสูงไร่กาแฟ · น้ำตกตาดฟาน · ปราสาทวัดพู", gradient: "linear-gradient(165deg,#2c5a3c,#123524)", image: "/assets/dest-pakse.webp" },
   { name: "เชียงขวาง", citySlug: null, tag: null, desc: "ทุ่งไหหิน · ประวัติศาสตร์ · ธรรมชาติบนที่สูง", gradient: "linear-gradient(165deg,#a87815,#7a5510)", image: "/assets/dest-xiengkhouang.webp" },
   { name: "บ่อเต็น (ชายแดนจีน)", citySlug: null, tag: null, desc: "ปลายทางรถไฟลาว–จีน · เขตการค้าชายแดน", gradient: "linear-gradient(165deg,#1b4a32,#0a1f14)", image: "/assets/dest-boten.webp" },
 ];
@@ -316,7 +317,7 @@ export default async function Home() {
               );
               const rowClass = "flex items-center gap-3 bg-white border border-border rounded-2xl overflow-hidden no-underline";
               return dest.citySlug ? (
-                <Link key={dest.name} href={`/van/${dest.citySlug}`} className={rowClass}>
+                <Link key={dest.name} href={`/${dest.citySlug}`} className={rowClass}>
                   {rowInner}
                 </Link>
               ) : (
@@ -361,7 +362,7 @@ export default async function Home() {
               return (
                 <Reveal key={dest.name} delay={0.1 * (i % 3 + 1)}>
                   {dest.citySlug ? (
-                    <Link href={`/van/${dest.citySlug}`} className={`${cardClass} no-underline`} style={{ minHeight: 340, background: dest.gradient }}>
+                    <Link href={`/${dest.citySlug}`} className={`${cardClass} no-underline`} style={{ minHeight: 340, background: dest.gradient }}>
                       {cardContent}
                     </Link>
                   ) : (
