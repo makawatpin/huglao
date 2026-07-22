@@ -47,10 +47,10 @@ export default function SiteFooter() {
         <div>
           <h4 className="mb-4 text-[#f4ecd7] text-base font-semibold">เส้นทางยอดนิยม</h4>
           <ul className="list-none p-0 m-0 flex flex-col gap-[11px] text-[.92rem]">
-            <li><Link href="/van/vientiane" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้เวียงจันทน์</Link></li>
-            <li><Link href="/van/luangprabang" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้หลวงพระบาง</Link></li>
-            <li><Link href="/van/vangvieng" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้วังเวียง</Link></li>
-            <li><Link href="/van/pakse" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้ปากเซ–โบโลเวน</Link></li>
+            <li><Link href="/vientiane" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้เวียงจันทน์</Link></li>
+            <li><Link href="/luangprabang" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้หลวงพระบาง</Link></li>
+            <li><Link href="/vangvieng" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้วังเวียง</Link></li>
+            <li><Link href="/muangfeuang" className="no-underline text-[#b6b1a2] hover:text-gold-light">รถตู้เมืองเฟือง</Link></li>
           </ul>
         </div>
 
