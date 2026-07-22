@@ -10,6 +10,7 @@ export type Article = {
   tags: string[];
   excerpt: string;
   content: Document;
+  city: string | null;
 };
 
 const client = createClient({
@@ -33,12 +34,15 @@ function toArticle(entry: any): Article {
       .filter(Boolean),
     excerpt: fields.excerpt ?? "",
     content: fields.content,
+    city: fields.city ?? null,
   };
 }
 
+/** บทความทั่วไปสำหรับ /articles — ไม่รวมบทความที่ผูกกับเมือง (ผูกแล้วให้ไปอยู่ที่ /[city]/[slug] แทน กัน duplicate content) */
 export async function getAllArticles(): Promise<Article[]> {
   const res = await client.getEntries({
     content_type: "article",
+    "fields.city[exists]": false,
     order: ["-fields.publishDate"],
   });
   return res.items.map(toArticle);
@@ -47,7 +51,32 @@ export async function getAllArticles(): Promise<Article[]> {
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const res = await client.getEntries({
     content_type: "article",
+    "fields.city[exists]": false,
     "fields.slug": slug,
+    limit: 1,
+  });
+  if (!res.items.length) return null;
+  return toArticle(res.items[0]);
+}
+
+/** บทความที่ผูกกับเมือง ใช้กับหน้า /[city] และ /[city]/[slug] — citySlug ต้องตรงกับ data/cities.ts (เช่น "vientiane") */
+export async function getArticlesByCity(citySlug: string): Promise<Article[]> {
+  const res = await client.getEntries({
+    content_type: "article",
+    "fields.city": citySlug,
+    order: ["-fields.publishDate"],
+  });
+  return res.items.map(toArticle);
+}
+
+export async function getArticleByCitySlug(
+  citySlug: string,
+  articleSlug: string
+): Promise<Article | null> {
+  const res = await client.getEntries({
+    content_type: "article",
+    "fields.city": citySlug,
+    "fields.slug": articleSlug,
     limit: 1,
   });
   if (!res.items.length) return null;

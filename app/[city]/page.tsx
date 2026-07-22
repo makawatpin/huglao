@@ -2,39 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { createClient } from "contentful";
 import Reveal from "@/components/Reveal";
 import PricingTable from "@/components/PricingTable";
 import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { cities, getCityBySlug } from "@/data/cities";
 import { getPricingGroupsForCity } from "@/data/pricing";
+import { getArticlesByCity } from "@/lib/contentful";
 
 const LINE_URL = "https://lin.ee/xudxWlE";
-
-// TEMPORARY STUB (Task 2): getArticlesByCity does not exist yet in lib/contentful.ts
-// (that's Task 6). Delete this local implementation and instead
-// `import { getArticlesByCity } from "@/lib/contentful"` once Task 6 lands.
-type CityArticleSummary = { slug: string; title: string; excerpt: string };
-async function getArticlesByCity(citySlug: string): Promise<CityArticleSummary[]> {
-  try {
-    const client = createClient({
-      space: process.env.CONTENTFUL_SPACE_ID!,
-      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
-    });
-    const res = await client.getEntries({
-      content_type: "article",
-      "fields.city": citySlug,
-    });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return res.items.map((entry: any) => ({
-      slug: entry.fields.slug ?? "",
-      title: entry.fields.title ?? "",
-      excerpt: entry.fields.excerpt ?? "",
-    }));
-  } catch {
-    return [];
-  }
-}
 
 export async function generateStaticParams() {
   return cities.map((c) => ({ city: c.slug }));
