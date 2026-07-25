@@ -60,7 +60,6 @@ export default function SiteFooter() {
             <li>LINE: <span className="text-gold-light">@huglao</span></li>
             <li>โทร: 095-596-2525</li>
             <li>huglaogroup@gmail.com</li>
-            <li>พื้นที่ให้บริการ: เวียงจันทน์ สปป.ลาว · หนองคาย ประเทศไทย</li>
             <li>
               ที่อยู่จดทะเบียน: 25 ถ.โนนใบบัว 3 ต.บัวใหญ่
               <br />
