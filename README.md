@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HUGLAO Website
 
-## Getting Started
+เว็บไซต์ทางการของ HUGLAO สำหรับบริการรถพร้อมคนขับและการวางแผนทริปส่วนตัวในลาว สร้างด้วย Next.js App Router และส่งออกเป็น static site
 
-First, run the development server:
+## เริ่มพัฒนา
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+เปิด `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+สร้าง `.env.local` และกำหนดค่าต่อไปนี้:
 
-## Learn More
+```dotenv
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_delivery_access_token
+```
 
-To learn more about Next.js, take a look at the following resources:
+ทั้งสองค่าจำเป็นสำหรับ production build เพราะบทความจาก Contentful จะถูกสร้างเป็น static HTML ระหว่าง build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ตรวจสอบก่อนเผยแพร่
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+node_modules/.bin/tsc --noEmit --incremental false
+```
 
-## Deploy on Vercel
+สร้าง production build และ static export:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```powershell
+npm.cmd run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16.3 แยกพื้นที่ของ dev server และ production build ให้โดยอัตโนมัติ จึงรัน build ระหว่างเปิด dev server ได้ ไฟล์เว็บไซต์ที่พร้อมเผยแพร่จะอยู่ใน `out/`
+
+## การเผยแพร่
+
+โปรเจกต์ใช้ `output: "export"` และ `trailingSlash: true` จึงนำโฟลเดอร์ `out/` ไปวางบน static hosting ได้โดยตรง ก่อน build บน CI หรือผู้ให้บริการโฮสต์ ต้องตั้งค่า Contentful ทั้งสองค่าให้ครบ
+
+โดเมน production ที่กำหนดใน metadata คือ `https://huglao.com`

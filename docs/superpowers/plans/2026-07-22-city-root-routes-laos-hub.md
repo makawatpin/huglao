@@ -619,7 +619,7 @@ export async function generateMetadata({
   const article = city ? await getArticleByCitySlug(citySlug, slug) : null;
   if (!city || !article) return {};
   return {
-    title: `${article.title} | HUGLAO GROUP`,
+    title: `${article.title} | HUGLAO`,
     description: article.excerpt,
     robots: { index: !city.hidden },
     alternates: { canonical: `/${city.slug}/${article.slug}` },
@@ -700,7 +700,7 @@ export default async function CityArticlePage({
             headline: article.title,
             description: article.excerpt,
             image: article.cover ?? undefined,
-            author: { "@type": "Organization", name: article.author || "HUGLAO GROUP" },
+            author: { "@type": "Organization", name: article.author || "HUGLAO" },
             publisher: {
               "@type": "Organization",
               name: "บริษัท ฮักลาว กรุ๊ป จำกัด",
@@ -801,7 +801,7 @@ import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { cities } from "@/data/cities";
 
 export const metadata: Metadata = {
-  title: "เที่ยวลาว: เวียงจันทน์ เมืองเฟือง วังเวียง หลวงพระบาง | Huglao Group",
+  title: "เที่ยวลาว: เวียงจันทน์ เมืองเฟือง วังเวียง หลวงพระบาง | HUGLAO",
   description:
     "รวมเมืองเที่ยวลาวยอดนิยม เวียงจันทน์ เมืองเฟือง วังเวียง หลวงพระบาง พร้อมรถตู้ VIP พร้อมคนขับ เลือกเมืองที่สนใจเพื่อดูสถานที่เที่ยว โปรแกรม และราคา",
   alternates: { canonical: "/laos-travel" },

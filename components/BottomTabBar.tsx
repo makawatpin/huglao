@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const LINE_URL = "https://lin.ee/xudxWlE";
+import { SITE } from "@/data/site";
 
 const TABS = [
   {
@@ -19,8 +18,8 @@ const TABS = [
   },
   {
     label: "จองรถ",
-    href: "/van-vip",
-    match: (path: string) => path.startsWith("/van"),
+    href: "/car-with-driver",
+    match: (path: string) => path.startsWith("/car-with-driver"),
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="3" y="9" width="18" height="9" rx="2" />
@@ -31,13 +30,13 @@ const TABS = [
     ),
   },
   {
-    label: "บทความ",
-    href: "/articles",
-    match: (path: string) => path.startsWith("/articles"),
+    label: "เส้นทาง",
+    href: "/travel-with-us",
+    match: (path: string) => path.startsWith("/travel-with-us"),
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v18H6.5A2.5 2.5 0 0 0 4 23z" />
-        <path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v18h5.5a2.5 2.5 0 0 1 2.5 2z" />
+        <path d="M6 3h9l3 3v15H6z" />
+        <path d="M14 3v4h4M9 11h6M9 15h6" />
       </svg>
     ),
   },
@@ -55,7 +54,7 @@ export default function BottomTabBar() {
   return (
     <nav
       aria-label="เมนูหลัก"
-      className="md:hidden fixed inset-x-0 bottom-0 z-50 flex bg-deep-green-2"
+      className="fixed inset-x-0 bottom-0 z-50 flex bg-[#08271b]/95 shadow-[0_-12px_35px_rgba(3,16,9,.18)] backdrop-blur-xl md:hidden"
       style={{
         borderTop: "0.5px solid rgba(227,189,99,.15)",
         paddingBottom: "calc(10px + env(safe-area-inset-bottom))",
@@ -77,7 +76,7 @@ export default function BottomTabBar() {
         );
       })}
       <a
-        href={LINE_URL}
+        href={SITE.lineUrl}
         target="_blank"
         rel="noopener"
         className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-[10px] no-underline"

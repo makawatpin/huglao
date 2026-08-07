@@ -657,7 +657,7 @@ export default async function RoutePage({
             "@context": "https://schema.org",
             "@type": "Service",
             serviceType: route.title,
-            provider: { "@type": "Organization", name: "HUGLAO GROUP", url: "https://huglao.com" },
+            provider: { "@type": "Organization", name: "HUGLAO", url: "https://huglao.com" },
             areaServed: [route.fromCity, route.toCity],
           }),
         }}
@@ -1024,7 +1024,7 @@ export default async function ServicePage({
             "@context": "https://schema.org",
             "@type": "Service",
             serviceType: service.title,
-            provider: { "@type": "Organization", name: "HUGLAO GROUP", url: "https://huglao.com" },
+            provider: { "@type": "Organization", name: "HUGLAO", url: "https://huglao.com" },
           }),
         }}
       />

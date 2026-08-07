@@ -39,6 +39,10 @@ yarn-error.log*
 # worktrees
 /.worktrees/
 
+# local production and audit artifacts
+/.tmp/
+/huglao-production.zip
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
