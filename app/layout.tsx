@@ -1,97 +1,98 @@
 import type { Metadata } from "next";
-import { Noto_Serif_Thai, Noto_Sans_Thai } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import BottomTabBar from "@/components/BottomTabBar";
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
+import { SITE } from "@/data/site";
 
-const notoSerifThai = Noto_Serif_Thai({
+const notoSerifThai = localFont({
+  src: "./fonts/NotoSerifThai-Variable.ttf",
   variable: "--font-serif-thai",
-  weight: ["500", "600", "700"],
-  subsets: ["thai", "latin"],
+  weight: "100 900",
+  display: "swap",
 });
 
-const notoSansThai = Noto_Sans_Thai({
+const notoSansThai = localFont({
+  src: "./fonts/NotoSansThai-Variable.ttf",
   variable: "--font-sans-thai",
-  weight: ["300", "400", "500", "600", "700"],
-  subsets: ["thai", "latin"],
+  weight: "100 900",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://huglao.com"),
-  title: "HUGLAO GROUP | เที่ยวลาว รถตู้ VIP จองรถตู้ลาว ตั๋วรถไฟลาว-จีน ไกด์นำเที่ยว",
-  description:
-    "ฮักลาว กรุ๊ป (HUGLAO GROUP) ผู้เชี่ยวชาญเที่ยวลาวครบวงจร บริการนายหน้าจัดหารถตู้ VIP ลาว จองรถตู้ลาวพร้อมคนขับ จองตั๋วรถไฟลาว-จีน และไกด์นำเที่ยวมืออาชีพ ทีมไทย-ลาว ดูแลตลอดทริป",
+  metadataBase: new URL(SITE.website),
+    title: {
+    default: "HUGLAO | รถพร้อมคนขับเที่ยวลาว",
+    template: "%s | HUGLAO",
+  },
+  description: "เที่ยวลาวในแบบของคุณด้วยรถพร้อมคนขับ เลือกปลายทาง เวลา และจังหวะการเดินทางเอง ติดต่อขอราคาผ่าน LINE OA",
+  applicationName: SITE.name,
   keywords: [
-    "เที่ยวลาว",
+    "รถพร้อมคนขับลาว",
+    "เช่ารถพร้อมคนขับเวียงจันทน์",
+    "เที่ยวลาวด้วยตัวเอง",
     "รถตู้ลาว",
-    "จองรถตู้ลาว",
-    "รถตู้ VIP ลาว",
-    "ตั๋วรถไฟลาว-จีน",
-    "ไกด์ลาว",
-    "ทัวร์ลาว",
-    "เที่ยวเวียงจันทน์",
-    "เที่ยววังเวียง",
-    "เที่ยวหลวงพระบาง",
     "HUGLAO",
   ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "HUGLAO GROUP | เที่ยวลาว รถตู้ VIP จองรถตู้ลาว",
-    description:
-      "เที่ยวลาวครบจบในที่เดียว รถตู้ VIP จองตั๋วรถไฟลาว-จีน และไกด์นำเที่ยวมืออาชีพ",
+    title: "HUGLAO | เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป",
+    description: "รถพร้อมคนขับแบบส่วนตัว เลือกเส้นทางและเวลาได้เอง",
+    url: SITE.website,
+    siteName: SITE.name,
+    locale: "th_TH",
     type: "website",
-    images: [{ url: "/assets/van-hero.webp", width: 750, height: 422 }],
+    images: [{ url: "/og.png", width: 1728, height: 909, alt: "HUGLAO รถพร้อมคนขับเที่ยวลาว" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HUGLAO | รถพร้อมคนขับเที่ยวลาว",
+    description: "เที่ยวตามแผนและจังหวะของคุณ",
+    images: ["/og.png"],
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.legalName,
+  alternateName: SITE.name,
+  url: SITE.website,
+  logo: `${SITE.website}/assets/huglao-emblem.png`,
+  slogan: SITE.slogan,
+  telephone: "+66-95-596-2525",
+  email: SITE.email,
+  identifier: SITE.registrationNumber,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "25 ถนนโนนใบบัวสาม",
+    addressLocality: "อำเภอบัวใหญ่",
+    addressRegion: "นครราชสีมา",
+    postalCode: "30120",
+    addressCountry: "TH",
+  },
+  description:
+    "บริษัทตัวกลางจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ สำหรับทริปส่วนตัวจากเวียงจันทน์และการเดินทางในลาว",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: "+66-95-596-2525",
+    availableLanguage: ["Thai"],
+  },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="th" className={`${notoSerifThai.variable} ${notoSansThai.variable}`}>
-      <head>
+      <body>
+        <a href="#main-content" className="hl-skip-link">ข้ามไปยังเนื้อหาหลัก</a>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "TravelAgency",
-              name: "บริษัท ฮักลาว กรุ๊ป จำกัด (HUGLAO GROUP CO., LTD.)",
-              description:
-                "บริการเที่ยวลาวครบวงจร นายหน้าจัดหารถตู้ VIP ลาว จองรถตู้ลาว จองตั๋วรถไฟลาว-จีน และไกด์นำเที่ยว",
-              url: "https://huglao.com",
-              logo: "https://huglao.com/assets/huglao-emblem.png",
-              image: "https://huglao.com/assets/huglao-emblem.png",
-              telephone: "+66-95-596-2525",
-              email: "huglaogroup@gmail.com",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "25 ถ.โนนใบบัว 3 ต.บัวใหญ่ อ.บัวใหญ่",
-                addressLocality: "นครราชสีมา",
-                postalCode: "30120",
-                addressCountry: "TH",
-              },
-              areaServed: [
-                { "@type": "City", name: "เวียงจันทน์ สปป.ลาว" },
-                { "@type": "City", name: "หนองคาย ประเทศไทย" },
-                "Laos",
-                "Thailand",
-              ],
-              slogan: "Connecting Thailand & Laos",
-              makesOffer: [
-                { "@type": "Offer", name: "รถตู้ VIP ลาว / จองรถตู้ลาว" },
-                { "@type": "Offer", name: "จองตั๋วรถไฟลาว-จีน" },
-                { "@type": "Offer", name: "ไกด์นำเที่ยวลาว" },
-              ],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-      </head>
-      <body>
         <SiteHeader />
-        <div className="pb-[84px] md:pb-0">
+        <div id="main-content" className="pb-[74px] md:pb-0">
           {children}
           <SiteFooter />
         </div>

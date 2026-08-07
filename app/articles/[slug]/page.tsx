@@ -10,16 +10,30 @@ import { getAllArticles, getArticleBySlug } from "@/lib/contentful";
 function getRelatedServices(tags: string[]): { label: string; href: string }[] {
   if (tags.some((t) => t.includes("รถไฟ"))) {
     return [
-      { label: "รถตู้รับจากสถานีรถไฟวังเวียง", href: "/vangvieng" },
-      { label: "รถตู้รับจากสถานีรถไฟหลวงพระบาง", href: "/luangprabang" },
+      { label: "บริการประสานตั๋วรถไฟ", href: "/services/train-ticket" },
+      { label: "เส้นทางเวียงจันทน์–วังเวียง", href: "/routes/vientiane-vang-vieng" },
     ];
   }
-  return [{ label: "ดูรถตู้ VIP เที่ยวลาวทั้งหมด", href: "/van-vip" }];
+  if (tags.some((t) => t.includes("รถตู้"))) {
+    return [
+      { label: "รถตู้พร้อมคนขับ", href: "/car-with-driver/van" },
+      { label: "รถตู้ VIP พร้อมคนขับ", href: "/car-with-driver/van-vip" },
+    ];
+  }
+  return [{ label: "ดูรถพร้อมคนขับทุกประเภท", href: "/car-with-driver" }];
 }
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
-  return articles.map((a) => ({ slug: a.slug }));
+  const params = articles.map((a) => ({ slug: a.slug }));
+
+  if (params.length === 0) {
+    // Static exports require at least one generated value for a dynamic route.
+    // The page returns notFound() for this placeholder, so it is never content.
+    return [{ slug: "__no-articles-yet__" }];
+  }
+
+  return params;
 }
 
 export async function generateMetadata({
@@ -31,7 +45,7 @@ export async function generateMetadata({
   const article = await getArticleBySlug(slug);
   if (!article) return {};
   return {
-    title: `${article.title} | HUGLAO GROUP`,
+    title: `${article.title} | HUGLAO`,
     description: article.excerpt,
     openGraph: {
       title: article.title,
@@ -111,7 +125,7 @@ export default async function ArticlePage({
             headline: article.title,
             description: article.excerpt,
             image: article.cover ?? undefined,
-            author: { "@type": "Organization", name: article.author || "HUGLAO GROUP" },
+            author: { "@type": "Organization", name: article.author || "HUGLAO" },
             publisher: {
               "@type": "Organization",
               name: "บริษัท ฮักลาว กรุ๊ป จำกัด",
@@ -123,7 +137,7 @@ export default async function ArticlePage({
           }),
         }}
       />
-      <div className="relative bg-deep-green-2" style={{ aspectRatio: "16/8" }}>
+      <div className="relative mt-[72px] aspect-[4/3] bg-deep-green-2 sm:aspect-[16/8] lg:aspect-[16/7]">
         {article.cover && (
           <Image src={article.cover} alt={article.title} fill sizes="100vw" className="object-cover" priority />
         )}
@@ -136,6 +150,7 @@ export default async function ArticlePage({
             {article.tags[0]}
           </span>
         )}
+        <Link href="/image-credits" className="absolute bottom-[18px] right-[clamp(20px,5vw,44px)] rounded-full bg-[#071d13]/75 px-3 py-1.5 text-[.68rem] font-semibold text-white backdrop-blur-sm">เครดิตภาพ</Link>
       </div>
 
       <div className="max-w-[760px] mx-auto px-[clamp(22px,5vw,56px)] pt-[clamp(26px,4vw,44px)] pb-[clamp(40px,5vw,60px)]">
@@ -184,15 +199,13 @@ export default async function ArticlePage({
           </div>
         )}
 
-        <a
-          href="https://lin.ee/xudxWlE"
-          target="_blank"
-          rel="noopener"
+        <Link
+          href="/travel-with-us"
           className="inline-flex items-center gap-2 mt-[30px] px-7 py-3.5 rounded-full font-bold no-underline text-deep-green shadow-[0_12px_28px_rgba(168,120,21,.4)] hover:-translate-y-0.5 transition-transform"
           style={{ background: "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" }}
         >
-          วางแผนทริปลาวกับเรา →
-        </a>
+          เที่ยวลาวกับเรา →
+        </Link>
       </div>
     </article>
   );

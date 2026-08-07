@@ -18,7 +18,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
 
   return (
     <>
-      <div className="flex flex-wrap gap-2.5 justify-center mb-[clamp(34px,5vw,52px)]">
+      <div className="mb-[clamp(34px,5vw,52px)] flex flex-wrap justify-start gap-2.5" role="group" aria-label="กรองบทความตามหมวดหมู่">
         {categories.map((name) => {
           const on = name === active;
           return (
@@ -48,24 +48,24 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
           <div className="contents">
             {filtered.map((a) => (
               <Link
-                key={a.slug}
-                href={`/articles/${a.slug}`}
-                className="group no-underline flex flex-col bg-white border border-border rounded-[18px] overflow-hidden shadow-[0_14px_34px_rgba(10,31,20,.08)] hover:-translate-y-1.5 hover:shadow-[0_26px_54px_rgba(10,31,20,.16)] transition-all"
+              key={a.slug}
+              href={`/articles/${a.slug}`}
+                className="hl-mobile-media-card hl-card-hover group flex flex-col overflow-hidden rounded-[24px] border border-border bg-white shadow-[0_14px_34px_rgba(10,31,20,.08)]"
               >
-                <div className="relative bg-[#e8e3d6]" style={{ aspectRatio: "16/10" }}>
+                <div className="hl-mobile-media relative aspect-[4/3] bg-[#e8e3d6] sm:aspect-[16/10]">
                   {a.cover && (
-                    <Image src={a.cover} alt={a.title} fill sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" className="object-cover" />
+                    <Image src={a.cover} alt={a.title} fill sizes="(max-width: 639px) 112px, (max-width: 900px) 50vw, 33vw" className="object-cover" />
                   )}
                   {a.tags[0] && (
                     <span
-                      className="absolute top-3 left-3 text-[.7rem] tracking-[.14em] font-bold uppercase text-deep-green px-[13px] py-1.5 rounded-full shadow-[0_4px_12px_rgba(10,31,20,.25)]"
+                      className="absolute top-3 left-3 hidden text-[.7rem] tracking-[.14em] font-bold uppercase text-deep-green px-[13px] py-1.5 rounded-full shadow-[0_4px_12px_rgba(10,31,20,.25)] sm:inline-flex"
                       style={{ background: "linear-gradient(135deg,#e3bd63,#c8941f)" }}
                     >
                       {a.tags[0]}
                     </span>
                   )}
                 </div>
-                <div className="flex flex-col flex-1 px-4 pt-4 pb-4 md:px-[22px] md:pt-[22px] md:pb-6">
+                <div className="hl-mobile-content flex flex-col flex-1 px-4 pt-4 pb-4 md:px-[22px] md:pt-[22px] md:pb-6">
                   <div className="flex items-center gap-2 text-[#8a8474] text-[.76rem] md:text-[.8rem] font-medium mb-2 md:mb-2.5">
                     <span className="text-gold-dark">{a.author}</span>
                     <span className="opacity-50">·</span>

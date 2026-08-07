@@ -1,39 +1,50 @@
 import type { MetadataRoute } from "next";
-import { getAllArticles, getArticlesByCity } from "@/lib/contentful";
-import { cities } from "@/data/cities";
+import { getAllArticles } from "@/lib/contentful";
+import { ROUTE_GROUPS, SERVICE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 
 export const dynamic = "force-static";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = "https://huglao.com";
-  const articles = await getAllArticles();
-  const visibleCities = cities.filter((c) => !c.hidden);
+const STATIC_PATHS = [
+  "",
+  "/car-with-driver",
+  "/routes",
+  "/services",
+  "/travel-with-us",
+  "/laos-travel",
+  "/articles",
+  "/quote",
+  "/van-vip",
+  "/about",
+  "/contact",
+  "/faq",
+  "/terms",
+  "/privacy",
+  "/image-credits",
+] as const;
 
-  const cityArticleEntries: MetadataRoute.Sitemap = [];
-  for (const city of visibleCities) {
-    const cityArticles = await getArticlesByCity(city.slug);
-    for (const a of cityArticles) {
-      cityArticleEntries.push({
-        url: `${base}/${city.slug}/${a.slug}`,
-        lastModified: a.publishDate ? new Date(a.publishDate) : new Date(),
-      });
-    }
-  }
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const articles = await getAllArticles();
 
   return [
-    { url: base, lastModified: new Date() },
-    { url: `${base}/about`, lastModified: new Date() },
-    { url: `${base}/van-vip`, lastModified: new Date() },
-    { url: `${base}/laos-travel`, lastModified: new Date() },
-    ...visibleCities.map((c) => ({
-      url: `${base}/${c.slug}`,
+    ...STATIC_PATHS.map((path) => ({
+      url: `${SITE.website}${path}`,
       lastModified: new Date(),
     })),
-    ...cityArticleEntries,
-    { url: `${base}/articles`, lastModified: new Date() },
-    ...articles.map((a) => ({
-      url: `${base}/articles/${a.slug}`,
-      lastModified: a.publishDate ? new Date(a.publishDate) : new Date(),
+    ...VEHICLE_GROUPS.map((vehicle) => ({
+      url: `${SITE.website}/car-with-driver/${vehicle.slug}`,
+      lastModified: new Date(),
+    })),
+    ...ROUTE_GROUPS.map((route) => ({
+      url: `${SITE.website}/routes/${route.slug}`,
+      lastModified: new Date(),
+    })),
+    ...SERVICE_GROUPS.map((service) => ({
+      url: `${SITE.website}/services/${service.slug}`,
+      lastModified: new Date(),
+    })),
+    ...articles.map((article) => ({
+      url: `${SITE.website}/articles/${article.slug}`,
+      lastModified: article.publishDate ? new Date(article.publishDate) : new Date(),
     })),
   ];
 }

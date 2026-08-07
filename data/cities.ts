@@ -22,7 +22,7 @@ export interface CityFaq {
 export interface City {
   /** ใช้เป็น path /van/[slug] */
   slug: string;
-  /** ชื่อเมืองภาษาไทย เช่น "เวียงจันทน์" — ใช้ match กับ pricingGroups ด้วย getPricingGroupsForCity */
+  /** ชื่อเมืองภาษาไทย เช่น "เวียงจันทน์" */
   name: string;
   tagline: string;
   heroImage: string;
