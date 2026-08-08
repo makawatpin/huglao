@@ -56,6 +56,7 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE.website}/#organization`,
   name: SITE.legalName,
   alternateName: SITE.name,
   url: SITE.website,

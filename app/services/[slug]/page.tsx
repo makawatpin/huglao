@@ -47,7 +47,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         "@type": "Service",
         name: service.name,
         description: service.summary,
-        provider: { "@type": "Organization", name: SITE.name, url: SITE.website },
+        provider: { "@id": `${SITE.website}/#organization` },
       }) }} />
       <PageHero
         eyebrow="Additional service"
@@ -57,9 +57,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       />
       <section className="bg-[#071d13] pb-[clamp(52px,8vw,88px)]">
         <div className="hl-shell">
-          <figure className="hl-mobile-media-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
-            <div className="hl-mobile-media relative aspect-[4/3] sm:aspect-[16/8]">
-              <Image src={media.src} alt={media.alt} fill priority sizes="(max-width: 639px) 112px, 100vw" className="object-cover" />
+          <figure className="hl-mobile-media-card hl-detail-media-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
+            <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/8]">
+              <Image src={media.src} alt={media.alt} fill priority sizes="100vw" className="object-cover" />
             </div>
             <figcaption className="hl-mobile-content px-5 py-4 text-xs text-[#afbeb5]">ภาพประกอบการเดินทางในเวียงจันทน์ · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูที่มาและใบอนุญาตภาพ</Link></figcaption>
           </figure>

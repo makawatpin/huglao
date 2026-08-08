@@ -4,13 +4,14 @@ import { SERVICE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 
 const INFORMATION_LINKS = [
   { href: "/travel-with-us", label: "เที่ยวลาวกับ HUGLAO" },
+  { href: "/van-laos", label: "รถตู้เที่ยวลาวพร้อมคนขับ" },
   { href: "/travel-with-us#pricing", label: "เส้นทางและราคารถ" },
   { href: "/articles", label: "บทความเที่ยวลาว" },
   { href: "/about", label: "เกี่ยวกับ HUGLAO" },
 ] as const;
 
 const LEGAL_LINKS = [
-  { href: "/contact", label: "ติดต่อเรา" },
+  { href: "/about#contact", label: "ติดต่อ HUGLAO" },
   { href: "/faq", label: "คำถามที่พบบ่อย" },
   { href: "/terms", label: "ข้อกำหนดการใช้บริการ" },
   { href: "/privacy", label: "นโยบายความเป็นส่วนตัว" },

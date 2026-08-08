@@ -19,14 +19,27 @@ function getVehicle(slug: string) {
   return VEHICLE_GROUPS.find((vehicle) => vehicle.slug === slug);
 }
 
+function getVehicleSeoTitle(slug: string, name: string) {
+  if (slug === "van") return "รถตู้เที่ยวลาวพร้อมคนขับ";
+  return `${name} พร้อมคนขับเที่ยวลาว`;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const vehicle = getVehicle(slug);
   if (!vehicle) return {};
+  const seoTitle = getVehicleSeoTitle(vehicle.slug, vehicle.name);
+  const description = `${vehicle.description} เริ่มต้นจากเวียงจันทน์ ติดต่อ HUGLAO เพื่อขอราคาและตรวจรถตามรายละเอียดทริป`;
   return {
-    title: `${vehicle.name}พร้อมคนขับเที่ยวลาว`,
-    description: `${vehicle.description} ติดต่อ HUGLAO เพื่อขอราคาตามทริป`,
+    title: seoTitle,
+    description,
     alternates: { canonical: `/car-with-driver/${vehicle.slug}` },
+    openGraph: {
+      title: `${seoTitle} | HUGLAO`,
+      description,
+      url: `/car-with-driver/${vehicle.slug}`,
+      images: [{ url: getMedia(vehicle.mediaIds[0]).src, alt: getMedia(vehicle.mediaIds[0]).alt }],
+    },
   };
 }
 
@@ -34,11 +47,12 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const vehicle = getVehicle(slug);
   if (!vehicle) notFound();
+  const seoTitle = getVehicleSeoTitle(vehicle.slug, vehicle.name);
   const prices = getCurrentPriceRows();
   const hasPublishedPrices = Boolean(getPriceVehicle(vehicle.slug));
 
   const faqs = [
-    { question: `${vehicle.name}เหมาะกับใคร?`, answer: vehicle.suitableFor },
+    { question: `${vehicle.name} เหมาะกับใคร?`, answer: vehicle.suitableFor },
     { question: "รองรับผู้โดยสารและกระเป๋าได้เท่าไร?", answer: `${vehicle.capacity} และ${vehicle.luggage} กรุณาแจ้งจำนวนคนและสัมภาระจริงเพื่อให้ทีมตรวจรถ` },
     { question: "รถที่ได้รับจะเป็นรุ่นเดียวกับภาพหรือไม่?", answer: "รุ่นรถและปีรถขึ้นอยู่กับรถที่ว่างในวันเดินทาง โดย HUGLAO จะแจ้งรายละเอียดก่อนลูกค้ายืนยัน" },
     { question: "การส่งข้อมูลถือว่าจองแล้วหรือไม่?", answer: "ยังไม่ถือว่าเป็นการจอง ทีมงานต้องตรวจรถและส่งข้อเสนอให้ลูกค้ายืนยันก่อน" },
@@ -49,8 +63,8 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Service",
-        name: `${vehicle.name}พร้อมคนขับ`,
-        provider: { "@type": "Organization", name: SITE.name, url: SITE.website },
+        name: seoTitle,
+        provider: { "@id": `${SITE.website}/#organization` },
         areaServed: "Laos",
         description: vehicle.description,
       }) }} />
@@ -61,7 +75,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
       }) }} />
       <PageHero
         eyebrow="Vehicle category"
-        title={`${vehicle.name}พร้อมคนขับ`}
+        title={seoTitle}
         description={`${vehicle.description} เริ่มต้นบริการจากเวียงจันทน์ และเสนอราคาตามเส้นทาง ระยะเวลา และรถที่ว่างจริง`}
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "จองรถพร้อมคนขับ", href: "/car-with-driver" }, { label: vehicle.name }]}
       />
@@ -70,9 +84,9 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
         <div className={`hl-shell grid gap-4 ${vehicle.mediaIds.length > 1 ? "sm:grid-cols-2" : ""}`}>
           {vehicle.mediaIds.map((mediaId, index) => {
             const media = getMedia(mediaId);
-            return <figure key={mediaId} className="hl-mobile-media-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
-              <div className="hl-mobile-media relative aspect-[4/3] sm:aspect-[16/10]">
-                <Image src={media.src} alt={media.alt} fill priority={index === 0} sizes={vehicle.mediaIds.length > 1 ? "(max-width: 639px) 112px, 50vw" : "(max-width: 639px) 112px, 100vw"} className="object-cover" />
+            return <figure key={mediaId} className="hl-mobile-media-card hl-vehicle-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
+              <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/10]">
+                <Image src={media.src} alt={media.alt} fill priority={index === 0} sizes={vehicle.mediaIds.length > 1 ? "(max-width: 639px) 100vw, 50vw" : "100vw"} className="object-contain" />
               </div>
               <figcaption className="hl-mobile-content px-5 py-4 text-xs leading-6 text-[#afbeb5]">ภาพประกอบหมวดรถ รุ่นและการจัดที่นั่งจริงขึ้นอยู่กับรถที่ว่าง · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></figcaption>
             </figure>;

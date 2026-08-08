@@ -14,6 +14,7 @@ import {
 } from "@/data/site";
 import { getMedia } from "@/data/media";
 import { CURRENT_PRICE_ROWS } from "@/data/pricing";
+import { mergeArticlePreviews } from "@/data/articles";
 
 const HOME_PRICE_ROWS = CURRENT_PRICE_ROWS.filter((row) =>
   ["thanaleng-city", "vientiane-city-1d", "vientiane-vang-vieng-1d"].includes(row.id),
@@ -35,7 +36,7 @@ const TRUST_POINTS = [
 ] as const;
 
 export default async function Home() {
-  const articles = (await getAllArticles()).slice(0, 3);
+  const articles = mergeArticlePreviews(await getAllArticles()).slice(0, 3);
 
   return (
     <main>
@@ -156,15 +157,15 @@ export default async function Home() {
               return <Reveal key={vehicle.slug} delay={index * 0.06}>
                 <Link
                   href={`/car-with-driver/${vehicle.slug}`}
-                  className="hl-mobile-media-card group flex h-full flex-col overflow-hidden rounded-[28px] border border-[#ddd4c1] bg-white shadow-[0_20px_60px_rgba(27,49,37,.07)] transition hover:-translate-y-2 hover:border-[#d8af4a]"
+                  className="hl-mobile-media-card hl-vehicle-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-white shadow-[0_20px_60px_rgba(27,49,37,.07)] transition hover:-translate-y-2 hover:border-[#d8af4a] sm:rounded-[28px]"
                 >
-                  <div className="hl-mobile-media relative aspect-[4/3] overflow-hidden bg-[#e8e3d6] sm:aspect-[16/10]">
-                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 112px, (max-width: 1280px) 50vw, 20vw" className="object-cover transition duration-500 group-hover:scale-[1.03]" />
+                  <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden">
+                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1280px) 50vw, 20vw" className="object-contain transition duration-500 group-hover:scale-[1.02]" />
                   </div>
                   <div className="hl-mobile-content flex flex-1 flex-col p-6">
-                    <span className="text-xs font-bold tracking-[.18em] text-[#9b711c]">0{index + 1}</span>
+                    <span className="hl-vehicle-order text-xs font-bold tracking-[.18em] text-[#9b711c]">0{index + 1}</span>
                     <h3 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{vehicle.shortName}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-7 text-[#687169]">{vehicle.description}</p>
+                    <p className="hl-vehicle-detail mt-3 flex-1 text-sm leading-7 text-[#687169]">{vehicle.description}</p>
                     <span className="mt-5 text-sm font-bold text-[#0d3827] transition group-hover:text-[#9b711c]">ดูรายละเอียด →</span>
                   </div>
                 </Link>
@@ -267,18 +268,18 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,120px)]" id="booking-steps">
+      <section className="bg-white py-[clamp(56px,7vw,88px)]" id="booking-steps">
         <div className="hl-shell">
           <Reveal className="max-w-[760px]">
             <span className="hl-kicker">ขั้นตอนการจอง</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold text-[#071d13]">จากแผนในใจ สู่รถที่จุดนัดหมาย</h2>
+            <h2 className="mt-4 font-serif-th text-[clamp(1.9rem,4vw,3.2rem)] font-bold leading-tight text-[#071d13]">จากแผนในใจ สู่รถที่จุดนัดหมาย</h2>
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-8 grid gap-3 md:grid-cols-2 lg:grid-cols-5">
             {BOOKING_STEPS.map((step, index) => (
-              <Reveal key={step.number} delay={index * 0.07} className="relative rounded-[26px] bg-[#f7f3e9] p-7">
-                <span className="font-serif-th text-4xl text-[#d8af4a]">{step.number}</span>
-                <h3 className="mt-7 text-lg font-bold text-[#0a2d20]">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#687169]">{step.description}</p>
+              <Reveal key={step.number} delay={index * 0.05} className="grid grid-cols-[2rem_minmax(0,1fr)] content-start gap-x-3 rounded-[18px] border border-[#e6dfd1] bg-[#f7f3e9] p-4 sm:rounded-[20px] sm:p-5 lg:block">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0a2d20] text-xs font-bold text-[#efd276]">{step.number}</span>
+                <h3 className="self-center text-base font-bold leading-6 text-[#0a2d20] lg:mt-4">{step.title}</h3>
+                <p className="col-start-2 mt-1.5 text-[.82rem] leading-6 text-[#687169] lg:col-auto lg:mt-2">{step.description}</p>
               </Reveal>
             ))}
           </div>
@@ -308,23 +309,34 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-white py-[clamp(72px,9vw,120px)]">
-        <div className="hl-shell grid items-center gap-12 lg:grid-cols-2">
-          <Reveal className="relative aspect-[4/3] min-h-[320px] overflow-hidden rounded-[30px] bg-[#0a2d20] sm:aspect-[16/10] lg:min-h-[500px]">
-            <Image src={getMedia("vientianePatuxai").src} alt={getMedia("vientianePatuxai").alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#071d13]/80 to-transparent" />
-            <p className="absolute bottom-8 left-8 right-8 font-serif-th text-2xl font-semibold text-white">เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป</p>
+      <section className="overflow-hidden bg-white py-[clamp(56px,8vw,112px)]">
+        <div className="hl-shell grid items-center gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
+          <Reveal>
+            <figure className="overflow-hidden rounded-[22px] bg-[#071d13] shadow-[0_18px_50px_rgba(7,29,19,0.14)] sm:rounded-[30px]">
+              <div className="relative aspect-[16/9] sm:aspect-[16/10] lg:h-[430px] lg:aspect-auto">
+                <Image
+                  src={getMedia("vientianePatuxai").src}
+                  alt={getMedia("vientianePatuxai").alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="px-5 py-4 font-serif-th text-base font-semibold leading-7 text-white sm:px-7 sm:py-5 sm:text-xl">
+                เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป
+              </figcaption>
+            </figure>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal className="min-w-0" delay={0.1}>
             <span className="hl-kicker">เรื่องราว HUGLAO</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">
+            <h2 className="mt-4 font-serif-th text-[clamp(2rem,7vw,4rem)] font-bold leading-tight text-[#071d13] sm:mt-5">
               เริ่มจากทีมงาน
             </h2>
-            <p className="mt-6 text-lg leading-9 text-[#59645d]">
+            <p className="mt-5 text-base leading-8 text-[#59645d] sm:mt-6 sm:text-lg sm:leading-9">
               HUGLAO เกิดจากเทป อาว และชะ ซึ่งเชื่อว่าการเที่ยวลาวควรเป็นเรื่องง่าย เป็นส่วนตัว และยืดหยุ่น
               เราจึงทำหน้าที่เชื่อมลูกค้ากับพาร์ตเนอร์ในพื้นที่ พร้อมช่วยประสานรายละเอียดให้ทริปเดินหน้าได้ตามแผนของคุณ
             </p>
-            <Link href="/about" className="mt-8 inline-flex rounded-full border border-[#0a2d20]/20 px-6 py-3 font-bold text-[#0a2d20] hover:border-[#d8af4a]">
+            <Link href="/about" className="mt-7 inline-flex w-full justify-center rounded-full border border-[#0a2d20]/20 px-6 py-3 text-center font-bold text-[#0a2d20] hover:border-[#d8af4a] sm:mt-8 sm:w-auto">
               รู้จัก HUGLAO เพิ่มเติม
             </Link>
           </Reveal>
@@ -343,9 +355,17 @@ export default async function Home() {
             </div>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {articles.map((article) => (
-                <Link key={article.slug} href={`/articles/${article.slug}`} className="hl-mobile-media-card overflow-hidden rounded-[24px] bg-white shadow-[0_18px_50px_rgba(27,49,37,.07)]">
-                  <div className="hl-mobile-media relative aspect-[16/10] bg-[#d8d0be]">
-                    {article.cover && <Image src={article.cover} alt={article.title} fill sizes="(max-width: 639px) 112px, 33vw" className="object-cover" />}
+                <Link key={article.slug} href={`/articles/${article.slug}`} className="hl-mobile-media-card hl-article-card overflow-hidden rounded-[20px] bg-white shadow-[0_18px_50px_rgba(27,49,37,.07)] sm:rounded-[24px]">
+                  <div className="hl-mobile-media relative aspect-[16/9] bg-[#d8d0be]">
+                    {article.cover && (
+                      <Image
+                        src={article.cover}
+                        alt={article.title}
+                        fill
+                        sizes="(max-width: 639px) 112px, 33vw"
+                        className={article.cover.includes("vehicle-") || article.cover.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
+                      />
+                    )}
                   </div>
                   <div className="hl-mobile-content p-6">
                     <h3 className="font-serif-th text-xl font-bold leading-snug text-[#0a2d20]">{article.title}</h3>

@@ -9,7 +9,7 @@ type PageHeroProps = {
 
 export default function PageHero({ eyebrow, title, description, breadcrumbs }: PageHeroProps) {
   return (
-    <section className="hl-grid-pattern relative overflow-hidden bg-[#071d13] px-5 pb-[clamp(64px,8vw,104px)] pt-[clamp(112px,13vw,160px)] text-white">
+    <section className="hl-grid-pattern relative overflow-hidden bg-[#071d13] px-5 pb-[clamp(48px,7vw,92px)] pt-[clamp(104px,12vw,152px)] text-white">
       <div className="pointer-events-none absolute -right-24 top-20 h-80 w-80 rounded-full border border-[#d8af4a]/15 bg-[#d8af4a]/[.04]" />
       <div className="pointer-events-none absolute right-20 top-40 h-32 w-32 rounded-full border border-white/10" />
       <div className="relative mx-auto max-w-[1240px]">
@@ -26,7 +26,7 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs }: P
         <div className="grid items-end gap-10 lg:grid-cols-[1fr_300px]">
           <div>
             <span className="hl-kicker !text-[#efd276]">{eyebrow}</span>
-            <h1 className="mt-5 max-w-[900px] font-serif-th text-[clamp(2.45rem,5.5vw,5rem)] font-bold leading-[1.08] tracking-[-.025em]">{title}</h1>
+            <h1 className="mt-5 max-w-[900px] font-serif-th text-[clamp(2.1rem,5.5vw,5rem)] font-bold leading-[1.1] tracking-[-.025em]">{title}</h1>
             <p className="mt-6 max-w-[760px] text-[clamp(1rem,2vw,1.2rem)] leading-8 text-[#c8d3cc]">{description}</p>
           </div>
           <dl className="hidden rounded-[24px] border border-white/10 bg-white/[.055] p-6 text-sm backdrop-blur-sm lg:block">

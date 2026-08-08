@@ -16,8 +16,8 @@ function getRelatedServices(tags: string[]): { label: string; href: string }[] {
   }
   if (tags.some((t) => t.includes("รถตู้"))) {
     return [
-      { label: "รถตู้พร้อมคนขับ", href: "/car-with-driver/van" },
-      { label: "รถตู้ VIP พร้อมคนขับ", href: "/car-with-driver/van-vip" },
+      { label: "รถตู้เที่ยวลาวพร้อมคนขับ", href: "/van-laos" },
+      { label: "ดูราคาและรายละเอียดรถตู้", href: "/car-with-driver/van" },
     ];
   }
   return [{ label: "ดูรถพร้อมคนขับทุกประเภท", href: "/car-with-driver" }];
@@ -113,6 +113,7 @@ export default async function ArticlePage({
     .slice(0, 3);
   const relatedServices = getRelatedServices(article.tags);
   const publishedIso = article.publishDate ? new Date(article.publishDate).toISOString() : undefined;
+  const isVehicleCover = Boolean(article.cover?.includes("vehicle-") || article.cover?.includes("/van-"));
 
   return (
     <article>
@@ -137,20 +138,23 @@ export default async function ArticlePage({
           }),
         }}
       />
-      <div className="relative mt-[72px] aspect-[4/3] bg-deep-green-2 sm:aspect-[16/8] lg:aspect-[16/7]">
-        {article.cover && (
-          <Image src={article.cover} alt={article.title} fill sizes="100vw" className="object-cover" priority />
-        )}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top,rgba(8,18,11,.55),transparent 55%)" }} />
-        {article.tags[0] && (
-          <span
-            className="absolute bottom-[18px] left-[clamp(20px,5vw,44px)] text-[.72rem] tracking-[.16em] font-bold uppercase text-deep-green px-[14px] py-1.5 rounded-full"
-            style={{ background: "linear-gradient(135deg,#e3bd63,#c8941f)" }}
-          >
-            {article.tags[0]}
-          </span>
-        )}
-        <Link href="/image-credits" className="absolute bottom-[18px] right-[clamp(20px,5vw,44px)] rounded-full bg-[#071d13]/75 px-3 py-1.5 text-[.68rem] font-semibold text-white backdrop-blur-sm">เครดิตภาพ</Link>
+      <div className="mt-[72px] bg-[#071d13]">
+        <div className={`relative aspect-[16/9] max-h-[520px] sm:aspect-[16/8] lg:aspect-[16/7] ${isVehicleCover ? "bg-[#eee9de]" : "bg-deep-green-2"}`}>
+          {article.cover && (
+            <Image src={article.cover} alt={article.title} fill sizes="100vw" className={isVehicleCover ? "object-contain p-3 sm:p-5" : "object-cover"} preload />
+          )}
+        </div>
+        <div className="hl-shell flex flex-wrap items-center justify-between gap-3 py-3 sm:py-4">
+          {article.tags[0] ? (
+            <span
+              className="rounded-full px-[14px] py-1.5 text-[.7rem] font-bold uppercase tracking-[.12em] text-deep-green sm:text-[.72rem] sm:tracking-[.16em]"
+              style={{ background: "linear-gradient(135deg,#e3bd63,#c8941f)" }}
+            >
+              {article.tags[0]}
+            </span>
+          ) : <span />}
+          <Link href="/image-credits" className="rounded-full border border-white/15 px-3 py-1.5 text-[.68rem] font-semibold text-white hover:border-[#d8af4a]">เครดิตภาพ</Link>
+        </div>
       </div>
 
       <div className="max-w-[760px] mx-auto px-[clamp(22px,5vw,56px)] pt-[clamp(26px,4vw,44px)] pb-[clamp(40px,5vw,60px)]">

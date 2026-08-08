@@ -7,15 +7,13 @@ export const dynamic = "force-static";
 const STATIC_PATHS = [
   "",
   "/car-with-driver",
-  "/routes",
   "/services",
   "/travel-with-us",
-  "/laos-travel",
+  "/van-laos",
   "/articles",
+  "/articles/nam-pien-yorla-pa",
   "/quote",
-  "/van-vip",
   "/about",
-  "/contact",
   "/faq",
   "/terms",
   "/privacy",
@@ -24,26 +22,23 @@ const STATIC_PATHS = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getAllArticles();
+  const url = (path: string) => `${SITE.website}${path || ""}/`;
 
   return [
     ...STATIC_PATHS.map((path) => ({
-      url: `${SITE.website}${path}`,
-      lastModified: new Date(),
+      url: url(path),
     })),
     ...VEHICLE_GROUPS.map((vehicle) => ({
-      url: `${SITE.website}/car-with-driver/${vehicle.slug}`,
-      lastModified: new Date(),
+      url: url(`/car-with-driver/${vehicle.slug}`),
     })),
     ...ROUTE_GROUPS.map((route) => ({
-      url: `${SITE.website}/routes/${route.slug}`,
-      lastModified: new Date(),
+      url: url(`/routes/${route.slug}`),
     })),
     ...SERVICE_GROUPS.map((service) => ({
-      url: `${SITE.website}/services/${service.slug}`,
-      lastModified: new Date(),
+      url: url(`/services/${service.slug}`),
     })),
-    ...articles.map((article) => ({
-      url: `${SITE.website}/articles/${article.slug}`,
+    ...articles.filter((article) => article.slug !== "nam-pien-yorla-pa").map((article) => ({
+      url: url(`/articles/${article.slug}`),
       lastModified: article.publishDate ? new Date(article.publishDate) : new Date(),
     })),
   ];

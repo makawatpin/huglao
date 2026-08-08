@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { Article } from "@/lib/contentful";
+import type { ArticlePreview } from "@/data/articles";
 
-export default function ArticleGrid({ articles }: { articles: Article[] }) {
+export default function ArticleGrid({ articles }: { articles: ArticlePreview[] }) {
   const categories = useMemo(() => {
     const set: string[] = [];
     articles.forEach((a) => a.tags.forEach((t) => { if (!set.includes(t)) set.push(t); }));
@@ -25,7 +25,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
             <button
               key={name}
               onClick={() => setActive(name)}
-              className="cursor-pointer font-semibold text-[.92rem] px-5 py-[9px] rounded-full transition-all"
+              className="cursor-pointer rounded-full px-4 py-2 text-[.82rem] font-semibold transition-all sm:px-5 sm:py-[9px] sm:text-[.92rem]"
               style={{
                 border: `1.5px solid ${on ? "transparent" : "#e0d9c8"}`,
                 background: on ? "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" : "#fff",
@@ -50,11 +50,17 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
               <Link
               key={a.slug}
               href={`/articles/${a.slug}`}
-                className="hl-mobile-media-card hl-card-hover group flex flex-col overflow-hidden rounded-[24px] border border-border bg-white shadow-[0_14px_34px_rgba(10,31,20,.08)]"
+                className="hl-mobile-media-card hl-article-card hl-card-hover group flex flex-col overflow-hidden rounded-[20px] border border-border bg-white shadow-[0_14px_34px_rgba(10,31,20,.08)] sm:rounded-[24px]"
               >
-                <div className="hl-mobile-media relative aspect-[4/3] bg-[#e8e3d6] sm:aspect-[16/10]">
+                <div className="hl-mobile-media relative aspect-[16/9] bg-[#e8e3d6]">
                   {a.cover && (
-                    <Image src={a.cover} alt={a.title} fill sizes="(max-width: 639px) 112px, (max-width: 900px) 50vw, 33vw" className="object-cover" />
+                    <Image
+                      src={a.cover}
+                      alt={a.title}
+                      fill
+                      sizes="(max-width: 639px) 112px, (max-width: 900px) 50vw, 33vw"
+                      className={a.cover.includes("vehicle-") || a.cover.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
+                    />
                   )}
                   {a.tags[0] && (
                     <span
@@ -66,7 +72,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
                   )}
                 </div>
                 <div className="hl-mobile-content flex flex-col flex-1 px-4 pt-4 pb-4 md:px-[22px] md:pt-[22px] md:pb-6">
-                  <div className="flex items-center gap-2 text-[#8a8474] text-[.76rem] md:text-[.8rem] font-medium mb-2 md:mb-2.5">
+                  <div className="hl-article-meta mb-2 flex items-center gap-2 text-[.76rem] font-medium text-[#8a8474] md:mb-2.5 md:text-[.8rem]">
                     <span className="text-gold-dark">{a.author}</span>
                     <span className="opacity-50">·</span>
                     <span>{a.publishDate}</span>
@@ -75,7 +81,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
                     {a.title}
                   </h3>
                   <p className="m-0 mb-3 md:mb-[18px] text-text-muted text-[.86rem] md:text-[.95rem] leading-[1.55] md:leading-[1.65] flex-1">{a.excerpt}</p>
-                  <div className="flex flex-wrap gap-[7px]">
+                  <div className="hl-article-tags flex flex-wrap gap-[7px]">
                     {a.tags.map((t) => (
                       <span key={t} className="text-[.74rem] text-[#7a7565] bg-[#f4f0e6] border border-border px-[11px] py-1 rounded-full">
                         #{t}

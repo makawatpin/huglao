@@ -20,14 +20,14 @@ type PublishedPriceTableProps = {
 type PriceVehicle = (typeof PRICE_VEHICLES)[number];
 
 const CATEGORY_LABELS: Record<PriceCategory, string> = {
-  transfer: "ราคาเที่ยวเดียวและรับ–ส่ง",
+  transfer: "ตารางรับ–ส่งฉบับรวม",
   charter: "ราคาเหมารถเที่ยว",
 };
 
 const MOBILE_VEHICLE_LABELS: Record<PriceVehicleKey, string> = {
-  sedanSuv: "เก๋ง/SUV",
-  mpv: "MPV",
-  standardVan: "รถตู้",
+  sedanSuv: "เก๋ง/SUV เที่ยวลาว",
+  mpv: "MPV เที่ยวลาว",
+  standardVan: "รถตู้เที่ยวลาว",
 };
 
 const formatMobilePrice = (price: number) => `฿${price.toLocaleString("th-TH")}`;

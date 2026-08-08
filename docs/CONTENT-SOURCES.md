@@ -8,6 +8,7 @@
 |---|---|---|
 | นครหลวงเวียงจันทน์ | [Tourism Laos: Vientiane Capital](https://www.tourismlaos.org/central-provinces/vientiane-capital/) | ประตูชัย พระธาตุหลวง วัดสีสะเกด หอพระแก้ว และพื้นที่ริมแม่น้ำโขง |
 | น้ำงึม | [Tourism Laos: Vientiane Province](https://www.tourismlaos.org/central-provinces/vientiane-province/) และ [Nam Ngum 1 Reservoir Reopens](https://www.tourismlaos.org/2025/01/27/nam-ngum-1-reservoir-reopens-with-green-initiatives/) | ลักษณะอ่างเก็บน้ำและสถานะพื้นที่พักผ่อนน้ำงึม 1 |
+| น้ำเปี่ยนยอละปา | [Nam Pien Yorla Pa](https://nampienyorlapa.com/) และ [Adventure](https://nampienyorlapa.com/adventure/) | ที่ตั้งโดยสังเขป ฤดูกาล และกิจกรรมที่ผู้ให้บริการเผยแพร่ โดยให้ตรวจรายละเอียดปัจจุบันก่อนเดินทาง |
 | วังเวียง | [Tourism Laos: Vientiane Province](https://www.tourismlaos.org/central-provinces/vientiane-province/) | ภูเขาหินปูน แม่น้ำซอง ถ้ำ พายเรือ และกิจกรรมธรรมชาติ |
 | เมืองเฟืองและเส้นทางผสม | ข้อมูลเส้นทางที่ HUGLAO ยืนยัน | ใช้เฉพาะชื่อเส้นทางและแนวทางวางแผน ไม่ระบุเวลาเดินทาง จุดแวะ หรือราคาที่ไม่มีข้อมูลยืนยัน |
 

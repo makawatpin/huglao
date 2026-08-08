@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ArticleGrid from "@/components/ArticleGrid";
 import PageHero from "@/components/PageHero";
+import { mergeArticlePreviews } from "@/data/articles";
 import { getAllArticles } from "@/lib/contentful";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ArticlesPage() {
-  const articles = await getAllArticles();
+  const articles = mergeArticlePreviews(await getAllArticles());
 
   return (
     <main>

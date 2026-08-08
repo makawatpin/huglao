@@ -50,7 +50,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
         "@context": "https://schema.org",
         "@type": "Service",
         name: `รถพร้อมคนขับ ${route.name}`,
-        provider: { "@type": "Organization", name: SITE.name, url: SITE.website },
+        provider: { "@id": `${SITE.website}/#organization` },
         areaServed: "Laos",
         description: route.summary,
       }) }} />
@@ -63,9 +63,9 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
 
       <section className="bg-[#071d13] pb-[clamp(56px,8vw,92px)]">
         <div className="hl-shell">
-          <figure className="hl-mobile-media-card overflow-hidden rounded-[30px] border border-white/10 bg-[#0a2d20] shadow-[0_28px_80px_rgba(0,0,0,.24)]">
-            <div className="hl-mobile-media relative aspect-[4/3] min-h-[260px] sm:aspect-[16/8]">
-              <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 112px, 100vw" className="object-cover" priority />
+          <figure className="hl-mobile-media-card hl-detail-media-card overflow-hidden rounded-[30px] border border-white/10 bg-[#0a2d20] shadow-[0_28px_80px_rgba(0,0,0,.24)]">
+            <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/8]">
+              <Image src={media.src} alt={media.alt} fill sizes="100vw" className="object-cover" priority />
             </div>
             <figcaption className="hl-mobile-content flex flex-col gap-2 px-5 py-4 text-xs text-[#afbeb5] sm:flex-row sm:items-center sm:justify-between">
               <span>{media.alt}</span>

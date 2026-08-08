@@ -57,24 +57,46 @@ function getClient(): ReturnType<typeof createClient> | null {
   return createClient({ space, accessToken });
 }
 
+const ARTICLE_FALLBACK_COVERS = [
+  getMedia("vientianePatuxai").src,
+  getMedia("vangVieng").src,
+  getMedia("namNgum").src,
+  getMedia("muangFuang").src,
+  getMedia("khamsavathStation").src,
+] as const;
+
+function getContentfulAssetUrl(file: unknown): string | null {
+  if (!file || typeof file !== "object" || !("url" in file) || typeof file.url !== "string") {
+    return null;
+  }
+
+  const url = file.url.trim();
+  if (!url) return null;
+  return url.startsWith("//") ? `https:${url}` : url;
+}
+
+function getFallbackCover(searchText: string, slug: string): string {
+  if (searchText.includes("รถไฟ") || searchText.includes("train")) return getMedia("khamsavathStation").src;
+  if (searchText.includes("รถตู้") || searchText.includes("van")) return getMedia("vehicleVan").src;
+  if (searchText.includes("รถ") || searchText.includes("car")) return getMedia("vehicleSedan").src;
+  if (searchText.includes("วังเวียง") || searchText.includes("vang")) return getMedia("vangVieng").src;
+  if (searchText.includes("น้ำงึม") || searchText.includes("nam ngum")) return getMedia("namNgum").src;
+  if (searchText.includes("เมืองเฟือง") || searchText.includes("muang fuang")) return getMedia("muangFuang").src;
+
+  const hash = Array.from(slug).reduce((total, character) => total + character.codePointAt(0)!, 0);
+  return ARTICLE_FALLBACK_COVERS[hash % ARTICLE_FALLBACK_COVERS.length];
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function toArticle(entry: any): Article {
   const fields = entry.fields;
   const searchText = `${fields.slug ?? ""} ${fields.title ?? ""} ${fields.category ?? ""}`.toLocaleLowerCase("th-TH");
-  const cover = searchText.includes("รถไฟ") || searchText.includes("train")
-    ? getMedia("khamsavathStation").src
-    : searchText.includes("รถตู้") || searchText.includes("van")
-      ? getMedia("vehicleVan").src
-      : searchText.includes("รถ") || searchText.includes("car")
-        ? getMedia("vehicleSedan").src
-        : searchText.includes("วังเวียง") || searchText.includes("vang")
-          ? getMedia("vangVieng").src
-          : searchText.includes("น้ำงึม") || searchText.includes("nam ngum")
-            ? getMedia("namNgum").src
-            : getMedia("vientianePatuxai").src;
+  const slug = String(fields.slug ?? "");
+  const contentfulCover = getContentfulAssetUrl(fields.cover?.fields?.file);
+  const cover = contentfulCover ?? getFallbackCover(searchText, slug);
   return {
     title: fields.title ?? "",
-    slug: fields.slug ?? "",
+    slug,
     cover,
     author: fields.author ?? "",
     publishDate: fields.publishDate ?? "",

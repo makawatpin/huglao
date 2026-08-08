@@ -31,9 +31,15 @@ export default function ImageCreditsPage() {
 
           <div className="grid gap-6 md:grid-cols-2">
             {images.map((item) => (
-              <article key={item.src} className="hl-mobile-media-card overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-white shadow-[0_18px_45px_rgba(27,49,37,.06)]">
-                <div className="hl-mobile-media relative aspect-[4/3] bg-[#dfe8df] sm:aspect-[16/10]">
-                  <Image src={item.src} alt={item.alt} fill sizes="(max-width: 639px) 112px, 50vw" className="object-cover" />
+              <article key={item.src} className="hl-mobile-media-card overflow-hidden rounded-[20px] border border-[#ddd4c1] bg-white shadow-[0_18px_45px_rgba(27,49,37,.06)] sm:rounded-[26px]">
+                <div className="hl-mobile-media relative aspect-[16/10] bg-[#dfe8df]">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 639px) 112px, 50vw"
+                    className={item.src.includes("vehicle-") || item.src.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
+                  />
                 </div>
                 <div className="hl-mobile-content p-7">
                   <h2 className="font-serif-th text-2xl font-bold text-[#0a2d20]">{item.title}</h2>

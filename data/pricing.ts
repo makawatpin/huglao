@@ -11,9 +11,9 @@ export type PriceRow = {
 };
 
 export const PRICE_VEHICLES = [
-  { key: "sedanSuv", slug: "sedan-suv", name: "เก๋ง/SUV" },
-  { key: "mpv", slug: "mpv", name: "MPV" },
-  { key: "standardVan", slug: "van", name: "รถตู้" },
+  { key: "sedanSuv", slug: "sedan-suv", name: "เก๋ง/SUV เที่ยวลาว" },
+  { key: "mpv", slug: "mpv", name: "MPV เที่ยวลาว" },
+  { key: "standardVan", slug: "van", name: "รถตู้เที่ยวลาว" },
 ] as const satisfies ReadonlyArray<{ key: PriceVehicleKey; slug: string; name: string }>;
 
 export const TRANSFER_PRICE_ROWS: PriceRow[] = [
@@ -64,6 +64,38 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeName: "สนามบินวัตไต → สถานีรถไฟลาว–จีน",
     duration: "เที่ยวเดียว",
     prices: { sedanSuv: 900, mpv: 1000, standardVan: 1100 },
+  },
+  {
+    id: "vientiane-nam-pien-yorla-pa",
+    category: "transfer",
+    routeSlug: "vientiane-nam-pien-yorla-pa",
+    routeName: "จุดรับในเวียงจันทน์ → น้ำเปี่ยนยอละปา",
+    duration: "เที่ยวเดียว",
+    prices: { sedanSuv: 2000, mpv: 2300, standardVan: 2700 },
+  },
+  {
+    id: "vientiane-nam-ngum-transfer",
+    category: "transfer",
+    routeSlug: "vientiane-nam-ngum",
+    routeName: "จุดรับในเวียงจันทน์ → น้ำงึม",
+    duration: "เที่ยวเดียว",
+    prices: { sedanSuv: 2000, mpv: 2300, standardVan: 2700 },
+  },
+  {
+    id: "vientiane-vang-vieng-transfer",
+    category: "transfer",
+    routeSlug: "vientiane-vang-vieng",
+    routeName: "จุดรับในเวียงจันทน์ → วังเวียง",
+    duration: "เที่ยวเดียว",
+    prices: { sedanSuv: 2400, mpv: 2800, standardVan: 3300 },
+  },
+  {
+    id: "vientiane-muang-feuang-transfer",
+    category: "transfer",
+    routeSlug: "vientiane-muang-feuang",
+    routeName: "จุดรับในเวียงจันทน์ → เมืองเฟือง",
+    duration: "เที่ยวเดียว",
+    prices: { sedanSuv: 2800, mpv: 3200, standardVan: 3800 },
   },
 ];
 
