@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { PICKUP_POINTS, READY_SERVICES, ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
+import { trackEvent } from "@/lib/analytics";
 
 const fieldClass =
   "mt-2 min-h-12 w-full rounded-[14px] border border-[#d8d0be] bg-white px-4 py-3 text-[#17231c] outline-none transition focus:border-[#9b711c] focus:ring-2 focus:ring-[#d8af4a]/25";
@@ -9,6 +10,13 @@ const fieldClass =
 export default function QuoteForm() {
   const [summary, setSummary] = useState("");
   const [copied, setCopied] = useState(false);
+  const hasTrackedStart = useRef(false);
+
+  function trackQuoteStart() {
+    if (hasTrackedStart.current) return;
+    hasTrackedStart.current = true;
+    trackEvent("quote_started", { form_name: "detailed_quote" });
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,12 +45,18 @@ export default function QuoteForm() {
 
     setSummary(message);
     setCopied(false);
+    trackEvent("quote_generated", {
+      form_name: "detailed_quote",
+      vehicle: String(form.get("vehicle") || "ไม่ระบุ"),
+      route: String(form.get("route") || "ไม่ระบุ"),
+    });
   }
 
   async function copySummary() {
     try {
       await navigator.clipboard.writeText(summary);
       setCopied(true);
+      trackEvent("quote_summary_copied", { form_name: "detailed_quote" });
     } catch {
       setCopied(false);
     }
@@ -50,7 +64,7 @@ export default function QuoteForm() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
-      <form onSubmit={handleSubmit} className="rounded-[30px] border border-[#ddd4c1] bg-white p-[clamp(24px,4vw,44px)] shadow-[0_22px_70px_rgba(27,49,37,.07)]">
+      <form onSubmit={handleSubmit} onFocusCapture={trackQuoteStart} className="rounded-[30px] border border-[#ddd4c1] bg-white p-[clamp(24px,4vw,44px)] shadow-[0_22px_70px_rgba(27,49,37,.07)]">
         <div className="grid gap-5 md:grid-cols-2">
           <label className="text-sm font-semibold text-[#0a2d20]">ชื่อผู้ติดต่อ *<input required name="contactName" className={fieldClass} /></label>
           <label className="text-sm font-semibold text-[#0a2d20]">เบอร์โทรหรือ LINE *<input required name="contactChannel" className={fieldClass} /></label>
@@ -109,7 +123,7 @@ export default function QuoteForm() {
           <>
             <textarea readOnly value={summary} rows={18} className="mt-5 w-full resize-none rounded-[18px] border border-white/10 bg-black/15 p-5 text-sm leading-7 text-[#edf1ed]" />
             <button type="button" onClick={copySummary} className="mt-4 min-h-12 w-full rounded-full border border-white/20 font-semibold hover:bg-white/10">{copied ? "คัดลอกแล้ว" : "คัดลอกข้อความสรุป"}</button>
-            <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="mt-3 flex min-h-12 items-center justify-center rounded-full bg-[#d8af4a] px-6 font-bold text-[#092217] hover:bg-[#efd276]">เปิด LINE OA</a>
+            <a href={SITE.lineUrl} data-analytics-location="quote_summary" target="_blank" rel="noopener noreferrer" className="mt-3 flex min-h-12 items-center justify-center rounded-full bg-[#d8af4a] px-6 font-bold text-[#092217] hover:bg-[#efd276]">เปิด LINE OA</a>
             <p className="mt-4 text-xs leading-6 text-[#9fb0a5]">คัดลอกสรุปแล้ววางในแชต LINE OA เพื่อส่งคำขอให้ทีม HUGLAO</p>
           </>
         ) : (
@@ -119,3 +133,4 @@ export default function QuoteForm() {
     </div>
   );
 }
+
