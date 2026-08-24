@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import LineCta from "@/components/LineCta";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { getMedia } from "@/data/media";
@@ -54,13 +53,6 @@ export default function NamPienYorlaPaArticlePage() {
 
   return (
     <article className="bg-white">
-      <BreadcrumbStructuredData
-        items={[
-          { name: "หน้าแรก", href: "/" },
-          { name: "บทความ", href: "/articles" },
-          { name: "น้ำเปี่ยนยอละปา", href: ARTICLE_PATH },
-        ]}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -6,7 +6,7 @@ import { MEDIA_LIBRARY } from "@/data/media";
 export const metadata: Metadata = {
   title: "ที่มาและใบอนุญาตภาพ",
   description: "ที่มา ผู้สร้าง และใบอนุญาตของภาพประกอบที่ HUGLAO นำมาใช้บนเว็บไซต์",
-  alternates: { canonical: "/image-credits" },
+  alternates: { canonical: "/image-credits/" },
 };
 
 export default function ImageCreditsPage() {

@@ -83,6 +83,16 @@ const organizationSchema = {
   },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE.website}/#website`,
+  name: SITE.name,
+  url: `${SITE.website}/`,
+  inLanguage: "th",
+  publisher: { "@id": `${SITE.website}/#organization` },
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="th" className={`${notoSerifThai.variable} ${notoSansThai.variable}`}>
@@ -91,6 +101,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <SiteHeader />
         <div id="main-content" className="pb-[74px] md:pb-0">

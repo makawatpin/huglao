@@ -11,7 +11,7 @@ import { getCurrentPriceRows, getPriceVehicle } from "@/data/pricing";
 export const metadata: Metadata = {
   title: "จองรถเที่ยวลาวพร้อมคนขับ",
   description: "จองรถเที่ยวลาวพร้อมคนขับ เลือกได้ทั้งรถเก๋งและ SUV เที่ยวลาว รถ MPV เที่ยวลาว รถตู้เที่ยวลาว รถมินิบัสและรถบัสเที่ยวลาว พร้อมตรวจราคาก่อนยืนยัน",
-  alternates: { canonical: "/car-with-driver" },
+  alternates: { canonical: "/car-with-driver/" },
 };
 
 export default function CarWithDriverPage() {

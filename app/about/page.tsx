@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "เกี่ยวกับ HUGLAO และช่องทางติดต่อ",
   description:
     "รู้จัก HUGLAO ผู้ช่วยประสานรถพร้อมคนขับเที่ยวลาวสำหรับทริปส่วนตัว ตรวจสอบวิธีทำงาน ข้อมูลบริษัท และติดต่อขอราคารถจากเวียงจันทน์ผ่าน LINE โทรศัพท์ หรืออีเมล",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about/" },
   openGraph: {
     title: "เกี่ยวกับ HUGLAO | รถพร้อมคนขับเที่ยวลาว",
     description: "รู้จักทีม วิธีทำงาน ข้อมูลบริษัท และช่องทางติดต่อ HUGLAO สำหรับวางแผนรถเที่ยวลาวแบบส่วนตัว",

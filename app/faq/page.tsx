@@ -6,7 +6,7 @@ import { HOME_FAQS, PICKUP_POINTS } from "@/data/site";
 export const metadata: Metadata = {
   title: "คำถามที่พบบ่อย",
   description: "คำตอบเรื่องรถพร้อมคนขับ จุดรับ ประเภทรถ ราคา และขั้นตอนขอราคากับ HUGLAO",
-  alternates: { canonical: "/faq" },
+  alternates: { canonical: "/faq/" },
 };
 
 const FAQS = [

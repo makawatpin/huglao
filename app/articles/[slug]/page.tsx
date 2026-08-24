@@ -4,7 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { getAllArticles, getArticleBySlug } from "@/lib/contentful";
+
+const ARTICLE_SEO_TITLES: Record<string, string> = {
+  "car-rental-laos": "เช่ารถพร้อมคนขับเที่ยวลาว: วิธีเลือกและเช็กราคา",
+};
 
 /** จับคู่แท็กหมวดหมู่บทความกับหน้าบริการที่เกี่ยวข้อง สำหรับ internal link */
 function getRelatedServices(tags: string[]): { label: string; href: string }[] {
@@ -17,10 +22,21 @@ function getRelatedServices(tags: string[]): { label: string; href: string }[] {
   if (tags.some((t) => t.includes("รถตู้"))) {
     return [
       { label: "รถตู้เที่ยวลาวพร้อมคนขับ", href: "/van-laos" },
-      { label: "ดูราคาและรายละเอียดรถตู้", href: "/car-with-driver/van" },
     ];
   }
   return [{ label: "ดูรถพร้อมคนขับทุกประเภท", href: "/car-with-driver" }];
+}
+
+function normalizeArticleHref(value: unknown): string {
+  const href = typeof value === "string" ? value : "#";
+  const path = href.replace(/^https:\/\/(?:www\.)?huglao\.com/i, "");
+  if (path === "/van-vip/" || path === "/car-with-driver/van/" || path === "/#vans") {
+    return "/van-laos/";
+  }
+  if (path === "/articles.html#a/van-rental-laos") {
+    return "/articles/van-rental-laos/";
+  }
+  return href.replace(/^https:\/\/huglao\.com/i, "https://www.huglao.com");
 }
 
 export async function generateStaticParams() {
@@ -44,12 +60,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   if (!article) return {};
+  const seoTitle = ARTICLE_SEO_TITLES[article.slug] ?? article.title;
   return {
-    title: `${article.title} | HUGLAO`,
+    title: seoTitle,
     description: article.excerpt,
+    alternates: { canonical: `/articles/${article.slug}/` },
     openGraph: {
-      title: article.title,
+      title: `${seoTitle} | HUGLAO`,
       description: article.excerpt,
+      url: `/articles/${article.slug}/`,
       images: article.cover ? [article.cover] : undefined,
       type: "article",
     },
@@ -91,7 +110,7 @@ const richTextOptions = {
     ),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
-      <a href={node.data.uri} className="text-gold-dark font-semibold underline hover:text-gold">
+      <a href={normalizeArticleHref(node.data.uri)} className="text-gold-dark font-semibold underline hover:text-gold">
         {children}
       </a>
     ),
@@ -117,6 +136,13 @@ export default async function ArticlePage({
 
   return (
     <article>
+      <BreadcrumbStructuredData
+        items={[
+          { name: "หน้าแรก", href: "/" },
+          { name: "บทความ", href: "/articles/" },
+          { name: article.title, href: `/articles/${article.slug}/` },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -130,11 +156,11 @@ export default async function ArticlePage({
             publisher: {
               "@type": "Organization",
               name: "บริษัท ฮักลาว กรุ๊ป จำกัด",
-              logo: { "@type": "ImageObject", url: "https://huglao.com/assets/huglao-emblem.png" },
+              logo: { "@type": "ImageObject", url: "https://www.huglao.com/assets/huglao-emblem.png" },
             },
             datePublished: publishedIso,
             dateModified: publishedIso,
-            mainEntityOfPage: `https://huglao.com/articles/${article.slug}`,
+            mainEntityOfPage: `https://www.huglao.com/articles/${article.slug}/`,
           }),
         }}
       />

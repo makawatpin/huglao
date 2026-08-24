@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
@@ -17,11 +16,11 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: PAGE_PATH },
+  alternates: { canonical: `${PAGE_PATH}/` },
   openGraph: {
     title: `${TITLE} | HUGLAO`,
     description: DESCRIPTION,
-    url: PAGE_PATH,
+    url: `${PAGE_PATH}/`,
     type: "website",
     images: [{ url: getMedia("vehicleVan").src, alt: getMedia("vehicleVan").alt }],
   },
@@ -87,13 +86,6 @@ export default function VanLaosPage() {
           ]),
         }}
       />
-      <BreadcrumbStructuredData
-        items={[
-          { name: "หน้าแรก", href: "/" },
-          { name: "รถตู้เที่ยวลาว", href: PAGE_PATH },
-        ]}
-      />
-
       <PageHero
         eyebrow="Van travel in Laos"
         title="รถตู้เที่ยวลาวพร้อมคนขับ"
@@ -110,8 +102,8 @@ export default function VanLaosPage() {
             <div className="flex flex-col justify-center p-6 sm:p-9">
               <h2 id="van-options-title" className="font-serif-th text-3xl font-bold">รถตู้เที่ยวลาว</h2>
               <p className="mt-4 leading-8 text-[#c8d3cc]">เหมาะสำหรับครอบครัว กลุ่มเพื่อน หรือคณะที่ต้องการเดินทางร่วมกัน ทีมงานจะตรวจจำนวนผู้โดยสาร สัมภาระ ผังที่นั่ง และรถที่ว่างก่อนเสนอราคา</p>
-              <Link href="/car-with-driver/van" className="mt-6 inline-flex w-fit rounded-full border border-[#d8af4a] px-5 py-2.5 text-sm font-bold text-[#efd276] transition hover:bg-[#d8af4a] hover:text-[#071d13]">
-                ดูรายละเอียดรถตู้เที่ยวลาว →
+              <Link href="#pricing" className="mt-6 inline-flex w-fit rounded-full border border-[#d8af4a] px-5 py-2.5 text-sm font-bold text-[#efd276] transition hover:bg-[#d8af4a] hover:text-[#071d13]">
+                ดูราคารถตู้เที่ยวลาว →
               </Link>
             </div>
           </article>

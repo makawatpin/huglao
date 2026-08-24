@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...STATIC_PATHS.map((path) => ({
       url: url(path),
     })),
-    ...VEHICLE_GROUPS.map((vehicle) => ({
+    ...VEHICLE_GROUPS.filter((vehicle) => vehicle.slug !== "van").map((vehicle) => ({
       url: url(`/car-with-driver/${vehicle.slug}`),
     })),
     ...ROUTE_GROUPS.map((route) => ({

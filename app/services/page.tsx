@@ -9,7 +9,7 @@ import { getMedia } from "@/data/media";
 export const metadata: Metadata = {
   title: "บริการอื่น ๆ",
   description: "บริการเสริมที่พร้อมตรวจและประสานสำหรับทริปลาว ได้แก่ รถไฟ ไกด์ท้องถิ่น วางแผนทริป และบัตรผ่านแดนชั่วคราว",
-  alternates: { canonical: "/services" },
+  alternates: { canonical: "/services/" },
 };
 
 export default function ServicesPage() {

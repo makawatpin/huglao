@@ -20,8 +20,13 @@ function getVehicle(slug: string) {
 }
 
 function getVehicleSeoTitle(slug: string, name: string) {
-  if (slug === "van") return "รถตู้เที่ยวลาวพร้อมคนขับ";
-  return `${name} พร้อมคนขับเที่ยวลาว`;
+  const titles: Record<string, string> = {
+    "sedan-suv": "รถเก๋งและ SUV พร้อมคนขับเที่ยวลาว",
+    mpv: "รถ MPV พร้อมคนขับเที่ยวลาว",
+    van: "รถตู้เที่ยวลาวพร้อมคนขับ",
+    "minibus-bus": "รถมินิบัสและรถบัสพร้อมคนขับเที่ยวลาว",
+  };
+  return titles[slug] ?? `${name} พร้อมคนขับ`;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -33,11 +38,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: seoTitle,
     description,
-    alternates: { canonical: `/car-with-driver/${vehicle.slug}` },
+    alternates: { canonical: `/car-with-driver/${vehicle.slug}/` },
     openGraph: {
       title: `${seoTitle} | HUGLAO`,
       description,
-      url: `/car-with-driver/${vehicle.slug}`,
+      url: `/car-with-driver/${vehicle.slug}/`,
       images: [{ url: getMedia(vehicle.mediaIds[0]).src, alt: getMedia(vehicle.mediaIds[0]).alt }],
     },
   };

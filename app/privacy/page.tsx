@@ -5,7 +5,7 @@ import { SITE } from "@/data/site";
 export const metadata: Metadata = {
   title: "นโยบายความเป็นส่วนตัว",
   description: "แนวทางการใช้ข้อมูลที่ลูกค้าส่งเพื่อขอราคากับ HUGLAO",
-  alternates: { canonical: "/privacy" },
+  alternates: { canonical: "/privacy/" },
 };
 
 export default function PrivacyPage() {

@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 export const metadata: Metadata = {
   title: "เงื่อนไขการใช้บริการ",
   description: "ราคา เวลาบริการ ค่าเกินเวลา มัดจำ การยืนยันรถ และขอบเขตบริการของ HUGLAO",
-  alternates: { canonical: "/terms" },
+  alternates: { canonical: "/terms/" },
 };
 
 const TERMS = [

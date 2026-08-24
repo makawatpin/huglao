@@ -5,7 +5,7 @@ import QuoteForm from "@/components/QuoteForm";
 export const metadata: Metadata = {
   title: "ขอราคารถพร้อมคนขับ",
   description: "ส่งวันเดินทาง จุดรับ เส้นทาง จำนวนผู้โดยสาร สัมภาระ และประเภทรถ เพื่อขอราคาจาก HUGLAO",
-  alternates: { canonical: "/quote" },
+  alternates: { canonical: "/quote/" },
 };
 
 export default function QuotePage() {

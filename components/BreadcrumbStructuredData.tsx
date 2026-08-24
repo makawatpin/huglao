@@ -1,6 +1,8 @@
+import { SITE } from "@/data/site";
+
 export interface BreadcrumbItem {
   name: string;
-  /** absolute URL หรือ path ที่ขึ้นต้นด้วย "/" (จะเติม https://huglao.com ให้อัตโนมัติ) */
+  /** absolute URL หรือ path ที่ขึ้นต้นด้วย "/" */
   href: string;
 }
 
@@ -16,7 +18,11 @@ export default function BreadcrumbStructuredData({ items }: { items: BreadcrumbI
             "@type": "ListItem",
             position: i + 1,
             name: item.name,
-            item: item.href.startsWith("http") ? item.href : `https://huglao.com${item.href}`,
+            item: item.href
+              ? item.href.startsWith("http")
+                ? item.href
+                : `${SITE.website}${item.href.endsWith("/") ? item.href : `${item.href}/`}`
+              : undefined,
           })),
         }),
       }}

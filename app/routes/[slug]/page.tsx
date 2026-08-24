@@ -23,10 +23,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const route = getRoute(slug);
   if (!route) return {};
+  const title = `รถพร้อมคนขับ ${route.name}`;
+  const description = `${route.summary} เลือกประเภทรถและขอราคาจาก HUGLAO`;
   return {
-    title: `รถพร้อมคนขับ ${route.name}`,
-    description: `${route.summary} เลือกประเภทรถและขอราคาจาก HUGLAO`,
-    alternates: { canonical: `/routes/${route.slug}` },
+    title,
+    description,
+    alternates: { canonical: `/routes/${route.slug}/` },
+    openGraph: {
+      title: `${title} | HUGLAO`,
+      description,
+      url: `/routes/${route.slug}/`,
+      images: [{ url: getMedia(route.mediaId).src, alt: getMedia(route.mediaId).alt }],
+    },
   };
 }
 

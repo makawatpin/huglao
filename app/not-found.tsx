@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "ไม่พบหน้า",
+  description: "ไม่พบหน้าที่คุณกำลังค้นหา กลับไปดูบริการรถพร้อมคนขับ เส้นทาง หรือบทความของ HUGLAO",
+  robots: { index: false, follow: true },
+  alternates: { canonical: null },
+};
 
 export default function NotFound() {
   return (

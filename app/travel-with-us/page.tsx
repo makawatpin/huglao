@@ -11,7 +11,7 @@ import { PICKUP_POINTS, ROUTE_GROUPS } from "@/data/site";
 export const metadata: Metadata = {
   title: "เที่ยวลาวกับเรา | เส้นทางจากเวียงจันทน์",
   description: "เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป เลือกเส้นทางจากเวียงจันทน์ เวลา จุดแวะ และจังหวะการเดินทางตามแบบของคุณ",
-  alternates: { canonical: "/travel-with-us" },
+  alternates: { canonical: "/travel-with-us/" },
 };
 
 const QUOTE_DETAILS = [

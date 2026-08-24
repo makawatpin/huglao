@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -10,6 +11,11 @@ type PageHeroProps = {
 export default function PageHero({ eyebrow, title, description, breadcrumbs }: PageHeroProps) {
   return (
     <section className="hl-grid-pattern relative overflow-hidden bg-[#071d13] px-5 pb-[clamp(48px,7vw,92px)] pt-[clamp(104px,12vw,152px)] text-white">
+      {breadcrumbs && (
+        <BreadcrumbStructuredData
+          items={breadcrumbs.map((item) => ({ name: item.label, href: item.href ?? "" }))}
+        />
+      )}
       <div className="pointer-events-none absolute -right-24 top-20 h-80 w-80 rounded-full border border-[#d8af4a]/15 bg-[#d8af4a]/[.04]" />
       <div className="pointer-events-none absolute right-20 top-40 h-32 w-32 rounded-full border border-white/10" />
       <div className="relative mx-auto max-w-[1240px]">

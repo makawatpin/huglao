@@ -1,0 +1,25 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "huglao.com" }],
+      "destination": "https://www.huglao.com/:path*",
+      "permanent": true
+    },
+    { "source": "/van-vip", "destination": "/van-laos/", "permanent": true },
+    { "source": "/van-vip/", "destination": "/van-laos/", "permanent": true },
+    { "source": "/car-with-driver/van", "destination": "/van-laos/", "permanent": true },
+    { "source": "/car-with-driver/van/", "destination": "/van-laos/", "permanent": true },
+    { "source": "/articles.html", "destination": "/articles/", "permanent": true },
+    { "source": "/routes", "destination": "/travel-with-us/", "permanent": true },
+    { "source": "/routes/", "destination": "/travel-with-us/", "permanent": true },
+    { "source": "/laos-travel", "destination": "/travel-with-us/", "permanent": true },
+    { "source": "/laos-travel/", "destination": "/travel-with-us/", "permanent": true },
+    { "source": "/vientiane", "destination": "/routes/vientiane-city/", "permanent": true },
+    { "source": "/vangvieng", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
+    { "source": "/muangfeuang", "destination": "/routes/vientiane-muang-feuang/", "permanent": true },
+    { "source": "/van/vientiane", "destination": "/routes/vientiane-city/", "permanent": true },
+    { "source": "/van/vangvieng", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
+    { "source": "/van/muangfeuang", "destination": "/routes/vientiane-muang-feuang/", "permanent": true }
+  ]
+}

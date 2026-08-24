@@ -24,7 +24,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: service.name,
     description: service.summary,
-    alternates: { canonical: `/services/${service.slug}` },
+    alternates: { canonical: `/services/${service.slug}/` },
+    openGraph: {
+      title: `${service.name} | HUGLAO`,
+      description: service.summary,
+      url: `/services/${service.slug}/`,
+      images: [{ url: getMedia(service.mediaId).src, alt: getMedia(service.mediaId).alt }],
+    },
   };
 }
 

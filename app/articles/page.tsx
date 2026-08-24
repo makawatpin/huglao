@@ -7,7 +7,7 @@ import { getAllArticles } from "@/lib/contentful";
 export const metadata: Metadata = {
   title: "บทความเตรียมเที่ยวลาว",
   description: "บทความเตรียมตัวเที่ยวลาว วิธีเดินทาง เส้นทางจากเวียงจันทน์ และการเลือกรถให้เหมาะกับทริปจาก HUGLAO",
-  alternates: { canonical: "/articles" },
+  alternates: { canonical: "/articles/" },
 };
 
 export default async function ArticlesPage() {
