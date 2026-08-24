@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import BottomTabBar from "@/components/BottomTabBar";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { SITE } from "@/data/site";
@@ -112,7 +113,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <SiteFooter />
         </div>
         <BottomTabBar />
+        <GoogleAnalytics />
       </body>
     </html>
   );
 }
+
