@@ -23,11 +23,11 @@ const notoSansThai = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.website),
-    title: {
-    default: "HUGLAO | รถพร้อมคนขับเที่ยวลาว",
+  title: {
+    default: "รถพร้อมคนขับเที่ยวลาว ทริปส่วนตัว | HUGLAO",
     template: "%s | HUGLAO",
   },
-  description: "เที่ยวลาวในแบบของคุณด้วยรถพร้อมคนขับ เลือกปลายทาง เวลา และจังหวะการเดินทางเอง ติดต่อขอราคาผ่าน LINE OA",
+  description: "HUGLAO ช่วยจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์สำหรับทริปส่วนตัวในลาว เลือกเส้นทาง เวลา และจุดแวะได้ตามแผนของคุณ",
   applicationName: SITE.name,
   keywords: [
     "รถพร้อมคนขับลาว",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "HUGLAO | เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป",
-    description: "รถพร้อมคนขับแบบส่วนตัว เลือกเส้นทางและเวลาได้เอง",
+    title: "รถพร้อมคนขับเที่ยวลาว ทริปส่วนตัว | HUGLAO",
+    description: "บริการตัวกลางจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ เลือกเส้นทาง เวลา และจุดแวะได้ตามแผนของคุณ",
     url: SITE.website,
     siteName: SITE.name,
     locale: "th_TH",
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HUGLAO | รถพร้อมคนขับเที่ยวลาว",
-    description: "เที่ยวตามแผนและจังหวะของคุณ",
+    title: "รถพร้อมคนขับเที่ยวลาว ทริปส่วนตัว | HUGLAO",
+    description: "เลือกเส้นทาง เวลา และจุดแวะได้ตามแผนของคุณ",
     images: ["/og.png"],
   },
 };
@@ -118,4 +118,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+
 

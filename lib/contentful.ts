@@ -65,24 +65,18 @@ const ARTICLE_FALLBACK_COVERS = [
   getMedia("khamsavathStation").src,
 ] as const;
 
-const ARTICLE_CONTENT_OVERRIDES: Record<string, { title: string; excerpt: string }> = {
-  "car-rental-laos": {
-    title: "ก่อนเช่ารถพร้อมคนขับเที่ยวลาว: วิธีเลือกและเช็กราคา",
-    excerpt: "คู่มือเลือกรถพร้อมคนขับเที่ยวลาว เปรียบเทียบประเภทรถ ราคา และข้อมูลที่ควรตรวจสอบก่อนขอข้อเสนอจาก HUGLAO",
-  },
-  "laos-currency-and-payment-guide": {
-    title: "เที่ยวลาวใช้เงินอะไร? คู่มือเงินกีบและ LAO QR ปี 2026",
-    excerpt: "เที่ยวลาวใช้เงินอะไร รวมวิธีใช้เงินกีบ LAO QR การแลกเงิน และข้อควรระวังเรื่องการชำระเงิน อัปเดตปี 2026",
-  },
-  "laos-high-speed-train-guide": {
-    title: "รถไฟลาว–จีน: วิธีจองตั๋วและวางแผนเที่ยว",
-    excerpt: "คู่มือรถไฟลาว–จีน วิธีจองตั๋ว การเตรียมตัว และการวางแผนเดินทางระหว่างเวียงจันทน์ วังเวียง และหลวงพระบาง",
-  },
-  "van-rental-laos": {
-    title: "เช่ารถตู้เที่ยวลาว: เอกสาร ราคา และข้อควรรู้",
-    excerpt: "คู่มือเลือกรถตู้เที่ยวลาว เอกสาร ราคาโดยประมาณ และข้อมูลที่ควรตรวจสอบกับผู้ให้บริการก่อนยืนยันการเดินทาง",
-  },
-};
+/**
+ * บทความเดิมที่ถอนออกเพราะมีข้อมูลราคา กฎหมาย หรือคำกล่าวอ้างที่ยังไม่ได้ยืนยัน
+ * Vercel จะตอบ 308 ไปยังหน้าทดแทนตามรายการใน vercel.json
+ */
+export const RETIRED_ARTICLE_REDIRECTS = {
+  "car-rental-laos": "/car-with-driver/",
+  "laos-currency-and-payment-guide": "/articles/",
+  "laos-high-speed-train-guide": "/services/train-ticket/",
+  "van-rental-laos": "/van-laos/",
+} as const;
+
+const RETIRED_ARTICLE_SLUGS = new Set<string>(Object.keys(RETIRED_ARTICLE_REDIRECTS));
 
 function getContentfulAssetUrl(file: unknown): string | null {
   if (!file || typeof file !== "object" || !("url" in file) || typeof file.url !== "string") {
@@ -111,11 +105,10 @@ function toArticle(entry: any): Article {
   const fields = entry.fields;
   const searchText = `${fields.slug ?? ""} ${fields.title ?? ""} ${fields.category ?? ""}`.toLocaleLowerCase("th-TH");
   const slug = String(fields.slug ?? "");
-  const contentOverride = ARTICLE_CONTENT_OVERRIDES[slug];
   const contentfulCover = getContentfulAssetUrl(fields.cover?.fields?.file);
   const cover = contentfulCover ?? getFallbackCover(searchText, slug);
   return {
-    title: contentOverride?.title ?? fields.title ?? "",
+    title: fields.title ?? "",
     slug,
     cover,
     author: fields.author ?? "",
@@ -124,7 +117,7 @@ function toArticle(entry: any): Article {
       .split(",")
       .map((t: string) => t.trim())
       .filter(Boolean),
-    excerpt: contentOverride?.excerpt ?? fields.excerpt ?? "",
+    excerpt: fields.excerpt ?? "",
     content: fields.content,
   };
 }
@@ -145,6 +138,7 @@ export async function getAllArticles(): Promise<Article[]> {
     return res.items
       .map(toArticle)
       .filter((article) => article.slug.trim() && article.title.trim())
+      .filter((article) => !RETIRED_ARTICLE_SLUGS.has(article.slug.trim()))
       .filter((article) => {
         const slugKey = article.slug.trim().toLocaleLowerCase("en-US");
         const titleKey = article.title.trim().replace(/\s+/g, " ").toLocaleLowerCase("th-TH");
@@ -160,6 +154,8 @@ export async function getAllArticles(): Promise<Article[]> {
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  if (RETIRED_ARTICLE_SLUGS.has(slug.trim())) return null;
+
   const client = getClient();
   if (!client) return null;
 
@@ -176,3 +172,4 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     return null;
   }
 }
+
