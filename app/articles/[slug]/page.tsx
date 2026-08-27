@@ -5,11 +5,7 @@ import { notFound } from "next/navigation";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
-import { getAllArticles, getArticleBySlug } from "@/lib/contentful";
-
-const ARTICLE_SEO_TITLES: Record<string, string> = {
-  "car-rental-laos": "เช่ารถพร้อมคนขับเที่ยวลาว: วิธีเลือกและเช็กราคา",
-};
+import { getAllArticles, getArticleBySlug, RETIRED_ARTICLE_REDIRECTS } from "@/lib/contentful";
 
 /** จับคู่แท็กหมวดหมู่บทความกับหน้าบริการที่เกี่ยวข้อง สำหรับ internal link */
 function getRelatedServices(tags: string[]): { label: string; href: string }[] {
@@ -34,7 +30,12 @@ function normalizeArticleHref(value: unknown): string {
     return "/van-laos/";
   }
   if (path === "/articles.html#a/van-rental-laos") {
-    return "/articles/van-rental-laos/";
+    return RETIRED_ARTICLE_REDIRECTS["van-rental-laos"];
+  }
+  for (const [slug, destination] of Object.entries(RETIRED_ARTICLE_REDIRECTS)) {
+    if (path === `/articles/${slug}` || path === `/articles/${slug}/`) {
+      return destination;
+    }
   }
   return href.replace(/^https:\/\/huglao\.com/i, "https://www.huglao.com");
 }
@@ -60,7 +61,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   if (!article) return {};
-  const seoTitle = ARTICLE_SEO_TITLES[article.slug] ?? article.title;
+  const seoTitle = article.title;
   return {
     title: seoTitle,
     description: article.excerpt,
@@ -240,3 +241,4 @@ export default async function ArticlePage({
     </article>
   );
 }
+

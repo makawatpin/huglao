@@ -16,10 +16,25 @@
     { "source": "/laos-travel", "destination": "/travel-with-us/", "permanent": true },
     { "source": "/laos-travel/", "destination": "/travel-with-us/", "permanent": true },
     { "source": "/vientiane", "destination": "/routes/vientiane-city/", "permanent": true },
+    { "source": "/vientiane/", "destination": "/routes/vientiane-city/", "permanent": true },
     { "source": "/vangvieng", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
+    { "source": "/vangvieng/", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
     { "source": "/muangfeuang", "destination": "/routes/vientiane-muang-feuang/", "permanent": true },
+    { "source": "/muangfeuang/", "destination": "/routes/vientiane-muang-feuang/", "permanent": true },
     { "source": "/van/vientiane", "destination": "/routes/vientiane-city/", "permanent": true },
+    { "source": "/van/vientiane/", "destination": "/routes/vientiane-city/", "permanent": true },
     { "source": "/van/vangvieng", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
-    { "source": "/van/muangfeuang", "destination": "/routes/vientiane-muang-feuang/", "permanent": true }
+    { "source": "/van/vangvieng/", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
+    { "source": "/van/muangfeuang", "destination": "/routes/vientiane-muang-feuang/", "permanent": true },
+    { "source": "/van/muangfeuang/", "destination": "/routes/vientiane-muang-feuang/", "permanent": true },
+    { "source": "/articles/car-rental-laos", "destination": "/car-with-driver/", "permanent": true },
+    { "source": "/articles/car-rental-laos/", "destination": "/car-with-driver/", "permanent": true },
+    { "source": "/articles/laos-currency-and-payment-guide", "destination": "/articles/", "permanent": true },
+    { "source": "/articles/laos-currency-and-payment-guide/", "destination": "/articles/", "permanent": true },
+    { "source": "/articles/laos-high-speed-train-guide", "destination": "/services/train-ticket/", "permanent": true },
+    { "source": "/articles/laos-high-speed-train-guide/", "destination": "/services/train-ticket/", "permanent": true },
+    { "source": "/articles/van-rental-laos", "destination": "/van-laos/", "permanent": true },
+    { "source": "/articles/van-rental-laos/", "destination": "/van-laos/", "permanent": true }
   ]
 }
+
