@@ -31,7 +31,13 @@ export const VEHICLE_GROUPS = [
     capacity: "ยืนยันตามรถที่ว่าง",
     luggage: "ตรวจตามจำนวนและขนาดกระเป๋า",
     suitableFor: "ทริปส่วนตัวและกลุ่มขนาดเล็ก",
-    mediaIds: ["vehicleSuv", "vehicleSedan"],
+    mediaIds: [
+      "vehicleSuv",
+      "vehicleSedan",
+      "huglaoSuvInteriorDashboard",
+      "huglaoSuvFrontSeats",
+      "huglaoSuvRearSeats",
+    ],
     status: "available",
   },
   {
