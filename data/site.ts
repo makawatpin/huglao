@@ -15,8 +15,8 @@ export const SITE = {
 export const MAIN_NAV = [
   { href: "/", label: "หน้าแรก" },
   { href: "/car-with-driver", label: "จองรถเที่ยวลาว" },
-  { href: "/travel-with-us", label: "เที่ยวลาวกับเรา" },
   { href: "/van-laos", label: "รถตู้เที่ยวลาว" },
+  { href: "/travel-with-us", label: "เที่ยวลาวกับเรา" },
   { href: "/services", label: "บริการอื่น ๆ" },
   { href: "/articles", label: "บทความ" },
   { href: "/about", label: "เกี่ยวกับและติดต่อ" },
@@ -62,8 +62,6 @@ export const VEHICLE_GROUPS = [
     mediaIds: [
       "vehicleVan",
       "huglaoVansBalloon",
-      "huglaoVanFront",
-      "huglaoWhiteVan",
       "huglaoDriverSilverVan",
       "huglaoDriverWhiteVan",
     ],

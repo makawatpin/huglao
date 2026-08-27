@@ -34,9 +34,7 @@ const FEATURED_ROUTE_SLUGS = [
 ] as const;
 
 const VAN_GALLERY_IDS = [
-  "vehicleVan",
-  "huglaoVanFront",
-  "huglaoWhiteVan",
+  "huglaoVansBalloon",
   "huglaoDriverSilverVan",
   "huglaoDriverWhiteVan",
 ] as const;
@@ -64,7 +62,7 @@ export default function VanLaosPage() {
   const routes = ROUTE_GROUPS.filter((route) =>
     FEATURED_ROUTE_SLUGS.includes(route.slug as (typeof FEATURED_ROUTE_SLUGS)[number]),
   );
-  const vanMedia = getMedia("huglaoVansBalloon");
+  const vanMedia = getMedia("vehicleVan");
 
   return (
     <main>
@@ -104,8 +102,23 @@ export default function VanLaosPage() {
       <section className="bg-[#071d13] pb-[clamp(56px,8vw,92px)] text-white" aria-labelledby="van-options-title">
         <div className="hl-shell">
           <article className="grid overflow-hidden rounded-[24px] border border-white/10 bg-white/[.055] sm:rounded-[28px] md:grid-cols-[minmax(280px,.85fr)_minmax(0,1fr)]">
-            <div className="relative min-h-[240px] bg-[#eee9de] sm:min-h-[320px]">
-              <Image src={vanMedia.src} alt={vanMedia.alt} fill sizes="(max-width: 767px) 100vw, 45vw" className="object-contain p-4 sm:p-7" />
+            <div className="bg-[#071d13] p-3 sm:p-4" aria-label="อัลบั้มรถตู้ คนขับ และทีมงาน HUGLAO">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-[#eee9de] sm:rounded-[22px]">
+                <Image src={vanMedia.src} alt={vanMedia.alt} fill sizes="(max-width: 767px) 100vw, 45vw" className="object-contain p-3 sm:p-5" />
+              </div>
+              <div className="mt-2 grid grid-cols-3 gap-2 sm:mt-3 sm:gap-3">
+                {VAN_GALLERY_IDS.slice(0, 3).map((mediaId) => {
+                  const media = getMedia(mediaId);
+                  return (
+                    <figure key={mediaId} className="overflow-hidden rounded-[12px] border border-white/10 bg-[#eee9de] sm:rounded-[16px]">
+                      <div className="relative aspect-square">
+                        <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 33vw, 15vw" className="object-cover" />
+                      </div>
+                    </figure>
+                  );
+                })}
+              </div>
+              <p className="mt-3 px-1 text-xs leading-5 text-[#afbeb5]">อัลบั้มรถตู้ คนขับ และทีมงาน HUGLAO รวม 4 ภาพ · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></p>
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-9">
               <h2 id="van-options-title" className="font-serif-th text-3xl font-bold">รถตู้เที่ยวลาว</h2>
@@ -115,19 +128,6 @@ export default function VanLaosPage() {
               </Link>
             </div>
           </article>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="ภาพรถตู้และทีมงาน HUGLAO">
-            {VAN_GALLERY_IDS.map((mediaId) => {
-              const media = getMedia(mediaId);
-              return (
-                <figure key={mediaId} className="overflow-hidden rounded-[22px] border border-white/10 bg-white/[.055]">
-                  <div className="relative aspect-[4/3] bg-[#eee9de]">
-                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" />
-                  </div>
-                </figure>
-              );
-            })}
-          </div>
-          <p className="mt-4 text-xs leading-6 text-[#afbeb5]">ภาพรถและทีมงาน HUGLAO ใช้ประกอบการเลือกประเภทรถ รุ่นและรถจริงขึ้นอยู่กับรถที่ว่าง · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></p>
         </div>
       </section>
 

@@ -244,6 +244,76 @@
     background-size: 48px 48px;
   }
 
+  @media (min-width: 640px) {
+    .hl-vehicle-card {
+      display: grid;
+      grid-template-columns: minmax(104px, 38%) minmax(0, 1fr);
+      flex-direction: row;
+    }
+
+    .hl-vehicle-card > .hl-mobile-media {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 150px;
+    }
+
+    .hl-vehicle-card > .hl-mobile-content {
+      min-width: 0;
+      padding: 1rem;
+    }
+
+    .hl-vehicle-card > .hl-mobile-content h3 {
+      margin-top: 0.65rem;
+      font-size: 1.1rem;
+      line-height: 1.35;
+    }
+
+    .hl-vehicle-card > .hl-mobile-content p {
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+
+    .hl-vehicle-card > .hl-mobile-content > span:last-child {
+      margin-top: 0.65rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hl-pickup-card {
+      display: grid;
+      grid-template-columns: minmax(84px, 34%) minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .hl-pickup-card > .hl-mobile-media {
+      aspect-ratio: 16 / 10;
+      height: auto;
+      min-height: 0;
+    }
+
+    .hl-pickup-card > .hl-mobile-content {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 214px;
+      padding: 0.8rem 0.8rem 1.2rem;
+    }
+
+    .hl-pickup-card > .hl-mobile-content h3 {
+      margin-top: 0.35rem;
+      font-size: 0.76rem;
+      line-height: 1.35;
+    }
+
+    .hl-pickup-card > .hl-mobile-content p {
+      margin-top: 0.3rem;
+      font-size: 0.58rem;
+      line-height: 1.45;
+    }
+  }
+
   @media (max-width: 639px) {
     .hl-shell {
       width: min(100% - 32px, 1240px);

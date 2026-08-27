@@ -59,7 +59,7 @@ export default async function Home() {
               <span className="h-2 w-2 rounded-full bg-[#efd276]" />
               {SITE.slogan}
             </p>
-            <h1 className="font-serif-th text-[clamp(3rem,7vw,6.7rem)] font-bold leading-[1.04] tracking-[-.035em] text-[#fffaf0]">
+            <h1 className="font-serif-th text-[clamp(3rem,6.5vw,6.2rem)] font-bold leading-[1.04] tracking-[-.035em] text-[#fffaf0]">
               รถพร้อมคนขับ
               <span className="block text-[#efd276]">เที่ยวลาวแบบส่วนตัว</span>
             </h1>
@@ -118,18 +118,24 @@ export default async function Home() {
             <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">เลือกจุดนัดหมายที่เข้ากับการเดินทางของคุณ</h2>
             <p className="mt-5 leading-8 text-[#59645d]">จุดรับและตำแหน่งนัดพบจะถูกยืนยันอีกครั้งในข้อเสนอก่อนจอง</p>
           </Reveal>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {PICKUP_POINTS.map((point, index) => {
               const media = getMedia(point.mediaId);
               return (
-                <Reveal key={point.slug} delay={index * 0.07} className="hl-mobile-media-card overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9]">
-                  <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden bg-[#e8e1d2]">
-                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 112px, 33vw" className="object-cover" />
-                  </div>
-                  <div className="hl-mobile-content p-7">
+                <Reveal key={point.slug} delay={index * 0.07} className="hl-pickup-card hl-mobile-media-card h-full overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9] sm:flex sm:min-h-[430px] sm:flex-col">
+                  <div className="hl-mobile-content min-w-0 p-7 sm:order-1 sm:p-3">
                     <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
                     <h3 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{point.name}</h3>
                     <p className="mt-4 text-sm leading-7 text-[#59645d]">{point.detail}</p>
+                  </div>
+                  <div className="hl-mobile-media relative order-last aspect-[16/10] overflow-hidden bg-[#e8e1d2] sm:order-2 sm:aspect-[16/10] sm:h-auto sm:min-h-0">
+                    <Image
+                      src={media.src}
+                      alt={media.alt}
+                      fill
+                      sizes="(max-width: 639px) 112px, 25vw"
+                      className={`object-cover ${index === 1 ? "object-[50%_68%]" : "object-center"}`}
+                    />
                   </div>
                 </Reveal>
               );
@@ -151,7 +157,7 @@ export default async function Home() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {VEHICLE_GROUPS.map((vehicle, index) => {
               const media = getMedia(vehicle.mediaIds[0]);
               return <Reveal key={vehicle.slug} delay={index * 0.06}>

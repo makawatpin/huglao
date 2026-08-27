@@ -6,10 +6,56 @@ import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
-import { getMedia } from "@/data/media";
+import { getMedia, type MediaId } from "@/data/media";
 import { getCurrentPriceRows, getPriceVehicle } from "@/data/pricing";
 
 export const dynamicParams = false;
+
+const SEDAN_ALBUM_IDS = [
+  "vehicleSedan",
+  "huglaoSuvInteriorDashboard",
+  "huglaoSuvFrontSeats",
+  "huglaoSuvRearSeats",
+] as const satisfies readonly MediaId[];
+
+function VehicleAlbum({
+  mediaIds,
+  priority = false,
+}: {
+  mediaIds: readonly MediaId[];
+  priority?: boolean;
+}) {
+  const mainMedia = getMedia(mediaIds[0]);
+  const albumMedia = mediaIds.slice(1).map(getMedia);
+
+  return (
+    <figure className="hl-mobile-media-card hl-vehicle-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
+      <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/10]">
+        <Image
+          src={mainMedia.src}
+          alt={mainMedia.alt}
+          fill
+          priority={priority}
+          sizes="(max-width: 639px) 100vw, 50vw"
+          className="object-contain"
+        />
+      </div>
+      {albumMedia.length > 0 ? (
+        <div className="grid grid-cols-3 gap-2 border-t border-white/10 bg-[#071d13] p-3">
+          {albumMedia.map((media) => (
+            <div key={media.src} className="relative aspect-square overflow-hidden rounded-xl bg-[#0a2d20]">
+              <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 33vw, 16vw" className="object-cover" />
+            </div>
+          ))}
+        </div>
+      ) : null}
+      <figcaption className="hl-mobile-content px-5 py-4 text-xs leading-6 text-[#afbeb5]">
+        {albumMedia.length > 0 ? `อัลบั้ม ${mainMedia.title} · ${mediaIds.length} ภาพ` : mainMedia.title} ·{" "}
+        <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link>
+      </figcaption>
+    </figure>
+  );
+}
 
 export function generateStaticParams() {
   return VEHICLE_GROUPS.map((vehicle) => ({ slug: vehicle.slug }));
@@ -86,16 +132,17 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
       />
 
       <section className="bg-[#071d13] pb-[clamp(52px,8vw,88px)]">
-        <div className={`hl-shell grid gap-4 ${vehicle.mediaIds.length > 1 ? "sm:grid-cols-2" : ""}`}>
-          {vehicle.mediaIds.map((mediaId, index) => {
-            const media = getMedia(mediaId);
-            return <figure key={mediaId} className="hl-mobile-media-card hl-vehicle-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
-              <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/10]">
-                <Image src={media.src} alt={media.alt} fill priority={index === 0} sizes={vehicle.mediaIds.length > 1 ? "(max-width: 639px) 100vw, 50vw" : "100vw"} className="object-contain" />
-              </div>
-              <figcaption className="hl-mobile-content px-5 py-4 text-xs leading-6 text-[#afbeb5]">ภาพรถและทีมงานใช้ประกอบหมวดรถ รุ่นและการจัดที่นั่งจริงขึ้นอยู่กับรถที่ว่าง · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></figcaption>
-            </figure>;
-          })}
+        <div className={`hl-shell grid items-start gap-4 ${vehicle.mediaIds.length > 1 ? "sm:grid-cols-2" : ""}`}>
+          {vehicle.slug === "sedan-suv" ? (
+            <>
+              <VehicleAlbum mediaIds={["vehicleSuv"]} priority />
+              <VehicleAlbum mediaIds={SEDAN_ALBUM_IDS} />
+            </>
+          ) : (
+            vehicle.mediaIds.map((mediaId, index) => (
+              <VehicleAlbum key={mediaId} mediaIds={[mediaId]} priority={index === 0} />
+            ))
+          )}
         </div>
       </section>
 

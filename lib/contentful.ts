@@ -14,6 +14,7 @@ export type Article = {
 };
 
 let hasWarnedAboutMissingConfig = false;
+const warnedContentfulFailures = new Set<string>();
 
 function getSafeErrorMessage(error: unknown): string {
   return error instanceof Error && error.message.trim()
@@ -30,7 +31,13 @@ function reportContentfulFailure(operation: string, error: unknown): void {
     throw new Error(message);
   }
 
-  console.error(message);
+  // Next.js treats console.error calls from Server Components as development
+  // issues and opens its error overlay. Contentful is optional while working
+  // locally, so keep the fallback behavior visible without interrupting the UI.
+  if (!warnedContentfulFailures.has(message)) {
+    console.warn(message);
+    warnedContentfulFailures.add(message);
+  }
 }
 
 function getClient(): ReturnType<typeof createClient> | null {
