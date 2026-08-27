@@ -33,6 +33,14 @@ const FEATURED_ROUTE_SLUGS = [
   "vientiane-muang-feuang",
 ] as const;
 
+const VAN_GALLERY_IDS = [
+  "vehicleVan",
+  "huglaoVanFront",
+  "huglaoWhiteVan",
+  "huglaoDriverSilverVan",
+  "huglaoDriverWhiteVan",
+] as const;
+
 const VAN_FAQS = [
   {
     question: "รถตู้เที่ยวลาวเหมาะกับใคร?",
@@ -107,6 +115,19 @@ export default function VanLaosPage() {
               </Link>
             </div>
           </article>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="ภาพรถตู้และทีมงาน HUGLAO">
+            {VAN_GALLERY_IDS.map((mediaId) => {
+              const media = getMedia(mediaId);
+              return (
+                <figure key={mediaId} className="overflow-hidden rounded-[22px] border border-white/10 bg-white/[.055]">
+                  <div className="relative aspect-[4/3] bg-[#eee9de]">
+                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" />
+                  </div>
+                </figure>
+              );
+            })}
+          </div>
+          <p className="mt-4 text-xs leading-6 text-[#afbeb5]">ภาพรถและทีมงาน HUGLAO ใช้ประกอบการเลือกประเภทรถ รุ่นและรถจริงขึ้นอยู่กับรถที่ว่าง · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></p>
         </div>
       </section>
 
