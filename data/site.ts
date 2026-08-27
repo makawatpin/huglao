@@ -31,7 +31,7 @@ export const VEHICLE_GROUPS = [
     capacity: "ยืนยันตามรถที่ว่าง",
     luggage: "ตรวจตามจำนวนและขนาดกระเป๋า",
     suitableFor: "ทริปส่วนตัวและกลุ่มขนาดเล็ก",
-    mediaIds: ["vehicleSedan", "vehicleSuv"],
+    mediaIds: ["vehicleSuv", "vehicleSedan"],
     status: "available",
   },
   {
@@ -53,7 +53,14 @@ export const VEHICLE_GROUPS = [
     capacity: "ยืนยันตามรถที่ว่าง",
     luggage: "ตรวจตามจำนวนและขนาดกระเป๋า",
     suitableFor: "ครอบครัวและกลุ่มเดินทาง",
-    mediaIds: ["vehicleVan"],
+    mediaIds: [
+      "vehicleVan",
+      "huglaoVansBalloon",
+      "huglaoVanFront",
+      "huglaoWhiteVan",
+      "huglaoDriverSilverVan",
+      "huglaoDriverWhiteVan",
+    ],
     status: "available",
   },
   {
@@ -74,7 +81,7 @@ export const SERVICE_GROUPS = [
     slug: "train-ticket",
     name: "จองตั๋วรถไฟ",
     summary: "ช่วยตรวจข้อมูลการเดินทางและประสานการจองตั๋วรถไฟตามรายละเอียดที่ลูกค้าแจ้ง",
-    mediaId: "khamsavathStation",
+    mediaId: "laosChinaStation",
     requiredInfo: ["ชื่อผู้เดินทางตามเอกสาร", "วันและเส้นทางรถไฟ", "จำนวนผู้เดินทาง", "ข้อมูลเอกสารที่จำเป็น"],
   },
   {
@@ -95,7 +102,7 @@ export const SERVICE_GROUPS = [
     slug: "temporary-border-pass",
     name: "บัตรผ่านแดนชั่วคราว",
     summary: "ช่วยให้ข้อมูลเบื้องต้นและประสานขั้นตอนตามเงื่อนไขของหน่วยงานที่เกี่ยวข้อง",
-    mediaId: "khamsavathStation",
+    mediaId: "pickupThanaleng",
     requiredInfo: ["สัญชาติและภูมิลำเนา", "วันเดินทาง", "ด่านที่ใช้", "เอกสารที่มีอยู่"],
   },
 ] as const;
@@ -153,7 +160,7 @@ export const PICKUP_POINTS = [
     slug: "vientiane-railway-station",
     name: "สถานีรถไฟเวียงจันทน์ (รถไฟลาว–จีน)",
     detail: "ระบุขบวนและเวลาถึง เพื่อยืนยันจุดพบรถก่อนเดินทาง",
-    mediaId: "khamsavathStation",
+    mediaId: "laosChinaStation",
   },
 ] as const;
 

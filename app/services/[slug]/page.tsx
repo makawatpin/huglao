@@ -67,7 +67,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/8]">
               <Image src={media.src} alt={media.alt} fill priority sizes="100vw" className="object-cover" />
             </div>
-            <figcaption className="hl-mobile-content px-5 py-4 text-xs text-[#afbeb5]">ภาพประกอบการเดินทางในเวียงจันทน์ · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูที่มาและใบอนุญาตภาพ</Link></figcaption>
+            <figcaption className="hl-mobile-content px-5 py-4 text-xs text-[#afbeb5]">ภาพประกอบบริการ · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></figcaption>
           </figure>
         </div>
       </section>

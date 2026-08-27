@@ -42,8 +42,8 @@ export default async function Home() {
     <main>
       <section className="relative isolate min-h-[700px] overflow-hidden bg-[#071d13] pt-[72px] text-white md:min-h-[800px]">
         <Image
-          src={getMedia("vehicleVan").src}
-          alt={getMedia("vehicleVan").alt}
+          src="/og.png"
+          alt="ภาพวัดพระธาตุหลวงและเส้นทางท่องเที่ยวลาว"
           fill
           loading="eager"
           fetchPriority="high"

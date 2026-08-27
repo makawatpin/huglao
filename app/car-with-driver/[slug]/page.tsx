@@ -93,7 +93,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
               <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/10]">
                 <Image src={media.src} alt={media.alt} fill priority={index === 0} sizes={vehicle.mediaIds.length > 1 ? "(max-width: 639px) 100vw, 50vw" : "100vw"} className="object-contain" />
               </div>
-              <figcaption className="hl-mobile-content px-5 py-4 text-xs leading-6 text-[#afbeb5]">ภาพประกอบหมวดรถ รุ่นและการจัดที่นั่งจริงขึ้นอยู่กับรถที่ว่าง · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></figcaption>
+              <figcaption className="hl-mobile-content px-5 py-4 text-xs leading-6 text-[#afbeb5]">ภาพรถและทีมงานใช้ประกอบหมวดรถ รุ่นและการจัดที่นั่งจริงขึ้นอยู่กับรถที่ว่าง · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></figcaption>
             </figure>;
           })}
         </div>

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: `${PAGE_PATH}/`,
     type: "website",
-    images: [{ url: getMedia("vehicleVan").src, alt: getMedia("vehicleVan").alt }],
+    images: [{ url: getMedia("huglaoVansBalloon").src, alt: getMedia("huglaoVansBalloon").alt }],
   },
 };
 
@@ -56,7 +56,7 @@ export default function VanLaosPage() {
   const routes = ROUTE_GROUPS.filter((route) =>
     FEATURED_ROUTE_SLUGS.includes(route.slug as (typeof FEATURED_ROUTE_SLUGS)[number]),
   );
-  const vanMedia = getMedia("vehicleVan");
+  const vanMedia = getMedia("huglaoVansBalloon");
 
   return (
     <main>

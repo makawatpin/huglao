@@ -25,7 +25,7 @@ export default function ImageCreditsPage() {
         <div className="hl-shell">
           <div className="mb-10 max-w-[820px] rounded-[24px] border border-[#ddd4c1] bg-white p-7 leading-8 text-[#59645d]">
             <p>
-              “Public Domain” หมายถึงภาพที่ผู้สร้างสละสิทธิ์หรือไม่มีข้อจำกัดด้านลิขสิทธิ์ตามที่หน้าต้นฉบับระบุ ส่วนภาพ Creative Commons ยังมีลิขสิทธิ์ แต่เจ้าของอนุญาตให้นำไปใช้ได้เมื่อปฏิบัติตามเงื่อนไขของใบอนุญาต
+              ภาพรถ ทีมงาน และสถานีที่ระบุว่าเป็นภาพจาก HUGLAO เป็นภาพที่ทีมงานจัดทำหรือได้รับมาเพื่อใช้กับเว็บไซต์ ส่วน “Public Domain” และ Creative Commons ใช้ตามเงื่อนไขและระบุแหล่งที่มาของภาพต้นฉบับ
             </p>
           </div>
 
