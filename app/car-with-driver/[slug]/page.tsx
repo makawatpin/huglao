@@ -18,6 +18,13 @@ const SEDAN_ALBUM_IDS = [
   "huglaoSuvRearSeats",
 ] as const satisfies readonly MediaId[];
 
+const LEFT_SUV_ALBUM_IDS = [
+  "vehicleSuv",
+  "huglaoSuvVinfastFront",
+  "huglaoSuvVinfastFrontCabin",
+  "huglaoSuvVinfastRearSeats",
+] as const satisfies readonly MediaId[];
+
 function VehicleAlbum({
   mediaIds,
   priority = false,
@@ -44,7 +51,13 @@ function VehicleAlbum({
         <div className="grid grid-cols-3 gap-2 border-t border-white/10 bg-[#071d13] p-3">
           {albumMedia.map((media) => (
             <div key={media.src} className="relative aspect-square overflow-hidden rounded-xl bg-[#0a2d20]">
-              <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 33vw, 16vw" className="object-cover" />
+              <Image
+                src={media.src}
+                alt={media.alt}
+                fill
+                sizes="(max-width: 639px) 33vw, 16vw"
+                className="object-cover"
+              />
             </div>
           ))}
         </div>
@@ -135,7 +148,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
         <div className={`hl-shell grid items-start gap-4 ${vehicle.mediaIds.length > 1 ? "sm:grid-cols-2" : ""}`}>
           {vehicle.slug === "sedan-suv" ? (
             <>
-              <VehicleAlbum mediaIds={["vehicleSuv"]} priority />
+              <VehicleAlbum mediaIds={LEFT_SUV_ALBUM_IDS} priority />
               <VehicleAlbum mediaIds={SEDAN_ALBUM_IDS} />
             </>
           ) : (
