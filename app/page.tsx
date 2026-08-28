@@ -76,10 +76,10 @@ export default async function Home() {
                 ส่งรายละเอียดทริปผ่าน LINE
               </a>
               <Link
-                href="/car-with-driver"
+                href="/vientiane/#pricing"
                 className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
               >
-                ดูประเภทรถที่ให้บริการ
+                ดูราคารถในเวียงจันทร์
               </Link>
             </div>
             <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#cbd2cc]">
@@ -122,13 +122,8 @@ export default async function Home() {
             {PICKUP_POINTS.map((point, index) => {
               const media = getMedia(point.mediaId);
               return (
-                <Reveal key={point.slug} delay={index * 0.07} className="hl-pickup-card hl-mobile-media-card h-full overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9] sm:flex sm:min-h-[430px] sm:flex-col">
-                  <div className="hl-mobile-content min-w-0 p-7 sm:order-1 sm:p-3">
-                    <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
-                    <h3 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{point.name}</h3>
-                    <p className="mt-4 text-sm leading-7 text-[#59645d]">{point.detail}</p>
-                  </div>
-                  <div className="hl-mobile-media relative order-last aspect-[16/10] overflow-hidden bg-[#e8e1d2] sm:order-2 sm:aspect-[16/10] sm:h-auto sm:min-h-0">
+                <Reveal key={point.slug} delay={index * 0.07} className="hl-pickup-card hl-mobile-media-card h-full overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9] sm:min-h-[430px]">
+                  <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden bg-[#e8e1d2]">
                     <Image
                       src={media.src}
                       alt={media.alt}
@@ -136,6 +131,11 @@ export default async function Home() {
                       sizes="(max-width: 639px) 112px, 25vw"
                       className={`object-cover ${index === 1 ? "object-[50%_68%]" : "object-center"}`}
                     />
+                  </div>
+                  <div className="hl-mobile-content min-w-0 p-7 sm:p-3">
+                    <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
+                    <h3 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{point.name}</h3>
+                    <p className="mt-4 text-sm leading-7 text-[#59645d]">{point.detail}</p>
                   </div>
                 </Reveal>
               );
@@ -268,7 +268,7 @@ export default async function Home() {
             <p className="mb-8 mt-5 leading-8 text-[#59645d]">ตัวอย่างราคาจากฐานราคาเดียวกับหน้ารายละเอียด แยกเก๋ง/SUV, MPV และรถตู้อย่างชัดเจน</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <PublishedPriceTable rows={HOME_PRICE_ROWS} showCrossBorderNote={false} />
+            <PublishedPriceTable rows={HOME_PRICE_ROWS} />
             <Link href="/travel-with-us#pricing" className="mt-7 inline-flex rounded-full bg-[#0a2d20] px-6 py-3 font-bold text-white">ดูตารางราคาทั้งหมด →</Link>
           </Reveal>
         </div>

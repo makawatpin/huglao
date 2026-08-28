@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const LEGACY_CITY_ROUTES = {
-  vientiane: "/routes/vientiane-city",
   vangvieng: "/routes/vientiane-vang-vieng",
   muangfeuang: "/routes/vientiane-muang-feuang",
 } as const;

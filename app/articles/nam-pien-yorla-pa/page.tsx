@@ -149,6 +149,7 @@ export default function NamPienYorlaPaArticlePage() {
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• วันและเวลาเปิดบริการ</li><li>• กิจกรรมที่เปิดในวันเดินทาง</li><li>• เงื่อนไขผู้เล่นและอุปกรณ์</li><li>• ค่าเข้าและค่าแพ็กเกจ</li><li>• เวลานัดรถเที่ยวกลับ</li></ul>
           <a href="https://nampienyorlapa.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex font-bold text-[#9b711c] hover:text-[#0a2d20]">ตรวจข้อมูลเว็บไซต์ทางการ →</a>
           <Link href="/routes/vientiane-nam-pien-yorla-pa" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">ดูหน้าเส้นทางและราคารถ →</Link>
+          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">ดูบริการรถพร้อมคนขับในเวียงจันทร์ →</Link>
         </aside>
       </div>
 
@@ -157,7 +158,7 @@ export default function NamPienYorlaPaArticlePage() {
           <span className="hl-kicker">ราคารถรับ–ส่งที่เผยแพร่</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,4.5vw,3.6rem)] font-bold text-[#071d13]">เวียงจันทน์ → น้ำเปี่ยนยอละปา</h2>
           <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">ราคาต่อคันต่อเที่ยว รวมคนขับและน้ำมัน ไม่รวมค่าเข้า กิจกรรม อาหาร ที่พัก หรือค่าใช้จ่ายของสถานที่ เว้นแต่ระบุไว้ในข้อเสนอ</p>
-          <PublishedPriceTable rows={prices} showCategoryHeadings={false} showCrossBorderNote={false} />
+          <PublishedPriceTable rows={prices} showCategoryHeadings={false} />
         </div>
       </section>
 

@@ -15,8 +15,6 @@
     { "source": "/routes/", "destination": "/travel-with-us/", "permanent": true },
     { "source": "/laos-travel", "destination": "/travel-with-us/", "permanent": true },
     { "source": "/laos-travel/", "destination": "/travel-with-us/", "permanent": true },
-    { "source": "/vientiane", "destination": "/routes/vientiane-city/", "permanent": true },
-    { "source": "/vientiane/", "destination": "/routes/vientiane-city/", "permanent": true },
     { "source": "/vangvieng", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
     { "source": "/vangvieng/", "destination": "/routes/vientiane-vang-vieng/", "permanent": true },
     { "source": "/muangfeuang", "destination": "/routes/vientiane-muang-feuang/", "permanent": true },

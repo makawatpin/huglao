@@ -156,6 +156,9 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
           <div className="mt-7 grid gap-4 md:grid-cols-3">
             {PICKUP_POINTS.map((point) => <article key={point.slug} className="rounded-[22px] bg-white p-6"><h3 className="font-semibold text-[#0a2d20]">{point.name}</h3><p className="mt-2 text-sm text-[#59645d]">{point.detail}</p></article>)}
           </div>
+          <Link href="/vientiane/" className="mt-7 inline-flex rounded-full border border-[#d8af4a] px-6 py-3 font-bold text-[#0a2d20] hover:bg-white">
+            ดูบริการเช่ารถเวียงจันทร์และจุดรับทั้งหมด →
+          </Link>
         </div>
       </section>
 

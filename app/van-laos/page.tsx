@@ -99,6 +99,14 @@ export default function VanLaosPage() {
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "รถตู้เที่ยวลาว" }]}
       />
 
+      <section className="bg-[#071d13] pb-8 text-white">
+        <div className="hl-shell">
+          <Link href="/vientiane/" className="inline-flex rounded-full border border-[#d8af4a]/60 px-5 py-3 text-sm font-bold text-[#efd276] hover:bg-white/10">
+            ดูบริการรถตู้เวียงจันทร์พร้อมคนขับ →
+          </Link>
+        </div>
+      </section>
+
       <section className="bg-[#071d13] pb-[clamp(56px,8vw,92px)] text-white" aria-labelledby="van-options-title">
         <div className="hl-shell">
           <article className="grid overflow-hidden rounded-[24px] border border-white/10 bg-white/[.055] sm:rounded-[28px] md:grid-cols-[minmax(280px,.85fr)_minmax(0,1fr)]">

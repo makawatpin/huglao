@@ -224,9 +224,6 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
 
 export const CURRENT_PRICE_ROWS = [...TRANSFER_PRICE_ROWS, ...CHARTER_PRICE_ROWS];
 
-export const CROSS_BORDER_PRICE_NOTE =
-  "กรณีต้องการให้รถรับหรือส่งที่ด่านหนองคาย ตัวเมืองหนองคาย หรือสนามบินอุดรธานี มีค่าดำเนินการเอกสารและค่าใช้จ่ายเกี่ยวกับรถข้ามแดนเพิ่มเติม เริ่มต้นประมาณ 1,500 บาทต่อเที่ยว โดยต้องตรวจสอบรถ เอกสาร ระยะทาง และแจ้งยอดจริงก่อนยืนยันการจอง";
-
 export const PRICE_UNIT_NOTE = "หน่วย: บาทต่อคันต่อทริป";
 
 export const PRICE_TERMS = [

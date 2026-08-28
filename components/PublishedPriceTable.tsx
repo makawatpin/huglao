@@ -1,5 +1,4 @@
 import {
-  CROSS_BORDER_PRICE_NOTE,
   PRICE_TERMS,
   PRICE_UNIT_NOTE,
   PRICE_VEHICLES,
@@ -14,7 +13,6 @@ type PublishedPriceTableProps = {
   rows: PriceRow[];
   vehicleSlug?: string;
   showCategoryHeadings?: boolean;
-  showCrossBorderNote?: boolean;
 };
 
 type PriceVehicle = (typeof PRICE_VEHICLES)[number];
@@ -126,7 +124,6 @@ export default function PublishedPriceTable({
   rows,
   vehicleSlug,
   showCategoryHeadings = true,
-  showCrossBorderNote = true,
 }: PublishedPriceTableProps) {
   if (rows.length === 0) return null;
 
@@ -186,17 +183,6 @@ export default function PublishedPriceTable({
         </ol>
       </section>
 
-      {showCrossBorderNote && (
-        <>
-          <details className="mt-4 rounded-[18px] border border-[#d8af4a]/50 bg-[#fffaf0] px-4 md:hidden">
-            <summary className="cursor-pointer py-4 text-sm font-bold text-[#0a2d20]">ค่าบริการกรณีรับ–ส่งฝั่งไทย</summary>
-            <p className="border-t border-[#ead9ae] pb-4 pt-3 text-sm leading-7 text-[#59645d]">{CROSS_BORDER_PRICE_NOTE}</p>
-          </details>
-          <div className="mt-5 hidden rounded-[20px] border border-[#d8af4a]/50 bg-[#fffaf0] p-5 text-sm leading-7 text-[#59645d] md:block">
-            <strong className="text-[#0a2d20]">กรณีรับ–ส่งฝั่งไทย: </strong>{CROSS_BORDER_PRICE_NOTE}
-          </div>
-        </>
-      )}
     </div>
   );
 }

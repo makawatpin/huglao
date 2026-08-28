@@ -13,14 +13,19 @@ function getRelatedServices(tags: string[]): { label: string; href: string }[] {
     return [
       { label: "บริการประสานตั๋วรถไฟ", href: "/services/train-ticket" },
       { label: "เส้นทางเวียงจันทน์–วังเวียง", href: "/routes/vientiane-vang-vieng" },
+      { label: "เช่ารถเวียงจันทร์พร้อมคนขับ", href: "/vientiane/" },
     ];
   }
   if (tags.some((t) => t.includes("รถตู้"))) {
     return [
       { label: "รถตู้เที่ยวลาวพร้อมคนขับ", href: "/van-laos" },
+      { label: "รถตู้เวียงจันทร์พร้อมคนขับ", href: "/vientiane/" },
     ];
   }
-  return [{ label: "ดูรถพร้อมคนขับทุกประเภท", href: "/car-with-driver" }];
+  return [
+    { label: "ดูรถพร้อมคนขับทุกประเภท", href: "/car-with-driver" },
+    { label: "ดูราคารถในเวียงจันทร์", href: "/vientiane/#pricing" },
+  ];
 }
 
 function normalizeArticleHref(value: unknown): string {

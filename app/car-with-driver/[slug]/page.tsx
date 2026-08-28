@@ -213,6 +213,13 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </section>
+      <section className="bg-white py-8">
+        <div className="hl-shell text-center">
+          <Link href="/vientiane/" className="inline-flex rounded-full border border-[#d8af4a] px-6 py-3 font-bold text-[#0a2d20] hover:bg-[#fffaf0]">
+            เช่ารถเวียงจันทร์พร้อมคนขับ: ตรวจจุดรับและราคา →
+          </Link>
+        </div>
+      </section>
       <LineCta title={`เที่ยวลาวกับเรา ${vehicle.name} สำหรับทริปของคุณ`} />
     </main>
   );
