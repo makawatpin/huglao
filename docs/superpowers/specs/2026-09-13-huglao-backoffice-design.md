@@ -50,7 +50,7 @@ Number format: `<CODE>-<YYMM>-<NNNN>`, e.g. `DP-2609-0001`; sequence resets mont
 
 - `staff` — id (= auth user id), employee_code (unique), full_name, role (`admin`|`staff`), active
 - `company_settings` — single row: name_th, name_en, address, tax_id, phone, bank_name, bank_account_no, bank_account_name, default_commission_pct (25)
-- `customers` — name, phone, email, address
+- Customer details are typed directly on each booking (`bookings.customer_name`, `bookings.customer_phone`) — most customers book once, so there is no customer registry to maintain. The booking form suggests name/phone from past bookings. (Changed 2026-09-14; the original `customers` table is kept only as legacy data and is no longer used by the app.)
 - `vans` — owner_name, plate_no, phone, bank_name, bank_account_no, notes
 - `bookings` — booking_no, customer_id, van_id, route, trip_start, trip_end, passengers, van_price, commission_pct, commission, sale_price, status (`booked`|`deposit_paid`|`completed`|`cancelled`), created_by
 - `documents` — doc_type, doc_no, issue_date, booking_id (nullable), ref_document_id (nullable; RC→DP, CR→IV), recipient snapshot (name, phone, address as issued), total, payment_method, due_date (IV), category (PV), slip_path (PV), notes, issued_by, status (`issued`|`void`), void_reason, voided_by, voided_at
@@ -73,7 +73,7 @@ Recipient data is snapshotted on the document so later edits to customers/vans n
 - `/bookings`, `/bookings/new`, `/bookings/[id]` — booking detail with document timeline and "next document" buttons (DP → RC → IV → CR)
 - `/documents` — list/filter all documents, re-download PDF; `/documents/[id]` detail + void (admin)
 - `/vouchers/new` — PV form with slip upload
-- `/customers`, `/vans` — registries with search (used for autofill)
+- `/vans` — van owner registry with search (vans are repeat partners; bank details needed for invoices)
 - `/admin/staff`, `/admin/settings` — admin only
 
 Issue flow: prefilled form → preview → "ยืนยันออกเอกสาร" → number assigned → PDF opens for print/share.
