@@ -1,0 +1,447 @@
+<title>HUGLAO Back Office Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Cinzel:wght@600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#ECEBEF;
+  --blob-1:rgba(246,178,150,.75); --blob-2:rgba(238,160,196,.7); --blob-3:rgba(196,164,240,.75);
+  --glass:rgba(255,255,255,.46); --glass-strong:rgba(255,255,255,.78); --glass-solid:rgba(255,255,255,.86); --glass-line:rgba(255,255,255,.75);
+  --glass-shadow:0 24px 48px -28px rgba(70,50,110,.35);
+  --ink:#1D1B26; --ink-2:#4A4757; --muted:#6F6B7D; --hair:rgba(29,27,38,.08);
+  --accent:#EE6A3C; --accent-soft:rgba(238,106,60,.12);
+  --ok:#1E9E6A; --ok-soft:rgba(30,158,106,.12); --warn:#8A6300; --warn-soft:rgba(240,190,40,.24);
+  --bad:#D6404F; --bad-soft:rgba(214,64,79,.12); --info:#5B4BDB; --info-soft:rgba(91,75,219,.12);
+  --logo-ink:#0F2A1D; --brand-green:#0F2A1D; --brand-gold:#D9A21B;
+  --sans:"Prompt",system-ui,"Segoe UI",Tahoma,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15131C; --blob-1:rgba(200,110,80,.35); --blob-2:rgba(190,90,140,.32); --blob-3:rgba(120,90,200,.4);
+  --glass:rgba(40,36,54,.5); --glass-strong:rgba(58,52,76,.8); --glass-solid:rgba(34,31,46,.9); --glass-line:rgba(255,255,255,.1);
+  --glass-shadow:0 24px 48px -28px rgba(0,0,0,.7);
+  --ink:#F1EFF7; --ink-2:#C9C5D6; --muted:#9C97AE; --hair:rgba(255,255,255,.08);
+  --accent:#FF8A5C; --accent-soft:rgba(255,138,92,.16); --ok:#4CCB94; --warn:#F0C452; --bad:#FF7482; --info:#9D90FF;
+  --logo-ink:#F1EFF7;
+}}
+:root[data-theme="dark"]{
+  --bg:#15131C; --blob-1:rgba(200,110,80,.35); --blob-2:rgba(190,90,140,.32); --blob-3:rgba(120,90,200,.4);
+  --glass:rgba(40,36,54,.5); --glass-strong:rgba(58,52,76,.8); --glass-solid:rgba(34,31,46,.9); --glass-line:rgba(255,255,255,.1);
+  --glass-shadow:0 24px 48px -28px rgba(0,0,0,.7);
+  --ink:#F1EFF7; --ink-2:#C9C5D6; --muted:#9C97AE; --hair:rgba(255,255,255,.08);
+  --accent:#FF8A5C; --accent-soft:rgba(255,138,92,.16); --ok:#4CCB94; --warn:#F0C452; --bad:#FF7482; --info:#9D90FF;
+  --logo-ink:#F1EFF7;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;font-weight:400;
+  background:
+    radial-gradient(40% 35% at 12% 100%,var(--blob-1),transparent 70%),
+    radial-gradient(38% 32% at 55% 105%,var(--blob-2),transparent 70%),
+    radial-gradient(40% 38% at 95% 90%,var(--blob-3),transparent 70%),
+    radial-gradient(30% 25% at 90% 10%,var(--blob-3),transparent 75%),
+    var(--bg);
+  background-attachment:fixed}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:.84em}
+.wrap{max-width:1180px;margin:0 auto;padding:44px 24px 90px;display:grid;gap:56px}
+
+.glass{background:var(--glass);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border:1.5px solid var(--glass-line);border-radius:28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),var(--glass-shadow)}
+.glass.solid{background:var(--glass-solid);backdrop-filter:blur(30px) saturate(1.2);-webkit-backdrop-filter:blur(30px) saturate(1.2)}
+
+.brandmark{display:inline-flex;align-items:center;gap:.55em;color:var(--logo-ink)}
+.brandmark img{height:1.9em}
+.brandmark b{font:600 1em "Cinzel",Georgia,serif;letter-spacing:.16em}
+
+header.intro{display:flex;gap:28px;align-items:center;flex-wrap:wrap;padding:26px 30px}
+header.intro .brandmark{font-size:22px}
+header.intro h1{margin:0;font-size:27px;font-weight:300;line-height:1.3;text-wrap:balance}
+header.intro h1 b{font-weight:600}
+header.intro p{margin:4px 0 0;color:var(--muted);max-width:62ch}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:99px;border:1.5px solid var(--glass-line);background:var(--glass);color:var(--ink-2)}
+.chip.on{background:var(--glass-strong);color:var(--ink);box-shadow:0 6px 16px -10px rgba(70,50,110,.4)}
+.intro .chip{margin-left:auto}
+
+section{display:grid;gap:20px}
+.eyebrow{font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h2{margin:0;font-size:24px;font-weight:300}
+h2 b{font-weight:600}
+.lede{margin:0;color:var(--ink-2);max-width:68ch}
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g5{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pad{padding:26px}
+
+/* doc cards: blurred "artwork" + frosted caption */
+.doc{position:relative;overflow:hidden;border-radius:28px;min-height:210px;border:4px solid rgba(255,255,255,.85);box-shadow:var(--glass-shadow);display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate}
+.doc::before{content:"";position:absolute;inset:-30px;z-index:-2;background:var(--art);filter:blur(18px) saturate(1.2)}
+.doc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(255,255,255,.92) 0%,rgba(255,255,255,.55) 38%,rgba(255,255,255,0) 70%)}
+.doc .top{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center}
+.doc .code{font:500 12px var(--mono);color:#1D1B26;background:rgba(255,255,255,.7);border-radius:99px;padding:4px 10px}
+.doc .go{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.85);display:grid;place-items:center;color:var(--accent)}
+.doc .go svg{width:14px;height:14px}
+.doc .cap{padding:16px 18px 16px;color:#1D1B26}
+.doc h3{margin:0;font-size:17px;font-weight:500;line-height:1.3}
+.doc .amt{font-size:21px;font-weight:600;margin-top:6px}
+.doc .meta{font-size:12px;color:#5A5668}
+.a-dp{--art:radial-gradient(60% 70% at 20% 30%,#FFB36B,transparent 70%),radial-gradient(60% 60% at 80% 40%,#FF7E7E,transparent 70%),radial-gradient(70% 60% at 50% 90%,#FFE2B8,transparent 70%),#FFD1A8}
+.a-rc{--art:radial-gradient(60% 70% at 25% 35%,#6E8BFF,transparent 70%),radial-gradient(60% 60% at 80% 30%,#7FB0FF,transparent 70%),radial-gradient(70% 60% at 50% 95%,#DDE6FF,transparent 70%),#BCCBFF}
+.a-iv{--art:radial-gradient(60% 70% at 25% 35%,#7FD8F5,transparent 70%),radial-gradient(60% 60% at 80% 35%,#5FD0F2,transparent 70%),radial-gradient(70% 60% at 50% 95%,#D8F3FF,transparent 70%),#BDE6FA}
+.a-cr{--art:radial-gradient(60% 70% at 20% 30%,#7ADFC4,transparent 70%),radial-gradient(60% 60% at 80% 40%,#C9F08A,transparent 70%),radial-gradient(70% 60% at 50% 95%,#E6FAEE,transparent 70%),#BFEFD9}
+.a-pv{--art:radial-gradient(60% 70% at 25% 30%,#F59AC0,transparent 70%),radial-gradient(60% 60% at 80% 40%,#C69BFF,transparent 70%),radial-gradient(70% 60% at 50% 95%,#FBE0EE,transparent 70%),#EBC3E6}
+
+/* type */
+.type-row{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--hair)}
+.type-row:last-child{border:0}
+.type-row small{color:var(--muted);font-size:12px}
+
+/* controls */
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font:500 14px var(--sans);border:0;border-radius:99px;padding:11px 22px;cursor:pointer;transition:transform .15s,box-shadow .15s;color:var(--ink)}
+.btn:focus-visible,.input:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.btn-primary{background:var(--ink);color:var(--bg);box-shadow:0 12px 22px -12px rgba(29,27,38,.6)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:0 12px 22px -12px var(--accent)}
+.btn-glass{background:var(--glass-strong);border:1.5px solid var(--glass-line)}
+.btn-danger{background:var(--bad-soft);color:var(--bad)}
+.btn-sm{padding:7px 16px;font-size:13px}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;font-weight:500;color:var(--ink-2)}
+.field .hint{font-size:12px;color:var(--muted)}
+.input{font:15px var(--sans);color:var(--ink);background:var(--glass-strong);border:1.5px solid var(--glass-line);border-radius:16px;padding:11px 14px;width:100%;box-shadow:inset 0 1px 2px rgba(29,27,38,.05)}
+.input.money{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.affix{position:relative}
+.affix span{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.affix .input{padding-right:34px}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:4px 12px;border-radius:99px;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.p-booked{background:var(--info-soft);color:var(--info)}
+.p-deposit{background:var(--warn-soft);color:var(--warn)}
+.p-done{background:var(--ok-soft);color:var(--ok)}
+.p-void{background:var(--bad-soft);color:var(--bad)}
+
+/* desktop mock */
+.app{display:grid;grid-template-columns:230px 1fr;gap:18px;padding:18px;border-radius:34px;background:rgba(255,255,255,.12);border:1.5px solid var(--glass-line)}
+.side{padding:22px 14px;display:flex;flex-direction:column;gap:4px;align-self:start}
+.side .brandmark{font-size:16px;margin:0 10px 22px}
+.side .eyebrow{margin:6px 12px 6px;font-size:10.5px}
+.side a{color:var(--ink-2);text-decoration:none;font-size:14px;padding:10px 12px;border-radius:14px;display:flex;gap:12px;align-items:center;transition:background .15s}
+.side a svg{width:18px;height:18px;flex:none}
+.side a:hover{background:rgba(255,255,255,.35)}
+.side a.on{background:var(--glass-strong);color:var(--ink);font-weight:500;box-shadow:0 8px 18px -12px rgba(70,50,110,.45)}
+.side a.on svg{color:var(--accent)}
+.main{display:grid;gap:18px;min-width:0}
+.topbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:180px;display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:99px;color:var(--muted);font-size:14px}
+.search svg,.iconbtn svg{width:17px;height:17px}
+.iconbtn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2)}
+.hello{display:grid;place-items:center;text-align:center;padding:30px 20px;gap:10px}
+.orb{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE0CC,#F59A7A 45%,#E0607A 80%);box-shadow:0 10px 22px -8px rgba(224,96,122,.7),inset -4px -6px 10px rgba(160,40,70,.25)}
+.hello h3{margin:0;font-size:24px;font-weight:300;line-height:1.35}
+.hello h3 b{font-weight:600}
+.hello p{margin:0;color:var(--muted);font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.kpi{padding:16px 18px;border-radius:22px}
+.kpi b{display:block;font-size:24px;font-weight:600;line-height:1.3}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.split{display:grid;grid-template-columns:1.35fr 1fr;gap:18px}
+.list-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--hair)}
+.list-row:first-of-type{border-top:0}
+.list-row b{display:block;font-weight:500;font-size:14.5px}
+.list-row .s{font-size:12.5px;color:var(--muted)}
+.list-row .r{text-align:right;display:grid;justify-items:end;gap:4px}
+.step{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--hair)}
+.step:first-of-type{border-top:0}
+.dot{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;font:500 11px var(--mono);color:#1D1B26;position:relative;overflow:hidden;isolation:isolate}
+.dot::before{content:"";position:absolute;inset:-6px;z-index:-1;background:var(--art);filter:blur(5px)}
+.dot.todo{background:transparent;border:1.5px dashed var(--hair);color:var(--muted)}
+.dot.todo::before{display:none}
+
+/* mobile */
+.phones{display:flex;gap:28px;overflow-x:auto;padding:8px 4px 24px}
+.phone{flex:none;width:340px;height:700px;border-radius:44px;background:#0C0B10;padding:10px;box-shadow:0 30px 60px -30px rgba(40,20,70,.6)}
+.screen{position:relative;height:100%;border-radius:35px;overflow:hidden;display:flex;flex-direction:column;
+  background:radial-gradient(70% 40% at 0% 100%,var(--blob-1),transparent 70%),radial-gradient(70% 40% at 100% 100%,var(--blob-3),transparent 70%),radial-gradient(60% 30% at 100% 0%,var(--blob-2),transparent 75%),var(--bg)}
+.m-status{display:flex;justify-content:space-between;font-size:12px;font-weight:500;padding:14px 22px 4px;color:var(--ink)}
+.m-top{display:flex;align-items:center;gap:10px;padding:8px 16px}
+.m-top .brandmark{font-size:13px}
+.m-top .sp{flex:1}
+.m-top .iconbtn{width:36px;height:36px}
+.m-body{flex:1;overflow:hidden;padding:8px 16px 16px;display:grid;gap:14px;align-content:start}
+.m-hello{padding:16px 18px;display:flex;gap:14px;align-items:center}
+.m-hello .orb{width:38px;height:38px;flex:none}
+.m-hello div{font-size:17px;font-weight:400;line-height:1.35}
+.m-hello small{display:block;font-size:12px;color:var(--muted)}
+.m-cards{display:flex;gap:10px;overflow:hidden;margin-right:-16px}
+.m-cards .doc{flex:none;width:136px;min-height:150px;border-radius:22px;border-width:3px}
+.m-cards .doc .cap{padding:10px 12px}
+.m-cards .doc h3{font-size:13.5px}
+.m-cards .doc .amt{font-size:16px;margin-top:2px}
+.m-card{padding:14px 16px;border-radius:24px}
+.m-card .list-row b{font-size:14px}
+.m-card .pill{font-size:11.5px;padding:3px 10px}
+.m-title{padding:6px 18px 4px}
+.m-title .mono{display:block;font-size:12px;color:var(--muted)}
+.m-title h3{margin:0;font-size:22px;font-weight:500;line-height:1.3}
+.m-title p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.kv{display:flex;justify-content:space-between;font-size:13.5px;padding:4px 0}
+.kv span{color:var(--muted)}
+.kv.total{border-top:1px dashed var(--hair);margin-top:6px;padding-top:10px;font-weight:600;font-size:15px}
+.kv.total span{color:var(--ink)}
+.m-foot{padding:10px 16px 16px;display:grid;gap:10px}
+.m-foot .btn{width:100%;padding:14px;font-size:15px}
+.navbar{margin:0 14px 14px;padding:6px;border-radius:26px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.navbar a,.navbar button{display:grid;justify-items:center;gap:0;padding:6px 0 5px;border-radius:20px;font:500 11px/1.35 var(--sans);color:var(--muted);text-decoration:none;background:none;border:0;cursor:pointer;transition:background .25s,color .25s}
+.navbar svg{width:19px;height:19px}
+.navbar a.on{background:var(--glass-strong);color:var(--ink);box-shadow:0 8px 16px -10px rgba(70,50,110,.5)}
+.navbar a.on svg{color:var(--accent)}
+.navbar .plus span{width:34px;height:24px;border-radius:12px;display:grid;place-items:center;background:var(--ink);color:var(--bg)}
+.navbar .plus svg{width:16px;height:16px}
+.navbar .plus{color:var(--ink)}
+.navbar a:focus-visible,.navbar button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.phone-cap{margin-top:12px;text-align:center;font-size:13px;color:var(--muted)}
+
+/* printed */
+.brand{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+.sw{display:grid;gap:8px}
+.sw i{display:block;height:60px;border-radius:18px;border:1.5px solid var(--glass-line)}
+.sw b{font-weight:500;font-size:14px}
+.sw span{font-size:12px;color:var(--muted)}
+.paper{background:#FFFDF7;color:#1E2A22;border-radius:8px;padding:26px;box-shadow:0 20px 40px -20px rgba(15,42,29,.5);font-size:12px;border-top:6px solid var(--brand-green)}
+.paper .hd{display:flex;justify-content:space-between;gap:12px;border-bottom:2px solid var(--brand-gold);padding-bottom:12px}
+.paper .hd b{color:var(--brand-green);font-size:15px}
+.paper .ttl{text-align:right;color:var(--brand-green);font-weight:600;font-size:14px}
+.paper .ttl small{display:block;color:var(--brand-gold);letter-spacing:.12em;font-size:10px}
+.paper table{width:100%;border-collapse:collapse;margin-top:14px}
+.paper th{color:#fff;background:var(--brand-green);padding:6px 8px;text-align:left;font-weight:500}
+.paper td{padding:7px 8px;border-top:1px solid #E8E1CC}
+.paper .r{text-align:right}
+.paper .tot{display:flex;justify-content:space-between;margin-top:10px;background:#F6EFD9;padding:8px 10px;border-radius:4px;color:var(--brand-green);font-weight:600}
+
+@media (max-width:900px){.app{grid-template-columns:1fr}.side{flex-direction:row;overflow-x:auto}.side .brandmark,.side .eyebrow{display:none}.split,.brand{grid-template-columns:1fr}.kpis{grid-template-columns:1fr}.type-row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="intro glass">
+    <span class="brandmark"><img src="logo-mark.png" alt=""><b>HUGLAO</b></span>
+    <div>
+      <h1>Back Office UI · <b>Glass</b></h1>
+      <p>ทางเลือกดีไซน์ใหม่: กระจกฝ้าโปร่งแสงบนพื้นเทาอ่อนไล่สีพีช–ชมพู–ม่วง การ์ดเอกสารเป็นภาพสีเบลอแบบงานศิลป์ เอกสาร PDF ยังใช้สีแบรนด์เขียว–ทอง</p>
+    </div>
+    <span class="chip on">ตัวเลือก B</span>
+  </header>
+
+  <section>
+    <div class="eyebrow">Document types</div>
+    <h2>การ์ด<b>ประเภทเอกสาร</b></h2>
+    <p class="lede">แต่ละประเภทมีภาพสีเบลอประจำตัว ตัวหนังสือสีเข้มวางบนแถบฝ้าขาวด้านล่าง จึงอ่านชัดทุกสี</p>
+    <div class="grid g5">
+      <div class="doc a-dp"><div class="top"><span class="code">DP</span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><div class="cap"><h3>ใบเสร็จมัดจำ</h3><div class="amt num">฿2,500.00</div><div class="meta">ยอดรับเดือนนี้ · 12 ใบ</div></div></div>
+      <div class="doc a-rc"><div class="top"><span class="code">RC</span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><div class="cap"><h3>ใบเสร็จยอดคงเหลือ</h3><div class="amt num">฿10,000.00</div><div class="meta">ยอดรับเดือนนี้ · 9 ใบ</div></div></div>
+      <div class="doc a-iv"><div class="top"><span class="code">IV</span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><div class="cap"><h3>ใบแจ้งหนี้รถตู้</h3><div class="amt num">฿1,200.00</div><div class="meta">ยอดค้างชำระ · 3 ใบ</div></div></div>
+      <div class="doc a-cr"><div class="top"><span class="code">CR</span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><div class="cap"><h3>ใบเสร็จค่านายหน้า</h3><div class="amt num">฿4,800.00</div><div class="meta">ยอดรับเดือนนี้ · 4 ใบ</div></div></div>
+      <div class="doc a-pv"><div class="top"><span class="code">PV</span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span></div><div class="cap"><h3>ใบสำคัญจ่าย</h3><div class="amt num">฿6,350.00</div><div class="meta">ยอดจ่ายเดือนนี้ · 15 รายการ</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Typography</div>
+    <h2>ตัวอักษร <b>Prompt</b></h2>
+    <div class="glass solid pad">
+      <div class="type-row"><small>Display · 300 + 600</small><div style="font-size:26px;font-weight:300">สวัสดีตอนเช้า <b style="font-weight:600">สมพร</b> วันนี้มีงานอะไรบ้าง?</div></div>
+      <div class="type-row"><small>Number · 24/600</small><div class="num" style="font-size:24px;font-weight:600">฿38,750.00</div></div>
+      <div class="type-row"><small>Body · 15/400</small><div>ลูกค้ามัดจำ ฿2,500 เข้าบัญชีฮักลาว ส่วนที่เหลือชำระให้รถตู้โดยตรงหลังจบทริป</div></div>
+      <div class="type-row"><small>Label · 11.5 caps</small><div class="eyebrow">General</div></div>
+      <div class="type-row"><small>กฎน้ำหนัก</small><div style="color:var(--ink-2)">ตัวบาง 300 ใช้เฉพาะหัวข้อ ≥ 20px · ตัวหนังสือทั่วไป 400 ขึ้นไป · ตัวเลขเงิน 500–600</div></div>
+      <div class="type-row"><small>Doc no. · mono</small><div class="mono">DP-2609-0001 · BK-2609-0012</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Controls</div>
+    <h2>ปุ่ม <b>ฟอร์ม</b> และสถานะ</h2>
+    <div class="grid g3">
+      <div class="glass pad grid">
+        <div class="row"><button class="btn btn-primary">ยืนยันออกเอกสาร</button><button class="btn btn-glass">ดูตัวอย่าง</button></div>
+        <div class="row"><button class="btn btn-accent">+ สร้างงานใหม่</button><button class="btn btn-danger">ยกเลิกเอกสาร</button></div>
+        <div class="row"><span class="pill p-booked">จองแล้ว</span><span class="pill p-deposit">มัดจำแล้ว</span><span class="pill p-done">จบทริป</span><span class="pill p-void">ยกเลิก</span></div>
+        <div class="row"><span class="chip on">ทั้งหมด</span><span class="chip">มัดจำแล้ว</span><span class="chip">จบทริป</span></div>
+      </div>
+      <div class="glass solid pad grid" style="grid-column:span 2">
+        <div class="eyebrow">ตัวอย่าง: คำนวณราคางาน</div>
+        <div class="calc">
+          <div class="field"><label for="vp">ราคารถตู้</label><div class="affix"><span>฿</span><input id="vp" class="input money" value="10,000.00"></div><span class="hint">ราคาที่รถตู้แจ้งมา</span></div>
+          <div class="field"><label for="pc">ค่านายหน้า</label><div class="affix"><span>%</span><input id="pc" class="input money" value="25"></div><span class="hint">ค่าเริ่มต้น 25 · แก้ได้</span></div>
+          <div class="field"><label for="cm">ค่านายหน้า</label><div class="affix"><span>฿</span><input id="cm" class="input money" value="2,500.00"></div><span class="hint">= มัดจำเริ่มต้น</span></div>
+          <div class="field"><label for="sp">ราคาขายลูกค้า</label><div class="affix"><span>฿</span><input id="sp" class="input money" value="12,500.00"></div><span class="hint">ราคารถตู้ + ค่านายหน้า</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Screen preview</div>
+    <h2>ตัวอย่าง<b>หน้าแดชบอร์ด</b></h2>
+    <div class="app">
+      <nav class="side glass" aria-label="ตัวอย่างเมนู">
+        <span class="brandmark"><img src="logo-mark.png" alt=""><b>HUGLAO</b></span>
+        <div class="eyebrow">General</div>
+        <a class="on" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>แดชบอร์ด</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>งาน / การจอง</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>เอกสาร</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v12H4z"/><path d="M4 11h16M15 15h2"/></svg>ใบสำคัญจ่าย</a>
+        <div class="eyebrow" style="margin-top:16px">Others</div>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg>ลูกค้า</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="11" rx="3"/><path d="M3 11h18"/></svg>รถตู้</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>ออกจากระบบ</a>
+      </nav>
+      <div class="main">
+        <div class="topbar">
+          <span class="chip on">ภาพรวม</span><span class="chip">รอมัดจำ</span><span class="chip">ค้างชำระ</span>
+          <div class="search glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>ค้นหางาน ลูกค้า เลขที่เอกสาร…</div>
+          <span class="iconbtn glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 20h4"/></svg></span>
+          <span class="iconbtn glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+        </div>
+        <div class="split">
+          <div class="glass hello">
+            <span class="orb" aria-hidden="true"></span>
+            <h3>สวัสดีตอนเช้า <b>สมพร,</b><br>วันนี้มีงานอะไรบ้าง?</h3>
+            <p>มี 5 งานรอมัดจำ และ 3 ใบแจ้งหนี้ค้างชำระ</p>
+            <button class="btn btn-accent btn-sm">+ สร้างงานใหม่</button>
+          </div>
+          <div class="grid" style="gap:14px">
+            <div class="kpi glass"><b class="num">5</b><span>งานรอมัดจำ</span></div>
+            <div class="kpi glass"><b class="num">8</b><span>ทริปกำลังเดินทาง</span></div>
+            <div class="kpi glass"><b class="num">฿38,750</b><span>ค่านายหน้าเดือนนี้</span></div>
+          </div>
+        </div>
+        <div class="split">
+          <div class="glass solid pad">
+            <div class="row" style="justify-content:space-between;margin-bottom:4px"><div class="eyebrow">งานล่าสุด</div><a href="#" style="color:var(--accent);font-size:13px;text-decoration:none">ดูทั้งหมด ›</a></div>
+            <div class="list-row"><div><b>คุณวิภา ส.</b><span class="s"><span class="mono">BK-2609-0012</span> · อุดรธานี → วังเวียง</span></div><div class="r"><span class="num" style="font-weight:600">฿12,500.00</span><span class="pill p-deposit">มัดจำแล้ว</span></div></div>
+            <div class="list-row"><div><b>คุณธนา ก.</b><span class="s"><span class="mono">BK-2609-0011</span> · หนองคาย → เวียงจันทน์</span></div><div class="r"><span class="num" style="font-weight:600">฿4,375.00</span><span class="pill p-done">จบทริป</span></div></div>
+            <div class="list-row"><div><b>Mr. Daniel R.</b><span class="s"><span class="mono">BK-2609-0010</span> · เวียงจันทน์ → หลวงพระบาง</span></div><div class="r"><span class="num" style="font-weight:600">฿18,750.00</span><span class="pill p-booked">จองแล้ว</span></div></div>
+          </div>
+          <div class="glass solid pad">
+            <div class="eyebrow" style="margin-bottom:4px">BK-2609-0012 · เอกสาร</div>
+            <div class="step"><span class="dot a-dp">DP</span><div><b style="font-weight:500">ใบเสร็จมัดจำ</b><div class="mono" style="color:var(--muted)">DP-2609-0007</div></div><span class="num">฿2,500.00</span></div>
+            <div class="step"><span class="dot todo">RC</span><div><b style="font-weight:500">ใบเสร็จยอดคงเหลือ</b><div style="color:var(--muted);font-size:13px">หลังจบทริป · ฿10,000.00</div></div><button class="btn btn-primary btn-sm">ออกใบ</button></div>
+            <div class="step"><span class="dot todo">IV</span><div><b style="font-weight:500">ใบแจ้งหนี้รถตู้</b><div style="color:var(--muted);font-size:13px">ไม่จำเป็น · มัดจำครอบคลุมแล้ว</div></div><button class="btn btn-glass btn-sm">ออกใบ</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Mobile</div>
+    <h2>หน้าจอ<b>มือถือ</b></h2>
+    <p class="lede">เมนูล่างเป็นแคปซูลกระจกลอย เมนูที่เลือกเป็นป้ายขาวทึบ ไอคอนสีส้ม ปุ่ม "สร้าง" อยู่กลางแถบเป็นปุ่มสีเข้ม</p>
+    <div class="phones">
+      <div>
+        <div class="phone"><div class="screen">
+          <div class="m-status"><span>9:41</span><span>5G ▮▮▮</span></div>
+          <div class="m-top"><span class="brandmark"><img src="logo-mark.png" alt=""><b>HUGLAO</b></span><span class="sp"></span><span class="iconbtn glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 20h4"/></svg></span></div>
+          <div class="m-body">
+            <div class="glass m-hello"><span class="orb" aria-hidden="true"></span><div>สวัสดีตอนเช้า <b style="font-weight:600">สมพร</b><small>ค่านายหน้าเดือนนี้ <span class="num">฿38,750</span></small></div></div>
+            <div class="m-cards">
+              <div class="doc a-dp"><div class="top"><span class="code">DP</span></div><div class="cap"><h3>ใบเสร็จมัดจำ</h3><div class="amt num">12 ใบ</div><div class="meta">ออกเดือนนี้</div></div></div>
+              <div class="doc a-iv"><div class="top"><span class="code">IV</span></div><div class="cap"><h3>แจ้งหนี้รถตู้</h3><div class="amt num">3 ใบ</div><div class="meta">ค้างชำระ</div></div></div>
+              <div class="doc a-pv"><div class="top"><span class="code">PV</span></div><div class="cap"><h3>ใบสำคัญจ่าย</h3><div class="amt num">15</div><div class="meta">รายการเดือนนี้</div></div></div>
+            </div>
+            <div class="glass solid m-card">
+              <div class="row" style="justify-content:space-between"><div class="eyebrow">งานล่าสุด</div><span style="color:var(--accent);font-size:12.5px">ดูทั้งหมด ›</span></div>
+              <div class="list-row"><div><b>คุณวิภา ส.</b><span class="s">อุดรธานี → วังเวียง</span></div><span class="pill p-deposit">มัดจำแล้ว</span></div>
+              <div class="list-row"><div><b>คุณธนา ก.</b><span class="s">หนองคาย → เวียงจันทน์</span></div><span class="pill p-done">จบทริป</span></div>
+            </div>
+          </div>
+          <nav class="navbar glass" aria-label="ตัวอย่างเมนูมือถือ">
+            <a class="on" href="#" aria-current="page"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>หน้าหลัก</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>งาน</a>
+            <button class="plus" type="button" aria-label="สร้าง"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>สร้าง</button>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>เอกสาร</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v12H4z"/><path d="M4 11h16M15 15h2"/></svg>จ่าย</a>
+          </nav>
+        </div></div>
+        <div class="phone-cap">แดชบอร์ด</div>
+      </div>
+
+      <div>
+        <div class="phone"><div class="screen">
+          <div class="m-status"><span>9:41</span><span>5G ▮▮▮</span></div>
+          <div class="m-top"><span class="iconbtn glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></span><span class="sp"></span><span class="pill p-deposit">มัดจำแล้ว</span></div>
+          <div class="m-title"><span class="mono">BK-2609-0012</span><h3>คุณวิภา ส.</h3><p>อุดรธานี → วังเวียง · 18–20 ก.ย.</p></div>
+          <div class="m-body">
+            <div class="glass solid m-card">
+              <div class="kv"><span>ราคารถตู้</span><b class="num" style="font-weight:500">฿10,000.00</b></div>
+              <div class="kv"><span>ค่านายหน้า 25%</span><b class="num" style="font-weight:500">฿2,500.00</b></div>
+              <div class="kv total"><span>ราคาขาย</span><span class="num">฿12,500.00</span></div>
+            </div>
+            <div class="glass solid m-card">
+              <div class="eyebrow">เอกสาร</div>
+              <div class="step"><span class="dot a-dp">DP</span><div><b style="font-weight:500;font-size:14px">ใบเสร็จมัดจำ</b><div class="mono" style="color:var(--muted)">DP-2609-0007</div></div><span class="num" style="font-size:13.5px">฿2,500</span></div>
+              <div class="step"><span class="dot todo">RC</span><div><b style="font-weight:500;font-size:14px">ยอดคงเหลือ</b><div style="color:var(--muted);font-size:12px">หลังจบทริป</div></div><span class="num" style="font-size:13.5px;color:var(--muted)">฿10,000</span></div>
+              <div class="step"><span class="dot todo">IV</span><div><b style="font-weight:500;font-size:14px">แจ้งหนี้รถตู้</b><div style="color:var(--muted);font-size:12px">ไม่จำเป็น</div></div><span></span></div>
+            </div>
+          </div>
+          <div class="m-foot"><button class="btn btn-primary">ออกใบเสร็จยอดคงเหลือ</button></div>
+        </div></div>
+        <div class="phone-cap">รายละเอียดงาน</div>
+      </div>
+
+      <div>
+        <div class="phone"><div class="screen">
+          <div class="m-status"><span>9:41</span><span>5G ▮▮▮</span></div>
+          <div class="m-top"><span class="iconbtn glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></span></div>
+          <div class="m-title"><span class="mono">BK-2609-0012 · คุณวิภา ส.</span><h3>ออกใบเสร็จมัดจำ</h3></div>
+          <div class="m-body">
+            <div class="glass solid m-card grid" style="gap:14px">
+              <div class="field"><label for="m1">รายการ</label><input id="m1" class="input" value="มัดจำค่ารถตู้ อุดรธานี → วังเวียง"></div>
+              <div class="field"><label for="m2">ยอดมัดจำ</label><div class="affix"><span>฿</span><input id="m2" class="input money" value="2,500.00"></div><span class="hint">ค่าเริ่มต้น = ค่านายหน้า · แก้ได้</span></div>
+              <div class="field"><label>ชำระโดย</label><div class="row" style="gap:8px"><span class="chip on">โอน</span><span class="chip">เงินสด</span></div></div>
+            </div>
+            <div class="glass solid m-card" style="font-size:13px;color:var(--ink-2)">สองพันห้าร้อยบาทถ้วน</div>
+          </div>
+          <div class="m-foot" style="grid-template-columns:1fr 2fr"><button class="btn btn-glass">ดูตัวอย่าง</button><button class="btn btn-primary">ยืนยันออกเอกสาร</button></div>
+        </div></div>
+        <div class="phone-cap">ฟอร์มออกเอกสาร</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Printed documents</div>
+    <h2>เอกสาร PDF ใช้<b>สีแบรนด์ HUGLAO</b></h2>
+    <div class="brand">
+      <div class="grid">
+        <p class="lede">หน้าจอใช้โทนกระจกพาสเทล ส่วนเอกสารที่ส่งถึงลูกค้าและรถตู้ใช้เขียวเข้มกับทองตามโลโก้บนกระดาษสีงาช้าง</p>
+        <div class="swatches">
+          <div class="sw"><i style="background:var(--brand-green)"></i><b>HUGLAO Green</b><span>#0F2A1D</span></div>
+          <div class="sw"><i style="background:var(--brand-gold)"></i><b>HUGLAO Gold</b><span>#D9A21B</span></div>
+          <div class="sw"><i style="background:var(--accent)"></i><b>Accent</b><span>#EE6A3C · ไอคอน ลิงก์</span></div>
+          <div class="sw"><i style="background:var(--ink)"></i><b>Ink</b><span>#1D1B26 · ปุ่มหลัก</span></div>
+        </div>
+      </div>
+      <div class="paper">
+        <div class="hd"><div><b>บริษัท ฮักลาว</b><div>HUGLAO Co., Ltd.</div></div><div class="ttl">ใบเสร็จรับเงินมัดจำ<small>DEPOSIT RECEIPT</small><div class="mono" style="color:#1E2A22;font-weight:500">DP-2609-0007</div></div></div>
+        <div style="margin-top:10px">ได้รับเงินจาก / Received from: <b>คุณวิภา ส.</b></div>
+        <table><thead><tr><th>รายการ / Description</th><th class="r">จำนวนเงิน</th></tr></thead>
+          <tbody><tr><td>มัดจำค่ารถตู้ อุดรธานี → วังเวียง</td><td class="r num">2,500.00</td></tr></tbody></table>
+        <div class="tot"><span>(สองพันห้าร้อยบาทถ้วน)</span><span class="num">฿2,500.00</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+document.querySelectorAll('.navbar').forEach(function(bar){
+  var tabs = bar.querySelectorAll('a');
+  tabs.forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      tabs.forEach(function(t){ t.classList.remove('on'); t.removeAttribute('aria-current'); });
+      a.classList.add('on'); a.setAttribute('aria-current','page');
+    });
+  });
+});
+</script>
