@@ -76,11 +76,11 @@ Recipient data is snapshotted on the document so later edits to customers/vans n
 - `/vans` — van owner registry with search (vans are repeat partners; bank details needed for invoices)
 - `/admin/staff`, `/admin/settings` — admin only
 
-Issue flow: prefilled form → preview → "ยืนยันออกเอกสาร" → number assigned → PDF opens for print/share.
+Issue flow: prefilled form → preview → "ยืนยันออกเอกสาร" → number assigned → the document page opens, ready to print or save as PDF and share.
 
 ## PDF
 
-Server-side generated A4 PDF, one shared template: header with logo, company info, bilingual title, number/date; recipient block; booking reference (route/date); items table; total + Thai amount-in-words; payment method; signature lines (PV has three: payer / payee / approver). Per-type differences listed in the document types table.
+Print-ready A4 document page rendered by the browser (owner decision 2026-09-15): staff press "พิมพ์ / บันทึกเป็น PDF" and use the browser's print dialog, which guarantees correct Thai shaping and line breaking. A one-click server-generated PDF can be added later reusing the same template. One shared template: header with logo, company info, bilingual title, number/date; recipient block; booking reference (route/date); items table; total + Thai amount-in-words; payment method; signature lines (PV has three: payer / payee / approver). Per-type differences listed in the document types table.
 
 ## UI design system (app screens)
 
