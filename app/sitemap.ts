@@ -13,7 +13,6 @@ const STATIC_PATHS = [
   "/van-laos",
   "/articles",
   "/articles/nam-pien-yorla-pa",
-  "/quote",
   "/about",
   "/faq",
   "/terms",
