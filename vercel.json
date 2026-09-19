@@ -8,6 +8,8 @@
     },
     { "source": "/van-vip", "destination": "/van-laos/", "permanent": true },
     { "source": "/van-vip/", "destination": "/van-laos/", "permanent": true },
+    { "source": "/car-with-driver/van-vip", "destination": "/van-laos/", "permanent": true },
+    { "source": "/car-with-driver/van-vip/", "destination": "/van-laos/", "permanent": true },
     { "source": "/car-with-driver/van", "destination": "/van-laos/", "permanent": true },
     { "source": "/car-with-driver/van/", "destination": "/van-laos/", "permanent": true },
     { "source": "/articles.html", "destination": "/articles/", "permanent": true },
