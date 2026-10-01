@@ -49,6 +49,7 @@ export const VEHICLE_GROUPS = [
     luggage: "ตรวจตามจำนวนและขนาดกระเป๋า",
     suitableFor: "ครอบครัวและกลุ่มเดินทาง",
     mediaIds: [
+      "huglaoHiaceFrontQuarter",
       "vehicleVan",
       "huglaoVansBalloon",
       "huglaoDriverSilverVan",

@@ -4,7 +4,7 @@ import Link from "next/link";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
-import { getMedia } from "@/data/media";
+import { getMedia, type MediaId } from "@/data/media";
 import { getCurrentPriceRows } from "@/data/pricing";
 import { BOOKING_STEPS, ROUTE_GROUPS, SITE } from "@/data/site";
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: `${PAGE_PATH}/`,
     type: "website",
-    images: [{ url: getMedia("huglaoVansBalloon").src, alt: getMedia("huglaoVansBalloon").alt }],
+    images: [{ url: getMedia("huglaoHiaceFrontQuarter").src, alt: getMedia("huglaoHiaceFrontQuarter").alt }],
   },
 };
 
@@ -33,11 +33,47 @@ const FEATURED_ROUTE_SLUGS = [
   "vientiane-muang-feuang",
 ] as const;
 
-const VAN_GALLERY_IDS = [
-  "huglaoVansBalloon",
-  "huglaoDriverSilverVan",
-  "huglaoDriverWhiteVan",
+const VAN_PREVIEW_IDS = [
+  "huglaoHiaceSideDoorOpen",
+  "huglaoHiaceAisle",
+  "huglaoHiaceTailgateOpen",
 ] as const;
+
+const VAN_ALBUM_GROUPS = [
+  {
+    title: "ภายนอก",
+    items: [
+      { mediaId: "huglaoHiaceFrontQuarter", caption: "Toyota Hiace หลังคาสูง" },
+      { mediaId: "huglaoHiaceSideDoorOpen", caption: "ประตูสไลด์ ขึ้นลงสะดวก" },
+      { mediaId: "huglaoHiaceRearQuarter", caption: "ฟิล์มกรองแสงเข้มรอบคัน" },
+    ],
+  },
+  {
+    title: "ห้องโดยสาร",
+    items: [
+      { mediaId: "huglaoHiaceSeatRows", caption: "เข็มขัดนิรภัยทุกที่นั่ง" },
+      { mediaId: "huglaoHiaceAisle", caption: "ทางเดินกลาง และช่องแอร์บนเพดาน" },
+      { mediaId: "huglaoHiaceBenchSeat", caption: "พอร์ต USB ที่ผนังข้างเบาะ" },
+    ],
+  },
+  {
+    title: "สัมภาระ",
+    items: [
+      { mediaId: "huglaoHiaceTailgateOpen", caption: "ฝาท้ายเปิดกว้าง" },
+      { mediaId: "huglaoHiaceLuggageSpace", caption: "พับเบาะแถวหลังเพิ่มที่วางกระเป๋า" },
+    ],
+  },
+  {
+    title: "ทีมงานและคนขับ",
+    items: [
+      { mediaId: "vehicleVan", caption: "รถตู้ในทีม HUGLAO" },
+      { mediaId: "huglaoVansBalloon", caption: "ทีมรถตู้ HUGLAO" },
+      { mediaId: "huglaoDriverWhiteVan", caption: "คนขับและรถตู้ของทีม" },
+    ],
+  },
+] as const satisfies readonly { title: string; items: readonly { mediaId: MediaId; caption: string }[] }[];
+
+const VAN_ALBUM_COUNT = VAN_ALBUM_GROUPS.reduce((total, group) => total + group.items.length, 0);
 
 const VAN_FAQS = [
   {
@@ -62,7 +98,7 @@ export default function VanLaosPage() {
   const routes = ROUTE_GROUPS.filter((route) =>
     FEATURED_ROUTE_SLUGS.includes(route.slug as (typeof FEATURED_ROUTE_SLUGS)[number]),
   );
-  const vanMedia = getMedia("vehicleVan");
+  const vanMedia = getMedia("huglaoHiaceFrontQuarter");
 
   return (
     <main>
@@ -112,10 +148,10 @@ export default function VanLaosPage() {
           <article className="grid overflow-hidden rounded-[24px] border border-white/10 bg-white/[.055] sm:rounded-[28px] md:grid-cols-[minmax(280px,.85fr)_minmax(0,1fr)]">
             <div className="bg-[#071d13] p-3 sm:p-4" aria-label="อัลบั้มรถตู้ คนขับ และทีมงาน HUGLAO">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-[#eee9de] sm:rounded-[22px]">
-                <Image src={vanMedia.src} alt={vanMedia.alt} fill sizes="(max-width: 767px) 100vw, 45vw" className="object-contain p-3 sm:p-5" />
+                <Image src={vanMedia.src} alt={vanMedia.alt} fill priority sizes="(max-width: 767px) 100vw, 45vw" className="object-cover" />
               </div>
               <div className="mt-2 grid grid-cols-3 gap-2 sm:mt-3 sm:gap-3">
-                {VAN_GALLERY_IDS.slice(0, 3).map((mediaId) => {
+                {VAN_PREVIEW_IDS.map((mediaId) => {
                   const media = getMedia(mediaId);
                   return (
                     <figure key={mediaId} className="overflow-hidden rounded-[12px] border border-white/10 bg-[#eee9de] sm:rounded-[16px]">
@@ -126,7 +162,7 @@ export default function VanLaosPage() {
                   );
                 })}
               </div>
-              <p className="mt-3 px-1 text-xs leading-5 text-[#afbeb5]">อัลบั้มรถตู้ คนขับ และทีมงาน HUGLAO รวม 4 ภาพ · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></p>
+              <p className="mt-3 px-1 text-xs leading-5 text-[#afbeb5]">ภาพรถตู้จริงของทีม HUGLAO · <Link href="#van-album" className="font-semibold text-[#efd276]">ดูอัลบั้มทั้งหมด {VAN_ALBUM_COUNT} ภาพ</Link> · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></p>
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-9">
               <h2 id="van-options-title" className="font-serif-th text-3xl font-bold">รถตู้เที่ยวลาว</h2>
@@ -136,6 +172,34 @@ export default function VanLaosPage() {
               </Link>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section className="bg-white py-[clamp(56px,7vw,92px)]" id="van-album" aria-labelledby="van-album-title">
+        <div className="hl-shell">
+          <span className="hl-kicker">อัลบั้มรถตู้</span>
+          <h2 id="van-album-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">ภาพรถตู้จริงของทีม HUGLAO</h2>
+          <p className="mt-4 max-w-[820px] leading-8 text-[#59645d]">ดูภายนอก ห้องโดยสาร และพื้นที่สัมภาระก่อนขอราคา รุ่นรถและผังที่นั่งจริงทีมงานจะแจ้งตามรถที่ว่างในวันเดินทาง</p>
+          <div className="mt-8 space-y-9">
+            {VAN_ALBUM_GROUPS.map((group) => (
+              <div key={group.title}>
+                <h3 className="text-sm font-bold tracking-[.12em] text-[#9b711c]">{group.title}</h3>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {group.items.map(({ mediaId, caption }) => {
+                    const media = getMedia(mediaId);
+                    return (
+                      <figure key={mediaId} className="overflow-hidden rounded-[18px] border border-[#ddd4c1] bg-[#f9f6ef]">
+                        <a href={media.src} target="_blank" rel="noopener" className="group relative block aspect-[4/3] overflow-hidden" aria-label={`เปิดภาพขนาดเต็ม: ${media.title}`}>
+                          <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-cover transition duration-300 group-hover:scale-[1.03]" />
+                        </a>
+                        <figcaption className="px-4 py-3 text-sm font-semibold text-[#0a2d20]">{caption}</figcaption>
+                      </figure>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
