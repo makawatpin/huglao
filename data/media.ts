@@ -247,7 +247,7 @@ export const MEDIA_LIBRARY = {
     sourceUrl: "https://www.huglao.com/",
     license: "ใช้โดยได้รับอนุญาตจาก HUGLAO",
     licenseUrl: "https://www.huglao.com/terms/",
-    changes: "เบลอป้ายทะเบียน ย่อขนาด และแปลงเป็น WebP",
+    changes: "ปิดป้ายทะเบียนด้วยแผ่นโลโก้ HUGLAO ย่อขนาด และแปลงเป็น WebP",
   },
   huglaoHiaceSideDoorOpen: {
     src: "/assets/huglao-hiace-side-door-open.webp",
@@ -257,7 +257,7 @@ export const MEDIA_LIBRARY = {
     sourceUrl: "https://www.huglao.com/",
     license: "ใช้โดยได้รับอนุญาตจาก HUGLAO",
     licenseUrl: "https://www.huglao.com/terms/",
-    changes: "เบลอป้ายทะเบียน ย่อขนาด และแปลงเป็น WebP",
+    changes: "ปิดป้ายทะเบียนด้วยแผ่นโลโก้ HUGLAO ย่อขนาด และแปลงเป็น WebP",
   },
   huglaoHiaceRearQuarter: {
     src: "/assets/huglao-hiace-rear-quarter.webp",
@@ -267,7 +267,7 @@ export const MEDIA_LIBRARY = {
     sourceUrl: "https://www.huglao.com/",
     license: "ใช้โดยได้รับอนุญาตจาก HUGLAO",
     licenseUrl: "https://www.huglao.com/terms/",
-    changes: "เบลอป้ายทะเบียน ย่อขนาด และแปลงเป็น WebP",
+    changes: "ปิดป้ายทะเบียนด้วยแผ่นโลโก้ HUGLAO ย่อขนาด และแปลงเป็น WebP",
   },
   huglaoHiaceSeatRows: {
     src: "/assets/huglao-hiace-seat-rows.webp",
