@@ -112,6 +112,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </ol>
               </div>
             ) : null}
+            {seo.infoSections?.map((block) => (
+              <div key={block.heading} className="mt-10">
+                <h2 className="font-serif-th text-[clamp(1.8rem,4vw,2.6rem)] font-bold leading-tight text-[#071d13]">{block.heading}</h2>
+                <ul className="mt-5 grid gap-3">
+                  {block.items.map((item) => <li key={item} className="rounded-[18px] border border-[#ddd4c1] bg-[#f7f3e9] px-5 py-4 leading-8 text-[#59645d]">{item}</li>)}
+                </ul>
+              </div>
+            ))}
             {seo.prices ? (
               <div className="mt-10">
                 <h2 className="font-serif-th text-[clamp(1.8rem,4vw,2.6rem)] font-bold leading-tight text-[#071d13]">{`ราคา${seo.heading}`}</h2>
