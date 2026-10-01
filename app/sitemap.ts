@@ -13,6 +13,7 @@ const STATIC_PATHS = [
   "/travel-with-us",
   "/van-laos",
   "/articles",
+  "/articles/border-pass-vs-passport-laos",
   "/articles/nam-pien-yorla-pa",
   "/articles/wat-si-muang-vientiane",
   "/about",

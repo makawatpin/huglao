@@ -11,6 +11,16 @@ export type ArticlePreview = {
 
 export const LOCAL_ARTICLES: ArticlePreview[] = [
   {
+    title: "ข้ามด่านหนองคายไปลาว ใช้บัตรผ่านแดนหรือพาสปอร์ต? เอกสาร เงื่อนไข และขั้นตอน",
+    slug: "border-pass-vs-passport-laos",
+    cover: "/assets/commons-pickup-thanaleng.webp",
+    coverAlt: "อาคารตรวจคนเข้าเมืองด่านท่านาแล้งฝั่งลาว",
+    author: "HUGLAO",
+    publishDate: "1 ตุลาคม 2569",
+    tags: ["บัตรผ่านแดน", "ด่านหนองคาย", "เวียงจันทน์"],
+    excerpt: "เทียบบัตรผ่านแดนกับพาสปอร์ต เที่ยวได้ที่ไหน อยู่ได้กี่วัน เอกสารสำหรับเด็ก และขั้นตอนข้ามด่านหนองคายถึงจุดรับรถฝั่งลาว",
+  },
+  {
     title: "วัดสีเมือง (ວັດສີເມືອງ) เวียงจันทน์ รีวิว ไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง",
     slug: "wat-si-muang-vientiane",
     cover: "/assets/wat-si-muang-front.webp",
