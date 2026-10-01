@@ -75,7 +75,7 @@ export default function TravelWithUsPage() {
         <div className="hl-shell">
           <span className="hl-kicker">ราคาปัจจุบัน</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">ราคารถรับ–ส่งและเหมาทริปจากเวียงจันทน์</h2>
-          <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">รวมราคาที่ HUGLAO ยืนยันแล้วสำหรับรถเก๋ง/SUV, MPV และรถตู้ โดยราคาของ MPV แสดงแยกจาก SUV อย่างชัดเจน</p>
+          <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">รวมราคาที่ HUGLAO ยืนยันแล้วสำหรับรถเก๋ง/SUV และรถตู้</p>
           <PublishedPriceTable rows={getCurrentPriceRows()} />
         </div>
       </section>

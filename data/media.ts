@@ -139,16 +139,6 @@ export const MEDIA_LIBRARY = {
     licenseUrl: "https://www.huglao.com/terms/",
     changes: "เปลี่ยนชื่อไฟล์สำหรับใช้งานบนเว็บไซต์",
   },
-  vehicleMpv: {
-    src: "/assets/commons-vehicle-mpv.webp",
-    alt: "ภาพประกอบรถ MPV สำหรับครอบครัวและกลุ่มขนาดเล็ก",
-    title: "201x Toyota Innova (AN40) 2.0G 5-door MPV",
-    author: "Manoj Prasad",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:201x_Toyota_Innova_(AN40)_2.0G_5-door_MPV.jpg",
-    license: "CC BY-SA 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
-    changes: "ครอป ย่อขนาด และแปลงเป็น WebP",
-  },
   vehicleVan: {
     src: "/assets/huglao-van-fleet.png",
     alt: "ทีมรถตู้ HUGLAO พร้อมให้บริการเดินทางในลาว",

@@ -81,7 +81,6 @@ function getVehicle(slug: string) {
 function getVehicleSeoTitle(slug: string, name: string) {
   const titles: Record<string, string> = {
     "sedan-suv": "รถเก๋งและ SUV พร้อมคนขับเที่ยวลาว",
-    mpv: "รถ MPV พร้อมคนขับเที่ยวลาว",
     van: "รถตู้เที่ยวลาวพร้อมคนขับ",
     "minibus-bus": "รถมินิบัสและรถบัสพร้อมคนขับเที่ยวลาว",
   };

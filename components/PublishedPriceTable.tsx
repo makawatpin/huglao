@@ -24,7 +24,6 @@ const CATEGORY_LABELS: Record<PriceCategory, string> = {
 
 const MOBILE_VEHICLE_LABELS: Record<PriceVehicleKey, string> = {
   sedanSuv: "เก๋ง/SUV เที่ยวลาว",
-  mpv: "MPV เที่ยวลาว",
   standardVan: "รถตู้เที่ยวลาว",
 };
 
@@ -50,7 +49,7 @@ function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: read
   const isSingleVehicle = vehicles.length === 1;
   const gridClass = isSingleVehicle
     ? "grid-cols-[minmax(0,1fr)_minmax(108px,.65fr)]"
-    : "grid-cols-[minmax(70px,1.15fr)_repeat(3,minmax(0,1fr))]";
+    : "grid-cols-[minmax(70px,1.15fr)_repeat(2,minmax(0,1fr))]";
 
   return (
     <div className="grid gap-3 md:hidden">

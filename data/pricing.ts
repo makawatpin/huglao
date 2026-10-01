@@ -1,5 +1,5 @@
 export type PriceCategory = "transfer" | "charter";
-export type PriceVehicleKey = "sedanSuv" | "mpv" | "standardVan";
+export type PriceVehicleKey = "sedanSuv" | "standardVan";
 
 export type PriceRow = {
   id: string;
@@ -12,7 +12,6 @@ export type PriceRow = {
 
 export const PRICE_VEHICLES = [
   { key: "sedanSuv", slug: "sedan-suv", name: "เก๋ง/SUV เที่ยวลาว" },
-  { key: "mpv", slug: "mpv", name: "MPV เที่ยวลาว" },
   { key: "standardVan", slug: "van", name: "รถตู้เที่ยวลาว" },
 ] as const satisfies ReadonlyArray<{ key: PriceVehicleKey; slug: string; name: string }>;
 
@@ -23,7 +22,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-thanaleng-city",
     routeName: "ด่านท่านาแล้งฝั่งลาว → ตัวเมืองเวียงจันทน์",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 600, mpv: 700, standardVan: 800 },
+    prices: { sedanSuv: 600, standardVan: 800 },
   },
   {
     id: "wattay-city-hotel",
@@ -31,7 +30,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-wattay-city-hotel",
     routeName: "สนามบินวัตไต → ตัวเมือง/โรงแรม",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 600, mpv: 700, standardVan: 800 },
+    prices: { sedanSuv: 600, standardVan: 800 },
   },
   {
     id: "khamsavath-city-hotel",
@@ -39,7 +38,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-khamsavath-city-hotel",
     routeName: "สถานีคำสะหวาด → ตัวเมือง/โรงแรม",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 600, mpv: 700, standardVan: 800 },
+    prices: { sedanSuv: 600, standardVan: 800 },
   },
   {
     id: "city-laos-china-railway",
@@ -47,7 +46,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-city-laos-china-railway",
     routeName: "ตัวเมืองเวียงจันทน์ → สถานีรถไฟลาว–จีน",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 700, mpv: 800, standardVan: 900 },
+    prices: { sedanSuv: 700, standardVan: 900 },
   },
   {
     id: "thanaleng-laos-china-railway",
@@ -55,7 +54,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-thanaleng-laos-china-railway",
     routeName: "ด่านท่านาแล้งฝั่งลาว → สถานีรถไฟลาว–จีน",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 900, mpv: 1000, standardVan: 1100 },
+    prices: { sedanSuv: 900, standardVan: 1100 },
   },
   {
     id: "wattay-laos-china-railway",
@@ -63,7 +62,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-wattay-laos-china-railway",
     routeName: "สนามบินวัตไต → สถานีรถไฟลาว–จีน",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 900, mpv: 1000, standardVan: 1100 },
+    prices: { sedanSuv: 900, standardVan: 1100 },
   },
   {
     id: "vientiane-nam-pien-yorla-pa",
@@ -71,7 +70,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-nam-pien-yorla-pa",
     routeName: "จุดรับในเวียงจันทน์ → น้ำเปี่ยนยอละปา",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 2000, mpv: 2300, standardVan: 2700 },
+    prices: { sedanSuv: 2000, standardVan: 2700 },
   },
   {
     id: "vientiane-nam-ngum-transfer",
@@ -79,7 +78,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-nam-ngum",
     routeName: "จุดรับในเวียงจันทน์ → น้ำงึม",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 2000, mpv: 2300, standardVan: 2700 },
+    prices: { sedanSuv: 2000, standardVan: 2700 },
   },
   {
     id: "vientiane-vang-vieng-transfer",
@@ -87,7 +86,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-vang-vieng",
     routeName: "จุดรับในเวียงจันทน์ → วังเวียง",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 2400, mpv: 2800, standardVan: 3300 },
+    prices: { sedanSuv: 2400, standardVan: 3300 },
   },
   {
     id: "vientiane-muang-feuang-transfer",
@@ -95,7 +94,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-muang-feuang",
     routeName: "จุดรับในเวียงจันทน์ → เมืองเฟือง",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 2800, mpv: 3200, standardVan: 3800 },
+    prices: { sedanSuv: 2800, standardVan: 3800 },
   },
 ];
 
@@ -106,7 +105,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-city",
     routeName: "เที่ยวภายในนครหลวงเวียงจันทน์",
     duration: "1 วัน",
-    prices: { sedanSuv: 2000, mpv: 2100, standardVan: 2200 },
+    prices: { sedanSuv: 2000, standardVan: 2200 },
   },
   {
     id: "vientiane-nam-ngum-1d",
@@ -114,7 +113,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-nam-ngum",
     routeName: "เวียงจันทน์–น้ำงึม–เวียงจันทน์",
     duration: "1 วัน",
-    prices: { sedanSuv: 4100, mpv: 4400, standardVan: 4600 },
+    prices: { sedanSuv: 4100, standardVan: 4600 },
   },
   {
     id: "vientiane-nam-ngum-2d1n",
@@ -122,7 +121,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-nam-ngum",
     routeName: "เวียงจันทน์–น้ำงึม–เวียงจันทน์",
     duration: "2 วัน 1 คืน",
-    prices: { sedanSuv: 7100, mpv: 7400, standardVan: 7800 },
+    prices: { sedanSuv: 7100, standardVan: 7800 },
   },
   {
     id: "vientiane-vang-vieng-1d",
@@ -130,7 +129,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-vang-vieng",
     routeName: "เวียงจันทน์–วังเวียง–เวียงจันทน์",
     duration: "1 วัน",
-    prices: { sedanSuv: 5300, mpv: 5600, standardVan: 6000 },
+    prices: { sedanSuv: 5300, standardVan: 6000 },
   },
   {
     id: "vientiane-vang-vieng-2d1n",
@@ -138,7 +137,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-vang-vieng",
     routeName: "เวียงจันทน์–วังเวียง–เวียงจันทน์",
     duration: "2 วัน 1 คืน",
-    prices: { sedanSuv: 8500, mpv: 8800, standardVan: 9200 },
+    prices: { sedanSuv: 8500, standardVan: 9200 },
   },
   {
     id: "vientiane-vang-vieng-3d2n",
@@ -146,7 +145,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-vang-vieng",
     routeName: "เวียงจันทน์–วังเวียง–เวียงจันทน์",
     duration: "3 วัน 2 คืน",
-    prices: { sedanSuv: 11200, mpv: 11800, standardVan: 12400 },
+    prices: { sedanSuv: 11200, standardVan: 12400 },
   },
   {
     id: "vientiane-vang-vieng-4d3n",
@@ -154,7 +153,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-vang-vieng",
     routeName: "เวียงจันทน์–วังเวียง–เวียงจันทน์",
     duration: "4 วัน 3 คืน",
-    prices: { sedanSuv: 13900, mpv: 14600, standardVan: 15300 },
+    prices: { sedanSuv: 13900, standardVan: 15300 },
   },
   {
     id: "vientiane-muang-feuang-1d",
@@ -162,7 +161,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-muang-feuang",
     routeName: "เวียงจันทน์–เมืองเฟือง–เวียงจันทน์",
     duration: "1 วัน",
-    prices: { sedanSuv: 5600, mpv: 6000, standardVan: 6400 },
+    prices: { sedanSuv: 5600, standardVan: 6400 },
   },
   {
     id: "vientiane-muang-feuang-2d1n",
@@ -170,7 +169,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-muang-feuang",
     routeName: "เวียงจันทน์–เมืองเฟือง–เวียงจันทน์",
     duration: "2 วัน 1 คืน",
-    prices: { sedanSuv: 8500, mpv: 8800, standardVan: 9200 },
+    prices: { sedanSuv: 8500, standardVan: 9200 },
   },
   {
     id: "nam-ngum-vang-vieng-2d1n",
@@ -178,7 +177,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "nam-ngum-vang-vieng",
     routeName: "เวียงจันทน์–น้ำงึม–วังเวียง–เวียงจันทน์",
     duration: "2 วัน 1 คืน",
-    prices: { sedanSuv: 9200, mpv: 9600, standardVan: 10100 },
+    prices: { sedanSuv: 9200, standardVan: 10100 },
   },
   {
     id: "nam-ngum-vang-vieng-3d2n",
@@ -186,7 +185,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "nam-ngum-vang-vieng",
     routeName: "เวียงจันทน์–น้ำงึม–วังเวียง–เวียงจันทน์",
     duration: "3 วัน 2 คืน",
-    prices: { sedanSuv: 12000, mpv: 12600, standardVan: 13200 },
+    prices: { sedanSuv: 12000, standardVan: 13200 },
   },
   {
     id: "nam-ngum-vang-vieng-4d3n",
@@ -194,7 +193,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "nam-ngum-vang-vieng",
     routeName: "เวียงจันทน์–น้ำงึม–วังเวียง–เวียงจันทน์",
     duration: "4 วัน 3 คืน",
-    prices: { sedanSuv: 14800, mpv: 15500, standardVan: 16200 },
+    prices: { sedanSuv: 14800, standardVan: 16200 },
   },
   {
     id: "muang-feuang-vang-vieng-3d2n",
@@ -202,7 +201,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "muang-feuang-vang-vieng",
     routeName: "เวียงจันทน์–เมืองเฟือง–วังเวียง–เวียงจันทน์",
     duration: "3 วัน 2 คืน",
-    prices: { sedanSuv: 12400, mpv: 12900, standardVan: 13500 },
+    prices: { sedanSuv: 12400, standardVan: 13500 },
   },
   {
     id: "muang-feuang-vang-vieng-4d3n",
@@ -210,7 +209,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "muang-feuang-vang-vieng",
     routeName: "เวียงจันทน์–เมืองเฟือง–วังเวียง–เวียงจันทน์",
     duration: "4 วัน 3 คืน",
-    prices: { sedanSuv: 15300, mpv: 16000, standardVan: 16700 },
+    prices: { sedanSuv: 15300, standardVan: 16700 },
   },
   {
     id: "nam-ngum-muang-feuang-vang-vieng-4d3n",
@@ -218,7 +217,7 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "nam-ngum-muang-feuang-vang-vieng",
     routeName: "เวียงจันทน์–น้ำงึม–เมืองเฟือง–วังเวียง–เวียงจันทน์",
     duration: "4 วัน 3 คืน",
-    prices: { sedanSuv: 16500, mpv: 17300, standardVan: 18100 },
+    prices: { sedanSuv: 16500, standardVan: 18100 },
   },
 ];
 

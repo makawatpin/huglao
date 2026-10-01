@@ -10,7 +10,7 @@ import { getCurrentPriceRows, getPriceVehicle } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "จองรถเที่ยวลาวพร้อมคนขับ",
-  description: "จองรถเที่ยวลาวพร้อมคนขับ เลือกได้ทั้งรถเก๋งและ SUV เที่ยวลาว รถ MPV เที่ยวลาว รถตู้เที่ยวลาว รถมินิบัสและรถบัสเที่ยวลาว พร้อมตรวจราคาก่อนยืนยัน",
+  description: "จองรถเที่ยวลาวพร้อมคนขับ เลือกได้ทั้งรถเก๋งและ SUV เที่ยวลาว รถตู้เที่ยวลาว รถมินิบัสและรถบัสเที่ยวลาว พร้อมตรวจราคาก่อนยืนยัน",
   alternates: { canonical: "/car-with-driver/" },
 };
 
@@ -20,7 +20,7 @@ export default function CarWithDriverPage() {
       <PageHero
         eyebrow="Private car with driver"
         title="จองรถพร้อมคนขับ เที่ยวลาวตามแผนของคุณ"
-        description="เลือกได้ทั้งรถเก๋งและ SUV เที่ยวลาว รถ MPV เที่ยวลาว รถตู้เที่ยวลาว รถมินิบัสและรถบัสเที่ยวลาว ตามจำนวนผู้โดยสาร สัมภาระ และรูปแบบทริป โดยทีม HUGLAO ช่วยจัดหาและประสานรถจากพาร์ตเนอร์"
+        description="เลือกได้ทั้งรถเก๋งและ SUV เที่ยวลาว รถตู้เที่ยวลาว รถมินิบัสและรถบัสเที่ยวลาว ตามจำนวนผู้โดยสาร สัมภาระ และรูปแบบทริป โดยทีม HUGLAO ช่วยจัดหาและประสานรถจากพาร์ตเนอร์"
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "จองรถพร้อมคนขับ" }]}
       />
 
@@ -65,7 +65,7 @@ export default function CarWithDriverPage() {
         <div className="hl-shell">
           <span className="hl-kicker">ตารางราคาปัจจุบัน</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">ราคารถพร้อมคนขับที่ยืนยันแล้ว</h2>
-          <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">แสดงราคาครบทั้งเที่ยวเดียว รับ–ส่ง และเหมาทริปสำหรับรถเก๋ง/SUV เที่ยวลาว รถ MPV เที่ยวลาว และรถตู้เที่ยวลาว ส่วนรถมินิบัสและรถบัสเที่ยวลาวต้องขอราคาแยกตามงาน</p>
+          <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">แสดงราคาครบทั้งเที่ยวเดียว รับ–ส่ง และเหมาทริปสำหรับรถเก๋ง/SUV เที่ยวลาว และรถตู้เที่ยวลาว ส่วนรถมินิบัสและรถบัสเที่ยวลาวต้องขอราคาแยกตามงาน</p>
           <PublishedPriceTable rows={getCurrentPriceRows()} />
         </div>
       </section>
@@ -98,7 +98,7 @@ export default function CarWithDriverPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-4 text-sm text-[#687169]">รถ MPV เที่ยวลาวแยกจาก SUV และแสดงราคาในคอลัมน์ของตัวเอง ส่วนรถมินิบัสและรถบัสเที่ยวลาวยังต้องขอราคาแยกตามงาน</p>
+          <p className="mt-4 text-sm text-[#687169]">ส่วนรถมินิบัสและรถบัสเที่ยวลาวยังต้องขอราคาแยกตามงาน</p>
         </div>
       </section>
 

@@ -12,6 +12,8 @@
     { "source": "/quote/", "destination": "/car-with-driver/", "permanent": true },
     { "source": "/car-with-driver/van-vip", "destination": "/van-laos/", "permanent": true },
     { "source": "/car-with-driver/van-vip/", "destination": "/van-laos/", "permanent": true },
+    { "source": "/car-with-driver/mpv", "destination": "/car-with-driver/", "permanent": true },
+    { "source": "/car-with-driver/mpv/", "destination": "/car-with-driver/", "permanent": true },
     { "source": "/car-with-driver/van", "destination": "/van-laos/", "permanent": true },
     { "source": "/car-with-driver/van/", "destination": "/van-laos/", "permanent": true },
     { "source": "/articles.html", "destination": "/articles/", "permanent": true },
