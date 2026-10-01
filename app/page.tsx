@@ -339,7 +339,7 @@ export default async function Home() {
               เริ่มจากทีมงาน
             </h2>
             <p className="mt-5 text-base leading-8 text-[#59645d] sm:mt-6 sm:text-lg sm:leading-9">
-              HUGLAO เกิดจากเทป อาว และชะ ซึ่งเชื่อว่าการเที่ยวลาวควรเป็นเรื่องง่าย เป็นส่วนตัว และยืดหยุ่น
+              HUGLAO เกิดจากเทป อาวล์ และเอ็ม ซึ่งเชื่อว่าการเที่ยวลาวควรเป็นเรื่องง่าย เป็นส่วนตัว และยืดหยุ่น
               เราจึงทำหน้าที่เชื่อมลูกค้ากับพาร์ตเนอร์ในพื้นที่ พร้อมช่วยประสานรายละเอียดให้ทริปเดินหน้าได้ตามแผนของคุณ
             </p>
             <Link href="/about" className="mt-7 inline-flex w-full justify-center rounded-full border border-[#0a2d20]/20 px-6 py-3 text-center font-bold text-[#0a2d20] hover:border-[#d8af4a] sm:mt-8 sm:w-auto">
