@@ -37,7 +37,13 @@ function VehicleAlbum({
 
   return (
     <figure className="hl-mobile-media-card hl-vehicle-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
-      <div className="hl-mobile-media relative aspect-[16/9] sm:aspect-[16/10]">
+      <div className="hl-mobile-media relative aspect-[16/9] overflow-hidden sm:aspect-[16/10]">
+        {/* Blurred copy fills the side bars left by portrait photos in the landscape frame. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl brightness-75"
+          style={{ backgroundImage: `url(${mainMedia.src})` }}
+        />
         <Image
           src={mainMedia.src}
           alt={mainMedia.alt}
