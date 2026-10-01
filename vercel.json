@@ -6,6 +6,8 @@
       "destination": "https://www.huglao.com/:path*",
       "permanent": true
     },
+    { "source": "/contact", "destination": "/about/#contact", "permanent": true },
+    { "source": "/contact/", "destination": "/about/#contact", "permanent": true },
     { "source": "/van-vip", "destination": "/van-laos/", "permanent": true },
     { "source": "/van-vip/", "destination": "/van-laos/", "permanent": true },
     { "source": "/quote", "destination": "/car-with-driver/", "permanent": true },
