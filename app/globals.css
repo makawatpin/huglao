@@ -384,3 +384,9 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Pages that end with their own CTA section skip the duplicate footer CTA.
+   Unlayered so it wins over the footer's `flex` utility. */
+main:has(> .hl-page-cta:last-child) + footer .hl-footer-cta {
+  display: none;
+}

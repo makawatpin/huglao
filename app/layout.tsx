@@ -56,13 +56,18 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "TravelAgency",
   "@id": `${SITE.website}/#organization`,
   name: SITE.legalName,
   alternateName: SITE.name,
   url: SITE.website,
   logo: `${SITE.website}/assets/huglao-emblem.png`,
   slogan: SITE.slogan,
+  sameAs: [SITE.lineUrl],
+  areaServed: [
+    { "@type": "City", name: "Vientiane" },
+    { "@type": "Country", name: "Laos" },
+  ],
   telephone: "+66-95-596-2525",
   email: SITE.email,
   identifier: SITE.registrationNumber,
@@ -80,7 +85,7 @@ const organizationSchema = {
     "@type": "ContactPoint",
     contactType: "customer service",
     telephone: "+66-95-596-2525",
-    availableLanguage: ["Thai"],
+    availableLanguage: ["Thai", "Lao"],
   },
 };
 

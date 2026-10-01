@@ -24,10 +24,10 @@ export default function SiteFooter() {
   return (
     <footer className="bg-[#06170f] px-[clamp(20px,5vw,56px)] pb-8 pt-12 text-[#b9c2ba]">
       <div className="mx-auto max-w-[1280px]">
-        <section className="flex flex-col gap-6 rounded-[26px] border border-[#d8af4a]/25 bg-[#0a2418] px-6 py-7 sm:px-8 lg:flex-row lg:items-center lg:justify-between" aria-labelledby="footer-cta-title">
+        <section className="hl-footer-cta flex flex-col gap-6 rounded-[26px] border border-[#d8af4a]/25 bg-[#0a2418] px-6 py-7 sm:px-8 lg:flex-row lg:items-center lg:justify-between" aria-labelledby="footer-cta-title">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.18em] text-[#d8af4a]">เริ่มวางแผนทริปจากเวียงจันทน์</p>
-            <h2 id="footer-cta-title" className="mt-2 font-serif-th text-2xl font-bold leading-tight text-white sm:text-3xl">ส่งวันเดินทาง จำนวนคน และปลายทางให้เราช่วยตรวจรถ</h2>
+            <p id="footer-cta-title" className="mt-2 font-serif-th text-2xl font-bold leading-tight text-white sm:text-3xl">ส่งวันเดินทาง จำนวนคน และปลายทางให้เราช่วยตรวจรถ</p>
           </div>
           <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-[#d8af4a] px-6 font-bold text-[#06170f] transition hover:bg-[#efd276]">
             ขอราคาผ่าน LINE OA
@@ -39,13 +39,13 @@ export default function SiteFooter() {
             <Link href="/" aria-label="HUGLAO หน้าแรก" className="inline-flex">
               <Image src="/assets/huglao-nav-logo.png" alt="HUGLAO" width={250} height={56} className="h-11 w-auto" />
             </Link>
-            <h2 id="footer-brand-title" className="sr-only">HUGLAO รถพร้อมคนขับเที่ยวลาว</h2>
+            <p id="footer-brand-title" className="sr-only">HUGLAO รถพร้อมคนขับเที่ยวลาว</p>
             <p className="mt-5 max-w-[31rem] text-sm leading-7 text-[#aeb8b0]">บริษัทตัวกลางจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ สำหรับทริปส่วนตัวที่เริ่มจากเวียงจันทน์ ให้คุณเลือกปลายทาง เวลา และจังหวะการเดินทางเอง</p>
             <p className="mt-4 font-serif-th text-lg font-semibold text-[#e7c875]">{SITE.slogan}</p>
           </section>
 
           <nav aria-labelledby="footer-vehicles-title">
-            <h2 id="footer-vehicles-title" className="mb-5 text-sm font-bold uppercase tracking-[.12em] text-white">รถพร้อมคนขับ</h2>
+            <p id="footer-vehicles-title" className="mb-5 text-sm font-bold uppercase tracking-[.12em] text-white">รถพร้อมคนขับ</p>
             <ul className="space-y-3 text-sm">
               {VEHICLE_GROUPS.map((vehicle) => (
                 <li key={vehicle.slug}>
@@ -57,7 +57,7 @@ export default function SiteFooter() {
           </nav>
 
           <nav aria-labelledby="footer-services-title">
-            <h2 id="footer-services-title" className="mb-5 text-sm font-bold uppercase tracking-[.12em] text-white">บริการและข้อมูลเที่ยวลาว</h2>
+            <p id="footer-services-title" className="mb-5 text-sm font-bold uppercase tracking-[.12em] text-white">บริการและข้อมูลเที่ยวลาว</p>
             <ul className="space-y-3 text-sm">
               {SERVICE_GROUPS.map((service) => (
                 <li key={service.slug}>
@@ -73,7 +73,7 @@ export default function SiteFooter() {
           </nav>
 
           <section aria-labelledby="footer-company-title">
-            <h2 id="footer-company-title" className="mb-5 text-sm font-bold uppercase tracking-[.12em] text-white">ข้อมูลบริษัทและติดต่อ</h2>
+            <p id="footer-company-title" className="mb-5 text-sm font-bold uppercase tracking-[.12em] text-white">ข้อมูลบริษัทและติดต่อ</p>
             <address className="not-italic">
               <p className="font-semibold leading-7 text-white">{SITE.legalName}</p>
               <p className="mt-2 text-sm leading-7 text-[#aeb8b0]">{SITE.registeredAddress}</p>

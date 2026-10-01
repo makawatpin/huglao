@@ -6,6 +6,7 @@ export type Article = {
   title: string;
   slug: string;
   cover: string | null;
+  coverAlt?: string;
   author: string;
   publishDate: string;
   tags: string[];
@@ -118,6 +119,7 @@ function toArticle(entry: any): Article {
     title: fields.title ?? "",
     slug,
     cover,
+    coverAlt: contentfulCover ? fields.cover?.fields?.description || fields.cover?.fields?.title || undefined : undefined,
     author: fields.author ?? "",
     publishDate: fields.publishDate ?? "",
     tags: String(fields.category ?? "")

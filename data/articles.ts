@@ -2,6 +2,7 @@ export type ArticlePreview = {
   title: string;
   slug: string;
   cover: string | null;
+  coverAlt?: string;
   author: string;
   publishDate: string;
   tags: string[];
@@ -13,6 +14,7 @@ export const LOCAL_ARTICLES: ArticlePreview[] = [
     title: "วัดสีเมือง (ວັດສີເມືອງ) เวียงจันทน์ รีวิว ไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง",
     slug: "wat-si-muang-vientiane",
     cover: "/assets/wat-si-muang-front.webp",
+    coverAlt: "ซุ้มประตูสิมวัดสีเมืองสีแดงทอง พร้อมพระพุทธรูปยืนและป้ายชื่อวัด",
     author: "HUGLAO",
     publishDate: "1 ตุลาคม 2569",
     tags: ["วัดสีเมือง", "ไหว้พระ", "เวียงจันทน์"],
@@ -22,6 +24,7 @@ export const LOCAL_ARTICLES: ArticlePreview[] = [
     title: "น้ำเปี่ยนยอละปา: วางแผนทริปป่าฝนและกิจกรรมผจญภัยจากเวียงจันทน์",
     slug: "nam-pien-yorla-pa",
     cover: "/assets/commons-waterfall-forest.webp",
+    coverAlt: "ภาพวิวน้ำตกกลางป่า ใช้ประกอบบทความน้ำเปี่ยนยอละปา",
     author: "HUGLAO",
     publishDate: "8 สิงหาคม 2569",
     tags: ["น้ำเปี่ยนยอละปา", "ธรรมชาติ", "เวียงจันทน์"],

@@ -35,11 +35,22 @@ const TRUST_POINTS = [
   },
 ] as const;
 
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+
 export default async function Home() {
   const articles = mergeArticlePreviews(await getAllArticles()).slice(0, 3);
 
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
       <section className="relative isolate min-h-[700px] overflow-hidden bg-[#071d13] pt-[72px] text-white md:min-h-[800px]">
         <Image
           src="/assets/hero-vientiane-road.webp"
@@ -184,11 +195,12 @@ export default async function Home() {
 
       <section className="bg-white py-[clamp(72px,9vw,120px)]">
         <div className="hl-shell">
+          <h2 className="sr-only">ทำไมเที่ยวลาวกับ HUGLAO</h2>
           <div className="grid gap-6 lg:grid-cols-3">
             {TRUST_POINTS.map((point, index) => (
               <Reveal key={point.title} delay={index * 0.08} className="border-t border-[#d8af4a] pt-7">
                 <span className="font-serif-th text-5xl text-[#d8af4a]/55">0{index + 1}</span>
-                <h2 className="mt-6 font-serif-th text-2xl font-bold text-[#071d13]">{point.title}</h2>
+                <h3 className="mt-6 font-serif-th text-2xl font-bold text-[#071d13]">{point.title}</h3>
                 <p className="mt-4 leading-7 text-[#59645d]">{point.description}</p>
               </Reveal>
             ))}
@@ -366,7 +378,7 @@ export default async function Home() {
                     {article.cover && (
                       <Image
                         src={article.cover}
-                        alt={article.title}
+                        alt={article.coverAlt ?? ""}
                         fill
                         sizes="(max-width: 639px) 112px, 33vw"
                         className={article.cover.includes("vehicle-") || article.cover.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
@@ -404,7 +416,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#0a2d20] py-[clamp(80px,10vw,140px)] text-center text-white">
+      <section className="hl-page-cta relative overflow-hidden bg-[#0a2d20] py-[clamp(80px,10vw,140px)] text-center text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(216,175,74,.18),transparent_55%)]" />
         <Reveal className="hl-shell relative">
           <span className="text-xs font-bold uppercase tracking-[.2em] text-[#efd276]">เริ่มวางแผนกับ HUGLAO</span>

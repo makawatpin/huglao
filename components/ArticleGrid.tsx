@@ -56,7 +56,7 @@ export default function ArticleGrid({ articles }: { articles: ArticlePreview[] }
                   {a.cover && (
                     <Image
                       src={a.cover}
-                      alt={a.title}
+                      alt={a.coverAlt ?? ""}
                       fill
                       sizes="(max-width: 639px) 112px, (max-width: 900px) 50vw, 33vw"
                       className={a.cover.includes("vehicle-") || a.cover.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
