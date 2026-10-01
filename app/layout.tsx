@@ -8,14 +8,14 @@ import SiteHeader from "@/components/SiteHeader";
 import { SITE } from "@/data/site";
 
 const notoSerifThai = localFont({
-  src: "./fonts/NotoSerifThai-Variable.ttf",
+  src: "./fonts/NotoSerifThai-Variable.woff2",
   variable: "--font-serif-thai",
   weight: "100 900",
   display: "swap",
 });
 
 const notoSansThai = localFont({
-  src: "./fonts/NotoSansThai-Variable.ttf",
+  src: "./fonts/NotoSansThai-Variable.woff2",
   variable: "--font-sans-thai",
   weight: "100 900",
   display: "swap",
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     locale: "th_TH",
     type: "website",
-    images: [{ url: "/og.png", width: 1728, height: 909, alt: "HUGLAO รถพร้อมคนขับเที่ยวลาว" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "HUGLAO รถพร้อมคนขับเที่ยวลาว" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "รถพร้อมคนขับเที่ยวลาว ทริปส่วนตัว | HUGLAO",
     description: "เลือกเส้นทาง เวลา และจุดแวะได้ตามแผนของคุณ",
-    images: ["/og.png"],
+    images: ["/og.jpg"],
   },
 };
 
