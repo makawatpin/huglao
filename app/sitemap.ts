@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/contentful";
+import { LOCAL_ARTICLES } from "@/data/articles";
 import { ROUTE_GROUPS, SERVICE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 
 export const dynamic = "force-static";
@@ -13,6 +14,7 @@ const STATIC_PATHS = [
   "/van-laos",
   "/articles",
   "/articles/nam-pien-yorla-pa",
+  "/articles/wat-si-muang-vientiane",
   "/about",
   "/faq",
   "/terms",
@@ -37,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...SERVICE_GROUPS.map((service) => ({
       url: url(`/services/${service.slug}`),
     })),
-    ...articles.filter((article) => article.slug !== "nam-pien-yorla-pa").map((article) => ({
+    ...articles.filter((article) => !LOCAL_ARTICLES.some((local) => local.slug === article.slug)).map((article) => ({
       url: url(`/articles/${article.slug}`),
       lastModified: article.publishDate ? new Date(article.publishDate) : new Date(),
     })),
