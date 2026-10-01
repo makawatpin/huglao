@@ -38,7 +38,7 @@ export default function TravelWithUsPage() {
       <section className="bg-[#071d13] pb-8 text-white">
         <div className="hl-shell">
           <Link href="/vientiane/#pricing" className="inline-flex rounded-full border border-[#d8af4a]/60 px-5 py-3 text-sm font-bold text-[#efd276] hover:bg-white/10">
-            ดูราคารถในเวียงจันทร์ก่อนเลือกเส้นทาง →
+            ดูราคารถในเวียงจันทน์ก่อนเลือกเส้นทาง →
           </Link>
         </div>
       </section>

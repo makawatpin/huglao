@@ -7,7 +7,7 @@ import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { PICKUP_POINTS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 import { getMedia } from "@/data/media";
-import { getCurrentPriceRows } from "@/data/pricing";
+import { getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
 
 export const dynamicParams = false;
 
@@ -58,9 +58,11 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
         "@context": "https://schema.org",
         "@type": "Service",
         name: `รถพร้อมคนขับ ${route.name}`,
+        url: `${SITE.website}/routes/${route.slug}/`,
         provider: { "@id": `${SITE.website}/#organization` },
         areaServed: "Laos",
         description: route.summary,
+        offers: getAggregateOfferSchema(prices),
       }) }} />
       <PageHero
         eyebrow="Route from Vientiane"
@@ -157,7 +159,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
             {PICKUP_POINTS.map((point) => <article key={point.slug} className="rounded-[22px] bg-white p-6"><h3 className="font-semibold text-[#0a2d20]">{point.name}</h3><p className="mt-2 text-sm text-[#59645d]">{point.detail}</p></article>)}
           </div>
           <Link href="/vientiane/" className="mt-7 inline-flex rounded-full border border-[#d8af4a] px-6 py-3 font-bold text-[#0a2d20] hover:bg-white">
-            ดูบริการเช่ารถเวียงจันทร์และจุดรับทั้งหมด →
+            ดูบริการเช่ารถเวียงจันทน์และจุดรับทั้งหมด →
           </Link>
         </div>
       </section>

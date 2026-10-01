@@ -3,22 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { getMedia } from "@/data/media";
-import { CURRENT_PRICE_ROWS } from "@/data/pricing";
+import { CURRENT_PRICE_ROWS, getAggregateOfferSchema } from "@/data/pricing";
 import { PICKUP_POINTS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 
 const PAGE_URL = `${SITE.website}/vientiane/`;
-const TITLE = "เช่ารถตู้เวียงจันทร์ พร้อมคนขับ | รถตู้เวียงจันทร์ HUGLAO";
+const TITLE = "เช่ารถเวียงจันทน์พร้อมคนขับ รถตู้ เก๋ง SUV | HUGLAO";
 const DESCRIPTION =
-  "เช่ารถเวียงจันทร์พร้อมคนขับ มีรถเก๋ง SUV และรถตู้ รับที่ด่านท่านาแล้งฝั่งลาว สนามบินวัตไตและสถานีรถไฟ ดูราคาและตรวจรถว่างกับ HUGLAO";
+  "เช่ารถเวียงจันทน์ (เวียงจันทร์) พร้อมคนขับ มีรถเก๋ง SUV และรถตู้ รับที่ด่านท่านาแล้งฝั่งลาว สนามบินวัตไต และสถานีรถไฟ ดูราคาเริ่มต้นและตรวจรถว่างกับ HUGLAO";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "เช่ารถตู้เวียงจันทร์ พร้อมคนขับ | HUGLAO",
+    title: "เช่ารถเวียงจันทน์พร้อมคนขับ | HUGLAO",
     description:
-      "บริการจัดหาและประสานรถพร้อมคนขับในเวียงจันทร์ เลือกได้ทั้งรถเก๋ง SUV และรถตู้ พร้อมตรวจรถและราคาก่อนยืนยันการจอง",
+      "บริการจัดหาและประสานรถพร้อมคนขับในเวียงจันทน์ เลือกได้ทั้งรถเก๋ง SUV และรถตู้ พร้อมตรวจรถและราคาก่อนยืนยันการจอง",
     url: PAGE_URL,
     type: "website",
     images: [
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "เช่ารถตู้เวียงจันทร์ พร้อมคนขับ | HUGLAO",
+    title: "เช่ารถเวียงจันทน์พร้อมคนขับ | HUGLAO",
     description:
-      "ตรวจประเภทรถ ราคา จุดรับ และรถพร้อมคนขับในเวียงจันทร์ก่อนยืนยันการจอง",
+      "ตรวจประเภทรถ ราคา จุดรับ และรถพร้อมคนขับในเวียงจันทน์ก่อนยืนยันการจอง",
     images: [getMedia("vehicleVan").src],
   },
 };
@@ -77,7 +77,7 @@ const FAQS = [
   {
     question: "จุดรับรถอยู่ที่ไหน?",
     answer:
-      "จุดรับหลักอยู่ฝั่งลาว ได้แก่ จุดนัดหมายด่านท่านาแล้งหลังผ่านขั้นตอนตรวจคนเข้าเมือง สนามบินวัตไต สถานีรถไฟคำสะหวาด สถานีรถไฟเวียงจันทร์ และโรงแรมหรือจุดนัดหมายในนครหลวงเวียงจันทน์ที่ตกลงกัน",
+      "จุดรับหลักอยู่ฝั่งลาว ได้แก่ จุดนัดหมายด่านท่านาแล้งหลังผ่านขั้นตอนตรวจคนเข้าเมือง สนามบินวัตไต สถานีรถไฟคำสะหวาด สถานีรถไฟเวียงจันทน์ และโรงแรมหรือจุดนัดหมายในนครหลวงเวียงจันทน์ที่ตกลงกัน",
   },
   {
     question: "ราคาเช่ารถรวมอะไรบ้าง?",
@@ -110,15 +110,16 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${PAGE_URL}#service`,
-  name: "เช่ารถตู้เวียงจันทร์พร้อมคนขับ",
+  name: "เช่ารถเวียงจันทน์พร้อมคนขับ",
   url: PAGE_URL,
   description: DESCRIPTION,
-  serviceType: "บริการจัดหาและประสานรถพร้อมคนขับในเวียงจันทร์",
+  serviceType: "บริการจัดหาและประสานรถพร้อมคนขับในเวียงจันทน์",
   provider: { "@id": `${SITE.website}/#organization` },
   areaServed: [
     { "@type": "City", name: "นครหลวงเวียงจันทน์" },
     { "@type": "Country", name: "ลาว" },
   ],
+  offers: getAggregateOfferSchema(CURRENT_PRICE_ROWS),
 };
 
 const faqSchema = {
@@ -136,7 +137,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "หน้าแรก", item: `${SITE.website}/` },
-    { "@type": "ListItem", position: 2, name: "เช่ารถเวียงจันทร์", item: PAGE_URL },
+    { "@type": "ListItem", position: 2, name: "เช่ารถเวียงจันทน์", item: PAGE_URL },
   ],
 };
 
@@ -162,13 +163,13 @@ export default function VientianeCarRentalPage() {
           <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[#b9c7be]">
             <Link href="/" className="hover:text-[#efd276]">หน้าแรก</Link>
             <span aria-hidden="true" className="mx-2">/</span>
-            <span aria-current="page">เช่ารถเวียงจันทร์</span>
+            <span aria-current="page">เช่ารถเวียงจันทน์</span>
           </nav>
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
             <div>
               <p className="text-xs font-bold uppercase tracking-[.18em] text-[#efd276]">รถพร้อมคนขับในเวียงจันทน์</p>
               <h1 className="mt-5 font-serif-th text-[clamp(2.6rem,6vw,5.4rem)] font-bold leading-[1.08] tracking-[-.03em] text-[#fffaf0]">
-                เช่ารถตู้เวียงจันทร์ พร้อมคนขับสำหรับทริปส่วนตัว
+                เช่ารถเวียงจันทน์พร้อมคนขับ รถตู้ เก๋ง และ SUV
               </h1>
               <p className="mt-6 max-w-[760px] text-lg leading-9 text-[#d5ddd7]">
                 HUGLAO ช่วยจัดหาและประสานรถพร้อมคนขับสำหรับผู้ที่กำลังมองหาเช่ารถเวียงจันทร์ เลือกได้ทั้งรถเก๋ง SUV และรถตู้เวียงจันทร์สำหรับครอบครัว กลุ่มเพื่อน และคณะเดินทาง โดยตรวจสอบรายละเอียดรถ ราคา และจุดนัดหมายก่อนยืนยันการจอง
@@ -197,7 +198,7 @@ export default function VientianeCarRentalPage() {
       <section className="bg-white py-[clamp(64px,8vw,104px)]" aria-labelledby="pickup-title">
         <div className="hl-shell">
           <span className="hl-kicker">จุดรับฝั่งลาว</span>
-          <h2 id="pickup-title" className="mt-5 max-w-[820px] font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">จุดรับรถในเวียงจันทร์ที่ตรวจสอบก่อนนัดหมาย</h2>
+          <h2 id="pickup-title" className="mt-5 max-w-[820px] font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">จุดรับรถในเวียงจันทน์ที่ตรวจสอบก่อนนัดหมาย</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PICKUP_LOCATIONS.map((point, index) => (
               <article key={point.slug} className="rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
@@ -238,7 +239,7 @@ export default function VientianeCarRentalPage() {
 
       <section id="pricing" className="scroll-mt-24 bg-white py-[clamp(64px,8vw,110px)]" aria-labelledby="pricing-title">
         <div className="hl-shell">
-          <span className="hl-kicker">ราคารถในเวียงจันทร์</span>
+          <span className="hl-kicker">ราคารถในเวียงจันทน์</span>
           <h2 id="pricing-title" className="mt-5 max-w-[900px] font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">ราคารับ–ส่ง เหมารถเที่ยว และเส้นทางที่เริ่มจากเวียงจันทน์</h2>
           <p className="mb-8 mt-5 max-w-[900px] leading-8 text-[#59645d]">ตารางนี้อ่านจากแหล่งราคากลางเดียวกับหน้ารถและหน้าเส้นทาง แยกเก๋ง/SUV และรถตู้ในแต่ละรายการ</p>
           <PublishedPriceTable rows={CURRENT_PRICE_ROWS} />
@@ -306,7 +307,7 @@ export default function VientianeCarRentalPage() {
       <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,104px)]" aria-labelledby="faq-title">
         <div className="hl-shell max-w-[980px]">
           <span className="hl-kicker">คำถามที่พบบ่อย</span>
-          <h2 id="faq-title" className="mt-5 font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold text-[#071d13]">ก่อนขอราคาเช่ารถเวียงจันทร์</h2>
+          <h2 id="faq-title" className="mt-5 font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold text-[#071d13]">ก่อนขอราคาเช่ารถเวียงจันทน์</h2>
           <div className="mt-9 divide-y divide-[#ddd4c1] border-y border-[#ddd4c1]">
             {FAQS.map((faq) => (
               <details key={faq.question} className="group py-1">

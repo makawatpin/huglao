@@ -5,7 +5,7 @@ import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { getMedia, type MediaId } from "@/data/media";
-import { getCurrentPriceRows } from "@/data/pricing";
+import { getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
 import { BOOKING_STEPS, ROUTE_GROUPS, SITE } from "@/data/site";
 
 const PAGE_PATH = "/van-laos";
@@ -115,6 +115,7 @@ export default function VanLaosPage() {
               provider: { "@id": `${SITE.website}/#organization` },
               areaServed: "Laos",
               serviceType: "รถตู้พร้อมคนขับสำหรับทริปส่วนตัว",
+              offers: getAggregateOfferSchema(getCurrentPriceRows(), ["standardVan"]),
             },
             {
               "@context": "https://schema.org",
@@ -138,7 +139,7 @@ export default function VanLaosPage() {
       <section className="bg-[#071d13] pb-8 text-white">
         <div className="hl-shell">
           <Link href="/vientiane/" className="inline-flex rounded-full border border-[#d8af4a]/60 px-5 py-3 text-sm font-bold text-[#efd276] hover:bg-white/10">
-            ดูบริการรถตู้เวียงจันทร์พร้อมคนขับ →
+            ดูบริการรถตู้เวียงจันทน์พร้อมคนขับ →
           </Link>
         </div>
       </section>

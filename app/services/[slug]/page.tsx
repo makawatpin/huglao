@@ -4,8 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
-import { SERVICE_GROUPS, SITE } from "@/data/site";
+import { SERVICE_GROUPS, SERVICE_SEO, SITE } from "@/data/site";
 import { getMedia } from "@/data/media";
+import { formatPrice } from "@/data/pricing";
 
 export const dynamicParams = false;
 
@@ -21,13 +22,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
+  const seo = SERVICE_SEO[service.slug];
+  const title = seo?.title ?? service.name;
+  const description = seo?.description ?? service.summary;
   return {
-    title: service.name,
-    description: service.summary,
+    title,
+    description,
     alternates: { canonical: `/services/${service.slug}/` },
     openGraph: {
-      title: `${service.name} | HUGLAO`,
-      description: service.summary,
+      title: `${title} | HUGLAO`,
+      description,
       url: `/services/${service.slug}/`,
       images: [{ url: getMedia(service.mediaId).src, alt: getMedia(service.mediaId).alt }],
     },
@@ -39,8 +43,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = getService(slug);
   if (!service) notFound();
   const media = getMedia(service.mediaId);
+  const seo = SERVICE_SEO[service.slug];
 
   const faqs = [
+    ...(seo?.faqs ?? []),
     { question: `${service.name}ยืนยันได้ทันทีหรือไม่?`, answer: "ทีม HUGLAO ต้องตรวจข้อมูล ความพร้อม ราคา และเงื่อนไขกับผู้ให้บริการที่เกี่ยวข้องก่อนทุกครั้ง" },
     { question: "การส่งข้อมูลถือว่าเป็นการจองหรือไม่?", answer: "ยังไม่ใช่การจอง ข้อมูลที่ส่งเป็นคำขอให้ตรวจสอบและจัดทำข้อเสนอเท่านั้น" },
     { question: "สามารถขอพร้อมบริการรถได้หรือไม่?", answer: "ได้ กรุณาระบุบริการเสริมในคำขอราคาเพื่อให้ทีมตรวจทั้งหมดพร้อมกัน" },
@@ -51,13 +57,26 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Service",
-        name: service.name,
-        description: service.summary,
+        name: seo?.heading ?? service.name,
+        url: `${SITE.website}/services/${service.slug}/`,
+        description: seo?.description ?? service.summary,
         provider: { "@id": `${SITE.website}/#organization` },
+        areaServed: "Laos",
+        offers: seo?.prices?.map((item) => ({
+          "@type": "Offer",
+          name: item.label,
+          description: item.note,
+          priceSpecification: { "@type": "UnitPriceSpecification", price: item.price, priceCurrency: "THB", ...(item.unit === "วัน" ? { unitCode: "DAY" } : { unitText: "ต่อคน" }) },
+        })),
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })),
       }) }} />
       <PageHero
         eyebrow="Additional service"
-        title={service.name}
+        title={seo?.heading ?? service.name}
         description={`${service.summary} บริการนี้ต้องตรวจความพร้อมและยืนยันรายละเอียดก่อนทุกครั้ง`}
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บริการอื่น ๆ", href: "/services" }, { label: service.name }]}
       />
@@ -71,6 +90,47 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </figure>
         </div>
       </section>
+      {seo ? (
+        <section className="bg-white py-[clamp(64px,8vw,100px)]">
+          <div className="hl-shell max-w-[900px]">
+            <span className="hl-kicker">{service.name}</span>
+            <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">{seo.introHeading}</h2>
+            {seo.intro.map((paragraph) => <p key={paragraph} className="mt-5 leading-8 text-[#59645d]">{paragraph}</p>)}
+            {seo.steps ? (
+              <div className="mt-10">
+                <h2 className="font-serif-th text-[clamp(1.8rem,4vw,2.6rem)] font-bold leading-tight text-[#071d13]">{`ขั้นตอน${seo.heading}`}</h2>
+                <ol className="mt-6 grid gap-4">
+                  {seo.steps.map((step, index) => (
+                    <li key={step.title} className="flex gap-4 rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
+                      <span className="text-sm font-bold text-[#9b711c]">0{index + 1}</span>
+                      <div>
+                        <h3 className="font-semibold text-[#0a2d20]">{step.title}</h3>
+                        <p className="mt-2 text-sm leading-7 text-[#59645d]">{step.detail}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : null}
+            {seo.prices ? (
+              <div className="mt-10">
+                <h2 className="font-serif-th text-[clamp(1.8rem,4vw,2.6rem)] font-bold leading-tight text-[#071d13]">{`ราคา${seo.heading}`}</h2>
+                <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {seo.prices.map((item) => (
+                    <li key={item.label} className="rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
+                      <h3 className="font-semibold text-[#0a2d20]">{item.label}</h3>
+                      <p className="mt-3 font-serif-th text-3xl font-bold text-[#071d13]">{formatPrice(item.price)}<span className="ml-1 text-base font-semibold text-[#59645d]">/{item.unit}</span></p>
+                      <p className="mt-3 text-sm leading-7 text-[#59645d]">{item.note}</p>
+                    </li>
+                  ))}
+                </ul>
+                {seo.priceNote ? <p className="mt-4 text-sm leading-7 text-[#59645d]">{seo.priceNote}</p> : null}
+              </div>
+            ) : null}
+            {seo.relatedLink ? <Link href={seo.relatedLink.href} className="mt-7 inline-flex font-bold text-[#9b711c]">{seo.relatedLink.label}</Link> : null}
+          </div>
+        </section>
+      ) : null}
       <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,110px)]">
         <div className="hl-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
           <div>

@@ -149,7 +149,7 @@ export default function NamPienYorlaPaArticlePage() {
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• วันและเวลาเปิดบริการ</li><li>• กิจกรรมที่เปิดในวันเดินทาง</li><li>• เงื่อนไขผู้เล่นและอุปกรณ์</li><li>• ค่าเข้าและค่าแพ็กเกจ</li><li>• เวลานัดรถเที่ยวกลับ</li></ul>
           <a href="https://nampienyorlapa.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex font-bold text-[#9b711c] hover:text-[#0a2d20]">ตรวจข้อมูลเว็บไซต์ทางการ →</a>
           <Link href="/routes/vientiane-nam-pien-yorla-pa" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">ดูหน้าเส้นทางและราคารถ →</Link>
-          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">ดูบริการรถพร้อมคนขับในเวียงจันทร์ →</Link>
+          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">ดูบริการรถพร้อมคนขับในเวียงจันทน์ →</Link>
         </aside>
       </div>
 

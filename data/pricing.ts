@@ -238,6 +238,19 @@ export function getPriceVehicle(vehicleSlug: string) {
   return PRICE_VEHICLES.find((vehicle) => vehicle.slug === vehicleSlug);
 }
 
+/** schema.org AggregateOffer (THB per vehicle per trip) for a Service's `offers`; undefined when no published price applies. */
+export function getAggregateOfferSchema(rows: PriceRow[], vehicleKeys: PriceVehicleKey[] = ["sedanSuv", "standardVan"]) {
+  const prices = rows.flatMap((row) => vehicleKeys.map((key) => row.prices[key]));
+  if (prices.length === 0) return undefined;
+  return {
+    "@type": "AggregateOffer",
+    priceCurrency: "THB",
+    lowPrice: Math.min(...prices),
+    highPrice: Math.max(...prices),
+    offerCount: prices.length,
+  };
+}
+
 export function getCurrentPriceRows(filters: { routeSlug?: string; category?: PriceCategory } = {}) {
   return CURRENT_PRICE_ROWS.filter((row) => !filters.routeSlug || row.routeSlug === filters.routeSlug)
     .filter((row) => !filters.category || row.category === filters.category);

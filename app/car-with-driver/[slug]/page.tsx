@@ -7,7 +7,7 @@ import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 import { getMedia, type MediaId } from "@/data/media";
-import { getCurrentPriceRows, getPriceVehicle } from "@/data/pricing";
+import { getAggregateOfferSchema, getCurrentPriceRows, getPriceVehicle } from "@/data/pricing";
 
 export const dynamicParams = false;
 
@@ -118,7 +118,8 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
   if (!vehicle) notFound();
   const seoTitle = getVehicleSeoTitle(vehicle.slug, vehicle.name);
   const prices = getCurrentPriceRows();
-  const hasPublishedPrices = Boolean(getPriceVehicle(vehicle.slug));
+  const priceVehicle = getPriceVehicle(vehicle.slug);
+  const hasPublishedPrices = Boolean(priceVehicle);
 
   const faqs = [
     { question: `${vehicle.name} เหมาะกับใคร?`, answer: vehicle.suitableFor },
@@ -133,9 +134,11 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
         "@context": "https://schema.org",
         "@type": "Service",
         name: seoTitle,
+        url: `${SITE.website}/car-with-driver/${vehicle.slug}/`,
         provider: { "@id": `${SITE.website}/#organization` },
         areaServed: "Laos",
         description: vehicle.description,
+        offers: priceVehicle ? getAggregateOfferSchema(prices, [priceVehicle.key]) : undefined,
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
@@ -234,7 +237,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
       <section className="bg-white py-8">
         <div className="hl-shell text-center">
           <Link href="/vientiane/" className="inline-flex rounded-full border border-[#d8af4a] px-6 py-3 font-bold text-[#0a2d20] hover:bg-[#fffaf0]">
-            เช่ารถเวียงจันทร์พร้อมคนขับ: ตรวจจุดรับและราคา →
+            เช่ารถเวียงจันทน์พร้อมคนขับ: ตรวจจุดรับและราคา →
           </Link>
         </div>
       </section>

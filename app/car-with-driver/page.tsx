@@ -27,7 +27,7 @@ export default function CarWithDriverPage() {
       <section className="bg-[#071d13] pb-8 text-white">
         <div className="hl-shell">
           <Link href="/vientiane/" className="inline-flex rounded-full border border-[#d8af4a]/60 px-5 py-3 text-sm font-bold text-[#efd276] hover:bg-white/10">
-            เช่ารถเวียงจันทร์พร้อมคนขับ: ดูจุดรับและราคา →
+            เช่ารถเวียงจันทน์พร้อมคนขับ: ดูจุดรับและราคา →
           </Link>
         </div>
       </section>

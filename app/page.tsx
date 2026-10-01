@@ -90,7 +90,7 @@ export default async function Home() {
                 href="/vientiane/#pricing"
                 className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
               >
-                ดูราคารถในเวียงจันทร์
+                ดูราคารถในเวียงจันทน์
               </Link>
             </div>
             <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#cbd2cc]">
