@@ -122,7 +122,7 @@ export default async function Home() {
             {PICKUP_POINTS.map((point, index) => {
               const media = getMedia(point.mediaId);
               return (
-                <Reveal key={point.slug} delay={index * 0.07} className="hl-pickup-card hl-mobile-media-card h-full overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9] sm:min-h-[430px]">
+                <Reveal key={point.slug} delay={index * 0.07} className="hl-pickup-card hl-mobile-media-card h-full sm:flex sm:flex-col overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9] sm:min-h-[430px]">
                   <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden bg-[#e8e1d2]">
                     <Image
                       src={media.src}
@@ -132,10 +132,10 @@ export default async function Home() {
                       className={`object-cover ${index === 1 ? "object-[50%_68%]" : "object-center"}`}
                     />
                   </div>
-                  <div className="hl-mobile-content min-w-0 p-7 sm:p-3">
+                  <div className="hl-mobile-content min-w-0 p-7 sm:flex sm:flex-col sm:p-3">
                     <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
-                    <h3 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{point.name}</h3>
-                    <p className="mt-4 text-sm leading-7 text-[#59645d]">{point.detail}</p>
+                    <h3 className="font-serif-th text-lg font-bold text-[#0a2d20] sm:mt-5 sm:text-2xl">{point.name}</h3>
+                    <p className="text-sm leading-6 text-[#59645d] sm:mt-4 sm:leading-7">{point.detail}</p>
                   </div>
                 </Reveal>
               );
@@ -157,7 +157,7 @@ export default async function Home() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {VEHICLE_GROUPS.map((vehicle, index) => {
               const media = getMedia(vehicle.mediaIds[0]);
               return <Reveal key={vehicle.slug} delay={index * 0.06}>
@@ -237,7 +237,7 @@ export default async function Home() {
             </dl>
           </Reveal>
           </div>
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
             {ROUTE_GROUPS.slice(0, 3).map((route, index) => (
               <Reveal key={route.slug} delay={index * 0.04}>
                 <Link href={`/routes/${route.slug}`} className="hl-mobile-media-card group block h-full overflow-hidden rounded-[22px] border border-white/10 bg-white/[.055] transition hover:-translate-y-1 hover:border-[#d8af4a]/60">
@@ -282,7 +282,7 @@ export default async function Home() {
           </Reveal>
           <div className="mt-8 grid gap-3 md:grid-cols-2 lg:grid-cols-5">
             {BOOKING_STEPS.map((step, index) => (
-              <Reveal key={step.number} delay={index * 0.05} className="grid grid-cols-[2rem_minmax(0,1fr)] content-start gap-x-3 rounded-[18px] border border-[#e6dfd1] bg-[#f7f3e9] p-4 sm:rounded-[20px] sm:p-5 lg:block">
+              <Reveal key={step.number} delay={index * 0.05} className="grid grid-cols-[2rem_minmax(0,1fr)] content-start gap-x-3 rounded-[18px] border border-[#e6dfd1] bg-[#f7f3e9] p-4 sm:rounded-[20px] sm:p-5 md:last:col-span-2 lg:block lg:last:col-span-1">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0a2d20] text-xs font-bold text-[#efd276]">{step.number}</span>
                 <h3 className="self-center text-base font-bold leading-6 text-[#0a2d20] lg:mt-4">{step.title}</h3>
                 <p className="col-start-2 mt-1.5 text-[.82rem] leading-6 text-[#687169] lg:col-auto lg:mt-2">{step.description}</p>
@@ -302,7 +302,7 @@ export default async function Home() {
             <p className="mt-5 leading-8 text-[#59645d]">
               เลือกเฉพาะสิ่งที่ต้องการ เราจะช่วยประสานโดยไม่เปลี่ยนทริปส่วนตัวให้กลายเป็นแพ็กเกจบังคับ
             </p>
-            <Link href="/services" className="mt-8 inline-flex font-bold text-[#9b711c]">ดูบริการทั้งหมด →</Link>
+            <Link href="/services" className="mt-6 inline-flex min-h-11 items-center font-bold text-[#9b711c]">ดูบริการทั้งหมด →</Link>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2">
             {READY_SERVICES.map((service, index) => (
@@ -357,7 +357,7 @@ export default async function Home() {
                 <span className="hl-kicker">บทความ</span>
                 <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold text-[#071d13]">เตรียมทริปให้มั่นใจกว่าเดิม</h2>
               </div>
-              <Link href="/articles" className="font-bold text-[#9b711c]">ดูบทความทั้งหมด →</Link>
+              <Link href="/articles" className="inline-flex min-h-11 items-center font-bold text-[#9b711c]">ดูบทความทั้งหมด →</Link>
             </div>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {articles.map((article) => (

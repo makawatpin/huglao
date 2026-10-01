@@ -59,7 +59,7 @@ function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: read
             <h4 className="font-serif-th text-[1.02rem] font-bold leading-6 text-white">{group.routeName}</h4>
           </div>
 
-          <div className={`grid ${gridClass} items-center gap-x-2 border-b border-[#ece6d9] bg-[#f6f1e6] px-3 py-2 text-center text-[.68rem] font-bold text-[#687169]`} aria-hidden="true">
+          <div className={`grid ${gridClass} items-center gap-x-2 border-b border-[#ece6d9] bg-[#f6f1e6] px-3 py-2 text-center text-xs font-bold text-[#687169]`} aria-hidden="true">
             <span className="text-left">ระยะเวลา</span>
             {vehicles.map((vehicle) => <span key={vehicle.key} className="w-full text-center">{MOBILE_VEHICLE_LABELS[vehicle.key]}</span>)}
           </div>
@@ -67,9 +67,9 @@ function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: read
           <div className="divide-y divide-[#ece6d9]">
             {group.rows.map((row) => (
               <div key={row.id} className={`grid ${gridClass} items-center gap-x-2 px-3 py-3.5 odd:bg-white even:bg-[#fcfaf5]`}>
-                <span className="text-[.73rem] font-semibold leading-5 text-[#425047]">{row.duration}</span>
+                <span className="text-[.8rem] font-semibold leading-5 text-[#425047]">{row.duration}</span>
                 {vehicles.map((vehicle) => (
-                  <span key={vehicle.key} aria-label={`${vehicle.name} ${formatPrice(row.prices[vehicle.key])}`} className={`w-full text-center font-bold tabular-nums text-[#9b711c] ${isSingleVehicle ? "text-sm" : "text-[.72rem]"}`}>
+                  <span key={vehicle.key} aria-label={`${vehicle.name} ${formatPrice(row.prices[vehicle.key])}`} className={`w-full text-center font-bold tabular-nums text-[#9b711c] ${isSingleVehicle ? "text-sm" : "text-[.8rem]"}`}>
                     {isSingleVehicle ? formatPrice(row.prices[vehicle.key]) : formatMobilePrice(row.prices[vehicle.key])}
                   </span>
                 ))}
@@ -85,21 +85,21 @@ function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: read
 function DesktopPriceTable({ rows, vehicles }: { rows: PriceRow[]; vehicles: readonly PriceVehicle[] }) {
   return (
     <div className="hidden overflow-x-auto rounded-[24px] border border-[#d8d0be] bg-white shadow-[0_16px_45px_rgba(7,29,19,.06)] md:block">
-      <table className="w-full min-w-[760px] border-collapse text-left">
+      <table className="w-full min-w-[640px] border-collapse text-left">
         <thead className="bg-[#0a2d20] text-white">
           <tr>
-            <th className="p-5">เส้นทาง</th>
-            <th className="p-5">ระยะเวลา</th>
-            {vehicles.map((vehicle) => <th key={vehicle.key} className="p-5 text-right">{vehicle.name}</th>)}
+            <th className="p-4 lg:p-5">เส้นทาง</th>
+            <th className="p-4 lg:p-5">ระยะเวลา</th>
+            {vehicles.map((vehicle) => <th key={vehicle.key} className="p-4 lg:p-5 text-right">{vehicle.name}</th>)}
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
             <tr key={row.id} className="border-b border-[#ece6d9] odd:bg-white even:bg-[#fbf9f3] last:border-0">
-              <td className="p-5 font-semibold text-[#0a2d20]">{row.routeName}</td>
-              <td className="whitespace-nowrap p-5 text-[#59645d]">{row.duration}</td>
+              <td className="p-4 lg:p-5 font-semibold text-[#0a2d20]">{row.routeName}</td>
+              <td className="whitespace-nowrap p-4 lg:p-5 text-[#59645d]">{row.duration}</td>
               {vehicles.map((vehicle) => (
-                <td key={vehicle.key} className="p-5 text-right"><PriceValue row={row} vehicleKey={vehicle.key} /></td>
+                <td key={vehicle.key} className="p-4 lg:p-5 text-right"><PriceValue row={row} vehicleKey={vehicle.key} /></td>
               ))}
             </tr>
           ))}
@@ -140,7 +140,7 @@ export default function PublishedPriceTable({
         {groups.length > 1 && showCategoryHeadings && (
           <nav aria-label="เลือกดูหมวดราคา" className="flex gap-2">
             {groups.map((group) => (
-              <a key={group.category} href={`#price-${group.category}`} className="rounded-full border border-[#d8d0be] bg-[#f7f3e9] px-3 py-2 text-xs font-semibold text-[#0a2d20] hover:border-[#d8af4a]">
+              <a key={group.category} href={`#price-${group.category}`} className="inline-flex min-h-11 items-center rounded-full border border-[#d8d0be] bg-[#f7f3e9] px-4 text-sm font-semibold text-[#0a2d20] hover:border-[#d8af4a]">
                 {group.category === "transfer" ? "รับ–ส่ง" : "เหมาทริป"}
               </a>
             ))}
@@ -172,7 +172,7 @@ export default function PublishedPriceTable({
         <ol className="overflow-hidden rounded-[20px] border border-[#d8d0be] bg-white shadow-[0_12px_32px_rgba(7,29,19,.05)] divide-y divide-[#e8e1d3]">
           {PRICE_TERMS.map((term, index) => (
             <li key={term.title} className="flex items-start gap-4 px-4 py-4 odd:bg-white even:bg-[#fcfaf5] sm:items-center sm:px-5">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0a2d20] text-[.7rem] font-bold text-[#efd276]">{index + 1}</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0a2d20] text-xs font-bold text-[#efd276]">{index + 1}</span>
               <div className="min-w-0 flex-1 sm:grid sm:grid-cols-[170px_minmax(0,1fr)] sm:items-center sm:gap-5">
                 <h4 className="text-sm font-bold text-[#0a2d20]">{term.title}</h4>
                 <p className="mt-1 text-sm leading-6 text-[#59645d] sm:mt-0">{term.detail}</p>
