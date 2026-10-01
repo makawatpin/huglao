@@ -42,13 +42,13 @@ export default async function Home() {
     <main>
       <section className="relative isolate min-h-[700px] overflow-hidden bg-[#071d13] pt-[72px] text-white md:min-h-[800px]">
         <Image
-          src="/og.png"
+          src="/assets/hero-vientiane-road.webp"
           alt="ภาพวัดพระธาตุหลวงและเส้นทางท่องเที่ยวลาว"
           fill
           loading="eager"
           fetchPriority="high"
           sizes="100vw"
-          className="-z-20 object-cover object-center opacity-55"
+          className="-z-20 object-cover object-[78%_center] opacity-55 lg:object-center"
         />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(4,20,13,.97)_0%,rgba(4,20,13,.86)_44%,rgba(4,20,13,.28)_100%)]" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,transparent_55%,#071d13_100%)]" />
@@ -157,7 +157,7 @@ export default async function Home() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {VEHICLE_GROUPS.map((vehicle, index) => {
               const media = getMedia(vehicle.mediaIds[0]);
               return <Reveal key={vehicle.slug} delay={index * 0.06}>

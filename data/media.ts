@@ -50,7 +50,7 @@ export const MEDIA_LIBRARY = {
     changes: "ครอป ย่อขนาด และแปลงเป็น WebP",
   },
   khamsavathStation: {
-    src: "/assets/khamsavath-station.png",
+    src: "/assets/khamsavath-station.webp",
     alt: "สถานีรถไฟคำสะหวาด (เวียงจันทน์) เส้นทางรถไฟลาว–ไทย",
     title: "สถานีรถไฟคำสะหวาด (เวียงจันทน์)",
     author: "คลังภาพ HUGLAO",
@@ -90,7 +90,7 @@ export const MEDIA_LIBRARY = {
     changes: "ย่อขนาดและแปลงเป็น WebP; ใช้เป็นภาพวิวประกอบ ไม่ใช่ภาพถ่ายน้ำเปี่ยนยอละปา",
   },
   vehicleSedan: {
-    src: "/assets/huglao-compact-car.png",
+    src: "/assets/huglao-compact-car.webp",
     alt: "รถเก๋งขนาดเล็กของทีม HUGLAO",
     title: "รถเก๋งขนาดเล็กของทีม HUGLAO",
     author: "ทีม HUGLAO",
@@ -100,7 +100,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   vehicleSuv: {
-    src: "/assets/huglao-suv-team.png",
+    src: "/assets/huglao-suv-team.webp",
     alt: "ทีมงาน HUGLAO พร้อมรถ SUV สำหรับเดินทางในลาว",
     title: "ทีมงาน HUGLAO พร้อมรถ SUV",
     author: "ทีม HUGLAO",
@@ -110,7 +110,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   huglaoSuvVinfastFront: {
-    src: "/assets/huglao-suv-vinfast-front-branded.png",
+    src: "/assets/huglao-suv-vinfast-front-branded.webp",
     alt: "รถ SUV VinFast สีเทาของทีม HUGLAO มุมด้านหน้า",
     title: "รถ SUV VinFast ของทีม HUGLAO",
     author: "ทีม HUGLAO",
@@ -120,7 +120,7 @@ export const MEDIA_LIBRARY = {
     changes: "ปิดป้ายทะเบียนด้วยแผ่นโลโก้ HUGLAO และปรับไฟล์สำหรับใช้งานบนเว็บไซต์",
   },
   huglaoSuvVinfastFrontCabin: {
-    src: "/assets/huglao-suv-vinfast-front-cabin.jpg",
+    src: "/assets/huglao-suv-vinfast-front-cabin.webp",
     alt: "เบาะหน้าและห้องโดยสารด้านหน้าของรถ SUV VinFast ทีม HUGLAO",
     title: "ห้องโดยสารด้านหน้ารถ SUV VinFast",
     author: "ทีม HUGLAO",
@@ -130,7 +130,7 @@ export const MEDIA_LIBRARY = {
     changes: "เปลี่ยนชื่อไฟล์สำหรับใช้งานบนเว็บไซต์",
   },
   huglaoSuvVinfastRearSeats: {
-    src: "/assets/huglao-suv-vinfast-rear-seats.jpg",
+    src: "/assets/huglao-suv-vinfast-rear-seats.webp",
     alt: "เบาะหลังและพื้นที่โดยสารตอนหลังของรถ SUV VinFast ทีม HUGLAO",
     title: "เบาะหลังรถ SUV VinFast",
     author: "ทีม HUGLAO",
@@ -140,7 +140,7 @@ export const MEDIA_LIBRARY = {
     changes: "เปลี่ยนชื่อไฟล์สำหรับใช้งานบนเว็บไซต์",
   },
   vehicleVan: {
-    src: "/assets/huglao-van-fleet.png",
+    src: "/assets/huglao-van-fleet.webp",
     alt: "ทีมรถตู้ HUGLAO พร้อมให้บริการเดินทางในลาว",
     title: "ทีมรถตู้ HUGLAO",
     author: "ทีม HUGLAO",
@@ -150,7 +150,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   huglaoSuvInteriorDashboard: {
-    src: "/assets/huglao-suv-interior-dashboard.png",
+    src: "/assets/huglao-suv-interior-dashboard.webp",
     alt: "ห้องโดยสารด้านหน้าของรถ SUV ทีม HUGLAO",
     title: "ภายในรถ SUV ทีม HUGLAO",
     author: "ทีม HUGLAO",
@@ -160,7 +160,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   huglaoSuvFrontSeats: {
-    src: "/assets/huglao-suv-front-seats.png",
+    src: "/assets/huglao-suv-front-seats.webp",
     alt: "เบาะนั่งด้านหน้าของรถ SUV ทีม HUGLAO",
     title: "เบาะด้านหน้ารถ SUV ทีม HUGLAO",
     author: "ทีม HUGLAO",
@@ -170,7 +170,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   huglaoSuvRearSeats: {
-    src: "/assets/huglao-suv-rear-seats.png",
+    src: "/assets/huglao-suv-rear-seats.webp",
     alt: "เบาะนั่งด้านหลังของรถ SUV ทีม HUGLAO",
     title: "เบาะด้านหลังรถ SUV ทีม HUGLAO",
     author: "ทีม HUGLAO",
@@ -180,7 +180,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   huglaoVansBalloon: {
-    src: "/assets/huglao-vans-balloon.png",
+    src: "/assets/huglao-vans-balloon.webp",
     alt: "รถตู้ HUGLAO พร้อมทีมงานสำหรับทริปส่วนตัวในลาว",
     title: "รถตู้ HUGLAO สำหรับทริปส่วนตัว",
     author: "ทีม HUGLAO",
@@ -190,7 +190,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   huglaoDriverSilverVan: {
-    src: "/assets/huglao-driver-silver-van.png",
+    src: "/assets/huglao-driver-silver-van.webp",
     alt: "พนักงานขับรถของทีม HUGLAO พร้อมรถตู้สีเงิน",
     title: "ทีมพนักงานขับรถ HUGLAO",
     author: "ทีม HUGLAO",
@@ -200,7 +200,7 @@ export const MEDIA_LIBRARY = {
     changes: "ใช้ไฟล์ต้นฉบับจากทีม HUGLAO",
   },
   huglaoDriverWhiteVan: {
-    src: "/assets/huglao-driver-white-van.png",
+    src: "/assets/huglao-driver-white-van.webp",
     alt: "พนักงานขับรถของทีม HUGLAO พร้อมรถตู้สีขาว",
     title: "ทีมพนักงานขับรถ HUGLAO",
     author: "ทีม HUGLAO",
