@@ -4,6 +4,7 @@ import Link from "next/link";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
+import VanAlbum from "@/components/VanAlbum";
 import { getMedia, type MediaId } from "@/data/media";
 import { getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
 import { BOOKING_STEPS, ROUTE_GROUPS, SITE } from "@/data/site";
@@ -181,26 +182,15 @@ export default function VanLaosPage() {
           <span className="hl-kicker">อัลบั้มรถตู้</span>
           <h2 id="van-album-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">ภาพรถตู้จริงของทีม HUGLAO</h2>
           <p className="mt-4 max-w-[820px] leading-8 text-[#59645d]">ดูภายนอก ห้องโดยสาร และพื้นที่สัมภาระก่อนขอราคา รุ่นรถและผังที่นั่งจริงทีมงานจะแจ้งตามรถที่ว่างในวันเดินทาง</p>
-          <div className="mt-8 space-y-9">
-            {VAN_ALBUM_GROUPS.map((group) => (
-              <div key={group.title}>
-                <h3 className="text-sm font-bold tracking-[.12em] text-[#9b711c]">{group.title}</h3>
-                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {group.items.map(({ mediaId, caption }) => {
-                    const media = getMedia(mediaId);
-                    return (
-                      <figure key={mediaId} className="overflow-hidden rounded-[18px] border border-[#ddd4c1] bg-[#f9f6ef]">
-                        <a href={media.src} target="_blank" rel="noopener" className="group relative block aspect-[4/3] overflow-hidden" aria-label={`เปิดภาพขนาดเต็ม: ${media.title}`}>
-                          <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-cover transition duration-300 group-hover:scale-[1.03]" />
-                        </a>
-                        <figcaption className="px-4 py-3 text-sm font-semibold text-[#0a2d20]">{caption}</figcaption>
-                      </figure>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
+          <VanAlbum
+            groups={VAN_ALBUM_GROUPS.map((group) => ({
+              title: group.title,
+              items: group.items.map(({ mediaId, caption }) => {
+                const media = getMedia(mediaId);
+                return { src: media.src, alt: media.alt, caption };
+              }),
+            }))}
+          />
         </div>
       </section>
 
