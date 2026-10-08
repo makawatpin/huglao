@@ -177,11 +177,22 @@ export default function VanLaosPage() {
         </div>
       </section>
 
+      <section className="bg-[#f7f3e9] py-[clamp(56px,8vw,104px)]" id="pricing" aria-labelledby="van-pricing-title">
+        <div className="hl-shell">
+          <span className="hl-kicker">ราคารถตู้เที่ยวลาว</span>
+          <h2 id="van-pricing-title" className="mt-4 max-w-[880px] font-serif-th text-[clamp(2rem,5vw,3.8rem)] font-bold leading-tight text-[#071d13]">
+            ราคารถตู้เที่ยวลาว แสดงแยกตามเส้นทาง
+          </h2>
+          <p className="mb-8 mt-4 max-w-[820px] leading-8 text-[#59645d]">ตารางนี้แสดงราคารถตู้เที่ยวลาวตามเส้นทางที่ยืนยันแล้ว รุ่นรถ ผังที่นั่ง และพื้นที่สัมภาระจริงจะตรวจตามรถที่ว่างในวันเดินทาง</p>
+          <PublishedPriceTable rows={getCurrentPriceRows()} vehicleSlug="van" />
+        </div>
+      </section>
+
       <section className="bg-white py-[clamp(56px,7vw,92px)]" id="van-album" aria-labelledby="van-album-title">
         <div className="hl-shell">
           <span className="hl-kicker">อัลบั้มรถตู้</span>
           <h2 id="van-album-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">ภาพรถตู้จริงของทีม HUGLAO</h2>
-          <p className="mt-4 max-w-[820px] leading-8 text-[#59645d]">ดูภายนอก ห้องโดยสาร และพื้นที่สัมภาระก่อนขอราคา รุ่นรถและผังที่นั่งจริงทีมงานจะแจ้งตามรถที่ว่างในวันเดินทาง</p>
+          <p className="mt-4 max-w-[820px] leading-8 text-[#59645d]">ดูภายนอก ห้องโดยสาร และพื้นที่สัมภาระของรถจริง รุ่นรถและผังที่นั่งจริงทีมงานจะแจ้งตามรถที่ว่างในวันเดินทาง</p>
           <VanAlbum
             groups={VAN_ALBUM_GROUPS.map((group) => ({
               title: group.title,
@@ -194,18 +205,7 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(56px,8vw,104px)]" id="pricing" aria-labelledby="van-pricing-title">
-        <div className="hl-shell">
-          <span className="hl-kicker">ราคารถตู้เที่ยวลาว</span>
-          <h2 id="van-pricing-title" className="mt-4 max-w-[880px] font-serif-th text-[clamp(2rem,5vw,3.8rem)] font-bold leading-tight text-[#071d13]">
-            ราคารถตู้เที่ยวลาว แสดงแยกตามเส้นทาง
-          </h2>
-          <p className="mb-8 mt-4 max-w-[820px] leading-8 text-[#59645d]">ตารางนี้แสดงราคารถตู้เที่ยวลาวตามเส้นทางที่ยืนยันแล้ว รุ่นรถ ผังที่นั่ง และพื้นที่สัมภาระจริงจะตรวจตามรถที่ว่างในวันเดินทาง</p>
-          <PublishedPriceTable rows={getCurrentPriceRows()} vehicleSlug="van" />
-        </div>
-      </section>
-
-      <section className="bg-white py-[clamp(56px,7vw,92px)]" aria-labelledby="van-routes-title">
+      <section className="bg-[#f7f3e9] py-[clamp(56px,7vw,92px)]" aria-labelledby="van-routes-title">
         <div className="hl-shell">
           <span className="hl-kicker">เส้นทางยอดนิยม</span>
           <h2 id="van-routes-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">เลือกรถตู้ แล้ววางเส้นทางตามแผนของคุณ</h2>
