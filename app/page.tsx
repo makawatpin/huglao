@@ -65,14 +65,14 @@ export default async function Home() {
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,transparent_55%,#071d13_100%)]" />
 
         <div className="hl-shell flex min-h-[628px] items-center py-16 md:min-h-[728px] md:py-20">
-          <div className="max-w-[790px]">
+          <div className="max-w-[980px]">
             <p className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#efd276]/35 bg-[#071d13]/55 px-4 py-2 text-xs font-semibold tracking-[.12em] text-[#efd276] backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-[#efd276]" />
               {SITE.slogan}
             </p>
-            <h1 className="font-serif-th text-[clamp(3rem,6.5vw,6.2rem)] font-bold leading-[1.04] tracking-[-.035em] text-[#fffaf0]">
+            <h1 className="font-serif-th text-[clamp(2rem,6.5vw,6.2rem)] font-bold leading-[1.04] tracking-[-.035em] text-[#fffaf0]">
               รถพร้อมคนขับ
-              <span className="block text-[#efd276]">เที่ยวลาวแบบส่วนตัว</span>
+              <span className="block whitespace-nowrap text-[#efd276]">เที่ยวลาวแบบส่วนตัว</span>
             </h1>
             <p className="mt-7 max-w-[650px] text-[clamp(1.05rem,2vw,1.35rem)] leading-8 text-[#e5e7df]">
               เลือกปลายทาง เวลา และจังหวะการเดินทางเอง ให้คนท้องถิ่นพาไป โดยมี HUGLAO ช่วยประสานทุกขั้นตอน
