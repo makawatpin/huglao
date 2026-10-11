@@ -11,6 +11,16 @@ export type ArticlePreview = {
 
 export const LOCAL_ARTICLES: ArticlePreview[] = [
   {
+    title: "รีวิวเที่ยวเหมาเวียงจันทน์ 1 วัน 2,500 บาท กับรถตู้ HUGLAO: ลูกค้าเลือกเส้นทางเอง ปรับได้ตามใจ",
+    slug: "review-one-day-trip-vientiane-2500",
+    cover: "/assets/review-oneday-cover.webp",
+    coverAlt: "ภาพปกรีวิวเที่ยวเหมาเวียงจันทน์ 1 วัน 2,500 บาท กับรถตู้ HUGLAO",
+    author: "HUGLAO",
+    publishDate: "11 ตุลาคม 2569",
+    tags: ["รีวิวลูกค้า", "เหมารถตู้", "เวียงจันทน์"],
+    excerpt: "รีวิวทริปเหมารถตู้เที่ยวเวียงจันทน์ 1 วัน โปรโมชั่น 2,500 บาท ตั้งแต่ไหว้พระ ตลาดเช้า ประตูชัย ถึงพระธาตุหลวง ลูกค้าเลือกจุดเที่ยวเองและปรับได้ตามใจ",
+  },
+  {
     title: "ข้ามด่านหนองคายไปลาว ใช้บัตรผ่านแดนหรือพาสปอร์ต? เอกสาร เงื่อนไข และขั้นตอน",
     slug: "border-pass-vs-passport-laos",
     cover: "/assets/commons-pickup-thanaleng.webp",
