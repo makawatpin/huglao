@@ -12,7 +12,9 @@ const ARTICLE_PATH = `/articles/${SLUG}`;
 const TITLE = "วัดสีเมือง (ວັດສີເມືອງ) เวียงจันทน์ รีวิว ไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง";
 const DESCRIPTION =
   "รีวิวไหว้วัดสีเมือง เวียงจันทน์ จากประสบการณ์ทีม HUGLAO ประวัติหลักเมือง ความเชื่อเรื่องขอพรให้การงานราบรื่น ขั้นตอนไหว้ เซียมซี มารยาท และวิธีเดินทางพร้อมรถคนขับ";
-const COVER = "/assets/wat-si-muang-front.webp";
+const COVER = "/assets/huglao-wat-si-muang-cover.webp";
+const COVER_ALT = "วัดสีเมือง เวียงจันทน์ รีวิวไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง";
+const FRONT_PHOTO = "/assets/wat-si-muang-front.webp";
 const PUBLISHED = "2026-10-01";
 const PUBLISHED_TH = "1 ตุลาคม 2569";
 
@@ -134,7 +136,7 @@ export default function WatSiMuangArticlePage() {
       "@type": "Article",
       headline: TITLE,
       description: DESCRIPTION,
-      image: [`${SITE.website}${COVER}`],
+      image: [`${SITE.website}${COVER}`, `${SITE.website}${FRONT_PHOTO}`],
       author: { "@type": "Organization", name: `ทีมงาน ${SITE.name}`, url: SITE.website },
       publisher: {
         "@type": "Organization",
@@ -177,7 +179,7 @@ export default function WatSiMuangArticlePage() {
       ))}
 
       <header className="bg-[#071d13] pb-[clamp(40px,6vw,80px)] pt-[clamp(104px,13vw,160px)] text-white">
-        <div className="hl-shell grid items-center gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-12">
+        <div className="hl-shell grid items-center gap-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-12">
           <div>
             <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap gap-2 text-xs text-[#aebcb3]">
               <Link href="/" className="hover:text-white">หน้าแรก</Link><span>/</span>
@@ -198,11 +200,11 @@ export default function WatSiMuangArticlePage() {
               <span>อ่านประมาณ 8 นาที</span>
             </div>
           </div>
-          <figure className="mx-auto w-full max-w-[420px] overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20] shadow-[0_28px_80px_rgba(0,0,0,.3)] lg:max-w-none">
-            <div className="relative aspect-[4/5] lg:aspect-[3/4]">
-              <Image src={COVER} alt="ซุ้มประตูสิมวัดสีเมืองสีแดงทอง พร้อมพระพุทธรูปยืนและป้ายชื่อวัด" fill sizes="(max-width: 1024px) 90vw, 40vw" className="object-cover" priority />
+          <figure className="w-full overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20] shadow-[0_28px_80px_rgba(0,0,0,.3)]">
+            <div className="relative aspect-[16/9]">
+              <Image src={COVER} alt={COVER_ALT} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" priority />
             </div>
-            <figcaption className="px-5 py-3 text-xs leading-6 text-[#afbeb5]">ด้านหน้าสิมวัดสีเมือง ภาพถ่ายโดยทีม HUGLAO</figcaption>
+            <figcaption className="px-5 py-3 text-xs leading-6 text-[#afbeb5]">ภาพปกบทความวัดสีเมือง โดยทีม HUGLAO</figcaption>
           </figure>
         </div>
       </header>

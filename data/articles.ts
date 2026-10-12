@@ -33,8 +33,8 @@ export const LOCAL_ARTICLES: ArticlePreview[] = [
   {
     title: "วัดสีเมือง (ວັດສີເມືອງ) เวียงจันทน์ รีวิว ไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง",
     slug: "wat-si-muang-vientiane",
-    cover: "/assets/wat-si-muang-front.webp",
-    coverAlt: "ซุ้มประตูสิมวัดสีเมืองสีแดงทอง พร้อมพระพุทธรูปยืนและป้ายชื่อวัด",
+    cover: "/assets/huglao-wat-si-muang-cover.webp",
+    coverAlt: "วัดสีเมือง เวียงจันทน์ รีวิวไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง",
     author: "HUGLAO",
     publishDate: "1 ตุลาคม 2569",
     tags: ["วัดสีเมือง", "ไหว้พระ", "เวียงจันทน์"],
