@@ -277,7 +277,7 @@ export default async function Home() {
           <Reveal className="max-w-[820px]">
             <span className="hl-kicker">ราคาเริ่มต้นที่ยืนยันแล้ว</span>
             <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,4vw,3.6rem)] font-bold leading-tight text-[#071d13]">ดูราคาเบื้องต้นก่อนวางแผนทริป</h2>
-            <p className="mb-8 mt-5 leading-8 text-[#59645d]">ตัวอย่างราคาจากฐานราคาเดียวกับหน้ารายละเอียด แยกเก๋ง/SUV และรถตู้อย่างชัดเจน</p>
+            <p className="mb-8 mt-5 leading-8 text-[#59645d]">ตัวอย่างราคาจากฐานราคาเดียวกับหน้ารายละเอียด แยกเก๋ง/SUV และรถตู้อย่างชัดเจน ดูราคาครบทุกเส้นทางที่หน้า <Link href="/vientiane/" className="font-semibold text-[#9b711c] underline">เช่ารถตู้เวียงจันทน์</Link></p>
           </Reveal>
           <Reveal delay={0.1}>
             <PublishedPriceTable rows={HOME_PRICE_ROWS} />

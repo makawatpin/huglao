@@ -424,7 +424,7 @@ export default function WatSiMuangArticlePage() {
           <div className="mt-8">
             <p className="font-bold text-[#0a2d20]">อ่านต่อ</p>
             <div className="mt-3 flex flex-col gap-2">
-              <Link href="/vientiane/" className="font-semibold text-[#9b711c] hover:text-[#0a2d20]">→ เช่ารถเวียงจันทน์พร้อมคนขับ</Link>
+              <Link href="/vientiane/" className="font-semibold text-[#9b711c] hover:text-[#0a2d20]">→ เช่ารถตู้เวียงจันทน์พร้อมคนขับ</Link>
               <Link href="/routes/vientiane-city" className="font-semibold text-[#9b711c] hover:text-[#0a2d20]">→ เที่ยวในนครหลวงเวียงจันทน์</Link>
               <Link href="/articles/nam-pien-yorla-pa" className="font-semibold text-[#9b711c] hover:text-[#0a2d20]">→ น้ำเปี่ยนยอละปา ทริปป่าฝนจากเวียงจันทน์</Link>
             </div>

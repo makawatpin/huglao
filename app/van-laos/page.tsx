@@ -10,9 +10,9 @@ import { getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
 import { BOOKING_STEPS, ROUTE_GROUPS, SITE } from "@/data/site";
 
 const PAGE_PATH = "/van-laos";
-const TITLE = "รถตู้เที่ยวลาวพร้อมคนขับ | ราคาและเส้นทางจากเวียงจันทน์";
+const TITLE = "เหมารถตู้เที่ยวลาว พร้อมคนขับ | วังเวียง เมืองเฟือง น้ำงึม";
 const DESCRIPTION =
-  "รถตู้เที่ยวลาวพร้อมคนขับสำหรับครอบครัว กลุ่มเพื่อน และคณะเดินทาง ดูราคารถตู้ เส้นทางจากเวียงจันทน์ รายละเอียดรถ และขั้นตอนขอราคา";
+  "เหมารถตู้เที่ยวลาวพร้อมคนขับสำหรับครอบครัว กลุ่มเพื่อน และคณะเดินทาง ไปวังเวียง เมืองเฟือง น้ำงึม น้ำเปี่ยนยอละปา ดูราคาแยกตามเส้นทาง ภาพรถตู้จริง และขั้นตอนขอราคา";
 
 export const metadata: Metadata = {
   title: TITLE,

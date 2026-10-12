@@ -455,7 +455,7 @@ export default function ReviewOneDayTripPage() {
           <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary mt-6 min-h-12 w-full px-6">จองผ่าน LINE</a>
           <Link href="/routes/vientiane-city" className="mt-5 block text-sm font-bold text-[#0a2d20] hover:text-[#9b711c]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
           <Link href="/articles/border-pass-vs-passport-laos" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#9b711c]">บัตรผ่านแดนหรือพาสปอร์ต →</Link>
-          <Link href="/vientiane/" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#9b711c]">เช่ารถเวียงจันทน์พร้อมคนขับ →</Link>
+          <Link href="/vientiane/" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#9b711c]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
         </aside>
       </div>
 
