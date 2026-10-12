@@ -1,10 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SERVICE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
+import { ROUTE_GROUPS, SERVICE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
+
+const FOOTER_ROUTE_SLUGS = [
+  "vientiane-city",
+  "vientiane-vang-vieng",
+  "vientiane-muang-feuang",
+  "muang-feuang-vang-vieng",
+  "vientiane-nam-pien-yorla-pa",
+] as const;
+
+const FOOTER_ROUTES = FOOTER_ROUTE_SLUGS.flatMap((slug) => ROUTE_GROUPS.filter((route) => route.slug === slug));
 
 const INFORMATION_LINKS = [
   { href: "/travel-with-us", label: "เที่ยวลาวกับ HUGLAO" },
-  { href: "/van-laos", label: "รถตู้เที่ยวลาวพร้อมคนขับ" },
   { href: "/travel-with-us#pricing", label: "เส้นทางและราคารถ" },
   { href: "/articles", label: "บทความเที่ยวลาว" },
   { href: "/about", label: "เกี่ยวกับ HUGLAO" },
@@ -47,12 +56,21 @@ export default function SiteFooter() {
           <nav aria-labelledby="footer-vehicles-title">
             <p id="footer-vehicles-title" className="mb-5 text-sm font-bold uppercase tracking-[.12em] text-white">รถพร้อมคนขับ</p>
             <ul className="space-y-3 text-sm">
+              <li><Link href="/vientiane/" className={footerLinkClass}>เช่ารถตู้เวียงจันทน์พร้อมคนขับ</Link></li>
               {VEHICLE_GROUPS.map((vehicle) => (
                 <li key={vehicle.slug}>
-                  <Link href={`/car-with-driver/${vehicle.slug}`} className={footerLinkClass}>{vehicle.name}</Link>
+                  <Link href={vehicle.slug === "van" ? "/van-laos/" : `/car-with-driver/${vehicle.slug}/`} className={footerLinkClass}>{vehicle.name}</Link>
                 </li>
               ))}
-              <li><Link href="/car-with-driver" className="font-semibold text-[#e7c875] hover:text-white">ดูประเภทรถทั้งหมด →</Link></li>
+              <li><Link href="/car-with-driver/" className="font-semibold text-[#e7c875] hover:text-white">ดูประเภทรถทั้งหมด →</Link></li>
+            </ul>
+            <p id="footer-routes-title" className="mb-5 mt-10 text-sm font-bold uppercase tracking-[.12em] text-white">เส้นทางยอดนิยม</p>
+            <ul aria-labelledby="footer-routes-title" className="space-y-3 text-sm">
+              {FOOTER_ROUTES.map((route) => (
+                <li key={route.slug}>
+                  <Link href={`/routes/${route.slug}/`} className={footerLinkClass}>{route.name}</Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
