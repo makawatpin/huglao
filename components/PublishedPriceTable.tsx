@@ -44,7 +44,7 @@ function PriceValue({ row, vehicleKey }: { row: PriceRow; vehicleKey: PriceVehic
   return <span className="whitespace-nowrap font-bold tabular-nums text-[#86611a]">{formatPrice(row.prices[vehicleKey])}</span>;
 }
 
-function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: readonly PriceVehicle[] }) {
+function MobilePriceCards({ rows, vehicles, RouteHeading }: { rows: PriceRow[]; vehicles: readonly PriceVehicle[]; RouteHeading: "h3" | "h4" }) {
   const routeGroups = groupRowsByRoute(rows);
   const isSingleVehicle = vehicles.length === 1;
   const gridClass = isSingleVehicle
@@ -56,7 +56,7 @@ function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: read
       {routeGroups.map((group) => (
         <article key={group.routeName} className="overflow-hidden rounded-[20px] border border-[#d8d0be] bg-white shadow-[0_12px_34px_rgba(7,29,19,.06)]">
           <div className="border-b border-[#e8e1d3] bg-[#0a2d20] px-4 py-3.5">
-            <h4 className="font-serif-th text-[1.02rem] font-bold leading-6 text-white">{group.routeName}</h4>
+            <RouteHeading className="font-serif-th text-[1.02rem] font-bold leading-6 text-white">{group.routeName}</RouteHeading>
           </div>
 
           <div className={`grid ${gridClass} items-center gap-x-2 border-b border-[#ece6d9] bg-[#f6f1e6] px-3 py-2 text-center text-xs font-bold text-[#687169]`} aria-hidden="true">
@@ -109,11 +109,11 @@ function DesktopPriceTable({ rows, vehicles }: { rows: PriceRow[]; vehicles: rea
   );
 }
 
-function PriceGroup({ rows, vehicleSlug }: { rows: PriceRow[]; vehicleSlug?: string }) {
+function PriceGroup({ rows, vehicleSlug, RouteHeading }: { rows: PriceRow[]; vehicleSlug?: string; RouteHeading: "h3" | "h4" }) {
   const vehicles = getVehicles(vehicleSlug);
   return (
     <>
-      <MobilePriceCards rows={rows} vehicles={vehicles} />
+      <MobilePriceCards rows={rows} vehicles={vehicles} RouteHeading={RouteHeading} />
       <DesktopPriceTable rows={rows} vehicles={vehicles} />
     </>
   );
@@ -157,7 +157,8 @@ export default function PublishedPriceTable({
                 <h3 className="font-serif-th text-[1.55rem] font-bold text-[#0a2d20]">{CATEGORY_LABELS[group.category]}</h3>
               </div>
             )}
-            <PriceGroup rows={group.rows} vehicleSlug={vehicleSlug} />
+            {/* Route names sit one level below the category heading, or directly under the page section when it is hidden. */}
+            <PriceGroup rows={group.rows} vehicleSlug={vehicleSlug} RouteHeading={showCategoryHeadings ? "h4" : "h3"} />
           </section>
         ))}
       </div>

@@ -135,7 +135,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {seo.priceNote ? <p className="mt-4 text-sm leading-7 text-[#59645d]">{seo.priceNote}</p> : null}
               </div>
             ) : null}
-            {seo.relatedLink ? <Link href={seo.relatedLink.href} className="mt-7 inline-flex font-bold text-[#86611a]">{seo.relatedLink.label}</Link> : null}
+            {seo.relatedLink ? <Link href={seo.relatedLink.href} className="mt-5 inline-flex min-h-11 items-center font-bold text-[#86611a]">{seo.relatedLink.label}</Link> : null}
           </div>
         </section>
       ) : null}
@@ -162,7 +162,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="mt-8 divide-y divide-[#ddd4c1] border-y border-[#ddd4c1]">
             {faqs.map((faq) => <details key={faq.question} className="py-1"><summary className="cursor-pointer py-5 font-semibold text-[#0a2d20]">{faq.question}</summary><p className="pb-6 leading-8 text-[#59645d]">{faq.answer}</p></details>)}
           </div>
-          <Link href="/services" className="mt-8 inline-flex font-bold text-[#86611a]">← กลับไปดูบริการทั้งหมด</Link>
+          <Link href="/services" className="mt-6 inline-flex min-h-11 items-center font-bold text-[#86611a]">← กลับไปดูบริการทั้งหมด</Link>
         </div>
       </section>
       <LineCta title={`สอบถามบริการ${service.name}`} description="ส่งวันเดินทาง จำนวนคน และรายละเอียดที่เกี่ยวข้อง เพื่อให้ทีม HUGLAO ตรวจความพร้อมและจัดทำข้อเสนอ" />

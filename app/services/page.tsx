@@ -35,7 +35,7 @@ export default function ServicesPage() {
                   <span className="text-xs font-bold tracking-[.15em] text-[#86611a]">พร้อมประสาน</span>
                   <h2 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{service.name}</h2>
                   <p className="mt-4 text-sm leading-7 text-[#59645d]">{service.summary}</p>
-                  <Link href={`/services/${service.slug}`} className="mt-6 inline-flex text-sm font-bold text-[#86611a]">ดูรายละเอียด →</Link>
+                  <Link href={`/services/${service.slug}`} className="mt-4 inline-flex min-h-11 items-center text-sm font-bold text-[#86611a]">ดูรายละเอียด →</Link>
                 </div>
               </article>;
             })}

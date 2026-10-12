@@ -362,12 +362,12 @@ export default function ReviewOneDayTripPage() {
                           <strong>เคล็ดลับ:</strong> {stop.tip}
                         </p>
                       )}
-                      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold">
+                      <div className="mt-2 flex flex-wrap gap-x-5 text-sm font-bold">
                         {stop.mapUrl && (
-                          <a href={stop.mapUrl} target="_blank" rel="noopener noreferrer" className="text-[#86611a] hover:text-[#0a2d20]">เปิดแผนที่ร้าน →</a>
+                          <a href={stop.mapUrl} target="_blank" rel="noopener noreferrer" className="inline-block py-2 text-[#86611a] hover:text-[#0a2d20]">เปิดแผนที่ร้าน →</a>
                         )}
                         {stop.link && (
-                          <Link href={stop.link.href} className="text-[#0a2d20] hover:text-[#86611a]">{stop.link.label}</Link>
+                          <Link href={stop.link.href} className="inline-block py-2 text-[#0a2d20] hover:text-[#86611a]">{stop.link.label}</Link>
                         )}
                       </div>
                     </div>
@@ -453,9 +453,9 @@ export default function ReviewOneDayTripPage() {
             <li>• เหมาะกับครอบครัวและกลุ่มเพื่อน</li>
           </ul>
           <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary mt-6 min-h-12 w-full px-6">จองผ่าน LINE</a>
-          <Link href="/routes/vientiane-city" className="mt-5 block text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
-          <Link href="/articles/border-pass-vs-passport-laos" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">บัตรผ่านแดนหรือพาสปอร์ต →</Link>
-          <Link href="/vientiane/" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
+          <Link href="/routes/vientiane-city" className="mt-3 block py-2 text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
+          <Link href="/articles/border-pass-vs-passport-laos" className="block py-2 text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">บัตรผ่านแดนหรือพาสปอร์ต →</Link>
+          <Link href="/vientiane/" className="block py-2 text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
         </aside>
       </div>
 

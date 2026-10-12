@@ -144,7 +144,8 @@ export default function BorderPassVsPassportArticlePage() {
           <section className="mt-12">
             <span className="hl-kicker">เปรียบเทียบเอกสาร</span>
             <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold text-[#071d13]">บัตรผ่านแดนชั่วคราว vs พาสปอร์ต</h2>
-            <div className="mt-7 overflow-x-auto rounded-[24px] border border-[#ddd4c1]">
+            <p className="mt-6 text-sm font-semibold text-[#687169] sm:hidden" aria-hidden="true">เลื่อนตารางไปทางขวาเพื่อดูคอลัมน์พาสปอร์ต →</p>
+            <div className="mt-3 overflow-x-auto rounded-[24px] border border-[#ddd4c1] sm:mt-7">
               <table className="w-full min-w-[560px] text-left text-sm leading-7">
                 <thead className="bg-[#0a2d20] text-white">
                   <tr>
@@ -217,9 +218,9 @@ export default function BorderPassVsPassportArticlePage() {
         <aside className="h-fit rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6 lg:sticky lg:top-28">
           <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">ให้ HUGLAO ช่วย</span>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• ทำบัตรผ่านแดน 100 บาท/คน เหมารวมทุกอย่าง</li><li>• รถรับที่ด่านท่านาแล้งฝั่งลาว</li><li>• เหมารถเที่ยวในนครหลวงเวียงจันทน์</li></ul>
-          <Link href="/services/temporary-border-pass" className="mt-6 block font-bold text-[#86611a] hover:text-[#0a2d20]">บริการทำบัตรผ่านแดน →</Link>
-          <Link href="/routes/vientiane-city" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#86611a]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
-          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์ รับที่ด่านท่านาแล้ง →</Link>
+          <Link href="/services/temporary-border-pass" className="mt-4 block py-2 font-bold text-[#86611a] hover:text-[#0a2d20]">บริการทำบัตรผ่านแดน →</Link>
+          <Link href="/routes/vientiane-city" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
+          <Link href="/vientiane/" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์ รับที่ด่านท่านาแล้ง →</Link>
         </aside>
       </div>
 

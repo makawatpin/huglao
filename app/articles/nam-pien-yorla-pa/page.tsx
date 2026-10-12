@@ -147,9 +147,9 @@ export default function NamPienYorlaPaArticlePage() {
         <aside className="h-fit rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6 lg:sticky lg:top-28">
           <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">ข้อมูลที่ควรยืนยัน</span>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• วันและเวลาเปิดบริการ</li><li>• กิจกรรมที่เปิดในวันเดินทาง</li><li>• เงื่อนไขผู้เล่นและอุปกรณ์</li><li>• ค่าเข้าและค่าแพ็กเกจ</li><li>• เวลานัดรถเที่ยวกลับ</li></ul>
-          <a href="https://nampienyorlapa.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex font-bold text-[#86611a] hover:text-[#0a2d20]">ตรวจข้อมูลเว็บไซต์ทางการ →</a>
-          <Link href="/routes/vientiane-nam-pien-yorla-pa" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#86611a]">ดูหน้าเส้นทางและราคารถ →</Link>
-          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
+          <a href="https://nampienyorlapa.com/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex py-2 font-bold text-[#86611a] hover:text-[#0a2d20]">ตรวจข้อมูลเว็บไซต์ทางการ →</a>
+          <Link href="/routes/vientiane-nam-pien-yorla-pa" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">ดูหน้าเส้นทางและราคารถ →</Link>
+          <Link href="/vientiane/" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
         </aside>
       </div>
 

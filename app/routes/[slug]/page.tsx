@@ -79,7 +79,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
             </div>
             <figcaption className="hl-mobile-content flex flex-col gap-2 px-5 py-4 text-xs text-[#afbeb5] sm:flex-row sm:items-center sm:justify-between">
               <span>{media.alt}</span>
-              <Link href="/image-credits" className="font-semibold text-[#efd276] hover:text-white">ดูที่มาและใบอนุญาตภาพ</Link>
+              <Link href="/image-credits" className="-my-2 py-2 font-semibold text-[#efd276] hover:text-white">ดูที่มาและใบอนุญาตภาพ</Link>
             </figcaption>
           </figure>
         </div>

@@ -51,7 +51,7 @@ export default function ImageCreditsPage() {
                     <dt className="font-semibold text-[#0a2d20]">การปรับไฟล์</dt>
                     <dd className="text-[#59645d]">{item.changes}</dd>
                   </dl>
-                  <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex text-sm font-bold text-[#86611a] hover:text-[#0a2d20]">เปิดหน้าภาพต้นฉบับ →</a>
+                  <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center text-sm font-bold text-[#86611a] hover:text-[#0a2d20]">เปิดหน้าภาพต้นฉบับ →</a>
                 </div>
               </article>
             ))}
