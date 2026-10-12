@@ -18,13 +18,13 @@ function getRelatedServices(tags: string[]): { label: string; href: string }[] {
   }
   if (tags.some((t) => t.includes("รถตู้"))) {
     return [
-      { label: "รถตู้เที่ยวลาวพร้อมคนขับ", href: "/van-laos" },
-      { label: "รถตู้เวียงจันทน์พร้อมคนขับ", href: "/vientiane/" },
+      { label: "เหมารถตู้เที่ยวลาว", href: "/van-laos/" },
+      { label: "เช่ารถตู้เวียงจันทน์พร้อมคนขับ", href: "/vientiane/" },
     ];
   }
   return [
     { label: "ดูรถพร้อมคนขับทุกประเภท", href: "/car-with-driver" },
-    { label: "ดูราคารถในเวียงจันทน์", href: "/vientiane/#pricing" },
+    { label: "ราคาเช่ารถตู้เวียงจันทน์", href: "/vientiane/#pricing" },
   ];
 }
 

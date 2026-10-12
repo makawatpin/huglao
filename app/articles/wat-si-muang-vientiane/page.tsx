@@ -367,13 +367,13 @@ export default function WatSiMuangArticlePage() {
             <h3 className="mt-10 font-serif-th text-xl font-bold text-[#0a2d20]">เลือกเดินทางแบบไหนดี</h3>
             <ul className="mt-4 space-y-3 leading-8 text-[#4f5d54]">
               <li><strong className="text-[#0a2d20]">เช่ารถพร้อมคนขับ:</strong> สะดวกที่สุดหากต้องการแวะหลายจุดในวัน เช่น วัดสีสะเกด หอพระแก้ว ประตูชัย และพระธาตุหลวง คนขับรอที่รถ ไม่ต้องหาที่จอดหรือเรียกรถหลายรอบ</li>
-              <li><strong className="text-[#0a2d20]">เช่ารถตู้:</strong> เหมาะกับครอบครัวหรือกลุ่มเพื่อน นั่งสบายและมีที่เก็บสัมภาระ ดูรายละเอียดที่ <Link href="/van-laos" className="font-semibold text-[#9b711c] underline">รถตู้เที่ยวลาวพร้อมคนขับ</Link></li>
+              <li><strong className="text-[#0a2d20]">เช่ารถตู้:</strong> เหมาะกับครอบครัวหรือกลุ่มเพื่อน นั่งสบายและมีที่เก็บสัมภาระ ดูรายละเอียดที่ <Link href="/van-laos/" className="font-semibold text-[#9b711c] underline">เหมารถตู้เที่ยวลาว</Link></li>
               <li><strong className="text-[#0a2d20]">แท็กซี่/ตุ๊กตุ๊ก:</strong> ใช้ได้ในระยะสั้น ควรตกลงราคาก่อนขึ้น และตรวจเวลารับกลับให้ชัดเจน</li>
             </ul>
             <div className="mt-6 rounded-[22px] border border-[#e3bd63]/60 bg-[#fbf6e8] p-5 sm:p-6">
               <p className="font-bold text-[#0a2d20]">ใช้บริการ HUGLAO ฮักลาว</p>
               <p className="mt-2 text-[.95rem] leading-7 text-[#59645d]">
-                ทีม HUGLAO ให้บริการ<Link href="/car-with-driver" className="font-semibold text-[#9b711c] underline">เช่ารถพร้อมคนขับ</Link>และ<Link href="/van-laos" className="font-semibold text-[#9b711c] underline">เช่ารถตู้</Link>ในเวียงจันทน์ รับที่สนามบิน สถานีรถไฟ ด่านชายแดน หรือโรงแรม แล้วพาไหว้วัดสีเมืองต่อด้วยจุดเที่ยวอื่นในเมืองตามเวลาที่คุณกำหนด ส่งวันเดินทาง จำนวนคน และจุดรับผ่าน LINE ทีมงานจะยืนยันรถและราคาให้
+                ทีม HUGLAO ให้บริการ<Link href="/car-with-driver" className="font-semibold text-[#9b711c] underline">เช่ารถพร้อมคนขับ</Link>และ<Link href="/vientiane/" className="font-semibold text-[#9b711c] underline">เช่ารถตู้</Link>ในเวียงจันทน์ รับที่สนามบิน สถานีรถไฟ ด่านชายแดน หรือโรงแรม แล้วพาไหว้วัดสีเมืองต่อด้วยจุดเที่ยวอื่นในเมืองตามเวลาที่คุณกำหนด ส่งวันเดินทาง จำนวนคน และจุดรับผ่าน LINE ทีมงานจะยืนยันรถและราคาให้
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary min-h-12 px-6">ทักไลน์สอบถามราคา</a>

@@ -438,7 +438,7 @@ export default function ReviewOneDayTripPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary min-h-12 px-7">จองเหมา 2,500 บาท ผ่าน LINE</a>
-              <Link href="/van-laos" className="inline-flex min-h-12 items-center rounded-full border border-[#c8941f] px-6 text-sm font-bold text-[#0a2d20] hover:bg-white/60">ดูรถตู้เที่ยวลาว</Link>
+              <Link href="/van-laos" className="inline-flex min-h-12 items-center rounded-full border border-[#c8941f] px-6 text-sm font-bold text-[#0a2d20] hover:bg-white/60">เหมารถตู้เที่ยวลาว</Link>
             </div>
           </section>
         </div>

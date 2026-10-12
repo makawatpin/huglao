@@ -140,7 +140,7 @@ export default function VanLaosPage() {
       <section className="bg-[#071d13] pb-8 text-white">
         <div className="hl-shell">
           <Link href="/vientiane/" className="inline-flex rounded-full border border-[#d8af4a]/60 px-5 py-3 text-sm font-bold text-[#efd276] hover:bg-white/10">
-            ดูบริการรถตู้เวียงจันทน์พร้อมคนขับ →
+            เช่ารถตู้เวียงจันทน์พร้อมคนขับ →
           </Link>
         </div>
       </section>

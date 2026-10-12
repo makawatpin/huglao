@@ -219,7 +219,7 @@ export default function BorderPassVsPassportArticlePage() {
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• ทำบัตรผ่านแดน 100 บาท/คน เหมารวมทุกอย่าง</li><li>• รถรับที่ด่านท่านาแล้งฝั่งลาว</li><li>• เหมารถเที่ยวในนครหลวงเวียงจันทน์</li></ul>
           <Link href="/services/temporary-border-pass" className="mt-6 block font-bold text-[#9b711c] hover:text-[#0a2d20]">บริการทำบัตรผ่านแดน →</Link>
           <Link href="/routes/vientiane-city" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
-          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">เช่ารถเวียงจันทน์พร้อมคนขับ →</Link>
+          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">เช่ารถตู้เวียงจันทน์ รับที่ด่านท่านาแล้ง →</Link>
         </aside>
       </div>
 
