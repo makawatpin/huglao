@@ -21,9 +21,9 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl font-bold text-[#0a2d20]">ข้อมูลการใช้งานเว็บไซต์</h2>
               <p className="mt-3">เว็บไซต์ใช้ Google Analytics เพื่อวัดจำนวนการเข้าชม แหล่งที่มา หน้าที่เปิด และการใช้งานปุ่มติดต่อหรือแบบฟอร์มในภาพรวม โดย HUGLAO ไม่ส่งชื่อ เบอร์โทร เนื้อหาคำขอราคา หรือข้อความที่คุณกรอกให้ Google Analytics</p>
-              <p className="mt-3">Google Analytics อาจใช้คุกกี้และข้อมูลทางเทคนิค เช่น ประเภทอุปกรณ์ เบราว์เซอร์ และตำแหน่งโดยประมาณ คุณสามารถจำกัดหรือลบคุกกี้ได้จากการตั้งค่าเบราว์เซอร์ และอ่านรายละเอียดเพิ่มเติมได้จาก <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#9b711c]">นโยบายความเป็นส่วนตัวของ Google</a></p>
+              <p className="mt-3">Google Analytics อาจใช้คุกกี้และข้อมูลทางเทคนิค เช่น ประเภทอุปกรณ์ เบราว์เซอร์ และตำแหน่งโดยประมาณ คุณสามารถจำกัดหรือลบคุกกี้ได้จากการตั้งค่าเบราว์เซอร์ และอ่านรายละเอียดเพิ่มเติมได้จาก <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#86611a]">นโยบายความเป็นส่วนตัวของ Google</a></p>
             </section>
-            <section><h2 className="text-xl font-bold text-[#0a2d20]">การติดต่อเกี่ยวกับข้อมูล</h2><p className="mt-3">หากต้องการสอบถามหรือขอแก้ไขข้อมูล โปรดติดต่อ <a href={`mailto:${SITE.email}`} className="font-semibold text-[#9b711c]">{SITE.email}</a></p></section>
+            <section><h2 className="text-xl font-bold text-[#0a2d20]">การติดต่อเกี่ยวกับข้อมูล</h2><p className="mt-3">หากต้องการสอบถามหรือขอแก้ไขข้อมูล โปรดติดต่อ <a href={`mailto:${SITE.email}`} className="font-semibold text-[#86611a]">{SITE.email}</a></p></section>
           </div>
         </div>
       </section>

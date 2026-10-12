@@ -144,7 +144,7 @@ export default async function Home() {
                     />
                   </div>
                   <div className="hl-mobile-content min-w-0 p-7 sm:flex sm:flex-col sm:p-3">
-                    <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
+                    <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
                     <h3 className="font-serif-th text-lg font-bold text-[#0a2d20] sm:mt-5 sm:text-2xl">{point.name}</h3>
                     <p className="text-sm leading-6 text-[#59645d] sm:mt-4 sm:leading-7">{point.detail}</p>
                   </div>
@@ -180,10 +180,10 @@ export default async function Home() {
                     <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1280px) 50vw, 20vw" className="object-contain transition duration-500 group-hover:scale-[1.02]" />
                   </div>
                   <div className="hl-mobile-content flex flex-1 flex-col p-6">
-                    <span className="hl-vehicle-order text-xs font-bold tracking-[.18em] text-[#9b711c]">0{index + 1}</span>
+                    <span className="hl-vehicle-order text-xs font-bold tracking-[.18em] text-[#86611a]">0{index + 1}</span>
                     <h3 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{vehicle.shortName}</h3>
                     <p className="hl-vehicle-detail mt-3 flex-1 text-sm leading-7 text-[#687169]">{vehicle.description}</p>
-                    <span className="mt-5 text-sm font-bold text-[#0d3827] transition group-hover:text-[#9b711c]">ดูรายละเอียด →</span>
+                    <span className="mt-5 text-sm font-bold text-[#0d3827] transition group-hover:text-[#86611a]">ดูรายละเอียด →</span>
                   </div>
                 </Link>
               </Reveal>;
@@ -277,7 +277,7 @@ export default async function Home() {
           <Reveal className="max-w-[820px]">
             <span className="hl-kicker">ราคาเริ่มต้นที่ยืนยันแล้ว</span>
             <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,4vw,3.6rem)] font-bold leading-tight text-[#071d13]">ดูราคาเบื้องต้นก่อนวางแผนทริป</h2>
-            <p className="mb-8 mt-5 leading-8 text-[#59645d]">ตัวอย่างราคาจากฐานราคาเดียวกับหน้ารายละเอียด แยกเก๋ง/SUV และรถตู้อย่างชัดเจน ดูราคาครบทุกเส้นทางที่หน้า <Link href="/vientiane/" className="font-semibold text-[#9b711c] underline">เช่ารถตู้เวียงจันทน์</Link></p>
+            <p className="mb-8 mt-5 leading-8 text-[#59645d]">ตัวอย่างราคาจากฐานราคาเดียวกับหน้ารายละเอียด แยกเก๋ง/SUV และรถตู้อย่างชัดเจน ดูราคาครบทุกเส้นทางที่หน้า <Link href="/vientiane/" className="font-semibold text-[#86611a] underline">เช่ารถตู้เวียงจันทน์</Link></p>
           </Reveal>
           <Reveal delay={0.1}>
             <PublishedPriceTable rows={HOME_PRICE_ROWS} />
@@ -314,7 +314,7 @@ export default async function Home() {
             <p className="mt-5 leading-8 text-[#59645d]">
               เลือกเฉพาะสิ่งที่ต้องการ เราจะช่วยประสานโดยไม่เปลี่ยนทริปส่วนตัวให้กลายเป็นแพ็กเกจบังคับ
             </p>
-            <Link href="/services" className="mt-6 inline-flex min-h-11 items-center font-bold text-[#9b711c]">ดูบริการทั้งหมด →</Link>
+            <Link href="/services" className="mt-6 inline-flex min-h-11 items-center font-bold text-[#86611a]">ดูบริการทั้งหมด →</Link>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2">
             {READY_SERVICES.map((service, index) => (
@@ -369,7 +369,7 @@ export default async function Home() {
                 <span className="hl-kicker">บทความ</span>
                 <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold text-[#071d13]">เตรียมทริปให้มั่นใจกว่าเดิม</h2>
               </div>
-              <Link href="/articles" className="inline-flex min-h-11 items-center font-bold text-[#9b711c]">ดูบทความทั้งหมด →</Link>
+              <Link href="/articles" className="inline-flex min-h-11 items-center font-bold text-[#86611a]">ดูบทความทั้งหมด →</Link>
             </div>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {articles.map((article) => (
@@ -407,7 +407,7 @@ export default async function Home() {
               <details key={faq.question} className="group py-1">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-semibold text-[#0a2d20]">
                   {faq.question}
-                  <span className="text-2xl font-light text-[#9b711c] transition group-open:rotate-45">+</span>
+                  <span className="text-2xl font-light text-[#86611a] transition group-open:rotate-45">+</span>
                 </summary>
                 <p className="max-w-[760px] pb-6 pr-10 leading-8 text-[#59645d]">{faq.answer}</p>
               </details>

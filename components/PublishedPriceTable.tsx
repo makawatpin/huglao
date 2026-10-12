@@ -41,7 +41,7 @@ function groupRowsByRoute(rows: PriceRow[]) {
 }
 
 function PriceValue({ row, vehicleKey }: { row: PriceRow; vehicleKey: PriceVehicleKey }) {
-  return <span className="whitespace-nowrap font-bold tabular-nums text-[#9b711c]">{formatPrice(row.prices[vehicleKey])}</span>;
+  return <span className="whitespace-nowrap font-bold tabular-nums text-[#86611a]">{formatPrice(row.prices[vehicleKey])}</span>;
 }
 
 function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: readonly PriceVehicle[] }) {
@@ -69,7 +69,7 @@ function MobilePriceCards({ rows, vehicles }: { rows: PriceRow[]; vehicles: read
               <div key={row.id} className={`grid ${gridClass} items-center gap-x-2 px-3 py-3.5 odd:bg-white even:bg-[#fcfaf5]`}>
                 <span className="text-[.8rem] font-semibold leading-5 text-[#425047]">{row.duration}</span>
                 {vehicles.map((vehicle) => (
-                  <span key={vehicle.key} aria-label={`${vehicle.name} ${formatPrice(row.prices[vehicle.key])}`} className={`w-full text-center font-bold tabular-nums text-[#9b711c] ${isSingleVehicle ? "text-sm" : "text-[.8rem]"}`}>
+                  <span key={vehicle.key} aria-label={`${vehicle.name} ${formatPrice(row.prices[vehicle.key])}`} className={`w-full text-center font-bold tabular-nums text-[#86611a] ${isSingleVehicle ? "text-sm" : "text-[.8rem]"}`}>
                     {isSingleVehicle ? formatPrice(row.prices[vehicle.key]) : formatMobilePrice(row.prices[vehicle.key])}
                   </span>
                 ))}

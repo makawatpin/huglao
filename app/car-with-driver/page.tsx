@@ -47,10 +47,10 @@ export default function CarWithDriverPage() {
                 </div>
                 <div className="min-w-0 p-3.5 sm:p-5 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-x-8 lg:px-7 lg:py-6">
                   <div className="min-w-0">
-                    <span className="inline-flex rounded-full bg-[#f1ead9] px-2.5 py-1 text-[.65rem] font-bold tracking-[.14em] text-[#8b6518]">0{index + 1}</span>
+                    <span className="inline-flex rounded-full bg-[#f1ead9] px-2.5 py-1 text-xs font-bold tracking-[.14em] text-[#8b6518]">0{index + 1}</span>
                     <h2 className="mt-2 font-serif-th text-lg font-bold leading-snug text-[#0a2d20] sm:text-2xl">{vehicle.name}</h2>
                     <p className="mt-1.5 text-xs leading-5 text-[#59645d] sm:mt-2 sm:text-sm sm:leading-6">{vehicle.description}</p>
-                    <p className="mt-2.5 inline-flex rounded-full bg-[#eef4ef] px-2.5 py-1 text-[.68rem] font-semibold leading-5 text-[#0a2d20] sm:text-xs">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้วในตารางด้านล่าง" : "ขอราคาแยกตามรายละเอียดทริป"}</p>
+                    <p className="mt-2.5 inline-flex rounded-full bg-[#eef4ef] px-2.5 py-1 text-xs font-semibold leading-5 text-[#0a2d20]">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้วในตารางด้านล่าง" : "ขอราคาแยกตามรายละเอียดทริป"}</p>
                   </div>
                   <Link href={`/car-with-driver/${vehicle.slug}`} className="mt-3 inline-flex min-h-9 items-center rounded-full border border-[#d8af4a] px-3.5 text-xs font-bold text-[#80601b] transition hover:bg-[#d8af4a] hover:text-[#071d13] sm:text-sm lg:mt-0 lg:whitespace-nowrap">ดูรายละเอียด →</Link>
                 </div>
@@ -78,7 +78,7 @@ export default function CarWithDriverPage() {
               <article key={vehicle.slug} className="rounded-[22px] border border-[#ddd4c1] p-5">
                 <h3 className="font-bold text-[#0a2d20]">{vehicle.name}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#59645d]">{vehicle.description}</p>
-                <p className="mt-4 text-sm font-semibold text-[#9b711c]">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้ว" : "ขอราคาตามทริป"}</p>
+                <p className="mt-4 text-sm font-semibold text-[#86611a]">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้ว" : "ขอราคาตามทริป"}</p>
               </article>
             ))}
           </div>
@@ -92,7 +92,7 @@ export default function CarWithDriverPage() {
                   <tr key={vehicle.slug} className="border-b border-[#ece6d9] last:border-0">
                     <th className="p-5 text-[#0a2d20]">{vehicle.name}</th>
                     <td className="p-5 text-[#59645d]">{vehicle.description}</td>
-                    <td className="p-5 font-semibold text-[#9b711c]">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้ว" : "ขอราคาตามทริป"}</td>
+                    <td className="p-5 font-semibold text-[#86611a]">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้ว" : "ขอราคาตามทริป"}</td>
                   </tr>
                 ))}
               </tbody>

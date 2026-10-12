@@ -25,7 +25,7 @@ export default function TermsPage() {
       <PageHero eyebrow="Service terms" title="เงื่อนไขการใช้บริการ" description="หลักการพื้นฐานที่ช่วยให้ลูกค้า HUGLAO และพาร์ตเนอร์เข้าใจขอบเขตเดียวกันก่อนยืนยัน" breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "เงื่อนไขการใช้บริการ" }]} />
       <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,110px)]">
         <div className="hl-shell max-w-[900px] space-y-5">
-          {TERMS.map(([title, body], index) => <article key={title} className="rounded-[24px] border border-[#ddd4c1] bg-white p-7"><span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span><h2 className="mt-4 text-xl font-bold text-[#0a2d20]">{title}</h2><p className="mt-3 leading-8 text-[#59645d]">{body}</p></article>)}
+          {TERMS.map(([title, body], index) => <article key={title} className="rounded-[24px] border border-[#ddd4c1] bg-white p-7"><span className="text-xs font-bold text-[#86611a]">0{index + 1}</span><h2 className="mt-4 text-xl font-bold text-[#0a2d20]">{title}</h2><p className="mt-3 leading-8 text-[#59645d]">{body}</p></article>)}
         </div>
       </section>
     </main>

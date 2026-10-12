@@ -197,7 +197,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
           <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {ROUTE_GROUPS.map((route) => (
               <Link key={route.slug} href={`/routes/${route.slug}`} className="rounded-[22px] border border-[#ddd4c1] p-6 transition hover:border-[#d8af4a]">
-                <h3 className="font-semibold text-[#0a2d20]">{route.name}</h3><span className="mt-4 block text-sm font-bold text-[#9b711c]">ดูเส้นทาง →</span>
+                <h3 className="font-semibold text-[#0a2d20]">{route.name}</h3><span className="mt-4 block text-sm font-bold text-[#86611a]">ดูเส้นทาง →</span>
               </Link>
             ))}
           </div>

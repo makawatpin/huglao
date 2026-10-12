@@ -31,7 +31,7 @@ const footerLinkClass = "transition-colors hover:text-[#efd276] focus-visible:te
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-[#06170f] px-[clamp(20px,5vw,56px)] pb-8 pt-12 text-[#b9c2ba]">
+    <footer className="bg-[#06170f] px-[clamp(20px,5vw,56px)] pb-[calc(2rem+68px+env(safe-area-inset-bottom))] pt-12 text-[#b9c2ba] md:pb-8">
       <div className="mx-auto max-w-[1280px]">
         <section className="hl-footer-cta flex flex-col gap-6 rounded-[26px] border border-[#d8af4a]/25 bg-[#0a2418] px-6 py-7 sm:px-8 lg:flex-row lg:items-center lg:justify-between" aria-labelledby="footer-cta-title">
           <div>

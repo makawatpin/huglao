@@ -141,7 +141,7 @@ export default function AboutPage() {
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link href="/car-with-driver" className="hl-button-primary">ดูรถเที่ยวลาว</Link>
-              <Link href="/travel-with-us" className="hl-button-secondary">ดูเส้นทางและราคา</Link>
+              <Link href="/travel-with-us" className="inline-flex min-h-[3.25rem] items-center justify-center rounded-full border border-[#0a2d20]/25 px-6 font-bold text-[#0a2d20] transition-colors hover:border-[#86611a] hover:bg-white/60">ดูเส้นทางและราคา</Link>
             </div>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function AboutPage() {
 
             <div className="grid content-start gap-3">
               <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="rounded-[20px] border border-[#d8af4a] bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-lg">
-                <span className="text-xs font-bold tracking-[.14em] text-[#9b711c]">ช่องทางหลัก</span>
+                <span className="text-xs font-bold tracking-[.14em] text-[#86611a]">ช่องทางหลัก</span>
                 <strong className="mt-2 block text-lg text-[#0a2d20]">LINE OA — ส่งรายละเอียดและขอราคา</strong>
               </a>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -227,7 +227,7 @@ export default function AboutPage() {
             {ABOUT_FAQS.map((faq) => (
               <details key={faq.question} className="group py-1">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-semibold text-[#0a2d20]">
-                  {faq.question}<span className="text-2xl font-light text-[#9b711c] transition group-open:rotate-45">+</span>
+                  {faq.question}<span className="text-2xl font-light text-[#86611a] transition group-open:rotate-45">+</span>
                 </summary>
                 <p className="max-w-[780px] pb-6 pr-8 leading-8 text-[#59645d]">{faq.answer}</p>
               </details>

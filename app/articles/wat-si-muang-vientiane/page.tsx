@@ -215,7 +215,7 @@ export default function WatSiMuangArticlePage() {
             <summary className="cursor-pointer font-bold text-[#0a2d20]">สารบัญบทความ</summary>
             <ol className="mt-4 space-y-2 text-[.95rem]">
               {TOC.map((t) => (
-                <li key={t.id}><a href={`#${t.id}`} className="text-[#9b711c] hover:underline">{t.label}</a></li>
+                <li key={t.id}><a href={`#${t.id}`} className="text-[#86611a] hover:underline">{t.label}</a></li>
               ))}
             </ol>
           </details>
@@ -227,7 +227,7 @@ export default function WatSiMuangArticlePage() {
             <dl className="mt-8 grid gap-3 rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-5 sm:grid-cols-2 sm:p-6">
               {QUICK_FACTS.map((f) => (
                 <div key={f.label} className="rounded-2xl bg-white/70 px-4 py-3">
-                  <dt className="text-xs font-bold uppercase tracking-[.14em] text-[#9b711c]">{f.label}</dt>
+                  <dt className="text-xs font-bold uppercase tracking-[.14em] text-[#86611a]">{f.label}</dt>
                   <dd className="mt-1 text-[.95rem] leading-7 text-[#3a3d33]">{f.value}</dd>
                 </div>
               ))}
@@ -269,7 +269,7 @@ export default function WatSiMuangArticlePage() {
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {BELIEF_POINTS.map((b, i) => (
                 <article key={b.title} className="rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-5">
-                  <span className="text-xs font-bold text-[#9b711c]">0{i + 1}</span>
+                  <span className="text-xs font-bold text-[#86611a]">0{i + 1}</span>
                   <h3 className="mt-3 font-serif-th text-lg font-bold text-[#0a2d20]">{b.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-[#59645d]">{b.body}</p>
                 </article>
@@ -370,17 +370,17 @@ export default function WatSiMuangArticlePage() {
             <h3 className="mt-10 font-serif-th text-xl font-bold text-[#0a2d20]">เลือกเดินทางแบบไหนดี</h3>
             <ul className="mt-4 space-y-3 leading-8 text-[#4f5d54]">
               <li><strong className="text-[#0a2d20]">เช่ารถพร้อมคนขับ:</strong> สะดวกที่สุดหากต้องการแวะหลายจุดในวัน เช่น วัดสีสะเกด หอพระแก้ว ประตูชัย และพระธาตุหลวง คนขับรอที่รถ ไม่ต้องหาที่จอดหรือเรียกรถหลายรอบ</li>
-              <li><strong className="text-[#0a2d20]">เช่ารถตู้:</strong> เหมาะกับครอบครัวหรือกลุ่มเพื่อน นั่งสบายและมีที่เก็บสัมภาระ ดูรายละเอียดที่ <Link href="/van-laos/" className="font-semibold text-[#9b711c] underline">เหมารถตู้เที่ยวลาว</Link></li>
+              <li><strong className="text-[#0a2d20]">เช่ารถตู้:</strong> เหมาะกับครอบครัวหรือกลุ่มเพื่อน นั่งสบายและมีที่เก็บสัมภาระ ดูรายละเอียดที่ <Link href="/van-laos/" className="font-semibold text-[#86611a] underline">เหมารถตู้เที่ยวลาว</Link></li>
               <li><strong className="text-[#0a2d20]">แท็กซี่/ตุ๊กตุ๊ก:</strong> ใช้ได้ในระยะสั้น ควรตกลงราคาก่อนขึ้น และตรวจเวลารับกลับให้ชัดเจน</li>
             </ul>
             <div className="mt-6 rounded-[22px] border border-[#e3bd63]/60 bg-[#fbf6e8] p-5 sm:p-6">
               <p className="font-bold text-[#0a2d20]">ใช้บริการ HUGLAO ฮักลาว</p>
               <p className="mt-2 text-[.95rem] leading-7 text-[#59645d]">
-                ทีม HUGLAO ให้บริการ<Link href="/car-with-driver" className="font-semibold text-[#9b711c] underline">เช่ารถพร้อมคนขับ</Link>และ<Link href="/vientiane/" className="font-semibold text-[#9b711c] underline">เช่ารถตู้</Link>ในเวียงจันทน์ รับที่สนามบิน สถานีรถไฟ ด่านชายแดน หรือโรงแรม แล้วพาไหว้วัดสีเมืองต่อด้วยจุดเที่ยวอื่นในเมืองตามเวลาที่คุณกำหนด ส่งวันเดินทาง จำนวนคน และจุดรับผ่าน LINE ทีมงานจะยืนยันรถและราคาให้
+                ทีม HUGLAO ให้บริการ<Link href="/car-with-driver" className="font-semibold text-[#86611a] underline">เช่ารถพร้อมคนขับ</Link>และ<Link href="/vientiane/" className="font-semibold text-[#86611a] underline">เช่ารถตู้</Link>ในเวียงจันทน์ รับที่สนามบิน สถานีรถไฟ ด่านชายแดน หรือโรงแรม แล้วพาไหว้วัดสีเมืองต่อด้วยจุดเที่ยวอื่นในเมืองตามเวลาที่คุณกำหนด ส่งวันเดินทาง จำนวนคน และจุดรับผ่าน LINE ทีมงานจะยืนยันรถและราคาให้
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary min-h-12 px-6">ทักไลน์สอบถามราคา</a>
-                <Link href="/routes/vientiane-city" className="inline-flex min-h-12 items-center rounded-full border border-[#0a2d20]/20 px-6 text-sm font-bold text-[#0a2d20] hover:border-[#9b711c]">ดูแผนเที่ยวในเมือง →</Link>
+                <Link href="/routes/vientiane-city" className="inline-flex min-h-12 items-center rounded-full border border-[#0a2d20]/20 px-6 text-sm font-bold text-[#0a2d20] hover:border-[#86611a]">ดูแผนเที่ยวในเมือง →</Link>
               </div>
             </div>
           </section>
@@ -388,10 +388,10 @@ export default function WatSiMuangArticlePage() {
 
         <aside className="hidden h-fit lg:sticky lg:top-28 lg:block">
           <nav aria-label="สารบัญ" className="rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-5">
-            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#9b711c]">สารบัญ</p>
+            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">สารบัญ</p>
             <ol className="mt-4 space-y-2.5 text-[.9rem] leading-6">
               {TOC.map((t) => (
-                <li key={t.id}><a href={`#${t.id}`} className="text-[#3a3d33] hover:text-[#9b711c]">{t.label}</a></li>
+                <li key={t.id}><a href={`#${t.id}`} className="text-[#3a3d33] hover:text-[#86611a]">{t.label}</a></li>
               ))}
             </ol>
             <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary mt-5 min-h-11 w-full text-sm">ทักไลน์ HUGLAO</a>
@@ -427,9 +427,9 @@ export default function WatSiMuangArticlePage() {
           <div className="mt-8">
             <p className="font-bold text-[#0a2d20]">อ่านต่อ</p>
             <div className="mt-3 flex flex-col gap-2">
-              <Link href="/vientiane/" className="font-semibold text-[#9b711c] hover:text-[#0a2d20]">→ เช่ารถตู้เวียงจันทน์พร้อมคนขับ</Link>
-              <Link href="/routes/vientiane-city" className="font-semibold text-[#9b711c] hover:text-[#0a2d20]">→ เที่ยวในนครหลวงเวียงจันทน์</Link>
-              <Link href="/articles/nam-pien-yorla-pa" className="font-semibold text-[#9b711c] hover:text-[#0a2d20]">→ น้ำเปี่ยนยอละปา ทริปป่าฝนจากเวียงจันทน์</Link>
+              <Link href="/vientiane/" className="font-semibold text-[#86611a] hover:text-[#0a2d20]">→ เช่ารถตู้เวียงจันทน์พร้อมคนขับ</Link>
+              <Link href="/routes/vientiane-city" className="font-semibold text-[#86611a] hover:text-[#0a2d20]">→ เที่ยวในนครหลวงเวียงจันทน์</Link>
+              <Link href="/articles/nam-pien-yorla-pa" className="font-semibold text-[#86611a] hover:text-[#0a2d20]">→ น้ำเปี่ยนยอละปา ทริปป่าฝนจากเวียงจันทน์</Link>
             </div>
           </div>
         </div>

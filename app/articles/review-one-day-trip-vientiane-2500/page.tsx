@@ -319,7 +319,7 @@ export default function ReviewOneDayTripPage() {
                 ["พื้นที่เที่ยว", "นครหลวงเวียงจันทน์"],
               ].map(([k, v]) => (
                 <div key={k} className="px-5 py-4 sm:border-b sm:border-[#e5dece] sm:[&:nth-last-child(-n+2)]:border-b-0">
-                  <dt className="text-xs font-bold uppercase tracking-[.12em] text-[#9b711c]">{k}</dt>
+                  <dt className="text-xs font-bold uppercase tracking-[.12em] text-[#86611a]">{k}</dt>
                   <dd className="mt-1 font-semibold text-[#0a2d20]">{v}</dd>
                 </div>
               ))}
@@ -364,10 +364,10 @@ export default function ReviewOneDayTripPage() {
                       )}
                       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold">
                         {stop.mapUrl && (
-                          <a href={stop.mapUrl} target="_blank" rel="noopener noreferrer" className="text-[#9b711c] hover:text-[#0a2d20]">เปิดแผนที่ร้าน →</a>
+                          <a href={stop.mapUrl} target="_blank" rel="noopener noreferrer" className="text-[#86611a] hover:text-[#0a2d20]">เปิดแผนที่ร้าน →</a>
                         )}
                         {stop.link && (
-                          <Link href={stop.link.href} className="text-[#0a2d20] hover:text-[#9b711c]">{stop.link.label}</Link>
+                          <Link href={stop.link.href} className="text-[#0a2d20] hover:text-[#86611a]">{stop.link.label}</Link>
                         )}
                       </div>
                     </div>
@@ -411,7 +411,7 @@ export default function ReviewOneDayTripPage() {
           </section>
 
           <section className="mt-14 rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6 sm:p-8">
-            <span className="text-xs font-bold uppercase tracking-[.16em] text-[#9b711c]">เกี่ยวกับผู้เขียน</span>
+            <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">เกี่ยวกับผู้เขียน</span>
             <h2 className="mt-3 font-serif-th text-xl font-bold text-[#0a2d20]">ทีมงาน HUGLAO ผู้ให้บริการรถพร้อมคนขับในเวียงจันทน์</h2>
             <p className="mt-3 leading-8 text-[#4f5d54]">
               บทความนี้เขียนโดยทีมงาน {SITE.name} ผู้ให้บริการรถตู้ รถเก๋ง และ SUV พร้อมคนขับ รับ–ส่งหน้าด่านท่านาแล้ง และเหมาเที่ยวในนครหลวงเวียงจันทน์ ข้อมูลเส้นทางและเวลาในบทความมาจากทริปที่ทีมงานดูแลจริง ภาพประกอบทั้งหมดเป็นภาพจากทริปนี้
@@ -431,7 +431,7 @@ export default function ReviewOneDayTripPage() {
           </section>
 
           <section className="mt-14 rounded-[28px] border border-[#e3d5ac] bg-gradient-to-br from-[#fbf6e6] to-[#f4e9c4] p-[clamp(24px,5vw,44px)]">
-            <span className="text-xs font-bold uppercase tracking-[.16em] text-[#9b711c]">โปรโมชั่น</span>
+            <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">โปรโมชั่น</span>
             <h2 className="mt-3 font-serif-th text-[clamp(1.7rem,3.6vw,2.6rem)] font-bold leading-tight text-[#071d13]">เหมาเที่ยวเวียงจันทน์ 1 วัน 2,500 บาท</h2>
             <p className="mt-4 leading-8 text-[#4f5d54]">
               อยากเที่ยวเวียงจันทน์แบบสบาย ๆ ไม่ต้องรีบ เหมารถตู้ HUGLAO วันเดียวคุ้มทั้งครอบครัวและกลุ่มเพื่อน เลือกจุดเที่ยว ร้านอาหาร และเวลาได้เอง ส่งวันเดินทางและจำนวนคนทาง LINE ทีมงานจะวางแผนและยืนยันรถให้
@@ -444,7 +444,7 @@ export default function ReviewOneDayTripPage() {
         </div>
 
         <aside className="h-fit rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6 lg:sticky lg:top-28">
-          <span className="text-xs font-bold uppercase tracking-[.16em] text-[#9b711c]">โปรโมชั่น 1 วัน</span>
+          <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">โปรโมชั่น 1 วัน</span>
           <p className="mt-3 font-serif-th text-3xl font-bold text-[#0a2d20]">2,500 บาท</p>
           <p className="mt-1 text-sm text-[#59645d]">เหมารถตู้เที่ยวเวียงจันทน์ 1 วัน</p>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]">
@@ -453,9 +453,9 @@ export default function ReviewOneDayTripPage() {
             <li>• เหมาะกับครอบครัวและกลุ่มเพื่อน</li>
           </ul>
           <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary mt-6 min-h-12 w-full px-6">จองผ่าน LINE</a>
-          <Link href="/routes/vientiane-city" className="mt-5 block text-sm font-bold text-[#0a2d20] hover:text-[#9b711c]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
-          <Link href="/articles/border-pass-vs-passport-laos" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#9b711c]">บัตรผ่านแดนหรือพาสปอร์ต →</Link>
-          <Link href="/vientiane/" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#9b711c]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
+          <Link href="/routes/vientiane-city" className="mt-5 block text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
+          <Link href="/articles/border-pass-vs-passport-laos" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">บัตรผ่านแดนหรือพาสปอร์ต →</Link>
+          <Link href="/vientiane/" className="mt-3 block text-sm font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
         </aside>
       </div>
 

@@ -113,7 +113,7 @@ export default function TravelWithUsPage() {
                   <div className="hl-mobile-content p-6">
                     <h3 className="font-semibold text-[#0a2d20]">{point.name}</h3>
                     <p className="mt-3 text-sm leading-7 text-[#59645d]">{point.detail}</p>
-                    <p className="mt-4 text-xs leading-6 text-[#9b711c]">ทีมงานจะยืนยันตำแหน่งและเวลานัดพบในข้อเสนอก่อนเดินทาง</p>
+                    <p className="mt-4 text-xs leading-6 text-[#86611a]">ทีมงานจะยืนยันตำแหน่งและเวลานัดพบในข้อเสนอก่อนเดินทาง</p>
                   </div>
                 </article>
               );

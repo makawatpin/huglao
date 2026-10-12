@@ -113,7 +113,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <SiteHeader />
-        <div id="main-content" className="pb-[74px] md:pb-0">
+        <div id="main-content">
           {children}
           <SiteFooter />
         </div>

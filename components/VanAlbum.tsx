@@ -44,7 +44,7 @@ export default function VanAlbum({ groups }: { groups: VanAlbumGroup[] }) {
           const start = starts[groupIndex];
           return (
             <div key={group.title}>
-              <h3 className="flex items-baseline justify-between text-sm font-bold tracking-[.12em] text-[#9b711c]">
+              <h3 className="flex items-baseline justify-between text-sm font-bold tracking-[.12em] text-[#86611a]">
                 {group.title}
                 <span className="text-xs font-semibold tracking-normal text-[#59645d] sm:hidden">{group.items.length} ภาพ · เลื่อนดู →</span>
               </h3>

@@ -47,11 +47,11 @@ export default function ImageCreditsPage() {
                     <dt className="font-semibold text-[#0a2d20]">ผู้สร้าง</dt>
                     <dd className="text-[#59645d]">{item.author}</dd>
                     <dt className="font-semibold text-[#0a2d20]">ใบอนุญาต</dt>
-                    <dd><a href={item.licenseUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#9b711c] hover:underline">{item.license}</a></dd>
+                    <dd><a href={item.licenseUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#86611a] hover:underline">{item.license}</a></dd>
                     <dt className="font-semibold text-[#0a2d20]">การปรับไฟล์</dt>
                     <dd className="text-[#59645d]">{item.changes}</dd>
                   </dl>
-                  <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex text-sm font-bold text-[#9b711c] hover:text-[#0a2d20]">เปิดหน้าภาพต้นฉบับ →</a>
+                  <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex text-sm font-bold text-[#86611a] hover:text-[#0a2d20]">เปิดหน้าภาพต้นฉบับ →</a>
                 </div>
               </article>
             ))}

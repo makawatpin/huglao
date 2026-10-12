@@ -205,7 +205,7 @@ export default function VientianeCarRentalPage() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PICKUP_LOCATIONS.map((point, index) => (
               <article key={point.slug} className="rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
-                <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
+                <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
                 <h3 className="mt-4 font-serif-th text-xl font-bold text-[#0a2d20]">{point.name}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#59645d]">{point.detail}</p>
               </article>
@@ -230,7 +230,7 @@ export default function VientianeCarRentalPage() {
                   <div className="p-6">
                     <h3 className="font-serif-th text-xl font-bold text-[#0a2d20]">{vehicle.name}</h3>
                     <p className="mt-3 text-sm leading-7 text-[#59645d]">{vehicle.suitableFor}</p>
-                    <span className="mt-5 block text-sm font-bold text-[#9b711c]">ดูรายละเอียดรถ →</span>
+                    <span className="mt-5 block text-sm font-bold text-[#86611a]">ดูรายละเอียดรถ →</span>
                   </div>
                 </Link>
               );
@@ -316,7 +316,7 @@ export default function VientianeCarRentalPage() {
               <details key={faq.question} className="group py-1">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-semibold text-[#0a2d20]">
                   {faq.question}
-                  <span aria-hidden="true" className="text-2xl font-light text-[#9b711c] transition group-open:rotate-45">+</span>
+                  <span aria-hidden="true" className="text-2xl font-light text-[#86611a] transition group-open:rotate-45">+</span>
                 </summary>
                 <p className="max-w-[880px] pb-6 pr-8 leading-8 text-[#59645d]">{faq.answer}</p>
               </details>

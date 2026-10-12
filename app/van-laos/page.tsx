@@ -219,7 +219,7 @@ export default function VanLaosPage() {
                   </div>
                   <div className="p-5">
                     <h3 className="font-semibold leading-6 text-[#0a2d20]">{route.name}</h3>
-                    <span className="mt-3 block text-sm font-bold text-[#9b711c]">ดูเส้นทาง →</span>
+                    <span className="mt-3 block text-sm font-bold text-[#86611a]">ดูเส้นทาง →</span>
                   </div>
                 </Link>
               );
@@ -252,7 +252,7 @@ export default function VanLaosPage() {
             {VAN_FAQS.map((faq) => (
               <details key={faq.question} className="group py-1">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-semibold text-[#0a2d20]">
-                  {faq.question}<span className="text-2xl font-light text-[#9b711c] transition group-open:rotate-45">+</span>
+                  {faq.question}<span className="text-2xl font-light text-[#86611a] transition group-open:rotate-45">+</span>
                 </summary>
                 <p className="max-w-[780px] pb-6 pr-8 leading-8 text-[#59645d]">{faq.answer}</p>
               </details>

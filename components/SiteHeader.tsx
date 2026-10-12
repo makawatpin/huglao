@@ -75,13 +75,15 @@ export default function SiteHeader() {
       <button
         type="button"
         aria-label="ปิดเมนู"
+        tabIndex={open ? 0 : -1}
         onClick={() => setOpen(false)}
         className={`fixed inset-0 z-[140] bg-[#031009]/70 backdrop-blur-sm transition-opacity xl:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
       />
 
       <aside
         aria-hidden={!open}
-        className={`fixed inset-y-0 right-0 z-[150] flex w-[min(88vw,390px)] flex-col bg-[#0a261a] p-6 text-white shadow-[-24px_0_70px_rgba(0,0,0,.4)] transition-transform duration-300 xl:hidden ${open ? "translate-x-0" : "translate-x-full"}`}
+        inert={!open}
+        className={`fixed inset-y-0 right-0 z-[150] flex w-[min(88vw,390px)] flex-col bg-[#0a261a] p-6 text-white transition-[transform,visibility,box-shadow] duration-300 xl:hidden ${open ? "visible translate-x-0 shadow-[-24px_0_70px_rgba(0,0,0,.4)]" : "invisible translate-x-full shadow-none"}`}
       >
         <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-5">
           <span className="text-sm font-semibold tracking-[.18em] text-[#e7c875]">เมนู HUGLAO</span>

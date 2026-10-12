@@ -53,7 +53,7 @@ export default function BottomTabBar() {
 
   return (
     <nav
-      aria-label="เมนูหลัก"
+      aria-label="เมนูลัด"
       className="fixed inset-x-0 bottom-0 z-50 flex bg-[#08271b]/95 shadow-[0_-12px_35px_rgba(3,16,9,.18)] backdrop-blur-xl md:hidden"
       style={{
         borderTop: "0.5px solid rgba(227,189,99,.15)",
@@ -66,7 +66,7 @@ export default function BottomTabBar() {
           <Link
             key={tab.href}
             href={tab.href}
-            className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-[10px] no-underline"
+            className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-xs no-underline"
             style={{ color: active ? "#e3bd63" : "#8a9c90" }}
             aria-current={active ? "page" : undefined}
           >
@@ -79,7 +79,7 @@ export default function BottomTabBar() {
         href={SITE.lineUrl}
         target="_blank"
         rel="noopener"
-        className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-[10px] no-underline"
+        className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-xs no-underline"
         style={{ color: "#8a9c90" }}
       >
         <span className="w-5 h-5">{LINE_ICON}</span>

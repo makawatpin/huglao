@@ -95,7 +95,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
           <div className="grid gap-4 sm:grid-cols-3">
             {route.highlights.map((highlight, index) => (
               <article key={highlight} className="rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
-                <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
+                <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
                 <h3 className="mt-4 font-serif-th text-xl font-bold text-[#0a2d20]">{highlight}</h3>
               </article>
             ))}
@@ -114,7 +114,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
               {route.verifiedDetails.map((detail) => <li key={detail} className="rounded-[22px] border border-[#ddd4c1] bg-white p-5 text-sm leading-7 text-[#59645d]">{detail}</li>)}
             </ul>
             <p className="mt-5 text-xs leading-6 text-[#687169]">
-              ที่มา: {route.sourceUrl ? <a href={route.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#9b711c] hover:underline">{route.sourceLabel}</a> : route.sourceLabel} · เวลาเปิด–ปิด ค่าบัตร กิจกรรม และสภาพเส้นทางต้องตรวจอีกครั้งก่อนเดินทาง
+              ที่มา: {route.sourceUrl ? <a href={route.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#86611a] hover:underline">{route.sourceLabel}</a> : route.sourceLabel} · เวลาเปิด–ปิด ค่าบัตร กิจกรรม และสภาพเส้นทางต้องตรวจอีกครั้งก่อนเดินทาง
             </p>
           </div>
         </div>

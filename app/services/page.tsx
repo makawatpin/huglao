@@ -32,10 +32,10 @@ export default function ServicesPage() {
                   <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 112px, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
                 </div>
                 <div className="hl-mobile-content p-6 sm:p-7">
-                  <span className="text-xs font-bold tracking-[.15em] text-[#9b711c]">พร้อมประสาน</span>
+                  <span className="text-xs font-bold tracking-[.15em] text-[#86611a]">พร้อมประสาน</span>
                   <h2 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{service.name}</h2>
                   <p className="mt-4 text-sm leading-7 text-[#59645d]">{service.summary}</p>
-                  <Link href={`/services/${service.slug}`} className="mt-6 inline-flex text-sm font-bold text-[#9b711c]">ดูรายละเอียด →</Link>
+                  <Link href={`/services/${service.slug}`} className="mt-6 inline-flex text-sm font-bold text-[#86611a]">ดูรายละเอียด →</Link>
                 </div>
               </article>;
             })}

@@ -102,7 +102,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <ol className="mt-6 grid gap-4">
                   {seo.steps.map((step, index) => (
                     <li key={step.title} className="flex gap-4 rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
-                      <span className="text-sm font-bold text-[#9b711c]">0{index + 1}</span>
+                      <span className="text-sm font-bold text-[#86611a]">0{index + 1}</span>
                       <div>
                         <h3 className="font-semibold text-[#0a2d20]">{step.title}</h3>
                         <p className="mt-2 text-sm leading-7 text-[#59645d]">{step.detail}</p>
@@ -135,7 +135,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {seo.priceNote ? <p className="mt-4 text-sm leading-7 text-[#59645d]">{seo.priceNote}</p> : null}
               </div>
             ) : null}
-            {seo.relatedLink ? <Link href={seo.relatedLink.href} className="mt-7 inline-flex font-bold text-[#9b711c]">{seo.relatedLink.label}</Link> : null}
+            {seo.relatedLink ? <Link href={seo.relatedLink.href} className="mt-7 inline-flex font-bold text-[#86611a]">{seo.relatedLink.label}</Link> : null}
           </div>
         </section>
       ) : null}
@@ -149,7 +149,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <ol className="grid gap-4 sm:grid-cols-2">
             {service.requiredInfo.map((item, index) => (
               <li key={item} className="rounded-[22px] border border-[#ddd4c1] bg-white p-6">
-                <span className="text-xs font-bold text-[#9b711c]">0{index + 1}</span>
+                <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
                 <h3 className="mt-4 font-semibold text-[#0a2d20]">{item}</h3>
               </li>
             ))}
@@ -162,7 +162,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="mt-8 divide-y divide-[#ddd4c1] border-y border-[#ddd4c1]">
             {faqs.map((faq) => <details key={faq.question} className="py-1"><summary className="cursor-pointer py-5 font-semibold text-[#0a2d20]">{faq.question}</summary><p className="pb-6 leading-8 text-[#59645d]">{faq.answer}</p></details>)}
           </div>
-          <Link href="/services" className="mt-8 inline-flex font-bold text-[#9b711c]">← กลับไปดูบริการทั้งหมด</Link>
+          <Link href="/services" className="mt-8 inline-flex font-bold text-[#86611a]">← กลับไปดูบริการทั้งหมด</Link>
         </div>
       </section>
       <LineCta title={`สอบถามบริการ${service.name}`} description="ส่งวันเดินทาง จำนวนคน และรายละเอียดที่เกี่ยวข้อง เพื่อให้ทีม HUGLAO ตรวจความพร้อมและจัดทำข้อเสนอ" />

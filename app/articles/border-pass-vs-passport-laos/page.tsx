@@ -136,7 +136,7 @@ export default function BorderPassVsPassportArticlePage() {
       </header>
 
       <div className="hl-shell grid gap-12 py-[clamp(64px,8vw,105px)] lg:grid-cols-[minmax(0,1fr)_280px]">
-        <div className="max-w-[820px]">
+        <div className="min-w-0 max-w-[820px]">
           <p className="font-serif-th text-[clamp(1.4rem,3vw,2rem)] font-bold leading-relaxed text-[#0a2d20]">
             สรุปสั้น ๆ: ถ้าเที่ยวเฉพาะนครหลวงเวียงจันทน์ไม่เกิน 3 วัน ใช้บัตรผ่านแดนชั่วคราวได้ แต่ถ้าจะไปวังเวียง น้ำงึม เมืองเฟือง หรืออยู่นานกว่านั้น ต้องใช้พาสปอร์ต
           </p>
@@ -215,11 +215,11 @@ export default function BorderPassVsPassportArticlePage() {
         </div>
 
         <aside className="h-fit rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6 lg:sticky lg:top-28">
-          <span className="text-xs font-bold uppercase tracking-[.16em] text-[#9b711c]">ให้ HUGLAO ช่วย</span>
+          <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">ให้ HUGLAO ช่วย</span>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• ทำบัตรผ่านแดน 100 บาท/คน เหมารวมทุกอย่าง</li><li>• รถรับที่ด่านท่านาแล้งฝั่งลาว</li><li>• เหมารถเที่ยวในนครหลวงเวียงจันทน์</li></ul>
-          <Link href="/services/temporary-border-pass" className="mt-6 block font-bold text-[#9b711c] hover:text-[#0a2d20]">บริการทำบัตรผ่านแดน →</Link>
-          <Link href="/routes/vientiane-city" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
-          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#9b711c]">เช่ารถตู้เวียงจันทน์ รับที่ด่านท่านาแล้ง →</Link>
+          <Link href="/services/temporary-border-pass" className="mt-6 block font-bold text-[#86611a] hover:text-[#0a2d20]">บริการทำบัตรผ่านแดน →</Link>
+          <Link href="/routes/vientiane-city" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#86611a]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
+          <Link href="/vientiane/" className="mt-4 block font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์ รับที่ด่านท่านาแล้ง →</Link>
         </aside>
       </div>
 
