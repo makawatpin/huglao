@@ -46,7 +46,7 @@ export default function SiteFooter() {
         <div className="grid gap-x-8 gap-y-10 py-12 sm:grid-cols-2 xl:grid-cols-[1.25fr_.85fr_1fr_1.25fr]">
           <section aria-labelledby="footer-brand-title">
             <Link href="/" aria-label="HUGLAO หน้าแรก" className="inline-flex">
-              <Image src="/assets/huglao-nav-logo.png" alt="HUGLAO" width={250} height={56} className="h-11 w-auto" />
+              <Image src="/assets/huglao-nav-logo.webp" alt="HUGLAO" width={250} height={56} className="h-11 w-auto" />
             </Link>
             <p id="footer-brand-title" className="sr-only">HUGLAO รถพร้อมคนขับเที่ยวลาว</p>
             <p className="mt-5 max-w-[31rem] text-sm leading-7 text-[#aeb8b0]">บริษัทตัวกลางจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ สำหรับทริปส่วนตัวที่เริ่มจากเวียงจันทน์ ให้คุณเลือกปลายทาง เวลา และจังหวะการเดินทางเอง</p>

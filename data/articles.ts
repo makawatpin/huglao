@@ -23,8 +23,8 @@ export const LOCAL_ARTICLES: ArticlePreview[] = [
   {
     title: "ข้ามด่านหนองคายไปลาว ใช้บัตรผ่านแดนหรือพาสปอร์ต? เอกสาร เงื่อนไข และขั้นตอน",
     slug: "border-pass-vs-passport-laos",
-    cover: "/assets/commons-pickup-thanaleng.webp",
-    coverAlt: "อาคารตรวจคนเข้าเมืองด่านท่านาแล้งฝั่งลาว",
+    cover: "/assets/huglao-border-pass-cover.webp",
+    coverAlt: "ข้ามด่านหนองคายไปลาว ใช้บัตรผ่านแดนหรือพาสปอร์ต",
     author: "HUGLAO",
     publishDate: "1 ตุลาคม 2569",
     tags: ["บัตรผ่านแดน", "ด่านหนองคาย", "เวียงจันทน์"],

@@ -28,7 +28,7 @@ export default function SiteHeader() {
         <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between gap-5 px-[clamp(18px,4vw,40px)]">
           <Link href="/" aria-label="HUGLAO หน้าแรก" className="shrink-0">
             <Image
-              src="/assets/huglao-nav-logo.png"
+              src="/assets/huglao-nav-logo.webp"
               alt="HUGLAO"
               height={56}
               width={250}

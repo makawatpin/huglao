@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: `${ARTICLE_PATH}/`,
     type: "article",
-    images: [getMedia("pickupThanaleng").src],
+    images: [getMedia("borderPassCover").src],
   },
 };
 
@@ -70,7 +70,7 @@ const FAQS = [
 ] as const;
 
 export default function BorderPassVsPassportArticlePage() {
-  const media = getMedia("pickupThanaleng");
+  const media = getMedia("borderPassCover");
   const prices = getCurrentPriceRows({ routeSlug: "transfer-thanaleng-city" });
   const url = `${SITE.website}${ARTICLE_PATH}/`;
 
