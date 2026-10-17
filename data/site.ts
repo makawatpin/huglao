@@ -2,7 +2,7 @@ export const SITE = {
   name: "HUGLAO",
   legalName: "บริษัท ฮักลาว กรุ๊ป จำกัด",
   registeredAddress: "25 ถนนโนนใบบัวสาม ตำบลบัวใหญ่ อำเภอบัวใหญ่ จังหวัดนครราชสีมา 30120",
-  registrationNumber: "16906200004",
+  registrationNumber: "0305569009806",
   website: "https://www.huglao.com",
   slogan: "Connecting Thailand & Laos",
   lineUrl: "https://lin.ee/sUDSXs5",
