@@ -8,6 +8,7 @@ import { BOOKING_STEPS, SITE, VEHICLE_GROUPS, getVehicleHref } from "@/data/site
 import { getMedia } from "@/data/media";
 import {
   PRICES_UPDATED_AT,
+  PRICE_INCLUDES_SHORT,
   PRICE_TERMS,
   THAI_SIDE_PICKUP_NOTE,
   formatPrice,
@@ -22,7 +23,7 @@ const PAGE_PATH = "/car-with-driver";
 const SEDAN_FROM = getStartingPrice("sedanSuv").toLocaleString("en-US");
 const VAN_FROM = getStartingPrice("standardVan").toLocaleString("en-US");
 const TITLE = `เช่ารถเที่ยวลาวพร้อมคนขับ ราคาเริ่ม ${SEDAN_FROM} บาท | เก๋ง SUV รถตู้ มินิบัส`;
-const DESCRIPTION = `จองรถเที่ยวลาวพร้อมคนขับจากเวียงจันทน์ รถเก๋ง/SUV เริ่ม ${SEDAN_FROM} บาท รถตู้เริ่ม ${VAN_FROM} บาท รับ–ส่งด่านท่านาแล้ง สนามบินวัตไต สถานีรถไฟ และเหมาเที่ยววังเวียง เมืองเฟือง น้ำงึม ราคารวมคนขับและน้ำมัน`;
+const DESCRIPTION = `จองรถเที่ยวลาวพร้อมคนขับจากเวียงจันทน์ รถเก๋ง/SUV เริ่ม ${SEDAN_FROM} บาท รถตู้เริ่ม ${VAN_FROM} บาท รับ–ส่งด่านท่านาแล้ง สนามบินวัตไต สถานีรถไฟ และเหมาเที่ยววังเวียง เมืองเฟือง น้ำงึม ราคา${PRICE_INCLUDES_SHORT}`;
 
 const term = (title: (typeof PRICE_TERMS)[number]["title"]) => PRICE_TERMS.find((priceTerm) => priceTerm.title === title)!.detail;
 const prices = (rowId: string) => getPriceRow(rowId).prices;
@@ -197,7 +198,7 @@ export default function CarWithDriverPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-4 text-sm leading-6 text-[#687169]">ราคาต่อคัน รวม{term("รวมในราคา")} · รับจากฝั่งไทยได้ ({THAI_SIDE_PICKUP_NOTE}) · มินิบัสและรถบัสขอราคาแยกตามงาน</p>
+          <p className="mt-4 text-sm leading-6 text-[#687169]">ราคาต่อคัน รวม{term("รวมในราคา")}แล้ว · รับจากฝั่งไทยได้ ({THAI_SIDE_PICKUP_NOTE}) · มินิบัสและรถบัสขอราคาแยกตามงาน</p>
         </div>
       </section>
 

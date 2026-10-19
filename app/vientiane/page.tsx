@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { getMedia } from "@/data/media";
-import { CURRENT_PRICE_ROWS, getAggregateOfferSchema } from "@/data/pricing";
+import { CURRENT_PRICE_ROWS, PRICE_INCLUDES, getAggregateOfferSchema } from "@/data/pricing";
 import { PICKUP_POINTS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS, getVehicleHref } from "@/data/site";
 
 const PAGE_URL = `${SITE.website}/vientiane/`;
@@ -85,7 +85,7 @@ const FAQS = [
   {
     question: "ราคาเช่ารถรวมอะไรบ้าง?",
     answer:
-      "ตารางราคากลางระบุค่าคนขับและน้ำมัน ส่วนค่าใช้จ่ายและเงื่อนไขอื่นจะสรุปในข้อเสนอให้ตรวจสอบตามเส้นทาง ระยะเวลา และรายละเอียดทริปจริง",
+      `ราคาในตารางรวม${PRICE_INCLUDES}แล้ว ส่วนค่าเข้าชม กิจกรรม อาหารและที่พักของผู้โดยสารไม่รวม ทีมงานจะสรุปยอดให้ตรวจสอบตามเส้นทาง ระยะเวลา และรายละเอียดทริปจริง`,
   },
   {
     question: "ต้องส่งข้อมูลอะไรเพื่อขอราคา?",

@@ -225,6 +225,10 @@ export const CURRENT_PRICE_ROWS = [...TRANSFER_PRICE_ROWS, ...CHARTER_PRICE_ROWS
 
 export const PRICE_UNIT_NOTE = "หน่วย: บาทต่อคันต่อทริป";
 
+/** What every published price already covers; shown on all price tables, FAQs and terms. */
+export const PRICE_INCLUDES = "ค่าคนขับ ค่าน้ำมัน ค่าทางด่วน ค่าที่พักและค่าอาหารของคนขับ";
+export const PRICE_INCLUDES_SHORT = "รวมน้ำมัน ทางด่วน ที่พักและอาหารคนขับ";
+
 /** Bump whenever any published price changes; shown on every price table and used as the page dateModified. */
 export const PRICES_UPDATED_AT = "2026-10-20";
 
@@ -251,7 +255,7 @@ export const THAI_SIDE_PICKUP_FEES = [
 export const THAI_SIDE_PICKUP_NOTE = THAI_SIDE_PICKUP_FEES.map((fee) => `${fee.label} +${formatPrice(fee.price)}`).join(" · ");
 
 export const PRICE_TERMS = [
-  { title: "รวมในราคา", detail: "ค่าคนขับและน้ำมัน" },
+  { title: "รวมในราคา", detail: PRICE_INCLUDES },
   { title: "เวลาบริการ", detail: "ประมาณ 08.00–18.00 น." },
   { title: "เกินเวลาบริการ", detail: "200 บาท/ชั่วโมง" },
   { title: "รับจากฝั่งไทย", detail: `${THAI_SIDE_PICKUP_NOTE} (บวกจากราคาทริป)` },

@@ -4,7 +4,7 @@ import Link from "next/link";
 import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import LineCta from "@/components/LineCta";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
-import { getCurrentPriceRows } from "@/data/pricing";
+import { PRICE_INCLUDES, getCurrentPriceRows } from "@/data/pricing";
 import { SITE } from "@/data/site";
 
 const SLUG = "wat-si-muang-vientiane";
@@ -403,7 +403,7 @@ export default function WatSiMuangArticlePage() {
         <div className="hl-shell">
           <span className="hl-kicker">ราคารถที่เผยแพร่</span>
           <h2 className="mt-4 font-serif-th text-[clamp(1.8rem,4vw,3rem)] font-bold text-[#071d13]">รถพร้อมคนขับในเวียงจันทน์</h2>
-          <p className="mb-8 mt-4 max-w-[820px] leading-8 text-[#59645d]">ราคาต่อคันต่อเที่ยว รวมคนขับและน้ำมัน ไม่รวมค่าทำบุญ ดอกไม้ธูปเทียน อาหาร หรือค่าใช้จ่ายส่วนตัว เว้นแต่ระบุไว้ในข้อเสนอ</p>
+          <p className="mb-8 mt-4 max-w-[820px] leading-8 text-[#59645d]">ราคาต่อคันต่อเที่ยว รวม{PRICE_INCLUDES}แล้ว ไม่รวมค่าทำบุญ ดอกไม้ธูปเทียน อาหาร หรือค่าใช้จ่ายส่วนตัว เว้นแต่ระบุไว้ในข้อเสนอ</p>
           <PublishedPriceTable rows={prices} showCategoryHeadings={false} />
         </div>
       </section>

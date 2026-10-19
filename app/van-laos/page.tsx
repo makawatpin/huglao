@@ -8,6 +8,8 @@ import VanAlbum from "@/components/VanAlbum";
 import { getMedia, type MediaId } from "@/data/media";
 import {
   PRICES_UPDATED_AT,
+  PRICE_INCLUDES,
+  PRICE_INCLUDES_SHORT,
   PRICE_TERMS,
   THAI_SIDE_PICKUP_FEES,
   formatPrice,
@@ -26,7 +28,7 @@ const [NONG_KHAI, UDON] = THAI_SIDE_PICKUP_FEES;
 const THAI_PICKUP_TEXT = `รับจาก${NONG_KHAI.label} +${formatPrice(NONG_KHAI.price)} · ${UDON.label} +${formatPrice(UDON.price)}`;
 const VAN_FROM = getStartingPrice("standardVan").toLocaleString("en-US");
 const TITLE = `เหมารถตู้เที่ยวลาว พร้อมคนขับ ราคาเริ่ม ${VAN_FROM} บาท | วังเวียง เมืองเฟือง น้ำงึม`;
-const DESCRIPTION = `เหมารถตู้เที่ยวลาวพร้อมคนขับ ${VAN_SEATS} รับ–ส่งเริ่ม ${VAN_FROM} บาท เที่ยวเวียงจันทน์ 1 วัน ${van("vientiane-city-1d")} ไปวังเวียง เมืองเฟือง น้ำงึม รับจากด่านหนองคายหรืออุดรธานีได้ ราคารวมคนขับและน้ำมัน`;
+const DESCRIPTION = `เหมารถตู้เที่ยวลาวพร้อมคนขับ ${VAN_SEATS} รับ–ส่งเริ่ม ${VAN_FROM} บาท เที่ยวเวียงจันทน์ 1 วัน ${van("vientiane-city-1d")} ไปวังเวียง เมืองเฟือง น้ำงึม รับจากด่านหนองคายหรืออุดรธานีได้ ราคา${PRICE_INCLUDES_SHORT}`;
 
 /** Plain-text price summary near the top, so the key numbers can be read (and quoted) without the full table. */
 const PRICE_SUMMARY = [
@@ -40,7 +42,7 @@ const PRICE_SUMMARY = [
 const term = (title: (typeof PRICE_TERMS)[number]["title"]) => PRICE_TERMS.find((priceTerm) => priceTerm.title === title)!.detail;
 const SERVICE_HOURS = `เวลาบริการ${term("เวลาบริการ")} เกินเวลา ${term("เกินเวลาบริการ")}`;
 
-const PRICE_FACTS = [`รถตู้ ${VAN_SEATS}`, `รวม${term("รวมในราคา")}`, SERVICE_HOURS, THAI_PICKUP_TEXT] as const;
+const PRICE_FACTS = [`รถตู้ ${VAN_SEATS}`, SERVICE_HOURS, THAI_PICKUP_TEXT] as const;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -196,7 +198,8 @@ export default function VanLaosPage() {
                 </div>
               ))}
             </dl>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            <p className="mt-4 text-sm font-semibold leading-6 text-[#efd276]">✓ ราคารวม{PRICE_INCLUDES}แล้ว</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
               {PRICE_FACTS.map((fact) => (
                 <li key={fact} className="rounded-full bg-white/[.08] px-3 py-1.5 text-xs font-semibold leading-5 text-[#e4ebe6]">{fact}</li>
               ))}

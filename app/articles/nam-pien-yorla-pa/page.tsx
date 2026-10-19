@@ -4,7 +4,7 @@ import Link from "next/link";
 import LineCta from "@/components/LineCta";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { getMedia } from "@/data/media";
-import { getCurrentPriceRows } from "@/data/pricing";
+import { PRICE_INCLUDES, getCurrentPriceRows } from "@/data/pricing";
 import { SITE } from "@/data/site";
 
 const ARTICLE_PATH = "/articles/nam-pien-yorla-pa";
@@ -157,7 +157,7 @@ export default function NamPienYorlaPaArticlePage() {
         <div className="hl-shell">
           <span className="hl-kicker">ราคารถรับ–ส่งที่เผยแพร่</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,4.5vw,3.6rem)] font-bold text-[#071d13]">เวียงจันทน์ → น้ำเปี่ยนยอละปา</h2>
-          <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">ราคาต่อคันต่อเที่ยว รวมคนขับและน้ำมัน ไม่รวมค่าเข้า กิจกรรม อาหาร ที่พัก หรือค่าใช้จ่ายของสถานที่ เว้นแต่ระบุไว้ในข้อเสนอ</p>
+          <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">ราคาต่อคันต่อเที่ยว รวม{PRICE_INCLUDES}แล้ว ไม่รวมค่าเข้า กิจกรรม อาหารและที่พักของผู้โดยสาร หรือค่าใช้จ่ายของสถานที่ เว้นแต่ระบุไว้ในข้อเสนอ</p>
           <PublishedPriceTable rows={prices} showCategoryHeadings={false} />
         </div>
       </section>
