@@ -25,8 +25,8 @@ const CATEGORY_LABELS: Record<PriceCategory, string> = {
 };
 
 const MOBILE_VEHICLE_LABELS: Record<PriceVehicleKey, string> = {
-  sedanSuv: "เก๋ง/SUV เที่ยวลาว",
-  standardVan: "รถตู้เที่ยวลาว",
+  sedanSuv: "เก๋ง/SUV",
+  standardVan: "รถตู้",
 };
 
 const formatMobilePrice = (price: number) => `฿${price.toLocaleString("th-TH")}`;
@@ -49,37 +49,35 @@ function PriceValue({ row, vehicleKey }: { row: PriceRow; vehicleKey: PriceVehic
 function MobilePriceCards({ rows, vehicles, RouteHeading }: { rows: PriceRow[]; vehicles: readonly PriceVehicle[]; RouteHeading: "h3" | "h4" }) {
   const routeGroups = groupRowsByRoute(rows);
   const isSingleVehicle = vehicles.length === 1;
+  // One shared column header per card; each route is then just its name plus duration/price lines.
   const gridClass = isSingleVehicle
-    ? "grid-cols-[minmax(0,1fr)_minmax(108px,.65fr)]"
-    : "grid-cols-[minmax(70px,1.15fr)_repeat(2,minmax(0,1fr))]";
+    ? "grid-cols-[minmax(0,1fr)_auto]"
+    : "grid-cols-[minmax(0,1fr)_4.75rem_4.75rem]";
 
   return (
-    <div className="grid gap-3 md:hidden">
-      {routeGroups.map((group) => (
-        <article key={group.routeName} className="overflow-hidden rounded-[20px] border border-[#d8d0be] bg-white shadow-[0_12px_34px_rgba(7,29,19,.06)]">
-          <div className="border-b border-[#e8e1d3] bg-[#0a2d20] px-4 py-3.5">
-            <RouteHeading className="font-serif-th text-[1.02rem] font-bold leading-6 text-white">{group.routeName}</RouteHeading>
-          </div>
+    <div className="overflow-hidden rounded-[20px] border border-[#d8d0be] bg-white shadow-[0_12px_34px_rgba(7,29,19,.06)] md:hidden">
+      <div className={`grid ${gridClass} items-center gap-x-3 bg-[#0a2d20] px-4 py-2.5 text-xs font-bold text-white`} aria-hidden="true">
+        <span>เส้นทาง / ระยะเวลา</span>
+        {vehicles.map((vehicle) => <span key={vehicle.key} className="text-right text-[#efd276]">{MOBILE_VEHICLE_LABELS[vehicle.key]}</span>)}
+      </div>
 
-          <div className={`grid ${gridClass} items-center gap-x-2 border-b border-[#ece6d9] bg-[#f6f1e6] px-3 py-2 text-center text-xs font-bold text-[#687169]`} aria-hidden="true">
-            <span className="text-left">ระยะเวลา</span>
-            {vehicles.map((vehicle) => <span key={vehicle.key} className="w-full text-center">{MOBILE_VEHICLE_LABELS[vehicle.key]}</span>)}
-          </div>
-
-          <div className="divide-y divide-[#ece6d9]">
+      <div className="divide-y divide-[#ece6d9]">
+        {routeGroups.map((group) => (
+          <div key={group.routeName} className="px-4 py-3 odd:bg-white even:bg-[#fcfaf5]">
+            <RouteHeading className="text-[.92rem] font-semibold leading-6 text-[#0a2d20]">{group.routeName}</RouteHeading>
             {group.rows.map((row) => (
-              <div key={row.id} className={`grid ${gridClass} items-center gap-x-2 px-3 py-3.5 odd:bg-white even:bg-[#fcfaf5]`}>
-                <span className="text-[.8rem] font-semibold leading-5 text-[#425047]">{row.duration}</span>
+              <div key={row.id} className={`mt-1 grid ${gridClass} items-baseline gap-x-3`}>
+                <span className="text-[.8rem] leading-5 text-[#687169]">{row.duration}</span>
                 {vehicles.map((vehicle) => (
-                  <span key={vehicle.key} aria-label={`${vehicle.name} ${formatPrice(row.prices[vehicle.key])}`} className={`w-full text-center font-bold tabular-nums text-[#86611a] ${isSingleVehicle ? "text-sm" : "text-[.8rem]"}`}>
+                  <span key={vehicle.key} aria-label={`${vehicle.name} ${formatPrice(row.prices[vehicle.key])}`} className="whitespace-nowrap text-right text-sm font-bold tabular-nums text-[#86611a]">
                     {isSingleVehicle ? formatPrice(row.prices[vehicle.key]) : formatMobilePrice(row.prices[vehicle.key])}
                   </span>
                 ))}
               </div>
             ))}
           </div>
-        </article>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
@@ -138,7 +136,8 @@ export default function PublishedPriceTable({
         <div>
           <strong className="block text-sm text-[#0a2d20]">{PRICE_UNIT_NOTE}</strong>
           <span className="mt-1 block text-xs leading-5 text-[#687169]">
-            อัปเดตราคาล่าสุด <time dateTime={PRICES_UPDATED_AT}>{formatPricesUpdatedAt()}</time> · เปรียบเทียบราคาแต่ละประเภทรถในแถวเดียวกัน
+            อัปเดตราคาล่าสุด <time dateTime={PRICES_UPDATED_AT}>{formatPricesUpdatedAt()}</time>
+            {getVehicles(vehicleSlug).length > 1 && " · เปรียบเทียบราคาแต่ละประเภทรถในแถวเดียวกัน"}
           </span>
         </div>
         {groups.length > 1 && showCategoryHeadings && (

@@ -4,13 +4,16 @@ import Link from "next/link";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
-import { BOOKING_STEPS, HOME_FAQS, SITE, VEHICLE_GROUPS, getVehicleHref } from "@/data/site";
+import { BOOKING_STEPS, SITE, VEHICLE_GROUPS, getVehicleHref } from "@/data/site";
 import { getMedia } from "@/data/media";
 import {
   PRICES_UPDATED_AT,
+  PRICE_TERMS,
+  THAI_SIDE_PICKUP_NOTE,
   formatPrice,
   getAggregateOfferSchema,
   getCurrentPriceRows,
+  getPriceRow,
   getPriceVehicle,
   getStartingPrice,
 } from "@/data/pricing";
@@ -20,6 +23,42 @@ const SEDAN_FROM = getStartingPrice("sedanSuv").toLocaleString("en-US");
 const VAN_FROM = getStartingPrice("standardVan").toLocaleString("en-US");
 const TITLE = `เช่ารถเที่ยวลาวพร้อมคนขับ ราคาเริ่ม ${SEDAN_FROM} บาท | เก๋ง SUV รถตู้ มินิบัส`;
 const DESCRIPTION = `จองรถเที่ยวลาวพร้อมคนขับจากเวียงจันทน์ รถเก๋ง/SUV เริ่ม ${SEDAN_FROM} บาท รถตู้เริ่ม ${VAN_FROM} บาท รับ–ส่งด่านท่านาแล้ง สนามบินวัตไต สถานีรถไฟ และเหมาเที่ยววังเวียง เมืองเฟือง น้ำงึม ราคารวมคนขับและน้ำมัน`;
+
+const term = (title: (typeof PRICE_TERMS)[number]["title"]) => PRICE_TERMS.find((priceTerm) => priceTerm.title === title)!.detail;
+const prices = (rowId: string) => getPriceRow(rowId).prices;
+const VAN_SEATS = VEHICLE_GROUPS.find((vehicle) => vehicle.slug === "van")!.capacity;
+
+const getStartingPriceLabel = (vehicleSlug: string) => {
+  const priceVehicle = getPriceVehicle(vehicleSlug);
+  return priceVehicle ? `เริ่ม ${formatPrice(getStartingPrice(priceVehicle.key))}` : "ขอราคาตามทริป";
+};
+
+const CAR_FAQS = [
+  {
+    question: "เช่ารถพร้อมคนขับในลาว ราคาเริ่มเท่าไหร่?",
+    answer: `รับ–ส่งด่านท่านาแล้งหรือสนามบินวัตไตเข้าตัวเมืองเวียงจันทน์ รถเก๋ง/SUV ${formatPrice(prices("thanaleng-city").sedanSuv)} รถตู้ ${formatPrice(prices("thanaleng-city").standardVan)} เหมาเที่ยวในเวียงจันทน์ 1 วัน รถเก๋ง/SUV ${formatPrice(prices("vientiane-city-1d").sedanSuv)} รถตู้ ${formatPrice(prices("vientiane-city-1d").standardVan)} เป็นราคาต่อคัน รวม${term("รวมในราคา")}`,
+  },
+  {
+    question: "ควรเลือกรถเก๋ง/SUV หรือรถตู้?",
+    answer: `รถเก๋ง/SUV เหมาะกับผู้เดินทางคนเดียว คู่รัก หรือกลุ่มเล็ก ส่วนรถตู้ ${VAN_SEATS} เหมาะกับครอบครัวหรือกลุ่มที่มีกระเป๋าเยอะ เช่น เหมาไปวังเวียง 1 วัน รถเก๋ง/SUV ${formatPrice(prices("vientiane-vang-vieng-1d").sedanSuv)} รถตู้ ${formatPrice(prices("vientiane-vang-vieng-1d").standardVan)}`,
+  },
+  {
+    question: "รับจากฝั่งไทยได้ไหม?",
+    answer: `ได้ทั้งรถเก๋ง/SUV และรถตู้ คิดเพิ่มจากราคาทริป: ${THAI_SIDE_PICKUP_NOTE}`,
+  },
+  {
+    question: "ราคารวมอะไรบ้าง และมีค่าใช้จ่ายเพิ่มไหม?",
+    answer: `ราคาเป็นราคาต่อคันต่อทริป รวม${term("รวมในราคา")} เวลาบริการ${term("เวลาบริการ")} เกินเวลา ${term("เกินเวลาบริการ")} มัดจำ ${term("มัดจำ")} ทีมงานจะสรุปยอดรวมให้ตรวจสอบก่อนยืนยันการจอง`,
+  },
+  {
+    question: "รถมินิบัสหรือรถบัสคิดราคาอย่างไร?",
+    answer: "รถมินิบัสและรถบัสขอราคาแยกตามจำนวนผู้โดยสาร เส้นทาง และวันเดินทาง ส่งรายละเอียดทริปผ่าน LINE OA แล้วทีมงานจะตรวจรถที่ว่างและส่งราคาให้",
+  },
+  {
+    question: "จองรถพร้อมคนขับอย่างไร?",
+    answer: "ส่งวันเดินทาง จำนวนคน สัมภาระ จุดรับ และปลายทางผ่าน LINE OA ทีมงานตรวจรถที่ว่างและส่งราคา เมื่อยืนยันและชำระมัดจำแล้ว คนขับจะรอที่จุดนัดหมายตามเวลา",
+  },
+] as const;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -59,6 +98,15 @@ export default function CarWithDriverPage() {
               serviceType: "รถเก๋ง SUV รถตู้ และมินิบัสพร้อมคนขับสำหรับทริปส่วนตัว",
               offers: getAggregateOfferSchema(getCurrentPriceRows()),
             },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: CAR_FAQS.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: { "@type": "Answer", text: faq.answer },
+              })),
+            },
           ]),
         }}
       />
@@ -96,7 +144,7 @@ export default function CarWithDriverPage() {
                     <span className="inline-flex rounded-full bg-[#f1ead9] px-2.5 py-1 text-xs font-bold tracking-[.14em] text-[#8b6518]">0{index + 1}</span>
                     <h3 className="mt-2 font-serif-th text-lg font-bold leading-snug text-[#0a2d20] sm:text-2xl">{vehicle.name}</h3>
                     <p className="mt-1.5 text-xs leading-5 text-[#59645d] sm:mt-2 sm:text-sm sm:leading-6">{vehicle.description}</p>
-                    <p className="mt-2.5 inline-flex rounded-full bg-[#eef4ef] px-2.5 py-1 text-xs font-semibold leading-5 text-[#0a2d20]">{priceVehicle ? `ราคาเริ่ม ${formatPrice(getStartingPrice(priceVehicle.key))}` : "ขอราคาแยกตามรายละเอียดทริป"}</p>
+                    <p className="mt-2.5 inline-flex rounded-full bg-[#eef4ef] px-2.5 py-1 text-xs font-semibold leading-5 text-[#0a2d20]">{priceVehicle ? `ราคา${getStartingPriceLabel(vehicle.slug)}` : "ขอราคาแยกตามรายละเอียดทริป"}</p>
                   </div>
                   <Link href={getVehicleHref(vehicle.slug)} className="mt-3 inline-flex min-h-9 items-center rounded-full border border-[#d8af4a] px-3.5 text-xs font-bold text-[#80601b] transition hover:bg-[#d8af4a] hover:text-[#071d13] sm:text-sm lg:mt-0 lg:whitespace-nowrap">ดูรายละเอียด →</Link>
                 </div>
@@ -124,28 +172,32 @@ export default function CarWithDriverPage() {
             {VEHICLE_GROUPS.map((vehicle) => (
               <article key={vehicle.slug} className="rounded-[22px] border border-[#ddd4c1] p-5">
                 <h3 className="font-bold text-[#0a2d20]">{vehicle.name}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#59645d]">{vehicle.description}</p>
-                <p className="mt-4 text-sm font-semibold text-[#86611a]">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้ว" : "ขอราคาตามทริป"}</p>
+                <dl className="mt-3 grid grid-cols-[6.5rem_minmax(0,1fr)] gap-x-3 gap-y-2 text-sm leading-6">
+                  <dt className="text-[#687169]">จำนวนที่นั่ง</dt><dd className="text-[#0a2d20]">{vehicle.capacity}</dd>
+                  <dt className="text-[#687169]">เหมาะกับ</dt><dd className="text-[#0a2d20]">{vehicle.suitableFor}</dd>
+                  <dt className="text-[#687169]">ราคา</dt><dd className="font-bold text-[#86611a]">{getStartingPriceLabel(vehicle.slug)}</dd>
+                </dl>
               </article>
             ))}
           </div>
           <div className="mt-8 hidden overflow-x-auto rounded-[24px] border border-[#ddd4c1] md:block">
             <table className="min-w-[760px] w-full border-collapse text-left">
               <thead className="bg-[#0a2d20] text-white">
-                <tr><th className="p-5">กลุ่มรถ</th><th className="p-5">เหมาะกับ</th><th className="p-5">การเสนอราคา</th></tr>
+                <tr><th className="p-5">กลุ่มรถ</th><th className="p-5">จำนวนที่นั่ง</th><th className="p-5">เหมาะกับ</th><th className="p-5 text-right">ราคา</th></tr>
               </thead>
               <tbody>
                 {VEHICLE_GROUPS.map((vehicle) => (
                   <tr key={vehicle.slug} className="border-b border-[#ece6d9] last:border-0">
                     <th className="p-5 text-[#0a2d20]">{vehicle.name}</th>
-                    <td className="p-5 text-[#59645d]">{vehicle.description}</td>
-                    <td className="p-5 font-semibold text-[#86611a]">{getPriceVehicle(vehicle.slug) ? "มีราคายืนยันแล้ว" : "ขอราคาตามทริป"}</td>
+                    <td className="p-5 text-[#59645d]">{vehicle.capacity}</td>
+                    <td className="p-5 text-[#59645d]">{vehicle.suitableFor}</td>
+                    <td className="whitespace-nowrap p-5 text-right font-bold text-[#86611a]">{getStartingPriceLabel(vehicle.slug)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="mt-4 text-sm text-[#687169]">ส่วนรถมินิบัสและรถบัสเที่ยวลาวยังต้องขอราคาแยกตามงาน</p>
+          <p className="mt-4 text-sm leading-6 text-[#687169]">ราคาต่อคัน รวม{term("รวมในราคา")} · รับจากฝั่งไทยได้ ({THAI_SIDE_PICKUP_NOTE}) · มินิบัสและรถบัสขอราคาแยกตามงาน</p>
         </div>
       </section>
 
@@ -170,7 +222,7 @@ export default function CarWithDriverPage() {
           <span className="hl-kicker">คำถามเรื่องรถและการจอง</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight text-[#071d13]">คำถามก่อนจองรถเที่ยวลาว</h2>
           <div className="mt-8 divide-y divide-[#ddd4c1] border-y border-[#ddd4c1]">
-            {HOME_FAQS.map((faq) => (
+            {CAR_FAQS.map((faq) => (
               <details key={faq.question} className="py-1">
                 <summary className="cursor-pointer py-5 font-semibold text-[#0a2d20]">{faq.question}</summary>
                 <p className="pb-6 leading-8 text-[#59645d]">{faq.answer}</p>

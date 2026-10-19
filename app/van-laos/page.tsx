@@ -6,13 +6,41 @@ import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import VanAlbum from "@/components/VanAlbum";
 import { getMedia, type MediaId } from "@/data/media";
-import { PRICES_UPDATED_AT, getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
-import { BOOKING_STEPS, ROUTE_GROUPS, SITE } from "@/data/site";
+import {
+  PRICES_UPDATED_AT,
+  PRICE_TERMS,
+  THAI_SIDE_PICKUP_FEES,
+  formatPrice,
+  formatPricesUpdatedAt,
+  getAggregateOfferSchema,
+  getCurrentPriceRows,
+  getPriceRow,
+  getStartingPrice,
+} from "@/data/pricing";
+import { BOOKING_STEPS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 
 const PAGE_PATH = "/van-laos";
-const TITLE = "เหมารถตู้เที่ยวลาว พร้อมคนขับ | วังเวียง เมืองเฟือง น้ำงึม";
-const DESCRIPTION =
-  "เหมารถตู้เที่ยวลาวพร้อมคนขับสำหรับครอบครัว กลุ่มเพื่อน และคณะเดินทาง ไปวังเวียง เมืองเฟือง น้ำงึม น้ำเปี่ยนยอละปา ดูราคาแยกตามเส้นทาง ภาพรถตู้จริง และขั้นตอนขอราคา";
+const VAN_SEATS = VEHICLE_GROUPS.find((vehicle) => vehicle.slug === "van")!.capacity;
+const van = (rowId: string) => formatPrice(getPriceRow(rowId).prices.standardVan);
+const [NONG_KHAI, UDON] = THAI_SIDE_PICKUP_FEES;
+const THAI_PICKUP_TEXT = `รับจาก${NONG_KHAI.label} +${formatPrice(NONG_KHAI.price)} · ${UDON.label} +${formatPrice(UDON.price)}`;
+const VAN_FROM = getStartingPrice("standardVan").toLocaleString("en-US");
+const TITLE = `เหมารถตู้เที่ยวลาว พร้อมคนขับ ราคาเริ่ม ${VAN_FROM} บาท | วังเวียง เมืองเฟือง น้ำงึม`;
+const DESCRIPTION = `เหมารถตู้เที่ยวลาวพร้อมคนขับ ${VAN_SEATS} รับ–ส่งเริ่ม ${VAN_FROM} บาท เที่ยวเวียงจันทน์ 1 วัน ${van("vientiane-city-1d")} ไปวังเวียง เมืองเฟือง น้ำงึม รับจากด่านหนองคายหรืออุดรธานีได้ ราคารวมคนขับและน้ำมัน`;
+
+/** Plain-text price summary near the top, so the key numbers can be read (and quoted) without the full table. */
+const PRICE_SUMMARY = [
+  { label: "ด่านท่านาแล้ง / สนามบินวัตไต → ตัวเมือง", price: van("thanaleng-city") },
+  { label: "เที่ยวในเวียงจันทน์ 1 วัน", price: van("vientiane-city-1d") },
+  { label: "เวียงจันทน์–วังเวียง ไป–กลับ 1 วัน", price: van("vientiane-vang-vieng-1d") },
+  { label: "เวียงจันทน์–เมืองเฟือง ไป–กลับ 1 วัน", price: van("vientiane-muang-feuang-1d") },
+  { label: "เวียงจันทน์–วังเวียง 2 วัน 1 คืน", price: van("vientiane-vang-vieng-2d1n") },
+] as const;
+
+const term = (title: (typeof PRICE_TERMS)[number]["title"]) => PRICE_TERMS.find((priceTerm) => priceTerm.title === title)!.detail;
+const SERVICE_HOURS = `เวลาบริการ${term("เวลาบริการ")} เกินเวลา ${term("เกินเวลาบริการ")}`;
+
+const PRICE_FACTS = [`รถตู้ ${VAN_SEATS}`, `รวม${term("รวมในราคา")}`, SERVICE_HOURS, THAI_PICKUP_TEXT] as const;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -78,16 +106,24 @@ const VAN_ALBUM_COUNT = VAN_ALBUM_GROUPS.reduce((total, group) => total + group.
 
 const VAN_FAQS = [
   {
-    question: "รถตู้เที่ยวลาวเหมาะกับใคร?",
-    answer: "เหมาะกับครอบครัว กลุ่มเพื่อน หรือคณะที่ต้องการเดินทางร่วมกัน โดยต้องแจ้งจำนวนผู้โดยสารและสัมภาระจริงเพื่อให้ทีมตรวจผังที่นั่งและพื้นที่เก็บกระเป๋า",
+    question: "เหมารถตู้เที่ยวลาววันละเท่าไหร่?",
+    answer: `เหมารถตู้เที่ยวในนครหลวงเวียงจันทน์ ${van("vientiane-city-1d")}ต่อวัน ไป–กลับวังเวียงใน 1 วัน ${van("vientiane-vang-vieng-1d")} เมืองเฟือง ${van("vientiane-muang-feuang-1d")} และอ่างเก็บน้ำงึม ${van("vientiane-nam-ngum-1d")} เป็นราคาต่อคัน รวม${term("รวมในราคา")} ${SERVICE_HOURS}`,
   },
   {
-    question: "รถตู้ที่ให้บริการเป็นรุ่นใด?",
-    answer: "รุ่น ปีรถ สี ผังที่นั่ง และพื้นที่สัมภาระขึ้นอยู่กับรถพาร์ตเนอร์ที่ว่าง ทีมงานจะแจ้งรายละเอียดรถให้ตรวจสอบก่อนยืนยันการจอง",
+    question: "รถตู้จากเวียงจันทน์ไปวังเวียงราคาเท่าไหร่?",
+    answer: `เที่ยวเดียวจากจุดรับในเวียงจันทน์ไปวังเวียง ${van("vientiane-vang-vieng-transfer")} เหมาไป–กลับ 1 วัน ${van("vientiane-vang-vieng-1d")} 2 วัน 1 คืน ${van("vientiane-vang-vieng-2d1n")} และ 3 วัน 2 คืน ${van("vientiane-vang-vieng-3d2n")} ต่อคัน`,
+  },
+  {
+    question: "รถตู้นั่งได้กี่คน?",
+    answer: `รถตู้ของ HUGLAO มี ${VAN_SEATS} เหมาะกับครอบครัว กลุ่มเพื่อน หรือคณะที่เดินทางร่วมกัน แจ้งจำนวนผู้โดยสาร เด็ก และกระเป๋าตอนขอราคา ทีมงานจะเลือกรถขนาดที่พอดีกับกลุ่ม`,
+  },
+  {
+    question: "รับจากฝั่งไทยได้ไหม?",
+    answer: `ได้ รับจาก${NONG_KHAI.label} บวกเพิ่ม ${formatPrice(NONG_KHAI.price)} และรับจาก${UDON.label} บวกเพิ่ม ${formatPrice(UDON.price)} จากราคาทริปในตาราง เช่น เหมาเที่ยวเวียงจันทน์ 1 วันและรับจากด่านหนองคาย รวม ${formatPrice(getPriceRow("vientiane-city-1d").prices.standardVan + NONG_KHAI.price)}`,
   },
   {
     question: "ราคารถตู้เที่ยวลาวรวมอะไรบ้าง?",
-    answer: "ราคาและสิ่งที่รวมจะแสดงตามตารางและข้อเสนอของแต่ละทริป โดยทีมจะสรุปเส้นทาง ระยะเวลา ค่าใช้จ่าย และเงื่อนไขให้ตรวจสอบก่อนยืนยัน",
+    answer: `ราคาในตารางเป็นราคาต่อคันต่อทริป รวม${term("รวมในราคา")} ${SERVICE_HOURS} มัดจำ ${term("มัดจำ")} ทีมงานจะสรุปยอดรวมให้ตรวจสอบก่อนยืนยันการจอง`,
   },
   {
     question: "ต้องส่งข้อมูลอะไรเพื่อขอราคารถตู้?",
@@ -141,15 +177,39 @@ export default function VanLaosPage() {
       <PageHero
         eyebrow="Van travel in Laos"
         title="รถตู้เที่ยวลาวพร้อมคนขับ"
-        description="หน้ารวมข้อมูลรถตู้เที่ยวลาว เริ่มต้นจากฝั่งเวียงจันทน์ พร้อมตรวจเส้นทาง ราคา จำนวนผู้โดยสาร สัมภาระ และรถที่ว่างก่อนยืนยัน"
+        description={`รถตู้ ${VAN_SEATS} พร้อมคนขับ เริ่มต้นจากเวียงจันทน์ รับที่ด่านท่านาแล้ง สนามบินวัตไต สถานีรถไฟ หรือรับจากฝั่งไทยที่หนองคายและอุดรธานี`}
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "รถตู้เที่ยวลาว" }]}
       />
 
-      <section className="bg-[#071d13] pb-8 text-white">
+      <section className="bg-[#071d13] pb-10 text-white" aria-labelledby="van-price-summary-title">
         <div className="hl-shell">
-          <Link href="/vientiane/" className="inline-flex rounded-full border border-[#d8af4a]/60 px-5 py-3 text-sm font-bold text-[#efd276] hover:bg-white/10">
-            เช่ารถตู้เวียงจันทน์พร้อมคนขับ →
-          </Link>
+          <div className="max-w-[820px] rounded-[22px] border border-[#d8af4a]/35 bg-white/[.055] p-5 sm:rounded-[26px] sm:p-7">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2 id="van-price-summary-title" className="font-serif-th text-xl font-bold text-[#fffaf0] sm:text-2xl">สรุปราคารถตู้เที่ยวลาว</h2>
+              <p className="text-xs text-[#afbeb5]">ราคาต่อคัน · อัปเดต <time dateTime={PRICES_UPDATED_AT}>{formatPricesUpdatedAt()}</time></p>
+            </div>
+            <dl className="mt-4 divide-y divide-white/10 border-y border-white/10">
+              {PRICE_SUMMARY.map((item) => (
+                <div key={item.label} className="flex items-baseline justify-between gap-4 py-3">
+                  <dt className="text-sm leading-6 text-[#d5ddd7] sm:text-base">{item.label}</dt>
+                  <dd className="shrink-0 font-bold tabular-nums text-[#efd276] sm:text-lg">{item.price}</dd>
+                </div>
+              ))}
+            </dl>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {PRICE_FACTS.map((fact) => (
+                <li key={fact} className="rounded-full bg-white/[.08] px-3 py-1.5 text-xs font-semibold leading-5 text-[#e4ebe6]">{fact}</li>
+              ))}
+            </ul>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link href="#pricing" className="inline-flex min-h-11 items-center rounded-full bg-[#d8af4a] px-5 text-sm font-bold text-[#071d13] hover:bg-[#efd276]">
+                ดูราคาทุกเส้นทาง ↓
+              </Link>
+              <Link href="/vientiane/" className="inline-flex min-h-11 items-center rounded-full border border-[#d8af4a]/60 px-5 text-sm font-bold text-[#efd276] hover:bg-white/10">
+                เช่ารถตู้เวียงจันทน์พร้อมคนขับ →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
