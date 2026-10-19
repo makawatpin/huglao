@@ -4,7 +4,7 @@ import Link from "next/link";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { getMedia } from "@/data/media";
 import { CURRENT_PRICE_ROWS, getAggregateOfferSchema } from "@/data/pricing";
-import { PICKUP_POINTS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
+import { PICKUP_POINTS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS, getVehicleHref } from "@/data/site";
 
 const PAGE_URL = `${SITE.website}/vientiane/`;
 const VAN_PRICES = CURRENT_PRICE_ROWS.map((row) => row.prices.standardVan);
@@ -221,7 +221,7 @@ export default function VientianeCarRentalPage() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {VEHICLE_GROUPS.map((vehicle) => {
               const media = getMedia(vehicle.mediaIds[0]);
-              const href = vehicle.slug === "van" ? "/van-laos/" : `/car-with-driver/${vehicle.slug}/`;
+              const href = getVehicleHref(vehicle.slug);
               return (
                 <Link key={vehicle.slug} href={href} className="group overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-white transition hover:-translate-y-1 hover:border-[#d8af4a]">
                   <div className="relative aspect-[16/10] bg-[#eee9de]">

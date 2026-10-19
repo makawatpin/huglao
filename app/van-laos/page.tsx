@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import VanAlbum from "@/components/VanAlbum";
 import { getMedia, type MediaId } from "@/data/media";
-import { getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
+import { PRICES_UPDATED_AT, getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
 import { BOOKING_STEPS, ROUTE_GROUPS, SITE } from "@/data/site";
 
 const PAGE_PATH = "/van-laos";
@@ -107,6 +107,14 @@ export default function VanLaosPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              url: `${SITE.website}${PAGE_PATH}/`,
+              name: TITLE,
+              dateModified: PRICES_UPDATED_AT,
+              isPartOf: { "@id": `${SITE.website}/#website` },
+            },
             {
               "@context": "https://schema.org",
               "@type": "Service",

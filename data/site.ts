@@ -70,6 +70,9 @@ export const VEHICLE_GROUPS = [
   },
 ] as const;
 
+/** The van has its own landing page; /car-with-driver/van/ only redirects there. */
+export const getVehicleHref = (slug: string) => (slug === "van" ? "/van-laos/" : `/car-with-driver/${slug}/`);
+
 export const SERVICE_GROUPS = [
   {
     slug: "train-ticket",

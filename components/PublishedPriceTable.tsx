@@ -2,7 +2,9 @@ import {
   PRICE_TERMS,
   PRICE_UNIT_NOTE,
   PRICE_VEHICLES,
+  PRICES_UPDATED_AT,
   formatPrice,
+  formatPricesUpdatedAt,
   getPriceVehicle,
   type PriceCategory,
   type PriceRow,
@@ -135,7 +137,9 @@ export default function PublishedPriceTable({
       <div className="mb-6 flex flex-col gap-3 rounded-[18px] border border-[#d8d0be] bg-white px-4 py-4 shadow-[0_10px_28px_rgba(7,29,19,.04)] sm:flex-row sm:items-center sm:justify-between">
         <div>
           <strong className="block text-sm text-[#0a2d20]">{PRICE_UNIT_NOTE}</strong>
-          <span className="mt-1 block text-xs leading-5 text-[#687169]">เปรียบเทียบราคาแต่ละประเภทรถในแถวเดียวกัน</span>
+          <span className="mt-1 block text-xs leading-5 text-[#687169]">
+            อัปเดตราคาล่าสุด <time dateTime={PRICES_UPDATED_AT}>{formatPricesUpdatedAt()}</time> · เปรียบเทียบราคาแต่ละประเภทรถในแถวเดียวกัน
+          </span>
         </div>
         {groups.length > 1 && showCategoryHeadings && (
           <nav aria-label="เลือกดูหมวดราคา" className="flex gap-2">

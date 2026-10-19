@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ROUTE_GROUPS, SERVICE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
+import { ROUTE_GROUPS, SERVICE_GROUPS, SITE, VEHICLE_GROUPS, getVehicleHref } from "@/data/site";
 
 const FOOTER_ROUTE_SLUGS = [
   "vientiane-city",
@@ -59,7 +59,7 @@ export default function SiteFooter() {
               <li><Link href="/vientiane/" className={footerLinkClass}>เช่ารถตู้เวียงจันทน์พร้อมคนขับ</Link></li>
               {VEHICLE_GROUPS.map((vehicle) => (
                 <li key={vehicle.slug}>
-                  <Link href={vehicle.slug === "van" ? "/van-laos/" : `/car-with-driver/${vehicle.slug}/`} className={footerLinkClass}>{vehicle.name}</Link>
+                  <Link href={getVehicleHref(vehicle.slug)} className={footerLinkClass}>{vehicle.name}</Link>
                 </li>
               ))}
               <li><Link href="/car-with-driver/" className="font-semibold text-[#e7c875] hover:text-white">ดูประเภทรถทั้งหมด →</Link></li>

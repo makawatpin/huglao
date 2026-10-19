@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
-import { PICKUP_POINTS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
+import { PICKUP_POINTS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS, getVehicleHref } from "@/data/site";
 import { getMedia } from "@/data/media";
 import { getAggregateOfferSchema, getCurrentPriceRows } from "@/data/pricing";
 
@@ -144,7 +144,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
           <span className="hl-kicker">ประเภทรถที่รองรับ</span>
           <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {VEHICLE_GROUPS.map((vehicle) => (
-              <Link key={vehicle.slug} href={`/car-with-driver/${vehicle.slug}`} className="rounded-[22px] border border-[#ddd4c1] p-6 transition hover:border-[#d8af4a]">
+              <Link key={vehicle.slug} href={getVehicleHref(vehicle.slug)} className="rounded-[22px] border border-[#ddd4c1] p-6 transition hover:border-[#d8af4a]">
                 <h3 className="font-semibold text-[#0a2d20]">{vehicle.name}</h3><p className="mt-3 text-sm leading-7 text-[#59645d]">{vehicle.suitableFor}</p>
               </Link>
             ))}

@@ -225,6 +225,21 @@ export const CURRENT_PRICE_ROWS = [...TRANSFER_PRICE_ROWS, ...CHARTER_PRICE_ROWS
 
 export const PRICE_UNIT_NOTE = "หน่วย: บาทต่อคันต่อทริป";
 
+/** Bump whenever any published price changes; shown on every price table and used as the page dateModified. */
+export const PRICES_UPDATED_AT = "2026-10-01";
+
+export const formatPricesUpdatedAt = (): string =>
+  new Date(`${PRICES_UPDATED_AT}T00:00:00+07:00`).toLocaleDateString("th-TH", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Asia/Bangkok",
+  });
+
+/** Lowest published price for one vehicle class, e.g. for "ราคาเริ่ม" copy. */
+export const getStartingPrice = (vehicleKey: PriceVehicleKey, rows: PriceRow[] = CURRENT_PRICE_ROWS): number =>
+  Math.min(...rows.map((row) => row.prices[vehicleKey]));
+
 export const PRICE_TERMS = [
   { title: "รวมในราคา", detail: "ค่าคนขับและน้ำมัน" },
   { title: "เวลาบริการ", detail: "ประมาณ 08.00–18.00 น." },

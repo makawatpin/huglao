@@ -11,6 +11,7 @@ import {
   ROUTE_GROUPS,
   SITE,
   VEHICLE_GROUPS,
+  getVehicleHref,
 } from "@/data/site";
 import { getMedia } from "@/data/media";
 import { CURRENT_PRICE_ROWS } from "@/data/pricing";
@@ -173,7 +174,7 @@ export default async function Home() {
               const media = getMedia(vehicle.mediaIds[0]);
               return <Reveal key={vehicle.slug} delay={index * 0.06}>
                 <Link
-                  href={`/car-with-driver/${vehicle.slug}`}
+                  href={getVehicleHref(vehicle.slug)}
                   className="hl-mobile-media-card hl-vehicle-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-white shadow-[0_20px_60px_rgba(27,49,37,.07)] transition hover:-translate-y-2 hover:border-[#d8af4a] sm:rounded-[28px]"
                 >
                   <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden">
