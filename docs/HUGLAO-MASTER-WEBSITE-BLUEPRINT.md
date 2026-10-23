@@ -40,7 +40,7 @@
 | จุดเริ่มบริการ | จุดรับฝั่งเวียงจันทน์ |
 | CTA | เที่ยวลาวกับเรา และติดต่อผ่าน LINE OA |
 | LINE OA | https://lin.ee/sUDSXs5 |
-| โทรศัพท์ | 095-596-2525 |
+| โทรศัพท์ | 095-983-2525 |
 | อีเมล | huglaogroup@gmail.com |
 | แบรนด์ | เขียวเข้ม–ทอง–ขาว/ครีม, Premium & Elegant |
 | สโลแกน | Connecting Thailand & Laos |

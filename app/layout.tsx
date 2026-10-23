@@ -68,7 +68,7 @@ const organizationSchema = {
     { "@type": "City", name: "Vientiane" },
     { "@type": "Country", name: "Laos" },
   ],
-  telephone: "+66-95-596-2525",
+  telephone: "+66-95-983-2525",
   email: SITE.email,
   identifier: SITE.registrationNumber,
   address: {
@@ -84,7 +84,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    telephone: "+66-95-596-2525",
+    telephone: "+66-95-983-2525",
     availableLanguage: ["Thai", "Lao"],
   },
 };

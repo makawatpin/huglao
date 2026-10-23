@@ -6,8 +6,8 @@ export const SITE = {
   website: "https://www.huglao.com",
   slogan: "Connecting Thailand & Laos",
   lineUrl: "https://lin.ee/sUDSXs5",
-  phoneDisplay: "095-596-2525",
-  phoneHref: "tel:0955962525",
+  phoneDisplay: "095-983-2525",
+  phoneHref: "tel:0959832525",
   email: "huglaogroup@gmail.com",
   origin: "เวียงจันทน์",
 } as const;
