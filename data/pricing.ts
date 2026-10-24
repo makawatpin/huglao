@@ -22,7 +22,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-thanaleng-city",
     routeName: "ด่านท่านาแล้งฝั่งลาว → ตัวเมืองเวียงจันทน์",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 600, standardVan: 1100 },
+    prices: { sedanSuv: 600, standardVan: 800 },
   },
   {
     id: "wattay-city-hotel",
@@ -30,7 +30,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-wattay-city-hotel",
     routeName: "สนามบินวัตไต → ตัวเมือง/โรงแรม",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 600, standardVan: 1100 },
+    prices: { sedanSuv: 600, standardVan: 800 },
   },
   {
     id: "khamsavath-city-hotel",
@@ -38,7 +38,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-khamsavath-city-hotel",
     routeName: "สถานีคำสะหวาด → ตัวเมือง/โรงแรม",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 600, standardVan: 1100 },
+    prices: { sedanSuv: 600, standardVan: 800 },
   },
   {
     id: "city-laos-china-railway",
@@ -46,7 +46,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-city-laos-china-railway",
     routeName: "ตัวเมืองเวียงจันทน์ → สถานีรถไฟลาว–จีน",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 700, standardVan: 1200 },
+    prices: { sedanSuv: 800, standardVan: 1000 },
   },
   {
     id: "thanaleng-laos-china-railway",
@@ -54,7 +54,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-thanaleng-laos-china-railway",
     routeName: "ด่านท่านาแล้งฝั่งลาว → สถานีรถไฟลาว–จีน",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 800, standardVan: 1300 },
+    prices: { sedanSuv: 900, standardVan: 1100 },
   },
   {
     id: "wattay-laos-china-railway",
@@ -62,7 +62,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "transfer-wattay-laos-china-railway",
     routeName: "สนามบินวัตไต → สถานีรถไฟลาว–จีน",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 800, standardVan: 1300 },
+    prices: { sedanSuv: 900, standardVan: 1100 },
   },
   {
     id: "vientiane-nam-pien-yorla-pa",
@@ -70,7 +70,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-nam-pien-yorla-pa",
     routeName: "จุดรับในเวียงจันทน์ → น้ำเปี่ยนยอละปา",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 3000, standardVan: 3500 },
+    prices: { sedanSuv: 3300, standardVan: 3500 },
   },
   {
     id: "vientiane-nam-ngum-transfer",
@@ -78,7 +78,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-nam-ngum",
     routeName: "จุดรับในเวียงจันทน์ → น้ำงึม",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 3000, standardVan: 3500 },
+    prices: { sedanSuv: 3300, standardVan: 3500 },
   },
   {
     id: "vientiane-vang-vieng-transfer",
@@ -86,7 +86,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-vang-vieng",
     routeName: "จุดรับในเวียงจันทน์ → วังเวียง",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 4000, standardVan: 4500 },
+    prices: { sedanSuv: 4300, standardVan: 4500 },
   },
   {
     id: "vientiane-muang-feuang-transfer",
@@ -94,7 +94,7 @@ export const TRANSFER_PRICE_ROWS: PriceRow[] = [
     routeSlug: "vientiane-muang-feuang",
     routeName: "จุดรับในเวียงจันทน์ → เมืองเฟือง",
     duration: "เที่ยวเดียว",
-    prices: { sedanSuv: 4000, standardVan: 4500 },
+    prices: { sedanSuv: 4300, standardVan: 4500 },
   },
 ];
 
@@ -230,7 +230,7 @@ export const PRICE_INCLUDES = "ค่าคนขับ ค่าน้ำมั
 export const PRICE_INCLUDES_SHORT = "รวมน้ำมัน ทางด่วน ที่พักและอาหารคนขับ";
 
 /** Bump whenever any published price changes; shown on every price table and used as the page dateModified. */
-export const PRICES_UPDATED_AT = "2026-10-20";
+export const PRICES_UPDATED_AT = "2026-10-24";
 
 export const formatPricesUpdatedAt = (): string =>
   new Date(`${PRICES_UPDATED_AT}T00:00:00+07:00`).toLocaleDateString("th-TH", {
