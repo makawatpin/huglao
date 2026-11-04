@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main>
       <PageHero eyebrow="Privacy" title="นโยบายความเป็นส่วนตัว" description="เราเก็บและใช้ข้อมูลเท่าที่จำเป็นสำหรับตรวจรายละเอียด ประสานบริการ และตอบคำขอราคาของคุณ" breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "นโยบายความเป็นส่วนตัว" }]} />
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,110px)]">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,110px)]">
         <div className="hl-shell max-w-[900px] rounded-[28px] border border-[#ddd4c1] bg-white p-[clamp(26px,5vw,52px)] text-[#59645d]">
           <div className="space-y-8 leading-8">
             <section><h2 className="text-xl font-bold text-[#0a2d20]">ข้อมูลที่ใช้</h2><p className="mt-3">ข้อมูลติดต่อ วันเดินทาง จุดรับ จุดส่ง จำนวนผู้โดยสาร สัมภาระ ประเภทรถ เส้นทาง บริการเสริม และความต้องการพิเศษที่คุณเลือกส่ง</p></section>

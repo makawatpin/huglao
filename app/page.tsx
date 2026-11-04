@@ -7,8 +7,8 @@ import {
   BOOKING_STEPS,
   HOME_FAQS,
   PICKUP_POINTS,
-  READY_SERVICES,
   ROUTE_GROUPS,
+  SERVICE_GROUPS,
   SITE,
   VEHICLE_GROUPS,
   getVehicleHref,
@@ -35,6 +35,50 @@ const TRUST_POINTS = [
     description: "ทีม HUGLAO ช่วยรวบรวมรายละเอียด ตรวจข้อเสนอ และยืนยันนัดหมายก่อนเดินทาง",
   },
 ] as const;
+
+const SERVICE_TEASERS: Record<string, { line: string; badge?: string }> = {
+  "train-ticket": { line: "ประสานจองตั๋วรถไฟลาว–จีนให้ต่อกับแผนเดินทาง" },
+  "local-guide": { line: "ไกด์ที่เหมาะกับภาษา วันเดินทาง และสไตล์ทริป" },
+  "private-trip-planning": { line: "จัดเส้นทางตามความสนใจ ไม่ใช่โปรแกรมกรุ๊ปทัวร์" },
+  "temporary-border-pass": { line: "ช่วยตรวจเอกสารและทำบัตรให้ครบในที่เดียว", badge: "100 บาท/คน" },
+};
+
+function ServiceIcon({ slug }: { slug: string }) {
+  const common = { width: 24, height: 24, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.7, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
+  switch (slug) {
+    case "train-ticket":
+      return (
+        <svg {...common}>
+          <rect x="5" y="3" width="14" height="14" rx="3" />
+          <path d="M5 11h14M9 21l1.5-4M15 21l-1.5-4" />
+          <circle cx="9" cy="14" r=".6" fill="currentColor" />
+          <circle cx="15" cy="14" r=".6" fill="currentColor" />
+        </svg>
+      );
+    case "local-guide":
+      return (
+        <svg {...common}>
+          <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" />
+          <circle cx="12" cy="10" r="2.4" />
+        </svg>
+      );
+    case "private-trip-planning":
+      return (
+        <svg {...common}>
+          <path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4Z" />
+          <path d="M9 4v14M15 6v14" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...common}>
+          <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" />
+          <circle cx="9" cy="11" r="2" />
+          <path d="M6 15.5c.6-1.3 1.7-2 3-2s2.4.7 3 2M14.5 10h3M14.5 13h3" />
+        </svg>
+      );
+  }
+}
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
@@ -123,7 +167,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,110px)]">
+      <section className="bg-white py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell">
           <Reveal className="max-w-[760px]">
             <span className="hl-kicker">จุดรับฝั่งเวียงจันทน์</span>
@@ -134,20 +178,20 @@ export default async function Home() {
             {PICKUP_POINTS.map((point, index) => {
               const media = getMedia(point.mediaId);
               return (
-                <Reveal key={point.slug} delay={index * 0.07} className="hl-pickup-card hl-mobile-media-card h-full sm:flex sm:flex-col overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9] sm:min-h-[430px]">
+                <Reveal key={point.slug} delay={index * 0.07} className="hl-pickup-card hl-mobile-media-card h-full sm:flex sm:flex-col overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-[#f7f3e9]">
                   <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden bg-[#e8e1d2]">
                     <Image
                       src={media.src}
                       alt={media.alt}
                       fill
-                      sizes="(max-width: 639px) 112px, 25vw"
+                      sizes="(max-width: 639px) 44vw, 25vw"
                       className={`object-cover ${index === 1 ? "object-[50%_68%]" : "object-center"}`}
                     />
                   </div>
-                  <div className="hl-mobile-content min-w-0 p-7 sm:flex sm:flex-col sm:p-3">
+                  <div className="hl-mobile-content min-w-0 p-7 sm:flex sm:flex-col sm:p-5">
                     <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
-                    <h3 className="font-serif-th text-lg font-bold text-[#0a2d20] sm:mt-5 sm:text-2xl">{point.name}</h3>
-                    <p className="text-sm leading-6 text-[#59645d] sm:mt-4 sm:leading-7">{point.detail}</p>
+                    <h3 className="font-serif-th text-lg font-bold leading-snug text-[#0a2d20] sm:mt-2 sm:text-xl">{point.name}</h3>
+                    <p className="text-sm leading-6 text-[#59645d] sm:mt-2">{point.detail}</p>
                   </div>
                 </Reveal>
               );
@@ -156,7 +200,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,120px)]" id="vehicles">
+      <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,120px)]" id="vehicles">
         <div className="hl-shell">
           <Reveal className="max-w-[760px]">
             <span className="hl-kicker">เลือกประเภทรถ</span>
@@ -169,22 +213,22 @@ export default async function Home() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:mt-12 sm:gap-5 md:grid-cols-3">
             {VEHICLE_GROUPS.map((vehicle, index) => {
               const media = getMedia(vehicle.mediaIds[0]);
               return <Reveal key={vehicle.slug} delay={index * 0.06}>
                 <Link
                   href={getVehicleHref(vehicle.slug)}
-                  className="hl-mobile-media-card hl-vehicle-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-white shadow-[0_20px_60px_rgba(27,49,37,.07)] transition hover:-translate-y-2 hover:border-[#d8af4a] sm:rounded-[28px]"
+                  className="hl-mobile-media-card hl-vehicle-card hl-vehicle-row group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-white shadow-[0_20px_60px_rgba(27,49,37,.07)] transition hover:-translate-y-2 hover:border-[#d8af4a] sm:rounded-[28px]"
                 >
                   <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden">
-                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1280px) 50vw, 20vw" className="object-contain transition duration-500 group-hover:scale-[1.02]" />
+                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 46vw, (max-width: 1280px) 50vw, 20vw" className="object-contain transition duration-500 group-hover:scale-[1.02]" />
                   </div>
-                  <div className="hl-mobile-content flex flex-1 flex-col p-6">
+                  <div className="hl-mobile-content flex flex-1 flex-col p-5">
                     <span className="hl-vehicle-order text-xs font-bold tracking-[.18em] text-[#86611a]">0{index + 1}</span>
-                    <h3 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{vehicle.shortName}</h3>
-                    <p className="hl-vehicle-detail mt-3 flex-1 text-sm leading-7 text-[#687169]">{vehicle.description}</p>
-                    <span className="mt-5 text-sm font-bold text-[#0d3827] transition group-hover:text-[#86611a]">ดูรายละเอียด →</span>
+                    <h3 className="mt-2 font-serif-th text-xl font-bold leading-snug text-[#0a2d20]">{vehicle.shortName}</h3>
+                    <p className="hl-vehicle-detail mt-2 flex-1 text-sm leading-6 text-[#687169]">{vehicle.description}</p>
+                    <span className="mt-3 text-sm font-bold text-[#0d3827] transition group-hover:text-[#86611a]">ดูรายละเอียด →</span>
                   </div>
                 </Link>
               </Reveal>;
@@ -194,7 +238,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,120px)]">
+      <section className="bg-white py-[clamp(52px,9vw,120px)]">
         <div className="hl-shell">
           <h2 className="sr-only">ทำไมเที่ยวลาวกับ HUGLAO</h2>
           <div className="grid gap-6 lg:grid-cols-3">
@@ -209,7 +253,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="hl-grid-pattern bg-[#0a2d20] py-[clamp(72px,9vw,120px)] text-white" id="routes">
+      <section className="hl-grid-pattern bg-[#0a2d20] py-[clamp(52px,9vw,120px)] text-white" id="routes">
         <div className="hl-shell">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
           <Reveal>
@@ -255,11 +299,11 @@ export default async function Home() {
               <Reveal key={route.slug} delay={index * 0.04}>
                 <Link href={`/routes/${route.slug}`} className="hl-mobile-media-card group block h-full overflow-hidden rounded-[22px] border border-white/10 bg-white/[.055] transition hover:-translate-y-1 hover:border-[#d8af4a]/60">
                   <div className="hl-mobile-media relative aspect-[4/3] overflow-hidden bg-white/5 sm:aspect-[16/10]">
-                    <Image src={getMedia(route.mediaId).src} alt={getMedia(route.mediaId).alt} fill sizes="(max-width: 639px) 112px, (max-width: 1024px) 50vw, 33vw" className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100" />
+                    <Image src={getMedia(route.mediaId).src} alt={getMedia(route.mediaId).alt} fill sizes="(max-width: 639px) 44vw, (max-width: 1024px) 50vw, 33vw" className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100" />
                   </div>
-                  <div className="hl-mobile-content p-6">
-                    <h3 className="font-serif-th text-xl font-bold text-white">{route.name}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[#b9c7be]">{route.summary}</p>
+                  <div className="hl-mobile-content p-5">
+                    <h3 className="font-serif-th text-xl font-bold leading-snug text-white">{route.name}</h3>
+                    <p className="mt-2 text-sm leading-6 text-[#b9c7be] sm:line-clamp-3">{route.summary}</p>
                   </div>
                 </Link>
               </Reveal>
@@ -273,7 +317,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-[#efe8d9] py-[clamp(72px,9vw,110px)]" id="pricing">
+      <section className="bg-[#efe8d9] py-[clamp(52px,9vw,110px)]" id="pricing">
         <div className="hl-shell">
           <Reveal className="max-w-[820px]">
             <span className="hl-kicker">ราคาเริ่มต้นที่ยืนยันแล้ว</span>
@@ -287,7 +331,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(56px,7vw,88px)]" id="booking-steps">
+      <section className="bg-white py-[clamp(44px,7vw,88px)]" id="booking-steps">
         <div className="hl-shell">
           <Reveal className="max-w-[760px]">
             <span className="hl-kicker">ขั้นตอนการจอง</span>
@@ -305,7 +349,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,120px)]" id="services">
+      <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,120px)]" id="services">
         <div className="hl-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
           <Reveal>
             <span className="hl-kicker">บริการเสริมที่พร้อม</span>
@@ -317,18 +361,38 @@ export default async function Home() {
             </p>
             <Link href="/services" className="mt-6 inline-flex min-h-11 items-center font-bold text-[#86611a]">ดูบริการทั้งหมด →</Link>
           </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {READY_SERVICES.map((service, index) => (
-              <Reveal key={service} delay={index * 0.05} className="flex min-h-[120px] items-center rounded-[22px] border border-[#ddd4c1] bg-white px-6 py-5">
-                <span className="mr-4 text-sm font-bold text-[#d8af4a]">0{index + 1}</span>
-                <h3 className="font-semibold text-[#0a2d20]">{service}</h3>
-              </Reveal>
-            ))}
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            {SERVICE_GROUPS.map((service, index) => {
+              const teaser = SERVICE_TEASERS[service.slug];
+              return (
+                <Reveal key={service.slug} delay={index * 0.05}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="group flex h-full items-center gap-4 rounded-[20px] border border-[#ddd4c1] bg-white p-4 shadow-[0_10px_30px_rgba(7,29,19,.05)] transition hover:-translate-y-0.5 hover:border-[#d8af4a] sm:flex-col sm:items-start sm:gap-5 sm:rounded-[24px] sm:p-6"
+                  >
+                    <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#0a2d20] text-[#efd276] sm:size-14">
+                      <ServiceIcon slug={service.slug} />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <h3 className="font-serif-th text-[1.05rem] font-bold leading-snug text-[#0a2d20] sm:text-xl">{service.name}</h3>
+                        {teaser?.badge && (
+                          <span className="rounded-full bg-[#f6ebcd] px-2 py-0.5 text-[.7rem] font-bold text-[#86611a]">{teaser.badge}</span>
+                        )}
+                      </div>
+                      <span className="mt-1 block text-[.84rem] leading-6 text-[#687169] sm:mt-2 sm:text-sm">{teaser?.line ?? service.summary}</span>
+                    </div>
+                    <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-full border border-[#e6dfcf] text-[#86611a] transition group-hover:border-[#d8af4a] group-hover:bg-[#d8af4a] group-hover:text-[#0a2d20] sm:hidden">→</span>
+                    <span aria-hidden className="mt-auto hidden text-sm font-bold text-[#86611a] sm:inline">ดูรายละเอียด →</span>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="overflow-hidden bg-white py-[clamp(56px,8vw,112px)]">
+      <section className="overflow-hidden bg-white py-[clamp(44px,8vw,112px)]">
         <div className="hl-shell grid items-center gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
           <Reveal>
             <figure className="overflow-hidden rounded-[22px] bg-[#071d13] shadow-[0_18px_50px_rgba(7,29,19,0.14)] sm:rounded-[30px]">
@@ -363,7 +427,7 @@ export default async function Home() {
       </section>
 
       {articles.length > 0 && (
-        <section className="bg-[#efe8d9] py-[clamp(72px,9vw,110px)]">
+        <section className="bg-[#efe8d9] py-[clamp(52px,9vw,110px)]">
           <div className="hl-shell">
             <div className="flex flex-wrap items-end justify-between gap-5">
               <div>
@@ -372,7 +436,7 @@ export default async function Home() {
               </div>
               <Link href="/articles" className="inline-flex min-h-11 items-center font-bold text-[#86611a]">ดูบทความทั้งหมด →</Link>
             </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
               {articles.map((article) => (
                 <Link key={article.slug} href={`/articles/${article.slug}`} className="hl-mobile-media-card hl-article-card overflow-hidden rounded-[20px] bg-white shadow-[0_18px_50px_rgba(27,49,37,.07)] sm:rounded-[24px]">
                   <div className="hl-mobile-media relative aspect-[16/9] bg-[#d8d0be]">
@@ -381,14 +445,14 @@ export default async function Home() {
                         src={article.cover}
                         alt={article.coverAlt ?? ""}
                         fill
-                        sizes="(max-width: 639px) 112px, 33vw"
+                        sizes="(max-width: 639px) 44vw, 33vw"
                         className={article.cover.includes("vehicle-") || article.cover.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
                       />
                     )}
                   </div>
-                  <div className="hl-mobile-content p-6">
+                  <div className="hl-mobile-content p-5">
                     <h3 className="font-serif-th text-xl font-bold leading-snug text-[#0a2d20]">{article.title}</h3>
-                    <p className="mt-3 line-clamp-3 text-sm leading-7 text-[#687169]">{article.excerpt}</p>
+                    <p className="mt-2 text-sm leading-6 text-[#687169] sm:line-clamp-3">{article.excerpt}</p>
                   </div>
                 </Link>
               ))}
@@ -397,7 +461,7 @@ export default async function Home() {
         </section>
       )}
 
-      <section className="bg-white py-[clamp(72px,9vw,120px)]" id="faq">
+      <section className="bg-white py-[clamp(52px,9vw,120px)]" id="faq">
         <div className="hl-shell grid gap-12 lg:grid-cols-[.65fr_1.35fr]">
           <Reveal>
             <span className="hl-kicker">คำถามที่พบบ่อย</span>
@@ -417,7 +481,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="hl-page-cta relative overflow-hidden bg-[#0a2d20] py-[clamp(80px,10vw,140px)] text-center text-white">
+      <section className="hl-page-cta relative overflow-hidden bg-[#0a2d20] py-[clamp(56px,10vw,140px)] text-center text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(216,175,74,.18),transparent_55%)]" />
         <Reveal className="hl-shell relative">
           <span className="text-xs font-bold uppercase tracking-[.2em] text-[#efd276]">เริ่มวางแผนกับ HUGLAO</span>

@@ -93,7 +93,7 @@ export default function NamPienYorlaPaArticlePage() {
         </div>
       </header>
 
-      <div className="hl-shell grid gap-12 py-[clamp(64px,8vw,105px)] lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="hl-shell grid gap-12 py-[clamp(48px,8vw,105px)] lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="max-w-[820px]">
           <p className="font-serif-th text-[clamp(1.4rem,3vw,2rem)] font-bold leading-relaxed text-[#0a2d20]">
             น้ำเปี่ยนยอละปาเป็นจุดพักผ่อนและกิจกรรมกลางป่าในพื้นที่อนุรักษ์ภูเขาควาย เว็บไซต์ทางการระบุว่าเดินทางด้วยรถจากเวียงจันทน์ประมาณ 1.5 ชั่วโมง แต่เวลาจริงขึ้นกับจุดรับ สภาพถนน และสภาพอากาศ
@@ -153,7 +153,7 @@ export default function NamPienYorlaPaArticlePage() {
         </aside>
       </div>
 
-      <section className="bg-[#efe8d9] py-[clamp(64px,8vw,100px)]">
+      <section className="bg-[#efe8d9] py-[clamp(48px,8vw,100px)]">
         <div className="hl-shell">
           <span className="hl-kicker">ราคารถรับ–ส่งที่เผยแพร่</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,4.5vw,3.6rem)] font-bold text-[#071d13]">เวียงจันทน์ → น้ำเปี่ยนยอละปา</h2>
@@ -162,7 +162,7 @@ export default function NamPienYorlaPaArticlePage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(56px,7vw,84px)]">
+      <section className="bg-white py-[clamp(44px,7vw,84px)]">
         <div className="hl-shell max-w-[900px] text-sm leading-7 text-[#687169]">
           <strong className="text-[#0a2d20]">แหล่งข้อมูล:</strong>{" "}
           <a href="https://nampienyorlapa.com/" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#86611a] hover:underline">Nam Pien Yorla Pa — เว็บไซต์ทางการ</a>{" "}

@@ -167,7 +167,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,110px)]">
+      <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
           <div>
             <span className="hl-kicker">ข้อมูลก่อนเลือกรถ</span>
@@ -190,11 +190,11 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,110px)]">
+      <section className="bg-white py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell">
           <span className="hl-kicker">เส้นทางที่สนใจ</span>
           <h2 className="mt-5 max-w-[780px] font-serif-th text-[clamp(2.1rem,4vw,3.6rem)] font-bold text-[#071d13]">เลือกเส้นทาง แล้วให้ทีมตรวจรถและราคา</h2>
-          <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {ROUTE_GROUPS.map((route) => (
               <Link key={route.slug} href={`/routes/${route.slug}`} className="rounded-[22px] border border-[#ddd4c1] p-6 transition hover:border-[#d8af4a]">
                 <h3 className="font-semibold text-[#0a2d20]">{route.name}</h3><span className="mt-4 block text-sm font-bold text-[#86611a]">ดูเส้นทาง →</span>
@@ -205,7 +205,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
       </section>
 
       {hasPublishedPrices ? (
-        <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,110px)]">
+        <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
           <div className="hl-shell">
             <span className="hl-kicker">ราคาที่เผยแพร่</span>
             <h2 className="mb-8 mt-5 font-serif-th text-[clamp(2.1rem,4vw,3.6rem)] font-bold text-[#071d13]">ราคา{vehicle.name}จากฐานราคากลาง</h2>
@@ -213,7 +213,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       ) : (
-        <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,110px)]">
+        <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
           <div className="hl-shell text-center">
             <span className="hl-kicker">ราคาที่เผยแพร่</span>
             <h2 className="mb-4 mt-5 font-serif-th text-[clamp(1.4rem,3vw,2rem)] font-bold text-[#071d13]">ราคาในขณะนี้ยังไม่พร้อมให้แสดง</h2>
@@ -226,7 +226,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
         </section>
       )}
 
-      <section className="bg-[#efe8d9] py-[clamp(72px,9vw,110px)]">
+      <section className="bg-[#efe8d9] py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell max-w-[900px]">
           <span className="hl-kicker">คำถามเฉพาะประเภทรถ</span>
           <div className="mt-8 divide-y divide-[#d8d0be] border-y border-[#d8d0be]">

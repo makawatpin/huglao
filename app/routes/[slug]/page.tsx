@@ -85,43 +85,76 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,110px)]">
-        <div className="hl-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
+      <section className="bg-white py-[clamp(52px,9vw,110px)]">
+        <div className="hl-shell grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:gap-10">
           <div>
             <span className="hl-kicker">ออกแบบทริปในแบบของคุณ</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,4.5vw,3.8rem)] font-bold leading-tight text-[#071d13]">สิ่งที่นำไปวางแผนต่อได้</h2>
-            <p className="mt-5 leading-8 text-[#59645d]">{route.planningNote}</p>
+            <h2 className="mt-3 font-serif-th text-[clamp(1.75rem,4.5vw,3.8rem)] font-bold leading-tight text-[#071d13] sm:mt-5">สิ่งที่นำไปวางแผนต่อได้</h2>
+            <p className="mt-3 text-[.95rem] leading-7 text-[#59645d] sm:mt-5 sm:text-base sm:leading-8">{route.planningNote}</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {route.highlights.map((highlight, index) => (
-              <article key={highlight} className="rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
-                <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
-                <h3 className="mt-4 font-serif-th text-xl font-bold text-[#0a2d20]">{highlight}</h3>
-              </article>
-            ))}
+          <div className="overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9]">
+            <div className="p-5 sm:p-7">
+              <p className="text-xs font-bold tracking-[.14em] text-[#86611a]">ไอเดียจุดแวะ · {route.highlights.length} แห่ง</p>
+              <ol className="mt-5 grid gap-5 sm:grid-cols-3 sm:gap-4">
+                {route.highlights.map((highlight, index) => (
+                  <li
+                    key={highlight}
+                    className="relative flex items-center gap-4 before:absolute before:left-5 before:top-11 before:-bottom-4 before:w-0.5 before:-translate-x-1/2 before:rounded-full before:bg-[#d8af4a]/45 before:content-[''] last:before:hidden sm:flex-col sm:items-start sm:gap-3 sm:before:left-12 sm:before:right-[-0.75rem] sm:before:top-5 sm:before:bottom-auto sm:before:h-0.5 sm:before:w-auto sm:before:translate-x-0"
+                  >
+                    <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full bg-[#0a2d20] text-[#efd276] shadow-[0_8px_18px_rgba(10,45,32,.2)]">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" />
+                        <circle cx="12" cy="10" r="2.3" />
+                      </svg>
+                    </span>
+                    <div className="min-w-0">
+                      <span className="block text-[.72rem] font-semibold text-[#9a8f73]">จุดแวะที่ {index + 1}</span>
+                      <h3 className="font-serif-th text-lg font-bold leading-snug text-[#0a2d20] sm:text-xl">{highlight}</h3>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="flex flex-col gap-3 border-t border-[#e3dbc9] bg-white/70 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+              <p className="text-[.85rem] leading-6 text-[#59645d]">อยากเพิ่มหรือสลับจุดแวะ? ทีมงานช่วยจัดเวลาให้</p>
+              <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#06c755] px-5 text-sm font-bold text-white transition hover:bg-[#05b34c]">ปรึกษาทาง LINE</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,96px)]">
-        <div className="hl-shell grid gap-8 lg:grid-cols-[.7fr_1.3fr]">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,96px)]">
+        <div className="hl-shell grid gap-6 lg:grid-cols-[.7fr_1.3fr] lg:items-center lg:gap-8">
           <div>
             <span className="hl-kicker">รายละเอียดที่ตรวจสอบแล้ว</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.4rem)] font-bold leading-tight text-[#071d13]">ข้อมูลช่วยเลือกจุดแวะ</h2>
+            <h2 className="mt-3 font-serif-th text-[clamp(1.75rem,4vw,3.4rem)] font-bold leading-tight text-[#071d13] sm:mt-5">ข้อมูลช่วยเลือกจุดแวะ</h2>
           </div>
-          <div>
-            <ul className="grid gap-4 sm:grid-cols-3">
-              {route.verifiedDetails.map((detail) => <li key={detail} className="rounded-[22px] border border-[#ddd4c1] bg-white p-5 text-sm leading-7 text-[#59645d]">{detail}</li>)}
+          <div className="overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-white shadow-[0_16px_45px_rgba(7,29,19,.06)]">
+            <ul className="divide-y divide-[#eee8da]">
+              {route.verifiedDetails.map((detail) => (
+                <li key={detail} className="flex items-start gap-3 px-5 py-4 sm:px-7 sm:py-5">
+                  <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[#e3f1e7] text-[#1d7a45]">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="m5 12.5 4.5 4.5L19 7.5" />
+                    </svg>
+                  </span>
+                  <p className="text-[.92rem] leading-6 text-[#2f3b33] sm:text-base sm:leading-7">{detail}</p>
+                </li>
+              ))}
             </ul>
-            <p className="mt-5 text-xs leading-6 text-[#687169]">
-              ที่มา: {route.sourceUrl ? <a href={route.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#86611a] hover:underline">{route.sourceLabel}</a> : route.sourceLabel} · เวลาเปิด–ปิด ค่าบัตร กิจกรรม และสภาพเส้นทางต้องตรวจอีกครั้งก่อนเดินทาง
-            </p>
+            <div className="border-t border-[#eee8da] bg-[#faf7ef] px-5 py-3.5 text-xs leading-5 text-[#687169] sm:px-7">
+              <p>
+                <span className="mr-1.5 inline-flex rounded-full bg-white px-2 py-0.5 font-semibold text-[#86611a] ring-1 ring-[#e6dcc3]">ที่มา</span>
+                {route.sourceUrl ? <a href={route.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-[#0a2d20] underline decoration-[#d8af4a] underline-offset-2 hover:text-[#86611a]">{route.sourceLabel}</a> : <span className="font-semibold text-[#0a2d20]">{route.sourceLabel}</span>}
+              </p>
+              <p className="mt-1.5">เวลาเปิด–ปิด ค่าบัตร กิจกรรม และสภาพเส้นทาง ควรตรวจอีกครั้งก่อนเดินทาง</p>
+            </div>
           </div>
         </div>
       </section>
 
       {prices.length > 0 ? (
-        <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,110px)]">
+        <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
           <div className="hl-shell">
             <span className="hl-kicker">ตารางราคาที่เผยแพร่</span>
             <h2 className="mb-8 mt-5 font-serif-th text-[clamp(2.1rem,4vw,3.6rem)] font-bold text-[#071d13]">ราคาเส้นทาง {route.name}</h2>
@@ -129,7 +162,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
           </div>
         </section>
       ) : (
-        <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,96px)]">
+        <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,96px)]">
           <div className="hl-shell rounded-[26px] border border-[#ddd4c1] bg-white p-6 text-center sm:p-9">
             <span className="hl-kicker">ราคาที่เผยแพร่</span>
             <h2 className="mt-5 font-serif-th text-[clamp(1.6rem,4vw,2.4rem)] font-bold text-[#071d13]">ยังไม่มีแถวราคาที่ผ่านการยืนยันสำหรับเส้นทางนี้</h2>
@@ -139,10 +172,10 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
         </section>
       )}
 
-      <section className="bg-white py-[clamp(72px,9vw,110px)]">
+      <section className="bg-white py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell">
           <span className="hl-kicker">ประเภทรถที่รองรับ</span>
-          <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-9 grid gap-4 md:grid-cols-3">
             {VEHICLE_GROUPS.map((vehicle) => (
               <Link key={vehicle.slug} href={getVehicleHref(vehicle.slug)} className="rounded-[22px] border border-[#ddd4c1] p-6 transition hover:border-[#d8af4a]">
                 <h3 className="font-semibold text-[#0a2d20]">{vehicle.name}</h3><p className="mt-3 text-sm leading-7 text-[#59645d]">{vehicle.suitableFor}</p>
@@ -152,10 +185,10 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      <section className="bg-[#efe8d9] py-[clamp(72px,9vw,110px)]">
+      <section className="bg-[#efe8d9] py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell">
           <span className="hl-kicker">จุดรับฝั่งเวียงจันทน์</span>
-          <div className="mt-7 grid gap-4 md:grid-cols-3">
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {PICKUP_POINTS.map((point) => <article key={point.slug} className="rounded-[22px] bg-white p-6"><h3 className="font-semibold text-[#0a2d20]">{point.name}</h3><p className="mt-2 text-sm text-[#59645d]">{point.detail}</p></article>)}
           </div>
           <Link href="/vientiane/" className="mt-7 inline-flex rounded-full border border-[#d8af4a] px-6 py-3 font-bold text-[#0a2d20] hover:bg-white">
@@ -164,7 +197,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,110px)]">
+      <section className="bg-white py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell max-w-[900px]">
           <span className="hl-kicker">คำถามเกี่ยวกับเส้นทาง</span>
           <div className="mt-8 divide-y divide-[#ddd4c1] border-y border-[#ddd4c1]">

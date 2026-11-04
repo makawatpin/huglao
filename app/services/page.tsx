@@ -21,21 +21,21 @@ export default function ServicesPage() {
         description="เลือกใช้เฉพาะบริการที่ต้องการ HUGLAO จะช่วยประสานให้เข้ากับแผนส่วนตัวของคุณ โดยไม่ขายเกินบริการที่พร้อมดำเนินงาน"
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บริการอื่น ๆ" }]}
       />
-      <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,120px)]">
+      <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,120px)]">
         <div className="hl-shell">
           <span className="hl-kicker">พร้อมเปิดให้บริการ</span>
-          <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-7 grid gap-3 sm:mt-9 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
             {SERVICE_GROUPS.map((service) => {
               const media = getMedia(service.mediaId);
-              return <article key={service.slug} className="hl-mobile-media-card hl-card-hover overflow-hidden rounded-[26px] border border-[#ddd4c1] bg-white shadow-[0_16px_45px_rgba(7,29,19,.06)]">
-                <div className="hl-mobile-media relative aspect-[4/3] bg-[#e8e3d6] sm:aspect-[16/10]">
-                  <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 112px, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
+              return <article key={service.slug} className="hl-mobile-media-card hl-card-hover relative flex flex-col overflow-hidden rounded-[22px] border border-[#ddd4c1] bg-white shadow-[0_16px_45px_rgba(7,29,19,.06)]">
+                <div className="hl-mobile-media relative aspect-[16/10] bg-[#e8e3d6]">
+                  <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 44vw, (max-width: 1023px) 50vw, 25vw" className="object-cover" />
                 </div>
-                <div className="hl-mobile-content p-6 sm:p-7">
-                  <span className="text-xs font-bold tracking-[.15em] text-[#86611a]">พร้อมประสาน</span>
-                  <h2 className="mt-5 font-serif-th text-2xl font-bold text-[#0a2d20]">{service.name}</h2>
-                  <p className="mt-4 text-sm leading-7 text-[#59645d]">{service.summary}</p>
-                  <Link href={`/services/${service.slug}`} className="mt-4 inline-flex min-h-11 items-center text-sm font-bold text-[#86611a]">ดูรายละเอียด →</Link>
+                <div className="hl-mobile-content flex flex-1 flex-col p-5">
+                  <span className="text-[.7rem] font-bold tracking-[.15em] text-[#86611a]">พร้อมประสาน</span>
+                  <h2 className="mt-2 font-serif-th text-xl font-bold leading-snug text-[#0a2d20]">{service.name}</h2>
+                  <p className="mt-2 text-sm sm:line-clamp-3 leading-6 text-[#59645d]">{service.summary}</p>
+                  <Link href={`/services/${service.slug}`} className="mt-auto inline-flex min-h-11 items-center text-sm sm:pt-2 font-bold text-[#86611a] after:absolute after:inset-0 after:content-['']">ดูรายละเอียด →</Link>
                 </div>
               </article>;
             })}

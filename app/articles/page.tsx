@@ -18,16 +18,16 @@ export default async function ArticlesPage() {
       <PageHero
         eyebrow="บทความและคู่มือ"
         title="ข้อมูลที่ช่วยให้วางแผนทริปได้มั่นใจกว่าเดิม"
-        description="รวมบทความจริงจาก HUGLAO เกี่ยวกับการเตรียมตัว เส้นทางจากเวียงจันทน์ และการเลือกรถ โดยไม่แสดงหัวข้อจำลองซ้ำกับบทความ"
+        description="คู่มือและประสบการณ์จริงจากทีม HUGLAO ตั้งแต่เตรียมเอกสาร ข้ามด่าน ไปจนถึงเลือกเส้นทางและรถให้เหมาะกับทริปของคุณ"
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บทความ" }]}
       />
 
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,110px)]">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,110px)]">
         <div className="hl-shell">
-          <div className="mb-10 max-w-[760px]">
+          <div className="mb-6 max-w-[760px] sm:mb-8">
             <span className="hl-kicker">บทความล่าสุด</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight text-[#071d13]">อ่านข้อมูลก่อนวางแผนเดินทาง</h2>
-            <p className="mt-4 leading-8 text-[#59645d]">เลือกอ่านตามหมวดหมู่ เนื้อหาแต่ละรายการจะแสดงเพียงครั้งเดียว แม้ข้อมูลต้นทางจะมีรายการชื่อหรือ URL ซ้ำกัน</p>
+            <h2 className="mt-3 font-serif-th text-[clamp(1.65rem,4vw,3.2rem)] font-bold leading-tight text-[#071d13] sm:mt-5">อ่านก่อนออกเดินทาง</h2>
+            <p className="mt-2 text-[.95rem] leading-7 text-[#59645d] sm:mt-4 sm:text-base sm:leading-8">รีวิวทริปจริง เอกสารข้ามแดน และสถานที่น่าเที่ยวในลาว เลือกหมวดที่สนใจได้เลย</p>
           </div>
           <ArticleGrid articles={articles} />
         </div>

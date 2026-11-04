@@ -18,24 +18,33 @@ export default function ArticleGrid({ articles }: { articles: ArticlePreview[] }
 
   return (
     <>
-      <div className="mb-[clamp(34px,5vw,52px)] flex flex-wrap justify-start gap-2.5" role="group" aria-label="กรองบทความตามหมวดหมู่">
-        {categories.map((name) => {
-          const on = name === active;
-          return (
-            <button
-              key={name}
-              onClick={() => setActive(name)}
-              className="cursor-pointer rounded-full px-4 py-2 text-[.82rem] font-semibold transition-all sm:px-5 sm:py-[9px] sm:text-[.92rem]"
-              style={{
-                border: `1.5px solid ${on ? "transparent" : "#e0d9c8"}`,
-                background: on ? "linear-gradient(135deg,#a87815,#e3bd63 55%,#c8941f)" : "#fff",
-                color: on ? "#0a1f14" : "#5e6258",
-              }}
-            >
-              {name}
-            </button>
-          );
-        })}
+      <div className="mb-6 sm:mb-10">
+        <div
+          className="hl-chip-scroll -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+          role="group"
+          aria-label="กรองบทความตามหมวดหมู่"
+        >
+          {categories.map((name) => {
+            const on = name === active;
+            const count = name === "ทั้งหมด" ? articles.length : articles.filter((a) => a.tags.includes(name)).length;
+            return (
+              <button
+                key={name}
+                type="button"
+                onClick={() => setActive(name)}
+                aria-pressed={on}
+                className={`inline-flex min-h-10 shrink-0 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full border px-4 text-[.85rem] font-semibold transition-colors sm:text-[.92rem] ${
+                  on
+                    ? "border-[#0a2d20] bg-[#0a2d20] text-white shadow-[0_8px_20px_rgba(10,45,32,.18)]"
+                    : "border-[#e0d9c8] bg-white text-[#4f574f] hover:border-[#d8af4a] hover:text-[#0a2d20]"
+                }`}
+              >
+                {name}
+                <span className={`text-[.72rem] font-bold ${on ? "text-[#efd276]" : "text-[#a39d8c]"}`}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {filtered.length === 0 ? (
@@ -58,7 +67,7 @@ export default function ArticleGrid({ articles }: { articles: ArticlePreview[] }
                       src={a.cover}
                       alt={a.coverAlt ?? ""}
                       fill
-                      sizes="(max-width: 639px) 112px, (max-width: 900px) 50vw, 33vw"
+                      sizes="(max-width: 639px) 44vw, (max-width: 900px) 50vw, 33vw"
                       className={a.cover.includes("vehicle-") || a.cover.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
                     />
                   )}

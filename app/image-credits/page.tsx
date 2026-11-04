@@ -21,7 +21,7 @@ export default function ImageCreditsPage() {
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "ที่มาและใบอนุญาตภาพ" }]}
       />
 
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,105px)]">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,105px)]">
         <div className="hl-shell">
           <div className="mb-10 max-w-[820px] rounded-[24px] border border-[#ddd4c1] bg-white p-7 leading-8 text-[#59645d]">
             <p>
@@ -29,21 +29,21 @@ export default function ImageCreditsPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {images.map((item) => (
-              <article key={item.src} className="hl-mobile-media-card overflow-hidden rounded-[20px] border border-[#ddd4c1] bg-white shadow-[0_18px_45px_rgba(27,49,37,.06)] sm:rounded-[26px]">
+              <article key={item.src} className="hl-mobile-media-card hl-row-top overflow-hidden rounded-[20px] border border-[#ddd4c1] bg-white shadow-[0_18px_45px_rgba(27,49,37,.06)] sm:rounded-[26px]">
                 <div className="hl-mobile-media relative aspect-[16/10] bg-[#dfe8df]">
                   <Image
                     src={item.src}
                     alt={item.alt}
                     fill
-                    sizes="(max-width: 639px) 112px, 50vw"
+                    sizes="(max-width: 639px) 44vw, (max-width: 1023px) 50vw, 33vw"
                     className={item.src.includes("vehicle-") || item.src.includes("/van-") ? "object-contain p-1.5 sm:p-3" : "object-cover"}
                   />
                 </div>
-                <div className="hl-mobile-content p-7">
-                  <h2 className="font-serif-th text-2xl font-bold text-[#0a2d20]">{item.title}</h2>
-                  <dl className="mt-5 grid gap-x-4 gap-y-2 text-sm leading-6 sm:grid-cols-[auto_1fr] sm:gap-y-3">
+                <div className="hl-mobile-content p-5">
+                  <h2 className="font-serif-th text-xl font-bold leading-snug text-[#0a2d20]">{item.title}</h2>
+                  <dl className="mt-3 grid gap-x-4 gap-y-2 text-sm leading-6 sm:grid-cols-[auto_1fr] sm:gap-y-3">
                     <dt className="font-semibold text-[#0a2d20]">ผู้สร้าง</dt>
                     <dd className="text-[#59645d]">{item.author}</dd>
                     <dt className="font-semibold text-[#0a2d20]">ใบอนุญาต</dt>

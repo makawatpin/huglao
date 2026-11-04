@@ -248,7 +248,7 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(56px,8vw,104px)]" id="pricing" aria-labelledby="van-pricing-title">
+      <section className="bg-[#f7f3e9] py-[clamp(44px,8vw,104px)]" id="pricing" aria-labelledby="van-pricing-title">
         <div className="hl-shell">
           <span className="hl-kicker">ราคารถตู้เที่ยวลาว</span>
           <h2 id="van-pricing-title" className="mt-4 max-w-[880px] font-serif-th text-[clamp(2rem,5vw,3.8rem)] font-bold leading-tight text-[#071d13]">
@@ -259,7 +259,7 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(56px,7vw,92px)]" id="van-album" aria-labelledby="van-album-title">
+      <section className="bg-white py-[clamp(44px,7vw,92px)]" id="van-album" aria-labelledby="van-album-title">
         <div className="hl-shell">
           <span className="hl-kicker">อัลบั้มรถตู้</span>
           <h2 id="van-album-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">ภาพรถตู้จริงของทีม HUGLAO</h2>
@@ -276,7 +276,7 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(56px,7vw,92px)]" aria-labelledby="van-routes-title">
+      <section className="bg-[#f7f3e9] py-[clamp(44px,7vw,92px)]" aria-labelledby="van-routes-title">
         <div className="hl-shell">
           <span className="hl-kicker">เส้นทางยอดนิยม</span>
           <h2 id="van-routes-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">เลือกรถตู้ แล้ววางเส้นทางตามแผนของคุณ</h2>
@@ -299,7 +299,7 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-[#efe8d9] py-[clamp(56px,7vw,88px)]" aria-labelledby="van-booking-title">
+      <section className="bg-[#efe8d9] py-[clamp(44px,7vw,88px)]" aria-labelledby="van-booking-title">
         <div className="hl-shell">
           <span className="hl-kicker">ขั้นตอนจองรถตู้</span>
           <h2 id="van-booking-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold text-[#071d13]">จากรายละเอียดทริป สู่รถที่จุดนัดหมาย</h2>
@@ -315,7 +315,7 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(56px,7vw,92px)]" aria-labelledby="van-faq-title">
+      <section className="bg-white py-[clamp(44px,7vw,92px)]" aria-labelledby="van-faq-title">
         <div className="hl-shell max-w-[900px]">
           <span className="hl-kicker">คำถามเรื่องรถตู้เที่ยวลาว</span>
           <h2 id="van-faq-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold text-[#071d13]">ข้อมูลสำคัญก่อนขอราคา</h2>

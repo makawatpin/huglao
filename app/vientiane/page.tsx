@@ -198,11 +198,11 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(64px,8vw,104px)]" aria-labelledby="pickup-title">
+      <section className="bg-white py-[clamp(48px,8vw,104px)]" aria-labelledby="pickup-title">
         <div className="hl-shell">
           <span className="hl-kicker">จุดรับฝั่งลาว</span>
           <h2 id="pickup-title" className="mt-5 max-w-[820px] font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">จุดรับรถในเวียงจันทน์ที่ตรวจสอบก่อนนัดหมาย</h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {PICKUP_LOCATIONS.map((point, index) => (
               <article key={point.slug} className="rounded-[22px] border border-[#ddd4c1] bg-[#f7f3e9] p-6">
                 <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
@@ -214,11 +214,11 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,104px)]" aria-labelledby="vehicles-title">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,104px)]" aria-labelledby="vehicles-title">
         <div className="hl-shell">
           <span className="hl-kicker">ประเภทรถ</span>
           <h2 id="vehicles-title" className="mt-5 font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold text-[#071d13]">เลือกรถพร้อมคนขับให้เหมาะกับคนและสัมภาระ</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
             {VEHICLE_GROUPS.map((vehicle) => {
               const media = getMedia(vehicle.mediaIds[0]);
               const href = getVehicleHref(vehicle.slug);
@@ -240,7 +240,7 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section id="pricing" className="scroll-mt-24 bg-white py-[clamp(64px,8vw,110px)]" aria-labelledby="pricing-title">
+      <section id="pricing" className="scroll-mt-24 bg-white py-[clamp(48px,8vw,110px)]" aria-labelledby="pricing-title">
         <div className="hl-shell">
           <span className="hl-kicker">ราคารถในเวียงจันทน์</span>
           <h2 id="pricing-title" className="mt-5 max-w-[900px] font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">ราคาเช่ารถตู้เวียงจันทน์ รับ–ส่ง และเหมารถเที่ยว</h2>
@@ -252,11 +252,11 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section className="bg-[#0a2d20] py-[clamp(64px,8vw,108px)] text-white" aria-labelledby="routes-title">
+      <section className="bg-[#0a2d20] py-[clamp(48px,8vw,108px)] text-white" aria-labelledby="routes-title">
         <div className="hl-shell">
           <span className="hl-kicker !text-[#efd276]">เส้นทางยอดนิยม</span>
           <h2 id="routes-title" className="mt-5 font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold">เริ่มจากเวียงจันทน์ แล้วเลือกปลายทางตามแผนของคุณ</h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {featuredRoutes.map((route) => (
               <Link key={route.slug} href={`/routes/${route.slug}/`} className="rounded-[22px] border border-white/10 bg-white/[.06] p-6 transition hover:border-[#d8af4a] hover:bg-white/[.09]">
                 <h3 className="font-serif-th text-xl font-bold">{route.name}</h3>
@@ -268,7 +268,7 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,104px)]" aria-labelledby="booking-title">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,104px)]" aria-labelledby="booking-title">
         <div className="hl-shell">
           <span className="hl-kicker">ขั้นตอนการจอง</span>
           <h2 id="booking-title" className="mt-5 font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold text-[#071d13]">ตรวจรายละเอียดก่อนยืนยันทุกครั้ง</h2>
@@ -283,7 +283,7 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(64px,8vw,104px)]" aria-labelledby="trust-title">
+      <section className="bg-white py-[clamp(48px,8vw,104px)]" aria-labelledby="trust-title">
         <div className="hl-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
           <div>
             <span className="hl-kicker">ข้อมูลผู้ให้บริการ</span>
@@ -307,7 +307,7 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,104px)]" aria-labelledby="faq-title">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,104px)]" aria-labelledby="faq-title">
         <div className="hl-shell max-w-[980px]">
           <span className="hl-kicker">คำถามที่พบบ่อย</span>
           <h2 id="faq-title" className="mt-5 font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold text-[#071d13]">ก่อนขอราคาเช่ารถตู้เวียงจันทน์</h2>
@@ -325,7 +325,7 @@ export default function VientianeCarRentalPage() {
         </div>
       </section>
 
-      <section className="bg-[#0a2d20] py-[clamp(76px,9vw,120px)] text-center text-white">
+      <section className="bg-[#0a2d20] py-[clamp(56px,9vw,120px)] text-center text-white">
         <div className="hl-shell">
           <h2 className="mx-auto max-w-[920px] font-serif-th text-[clamp(2.2rem,5vw,4.5rem)] font-bold leading-tight">ส่งวันเดินทาง จำนวนคน จุดรับ และปลายทางให้ HUGLAO ช่วยตรวจรถ</h2>
           <p className="mx-auto mt-5 max-w-[720px] leading-8 text-[#c8d3cc]">ทีมงานจะตรวจรถพาร์ตเนอร์ที่เหมาะสม แล้วส่งรายละเอียดรถ ราคา สิ่งที่รวม และเงื่อนไขให้ตรวจสอบก่อนยืนยัน</p>

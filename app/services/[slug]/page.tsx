@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ChecklistPanel from "@/components/ChecklistPanel";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
 import { SERVICE_GROUPS, SERVICE_SEO, SITE } from "@/data/site";
@@ -91,7 +92,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
       {seo ? (
-        <section className="bg-white py-[clamp(64px,8vw,100px)]">
+        <section className="bg-white py-[clamp(48px,8vw,100px)]">
           <div className="hl-shell max-w-[900px]">
             <span className="hl-kicker">{service.name}</span>
             <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">{seo.introHeading}</h2>
@@ -139,24 +140,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       ) : null}
-      <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,110px)]">
-        <div className="hl-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+      <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
+        <div className="hl-shell grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:gap-12">
           <div>
             <span className="hl-kicker">ข้อมูลที่ต้องใช้</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">ส่งข้อมูลให้ครบ เพื่อให้ตรวจได้เร็วขึ้น</h2>
-            <p className="mt-5 leading-8 text-[#59645d]">HUGLAO ทำหน้าที่ช่วยประสาน ไม่รับรองความพร้อมจนกว่าจะได้รับการตอบกลับและยืนยันข้อเสนอ</p>
+            <h2 className="mt-3 font-serif-th text-[clamp(1.75rem,5vw,4rem)] font-bold leading-tight text-[#071d13] sm:mt-5">ส่งข้อมูลให้ครบ เพื่อให้ตรวจได้เร็วขึ้น</h2>
+            <p className="mt-3 text-[.95rem] leading-7 text-[#59645d] sm:mt-5 sm:text-base sm:leading-8">HUGLAO ทำหน้าที่ช่วยประสาน ไม่รับรองความพร้อมจนกว่าจะได้รับการตอบกลับและยืนยันข้อเสนอ</p>
           </div>
-          <ol className="grid gap-4 sm:grid-cols-2">
-            {service.requiredInfo.map((item, index) => (
-              <li key={item} className="rounded-[22px] border border-[#ddd4c1] bg-white p-6">
-                <span className="text-xs font-bold text-[#86611a]">0{index + 1}</span>
-                <h3 className="mt-4 font-semibold text-[#0a2d20]">{item}</h3>
-              </li>
-            ))}
-          </ol>
+          <ChecklistPanel title={`ข้อมูลสำหรับ${service.name}`} items={service.requiredInfo} />
         </div>
       </section>
-      <section className="bg-white py-[clamp(64px,8vw,100px)]">
+      <section className="bg-white py-[clamp(48px,8vw,100px)]">
         <div className="hl-shell max-w-[900px]">
           <span className="hl-kicker">คำถามเกี่ยวกับบริการ</span>
           <div className="mt-8 divide-y divide-[#ddd4c1] border-y border-[#ddd4c1]">

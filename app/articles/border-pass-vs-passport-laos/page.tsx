@@ -135,7 +135,7 @@ export default function BorderPassVsPassportArticlePage() {
         </div>
       </header>
 
-      <div className="hl-shell grid gap-12 py-[clamp(64px,8vw,105px)] lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="hl-shell grid gap-12 py-[clamp(48px,8vw,105px)] lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="min-w-0 max-w-[820px]">
           <p className="font-serif-th text-[clamp(1.4rem,3vw,2rem)] font-bold leading-relaxed text-[#0a2d20]">
             สรุปสั้น ๆ: ถ้าเที่ยวเฉพาะนครหลวงเวียงจันทน์ไม่เกิน 3 วัน ใช้บัตรผ่านแดนชั่วคราวได้ แต่ถ้าจะไปวังเวียง น้ำงึม เมืองเฟือง หรืออยู่นานกว่านั้น ต้องใช้พาสปอร์ต
@@ -224,7 +224,7 @@ export default function BorderPassVsPassportArticlePage() {
         </aside>
       </div>
 
-      <section className="bg-[#efe8d9] py-[clamp(64px,8vw,100px)]">
+      <section className="bg-[#efe8d9] py-[clamp(48px,8vw,100px)]">
         <div className="hl-shell">
           <span className="hl-kicker">ราคารถรับที่ด่าน</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,4.5vw,3.6rem)] font-bold text-[#071d13]">ด่านท่านาแล้งฝั่งลาว → ตัวเมืองเวียงจันทน์</h2>

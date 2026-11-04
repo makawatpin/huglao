@@ -111,7 +111,7 @@ export default function AboutPage() {
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "เกี่ยวกับและติดต่อ HUGLAO" }]}
       />
 
-      <section className="bg-[#f7f3e9] py-[clamp(56px,8vw,104px)]" aria-labelledby="about-story-title">
+      <section className="bg-[#f7f3e9] py-[clamp(44px,8vw,104px)]" aria-labelledby="about-story-title">
         <div className="hl-shell grid items-center gap-8 lg:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] lg:gap-16">
           <figure className="overflow-hidden rounded-[22px] border border-[#ddd4c1] bg-[#071d13] shadow-[0_18px_50px_rgba(7,29,19,.12)] sm:rounded-[28px]">
             <div className="relative aspect-[16/9] sm:aspect-[16/10] lg:h-[440px] lg:aspect-auto">
@@ -147,7 +147,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(56px,7vw,92px)]" aria-labelledby="principles-title">
+      <section className="bg-white py-[clamp(44px,7vw,92px)]" aria-labelledby="principles-title">
         <div className="hl-shell">
           <div className="max-w-[760px]">
             <span className="hl-kicker">วิธีทำงานของเรา</span>
@@ -167,7 +167,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-20 bg-[#efe8d9] py-[clamp(56px,8vw,104px)]" aria-labelledby="contact-title">
+      <section id="contact" className="scroll-mt-20 bg-[#efe8d9] py-[clamp(44px,8vw,104px)]" aria-labelledby="contact-title">
         <div className="hl-shell">
           <div className="max-w-[820px]">
             <span className="hl-kicker">ติดต่อ HUGLAO</span>
@@ -219,7 +219,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(56px,7vw,92px)]" aria-labelledby="about-faq-title">
+      <section className="bg-white py-[clamp(44px,7vw,92px)]" aria-labelledby="about-faq-title">
         <div className="hl-shell max-w-[900px]">
           <span className="hl-kicker">คำถามเกี่ยวกับ HUGLAO</span>
           <h2 id="about-faq-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold text-[#071d13]">ข้อมูลสำคัญก่อนติดต่อ</h2>

@@ -21,7 +21,7 @@ export default function FaqPage() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQS.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }) }} />
       <PageHero eyebrow="Frequently asked questions" title="คำถามที่พบบ่อย" description="ข้อมูลสำคัญก่อนส่งคำขอราคาและยืนยันการเดินทางกับ HUGLAO" breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "คำถามที่พบบ่อย" }]} />
-      <section className="bg-[#f7f3e9] py-[clamp(64px,8vw,110px)]">
+      <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,110px)]">
         <div className="hl-shell max-w-[900px] divide-y divide-[#d8d0be] border-y border-[#d8d0be]">
           {FAQS.map((faq) => <details key={faq.question} className="py-1"><summary className="cursor-pointer py-5 font-semibold text-[#0a2d20]">{faq.question}</summary><p className="pb-6 leading-8 text-[#59645d]">{faq.answer}</p></details>)}
         </div>

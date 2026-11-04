@@ -126,7 +126,7 @@ export default function CarWithDriverPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(72px,9vw,120px)]">
+      <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,120px)]">
         <div className="hl-shell">
           <div className="max-w-[800px]">
             <span className="hl-kicker">ประเภทรถที่ให้บริการ</span>
@@ -136,18 +136,18 @@ export default function CarWithDriverPage() {
             {VEHICLE_GROUPS.map((vehicle, index) => {
               const media = getMedia(vehicle.mediaIds[0]);
               const priceVehicle = getPriceVehicle(vehicle.slug);
-              return <article id={vehicle.slug} key={vehicle.slug} className="group grid scroll-mt-28 grid-cols-[116px_minmax(0,1fr)] overflow-hidden rounded-[20px] border border-[#d9d0bd] bg-white shadow-[0_10px_30px_rgba(27,49,37,.055)] transition duration-300 hover:border-[#d8af4a] hover:shadow-[0_16px_38px_rgba(27,49,37,.09)] sm:grid-cols-[190px_minmax(0,1fr)] sm:rounded-[24px] lg:grid-cols-[230px_minmax(0,1fr)]">
-                <div className="relative min-h-[196px] border-r border-[#e3dbc9] bg-[linear-gradient(145deg,#faf8f2,#e9e3d7)] sm:min-h-[184px]">
-                  <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 116px, (max-width: 1023px) 190px, 230px" className="object-contain p-2.5 transition duration-300 group-hover:scale-[1.025] sm:p-4" />
+              return <article id={vehicle.slug} key={vehicle.slug} className="group relative grid scroll-mt-28 grid-cols-[44%_minmax(0,1fr)] items-center gap-3 overflow-hidden rounded-[18px] border border-[#d9d0bd] bg-white p-2 shadow-[0_10px_30px_rgba(27,49,37,.055)] transition duration-300 hover:border-[#d8af4a] hover:shadow-[0_16px_38px_rgba(27,49,37,.09)] sm:grid-cols-[190px_minmax(0,1fr)] sm:items-stretch sm:gap-0 sm:rounded-[24px] sm:p-0 lg:grid-cols-[230px_minmax(0,1fr)]">
+                <div className="relative aspect-video overflow-hidden rounded-[12px] bg-[linear-gradient(145deg,#faf8f2,#e9e3d7)] sm:aspect-auto sm:min-h-[184px] sm:rounded-none sm:border-r sm:border-[#e3dbc9]">
+                  <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 44vw, (max-width: 1023px) 190px, 230px" className="object-cover object-[50%_65%] transition duration-300 group-hover:scale-[1.025] sm:object-contain sm:object-center sm:p-4" />
                 </div>
-                <div className="min-w-0 p-3.5 sm:p-5 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-x-8 lg:px-7 lg:py-6">
+                <div className="flex min-w-0 flex-col py-1 pr-1.5 sm:block sm:p-5 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-x-8 lg:px-7 lg:py-6">
                   <div className="min-w-0">
-                    <span className="inline-flex rounded-full bg-[#f1ead9] px-2.5 py-1 text-xs font-bold tracking-[.14em] text-[#8b6518]">0{index + 1}</span>
-                    <h3 className="mt-2 font-serif-th text-lg font-bold leading-snug text-[#0a2d20] sm:text-2xl">{vehicle.name}</h3>
-                    <p className="mt-1.5 text-xs leading-5 text-[#59645d] sm:mt-2 sm:text-sm sm:leading-6">{vehicle.description}</p>
-                    <p className="mt-2.5 inline-flex rounded-full bg-[#eef4ef] px-2.5 py-1 text-xs font-semibold leading-5 text-[#0a2d20]">{priceVehicle ? `ราคา${getStartingPriceLabel(vehicle.slug)}` : "ขอราคาแยกตามรายละเอียดทริป"}</p>
+                    <span className="hidden rounded-full bg-[#f1ead9] px-2.5 py-1 text-xs font-bold tracking-[.14em] text-[#8b6518] sm:inline-flex">0{index + 1}</span>
+                    <h3 className="font-serif-th text-base font-bold leading-snug text-[#0a2d20] sm:mt-2 sm:text-2xl">{vehicle.name}</h3>
+                    <p className="mt-1 line-clamp-1 text-xs leading-5 text-[#59645d] sm:mt-2 sm:line-clamp-none sm:text-sm sm:leading-6">{vehicle.description}</p>
+                    <p className="mt-2 inline-flex rounded-full bg-[#eef4ef] px-2.5 py-0.5 text-[.72rem] font-semibold leading-5 text-[#0a2d20] sm:mt-2.5 sm:py-1 sm:text-xs">{priceVehicle ? `ราคา${getStartingPriceLabel(vehicle.slug)}` : "ขอราคาตามทริป"}</p>
                   </div>
-                  <Link href={getVehicleHref(vehicle.slug)} className="mt-3 inline-flex min-h-9 items-center rounded-full border border-[#d8af4a] px-3.5 text-xs font-bold text-[#80601b] transition hover:bg-[#d8af4a] hover:text-[#071d13] sm:text-sm lg:mt-0 lg:whitespace-nowrap">ดูรายละเอียด →</Link>
+                  <Link href={getVehicleHref(vehicle.slug)} aria-label={`ดูรายละเอียด${vehicle.name}`} className="-mt-7 grid size-7 place-items-center self-end rounded-full border border-[#e6dfcf] text-xs font-bold text-[#80601b] after:absolute after:inset-0 after:content-[''] sm:mt-3 sm:inline-flex sm:size-auto sm:min-h-9 sm:items-center sm:self-auto sm:border-[#d8af4a] sm:px-3.5 sm:text-sm sm:transition sm:hover:bg-[#d8af4a] sm:hover:text-[#071d13] lg:mt-0 lg:whitespace-nowrap"><span aria-hidden className="sm:hidden">→</span><span className="hidden sm:inline">ดูรายละเอียด →</span></Link>
                 </div>
               </article>;
             })}
@@ -156,7 +156,7 @@ export default function CarWithDriverPage() {
         </div>
       </section>
 
-      <section id="pricing" className="bg-[#efe8d9] py-[clamp(72px,9vw,110px)]">
+      <section id="pricing" className="bg-[#efe8d9] py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell">
           <span className="hl-kicker">ตารางราคาปัจจุบัน</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">ราคารถพร้อมคนขับที่ยืนยันแล้ว</h2>
@@ -165,7 +165,7 @@ export default function CarWithDriverPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,110px)]">
+      <section className="bg-white py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell">
           <span className="hl-kicker">เปรียบเทียบประเภทรถ</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight text-[#071d13]">รถเก๋ง SUV รถตู้ หรือมินิบัส เลือกแบบไหนดี</h2>
@@ -202,7 +202,7 @@ export default function CarWithDriverPage() {
         </div>
       </section>
 
-      <section className="bg-[#efe8d9] py-[clamp(56px,7vw,88px)]">
+      <section className="bg-[#efe8d9] py-[clamp(44px,7vw,88px)]">
         <div className="hl-shell">
           <span className="hl-kicker">ขั้นตอนการจอง</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight text-[#071d13]">จองรถพร้อมคนขับใน 5 ขั้นตอน</h2>
@@ -218,7 +218,7 @@ export default function CarWithDriverPage() {
         </div>
       </section>
 
-      <section className="bg-white py-[clamp(72px,9vw,110px)]">
+      <section className="bg-white py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell max-w-[900px]">
           <span className="hl-kicker">คำถามเรื่องรถและการจอง</span>
           <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold leading-tight text-[#071d13]">คำถามก่อนจองรถเที่ยวลาว</h2>
