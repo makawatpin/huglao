@@ -1,40 +1,210 @@
 {
   "redirects": [
-    { "source": "/contact", "destination": "https://www.huglao.com/about/#contact", "permanent": true },
-    { "source": "/contact/", "destination": "https://www.huglao.com/about/#contact", "permanent": true },
-    { "source": "/van-vip", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
-    { "source": "/van-vip/", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
-    { "source": "/quote", "destination": "https://www.huglao.com/car-with-driver/", "permanent": true },
-    { "source": "/quote/", "destination": "https://www.huglao.com/car-with-driver/", "permanent": true },
-    { "source": "/car-with-driver/van-vip", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
-    { "source": "/car-with-driver/van-vip/", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
-    { "source": "/car-with-driver/mpv", "destination": "https://www.huglao.com/car-with-driver/", "permanent": true },
-    { "source": "/car-with-driver/mpv/", "destination": "https://www.huglao.com/car-with-driver/", "permanent": true },
-    { "source": "/car-with-driver/van", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
-    { "source": "/car-with-driver/van/", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
-    { "source": "/articles.html", "destination": "https://www.huglao.com/articles/", "permanent": true },
-    { "source": "/routes", "destination": "https://www.huglao.com/travel-with-us/", "permanent": true },
-    { "source": "/routes/", "destination": "https://www.huglao.com/travel-with-us/", "permanent": true },
-    { "source": "/laos-travel", "destination": "https://www.huglao.com/travel-with-us/", "permanent": true },
-    { "source": "/laos-travel/", "destination": "https://www.huglao.com/travel-with-us/", "permanent": true },
-    { "source": "/vangvieng", "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/", "permanent": true },
-    { "source": "/vangvieng/", "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/", "permanent": true },
-    { "source": "/muangfeuang", "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/", "permanent": true },
-    { "source": "/muangfeuang/", "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/", "permanent": true },
-    { "source": "/van/vientiane", "destination": "https://www.huglao.com/routes/vientiane-city/", "permanent": true },
-    { "source": "/van/vientiane/", "destination": "https://www.huglao.com/routes/vientiane-city/", "permanent": true },
-    { "source": "/van/vangvieng", "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/", "permanent": true },
-    { "source": "/van/vangvieng/", "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/", "permanent": true },
-    { "source": "/van/muangfeuang", "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/", "permanent": true },
-    { "source": "/van/muangfeuang/", "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/", "permanent": true },
-    { "source": "/articles/car-rental-laos", "destination": "https://www.huglao.com/car-with-driver/", "permanent": true },
-    { "source": "/articles/car-rental-laos/", "destination": "https://www.huglao.com/car-with-driver/", "permanent": true },
-    { "source": "/articles/laos-currency-and-payment-guide", "destination": "https://www.huglao.com/articles/", "permanent": true },
-    { "source": "/articles/laos-currency-and-payment-guide/", "destination": "https://www.huglao.com/articles/", "permanent": true },
-    { "source": "/articles/laos-high-speed-train-guide", "destination": "https://www.huglao.com/services/train-ticket/", "permanent": true },
-    { "source": "/articles/laos-high-speed-train-guide/", "destination": "https://www.huglao.com/services/train-ticket/", "permanent": true },
-    { "source": "/articles/van-rental-laos", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
-    { "source": "/articles/van-rental-laos/", "destination": "https://www.huglao.com/van-laos/", "permanent": true },
+    {
+      "source": "/articles/laos-china-train-booking-guide",
+      "destination": "/services/train-ticket/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/laos-china-train-booking-guide/",
+      "destination": "/services/train-ticket/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/temporary-border-pass-xl-parking",
+      "destination": "/services/temporary-border-pass/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/temporary-border-pass-xl-parking/",
+      "destination": "/services/temporary-border-pass/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/xl-parking-nong-khai",
+      "destination": "/services/xl-parking/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/xl-parking-nong-khai/",
+      "destination": "/services/xl-parking/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "https://www.huglao.com/about/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "https://www.huglao.com/about/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/van-vip",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
+    {
+      "source": "/van-vip/",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
+    {
+      "source": "/quote",
+      "destination": "https://www.huglao.com/car-with-driver/",
+      "permanent": true
+    },
+    {
+      "source": "/quote/",
+      "destination": "https://www.huglao.com/car-with-driver/",
+      "permanent": true
+    },
+    {
+      "source": "/car-with-driver/van-vip",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
+    {
+      "source": "/car-with-driver/van-vip/",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
+    {
+      "source": "/car-with-driver/mpv",
+      "destination": "https://www.huglao.com/car-with-driver/",
+      "permanent": true
+    },
+    {
+      "source": "/car-with-driver/mpv/",
+      "destination": "https://www.huglao.com/car-with-driver/",
+      "permanent": true
+    },
+    {
+      "source": "/car-with-driver/van",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
+    {
+      "source": "/car-with-driver/van/",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
+    {
+      "source": "/articles.html",
+      "destination": "https://www.huglao.com/articles/",
+      "permanent": true
+    },
+    {
+      "source": "/routes",
+      "destination": "https://www.huglao.com/travel-with-us/",
+      "permanent": true
+    },
+    {
+      "source": "/routes/",
+      "destination": "https://www.huglao.com/travel-with-us/",
+      "permanent": true
+    },
+    {
+      "source": "/laos-travel",
+      "destination": "https://www.huglao.com/travel-with-us/",
+      "permanent": true
+    },
+    {
+      "source": "/laos-travel/",
+      "destination": "https://www.huglao.com/travel-with-us/",
+      "permanent": true
+    },
+    {
+      "source": "/vangvieng",
+      "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/",
+      "permanent": true
+    },
+    {
+      "source": "/vangvieng/",
+      "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/",
+      "permanent": true
+    },
+    {
+      "source": "/muangfeuang",
+      "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/",
+      "permanent": true
+    },
+    {
+      "source": "/muangfeuang/",
+      "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/",
+      "permanent": true
+    },
+    {
+      "source": "/van/vientiane",
+      "destination": "https://www.huglao.com/routes/vientiane-city/",
+      "permanent": true
+    },
+    {
+      "source": "/van/vientiane/",
+      "destination": "https://www.huglao.com/routes/vientiane-city/",
+      "permanent": true
+    },
+    {
+      "source": "/van/vangvieng",
+      "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/",
+      "permanent": true
+    },
+    {
+      "source": "/van/vangvieng/",
+      "destination": "https://www.huglao.com/routes/vientiane-vang-vieng/",
+      "permanent": true
+    },
+    {
+      "source": "/van/muangfeuang",
+      "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/",
+      "permanent": true
+    },
+    {
+      "source": "/van/muangfeuang/",
+      "destination": "https://www.huglao.com/routes/vientiane-muang-feuang/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/car-rental-laos",
+      "destination": "https://www.huglao.com/car-with-driver/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/car-rental-laos/",
+      "destination": "https://www.huglao.com/car-with-driver/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/laos-currency-and-payment-guide",
+      "destination": "https://www.huglao.com/articles/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/laos-currency-and-payment-guide/",
+      "destination": "https://www.huglao.com/articles/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/laos-high-speed-train-guide",
+      "destination": "https://www.huglao.com/services/train-ticket/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/laos-high-speed-train-guide/",
+      "destination": "https://www.huglao.com/services/train-ticket/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/van-rental-laos",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/van-rental-laos/",
+      "destination": "https://www.huglao.com/van-laos/",
+      "permanent": true
+    },
     {
       "source": "/:path*",
       "has": [

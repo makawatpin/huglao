@@ -1,3 +1,5 @@
+import landmarkCredits from "@/data/landmark-photo-credits.json";
+import { PICKUP_GUIDES, getPickupPhotos } from "@/data/pickup-guides";
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ImageCreditsPage() {
-  const images = Object.values(MEDIA_LIBRARY);
+  const images = [...landmarkCredits.map(p => ({ ...p, title: p.alt, sourceUrl: p.source })), ...Object.values(MEDIA_LIBRARY), ...PICKUP_GUIDES.filter(p => p.photoKey).flatMap(p => getPickupPhotos(p).map(photo => ({ src: photo.src, alt: photo.alt, title: photo.alt, author: photo.author, sourceUrl: photo.source, license: photo.license, licenseUrl: photo.licenseUrl, changes: "ย่อขนาดและแปลง WebP · ภาพบันทึกต่างช่วงเวลา" })))];
 
   return (
     <main>

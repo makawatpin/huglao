@@ -13,8 +13,9 @@ const FOOTER_ROUTE_SLUGS = [
 const FOOTER_ROUTES = FOOTER_ROUTE_SLUGS.flatMap((slug) => ROUTE_GROUPS.filter((route) => route.slug === slug));
 
 const INFORMATION_LINKS = [
+  { href: "/car-with-driver/#city-services", label: "เหมารถตามเมือง" },
   { href: "/travel-with-us", label: "เที่ยวลาวกับ HUGLAO" },
-  { href: "/travel-with-us#pricing", label: "เส้นทางและราคารถ" },
+  { href: "/car-with-driver/#pricing", label: "ราคารถพร้อมคนขับ" },
   { href: "/articles", label: "บทความเที่ยวลาว" },
   { href: "/about", label: "เกี่ยวกับ HUGLAO" },
 ] as const;
@@ -33,23 +34,14 @@ export default function SiteFooter() {
   return (
     <footer className="bg-[#06170f] px-[clamp(20px,5vw,56px)] pb-[calc(2rem+68px+env(safe-area-inset-bottom))] pt-12 text-[#b9c2ba] md:pb-8">
       <div className="mx-auto max-w-[1280px]">
-        <section className="hl-footer-cta flex flex-col gap-6 rounded-[26px] border border-[#d8af4a]/25 bg-[#0a2418] px-6 py-7 sm:px-8 lg:flex-row lg:items-center lg:justify-between" aria-labelledby="footer-cta-title">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[.18em] text-[#d8af4a]">เริ่มวางแผนทริปจากเวียงจันทน์</p>
-            <p id="footer-cta-title" className="mt-2 font-serif-th text-2xl font-bold leading-tight text-white sm:text-3xl">ส่งวันเดินทาง จำนวนคน และปลายทางให้เราช่วยตรวจรถ</p>
-          </div>
-          <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-[#d8af4a] px-6 font-bold text-[#06170f] transition hover:bg-[#efd276]">
-            ขอราคาผ่าน LINE OA
-          </a>
-        </section>
 
         <div className="grid gap-x-8 gap-y-10 py-12 sm:grid-cols-2 xl:grid-cols-[1.25fr_.85fr_1fr_1.25fr]">
           <section aria-labelledby="footer-brand-title">
             <Link href="/" aria-label="HUGLAO หน้าแรก" className="inline-flex">
               <Image src="/assets/huglao-nav-logo.webp" alt="HUGLAO" width={250} height={56} className="h-11 w-auto" />
             </Link>
-            <p id="footer-brand-title" className="sr-only">HUGLAO รถพร้อมคนขับเที่ยวลาว</p>
-            <p className="mt-5 max-w-[31rem] text-sm leading-7 text-[#aeb8b0]">บริษัทตัวกลางจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ สำหรับทริปส่วนตัวที่เริ่มจากเวียงจันทน์ ให้คุณเลือกปลายทาง เวลา และจังหวะการเดินทางเอง</p>
+            <p id="footer-brand-title" className="sr-only">HUGLAO เที่ยวลาวและทริปส่วนตัว</p>
+            <p className="mt-5 max-w-[31rem] text-sm leading-7 text-[#aeb8b0]">วางแผนเที่ยวลาวและการเดินทางส่วนตัวกับ HUGLAO เริ่มจากเวียงจันทน์ วังเวียง หรือหลวงพระบาง เลือกเส้นทาง รถพร้อมคนขับ และบริการเสริมให้เหมาะกับแผนของคุณ</p>
             <p className="mt-4 font-serif-th text-lg font-semibold text-[#e7c875]">{SITE.slogan}</p>
           </section>
 

@@ -14,10 +14,10 @@ export const SITE = {
 
 export const MAIN_NAV = [
   { href: "/", label: "หน้าแรก" },
+  { href: "/travel-with-us", label: "เที่ยวลาวกับเรา" },
   { href: "/car-with-driver", label: "จองรถเที่ยวลาว" },
   { href: "/van-laos", label: "รถตู้เที่ยวลาว" },
-  { href: "/travel-with-us", label: "เที่ยวลาวกับเรา" },
-  { href: "/services", label: "บริการอื่น ๆ" },
+  { href: "/services", label: "บริการเดินทาง" },
   { href: "/articles", label: "บทความ" },
   { href: "/about", label: "เกี่ยวกับและติดต่อ" },
 ] as const;
@@ -61,11 +61,11 @@ export const VEHICLE_GROUPS = [
     slug: "minibus-bus",
     name: "รถมินิบัสและรถบัสเที่ยวลาว",
     shortName: "มินิบัส / รถบัสเที่ยวลาว",
-    description: "สำหรับคณะเดินทาง โดยตรวจจำนวนผู้โดยสารและแผนทริปก่อนเสนอราคา",
-    capacity: "ยืนยันตามขนาดรถ",
+    description: "รถบัส 45 ที่นั่ง เบาะ VIP 28 ที่นั่ง และมินิบัส 20 ที่นั่ง กรุณาจองล่วงหน้าอย่างน้อย 30 วัน",
+    capacity: "รถบัส 45 ที่นั่ง / VIP 28 ที่นั่ง / มินิบัส 20 ที่นั่ง",
     luggage: "ตรวจตามจำนวนผู้โดยสารและสัมภาระ",
     suitableFor: "กลุ่มใหญ่และคณะเดินทาง",
-    mediaIds: ["vehicleMinibus", "vehicleCoachBus"],
+    mediaIds: ["partnerBusRed", "partnerBusBlue", "partnerMinibus"],
     status: "available",
   },
 ] as const;
@@ -74,11 +74,12 @@ export const VEHICLE_GROUPS = [
 export const getVehicleHref = (slug: string) => (slug === "van" ? "/van-laos/" : `/car-with-driver/${slug}/`);
 
 export const SERVICE_GROUPS = [
+  { slug: "laos-domestic-flights", name: "ตั๋วเครื่องบินภายในลาว", summary: "สอบถามเที่ยวบินทุกเส้นทางภายในลาวที่เปิดขาย พร้อมตรวจราคา สัมภาระ และเงื่อนไขก่อนจอง", mediaId: "laoDomesticAircraft", requiredInfo: ["ต้นทาง–ปลายทางและวันเดินทาง", "จำนวนผู้โดยสารและอายุเด็ก", "ชื่อภาษาอังกฤษตามพาสปอร์ต", "สัมภาระและช่องทางติดต่อกลับ"] },
   {
     slug: "train-ticket",
-    name: "จองตั๋วรถไฟ",
-    summary: "ช่วยตรวจข้อมูลการเดินทางและประสานการจองตั๋วรถไฟตามรายละเอียดที่ลูกค้าแจ้ง",
-    mediaId: "laosChinaStation",
+    name: "จองตั๋วรถไฟลาว–จีน",
+    summary: "รับจองทุกเส้นทางที่ระบบเปิดขาย ตรวจเอกสาร ชั้นโดยสาร วิธีรับตั๋ว และเงื่อนไขก่อนยืนยัน",
+    mediaId: "trainBookingBanner",
     requiredInfo: ["ชื่อผู้เดินทางตามเอกสาร", "วันและเส้นทางรถไฟ", "จำนวนผู้เดินทาง", "ข้อมูลเอกสารที่จำเป็น"],
   },
   {
@@ -98,9 +99,16 @@ export const SERVICE_GROUPS = [
   {
     slug: "temporary-border-pass",
     name: "บัตรผ่านแดนชั่วคราว",
-    summary: "ทีมงาน HUGLAO ช่วยตรวจเอกสารและดำเนินการทำบัตรผ่านแดนชั่วคราวให้คนไทยที่จะข้ามไปลาว ค่าบริการ 100 บาทต่อคน เหมารวมทุกอย่าง",
-    mediaId: "pickupThanaleng",
+    summary: "เอกสารที่ต้องเตรียม รายละเอียดค่าบริการ และขั้นตอนให้ HUGLAO ประสานทำบัตรผ่านแดนชั่วคราวกับ XL parking ก่อนข้ามด่านหนองคาย",
+    mediaId: "xlBorderPass",
     requiredInfo: ["สำเนาบัตรประชาชนของผู้เดินทางทุกคน", "วันเดินทางไปและวันกลับ", "ด่านที่จะใช้ข้ามแดน", "จำนวนผู้เดินทางและเบอร์ติดต่อ"],
+  },
+  {
+    slug: "xl-parking",
+    name: "ที่จอดรถหน้าด่านหนองคาย XL parking",
+    summary: "ที่จอดรถหน้าด่านหนองคาย สำหรับฝากรถไปลาวและจอดค้างคืน พร้อมข้อมูลค่าจอดรถและรถรับส่งด่าน ให้ HUGLAO ประสาน XL parking",
+    mediaId: "xlParkingAerial",
+    requiredInfo: ["วันนำรถเข้าจอดและวันรับรถคืน", "จำนวนรถและผู้เดินทาง", "บริการรับส่งที่ต้องการ", "เบอร์ติดต่อ"],
   },
 ] as const;
 

@@ -146,7 +146,7 @@ export default function BorderPassVsPassportArticlePage() {
             <h2 className="mt-5 font-serif-th text-[clamp(2rem,4vw,3.2rem)] font-bold text-[#071d13]">บัตรผ่านแดนชั่วคราว vs พาสปอร์ต</h2>
             <p className="mt-6 text-sm font-semibold text-[#687169] sm:hidden" aria-hidden="true">เลื่อนตารางไปทางขวาเพื่อดูคอลัมน์พาสปอร์ต →</p>
             <div className="mt-3 overflow-x-auto rounded-[24px] border border-[#ddd4c1] sm:mt-7">
-              <table className="w-full min-w-[560px] text-left text-sm leading-7">
+              <table className="hl-data-table w-full  text-left text-sm leading-7">
                 <thead className="bg-[#0a2d20] text-white">
                   <tr>
                     <th scope="col" className="px-5 py-4 font-semibold">หัวข้อ</th>

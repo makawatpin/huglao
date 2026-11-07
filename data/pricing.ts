@@ -108,6 +108,14 @@ export const CHARTER_PRICE_ROWS: PriceRow[] = [
     prices: { sedanSuv: 2000, standardVan: 2500 },
   },
   {
+    id: "vientiane-lao-art-1d",
+    category: "charter",
+    routeSlug: "vientiane-city",
+    routeName: "เที่ยวเวียงจันทน์ รวมลาวอาร์ตมิวเซียม",
+    duration: "1 วัน",
+    prices: { sedanSuv: 2800, standardVan: 3000 },
+  },
+  {
     id: "vientiane-nam-ngum-1d",
     category: "charter",
     routeSlug: "vientiane-nam-ngum",
@@ -230,7 +238,7 @@ export const PRICE_INCLUDES = "ค่าคนขับ ค่าน้ำมั
 export const PRICE_INCLUDES_SHORT = "รวมน้ำมัน ทางด่วน ที่พักและอาหารคนขับ";
 
 /** Bump whenever any published price changes; shown on every price table and used as the page dateModified. */
-export const PRICES_UPDATED_AT = "2026-10-24";
+export const PRICES_UPDATED_AT = "2026-11-07";
 
 export const formatPricesUpdatedAt = (): string =>
   new Date(`${PRICES_UPDATED_AT}T00:00:00+07:00`).toLocaleDateString("th-TH", {

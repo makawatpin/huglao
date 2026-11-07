@@ -1,80 +1,16 @@
+import VehicleAlbums from "@/components/VehicleAlbums";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
+import BusFleetPage, { busFleetMetadata } from "@/components/BusFleetPage";
 import PublishedPriceTable from "@/components/PublishedPriceTable";
 import { ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
-import { getMedia, type MediaId } from "@/data/media";
+import { getMedia } from "@/data/media";
 import { getAggregateOfferSchema, getCurrentPriceRows, getPriceVehicle } from "@/data/pricing";
 
 export const dynamicParams = false;
-
-const SEDAN_ALBUM_IDS = [
-  "vehicleSedan",
-  "huglaoSuvInteriorDashboard",
-  "huglaoSuvFrontSeats",
-  "huglaoSuvRearSeats",
-] as const satisfies readonly MediaId[];
-
-const LEFT_SUV_ALBUM_IDS = [
-  "vehicleSuv",
-  "huglaoSuvVinfastFront",
-  "huglaoSuvVinfastFrontCabin",
-  "huglaoSuvVinfastRearSeats",
-] as const satisfies readonly MediaId[];
-
-function VehicleAlbum({
-  mediaIds,
-  priority = false,
-}: {
-  mediaIds: readonly MediaId[];
-  priority?: boolean;
-}) {
-  const mainMedia = getMedia(mediaIds[0]);
-  const albumMedia = mediaIds.slice(1).map(getMedia);
-
-  return (
-    <figure className="hl-mobile-media-card hl-vehicle-card overflow-hidden rounded-[26px] border border-white/10 bg-[#0a2d20]">
-      <div className="hl-mobile-media relative aspect-[16/9] overflow-hidden sm:aspect-[16/10]">
-        {/* Blurred copy fills the side bars left by portrait photos in the landscape frame. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl brightness-75"
-          style={{ backgroundImage: `url(${mainMedia.src})` }}
-        />
-        <Image
-          src={mainMedia.src}
-          alt={mainMedia.alt}
-          fill
-          priority={priority}
-          sizes="(max-width: 639px) 100vw, 50vw"
-          className="object-contain"
-        />
-      </div>
-      {albumMedia.length > 0 ? (
-        <div className="grid grid-cols-3 gap-2 border-t border-white/10 bg-[#071d13] p-3">
-          {albumMedia.map((media) => (
-            <div key={media.src} className="relative aspect-square overflow-hidden rounded-xl bg-[#0a2d20]">
-              <Image
-                src={media.src}
-                alt={media.alt}
-                fill
-                sizes="(max-width: 639px) 33vw, 16vw"
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      ) : null}
-      <figcaption className="hl-mobile-content px-5 py-4 text-xs leading-6 text-[#afbeb5]">
-        {albumMedia.length > 0 ? `อัลบั้ม ${mainMedia.title} · ${mediaIds.length} ภาพ` : mainMedia.title} ·{" "}
-        <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link>
-      </figcaption>
-    </figure>
-  );
-}
 
 export function generateStaticParams() {
   return VEHICLE_GROUPS.map((vehicle) => ({ slug: vehicle.slug }));
@@ -97,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const vehicle = getVehicle(slug);
   if (!vehicle) return {};
+  if (vehicle.slug === "minibus-bus") return busFleetMetadata;
   const seoTitle = getVehicleSeoTitle(vehicle.slug, vehicle.name);
   const description = `${vehicle.description} เริ่มต้นจากเวียงจันทน์ ติดต่อ HUGLAO เพื่อขอราคาและตรวจรถตามรายละเอียดทริป`;
   return {
@@ -116,6 +53,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const vehicle = getVehicle(slug);
   if (!vehicle) notFound();
+  if (vehicle.slug === "minibus-bus") return <BusFleetPage />;
   const seoTitle = getVehicleSeoTitle(vehicle.slug, vehicle.name);
   const prices = getCurrentPriceRows();
   const priceVehicle = getPriceVehicle(vehicle.slug);
@@ -152,20 +90,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "จองรถพร้อมคนขับ", href: "/car-with-driver" }, { label: vehicle.name }]}
       />
 
-      <section className="bg-[#071d13] pb-[clamp(52px,8vw,88px)]">
-        <div className={`hl-shell grid items-start gap-4 ${vehicle.mediaIds.length > 1 ? "sm:grid-cols-2" : ""}`}>
-          {vehicle.slug === "sedan-suv" ? (
-            <>
-              <VehicleAlbum mediaIds={LEFT_SUV_ALBUM_IDS} priority />
-              <VehicleAlbum mediaIds={SEDAN_ALBUM_IDS} />
-            </>
-          ) : (
-            vehicle.mediaIds.map((mediaId, index) => (
-              <VehicleAlbum key={mediaId} mediaIds={[mediaId]} priority={index === 0} />
-            ))
-          )}
-        </div>
-      </section>
+      
 
       <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
@@ -212,6 +137,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
             <PublishedPriceTable rows={prices} vehicleSlug={vehicle.slug} />
           </div>
         </section>
+
       ) : (
         <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
           <div className="hl-shell text-center">
@@ -225,6 +151,7 @@ export default async function VehiclePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
+      <VehicleAlbums vehicleSlug={vehicle.slug} />
 
       <section className="bg-[#efe8d9] py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell max-w-[900px]">

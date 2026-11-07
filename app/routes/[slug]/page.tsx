@@ -1,3 +1,6 @@
+import { LANDMARKS } from "@/data/vientiane-landmarks";
+import VehicleAlbums from "@/components/VehicleAlbums";
+import CityServiceLinks from "@/components/CityServiceLinks";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -161,6 +164,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
             <PublishedPriceTable rows={prices} showCategoryHeadings={false} />
           </div>
         </section>
+
       ) : (
         <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,96px)]">
           <div className="hl-shell rounded-[26px] border border-[#ddd4c1] bg-white p-6 text-center sm:p-9">
@@ -171,6 +175,7 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
           </div>
         </section>
       )}
+      <VehicleAlbums />
 
       <section className="bg-white py-[clamp(52px,9vw,110px)]">
         <div className="hl-shell">
@@ -206,6 +211,8 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
       <LineCta title={`ขอราคาทริป ${route.name}`} description="ส่งวันเดินทาง จำนวนคน สัมภาระ จุดรับ ระยะเวลา และประเภทรถ เพื่อให้ทีมตรวจข้อเสนอจริง" />
+      {route.slug === "vientiane-city" && <section className="city-section bg-[#f7f3e9]"><div className="hl-shell"><h2 className="city-heading">รู้จักสถานที่ก่อนแวะ</h2><div className="mt-5 grid gap-4 sm:grid-cols-2">{Object.values(LANDMARKS).map(p => <Link key={p.slug} href={`/articles/${p.slug}/`} className="flex items-center gap-4 overflow-hidden rounded-2xl border border-[#ddd4c1] bg-white p-3"><Image src={p.photos[0].src} alt={p.photos[0].alt} width={160} height={120} className="h-28 w-28 shrink-0 rounded-xl object-cover" /><div><h3 className="font-semibold text-[#0a2d20]">{p.name}</h3><p className="mt-2 text-sm leading-6 text-[#59645d]">ประวัติ ภาพ แผนที่ และข้อมูลเข้าชม</p><span className="mt-2 block text-sm font-semibold text-[#86611a]">อ่านก่อนแวะ →</span></div></Link>)}</div></div></section>}
+      <CityServiceLinks />
     </main>
   );
 }

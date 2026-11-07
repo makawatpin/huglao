@@ -1,123 +1,18 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import ChecklistPanel from "@/components/ChecklistPanel";
-import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
-import PublishedPriceTable from "@/components/PublishedPriceTable";
-import { getMedia } from "@/data/media";
-import { getCurrentPriceRows } from "@/data/pricing";
-import { PICKUP_POINTS, ROUTE_GROUPS } from "@/data/site";
+import RouteListCards from "@/components/RouteListCards";
+import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "เที่ยวลาวกับเรา | เส้นทางจากเวียงจันทน์",
-  description: "เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป เลือกเส้นทางจากเวียงจันทน์ เวลา จุดแวะ และจังหวะการเดินทางตามแบบของคุณ",
+  title: "เที่ยวลาวกับเรา | เส้นทางเที่ยวลาวแบบส่วนตัว",
+  description: "เลือกเที่ยวเวียงจันทน์ วังเวียง หรือหลวงพระบางจากเมืองที่เริ่มรับ หรือเลือกเส้นทางระหว่างเมือง วางจุดแวะและจังหวะเดินทางในแบบของคุณกับ HUGLAO",
   alternates: { canonical: "/travel-with-us/" },
 };
 
-const QUOTE_DETAILS = [
-  { title: "จุดหมายและจุดแวะที่สนใจ", hint: "เช่น วังเวียง หรือเที่ยวในเวียงจันทน์" },
-  { title: "วัน เวลา และระยะเวลาบริการ", hint: "วันเดินทาง เวลารับ และจำนวนวันที่ใช้รถ" },
-  { title: "จำนวนผู้โดยสาร เด็ก และผู้สูงอายุ", hint: "ผู้ใหญ่ เด็ก และผู้สูงอายุ อย่างละกี่คน" },
-  { title: "จำนวนและขนาดสัมภาระ", hint: "จำนวนกระเป๋าและขนาดโดยประมาณ" },
-  { title: "ประเภทรถที่สนใจ", hint: "เก๋ง/SUV รถตู้ หรือมินิบัส" },
-  { title: "ที่พักหรือจุดรับ–ส่งในแต่ละวัน", hint: "ชื่อโรงแรมหรือจุดนัดในแต่ละวัน" },
-  { title: "บริการเสริมที่ต้องการ", hint: "ตั๋วรถไฟ ไกด์ท้องถิ่น หรือบัตรผ่านแดน" },
-  { title: "ข้อจำกัดหรือความต้องการพิเศษ", hint: "เช่น เดินไม่สะดวก หรือต้องการคาร์ซีทเด็ก" },
-] as const;
-
-
 export default function TravelWithUsPage() {
-  return (
-    <main>
-      <PageHero
-        eyebrow="Travel your way"
-        title="เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป"
-        description="HUGLAO ช่วยจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ สำหรับทริปส่วนตัวที่เริ่มจากเวียงจันทน์"
-        breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "เที่ยวลาวกับเรา" }]}
-      />
-
-      <section className="bg-[#071d13] pb-8 text-white">
-        <div className="hl-shell">
-          <Link href="/vientiane/#pricing" className="inline-flex rounded-full border border-[#d8af4a]/60 px-5 py-3 text-sm font-bold text-[#efd276] hover:bg-white/10">
-            ดูราคาเช่ารถตู้เวียงจันทน์ก่อนเลือกเส้นทาง →
-          </Link>
-        </div>
-      </section>
-
-      <section id="routes" className="bg-[#0a2d20] py-[clamp(52px,9vw,120px)] text-white">
-        <div className="hl-shell">
-          <div className="max-w-[820px]">
-            <span className="hl-kicker !text-[#efd276]">เส้นทางจากเวียงจันทน์</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2.3rem,5vw,4.4rem)] font-bold leading-tight">เลือกเส้นทาง แล้วปรับจังหวะให้เป็นของคุณ</h2>
-            <p className="mt-5 text-lg leading-8 text-[#c8d3cc]">ทุกเส้นทางเริ่มบริการจากจุดรับฝั่งเวียงจันทน์ แสดงเฉพาะกลุ่มเส้นทางที่ HUGLAO กำหนดไว้ และยังต้องตรวจรถว่าง ระยะเวลา และราคาจริงก่อนยืนยัน</p>
-          </div>
-
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {ROUTE_GROUPS.map((route) => {
-              const media = getMedia(route.mediaId);
-              return (
-                <Link key={route.slug} href={`/routes/${route.slug}`} className="hl-mobile-media-card group overflow-hidden rounded-[26px] border border-white/10 bg-white/[.06] transition hover:-translate-y-1 hover:border-[#d8af4a]/70">
-                  <div className="hl-mobile-media relative aspect-[4/3] overflow-hidden bg-white/5 sm:aspect-[16/10]">
-                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 44vw, (max-width: 1023px) 50vw, 25vw" className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100" />
-                  </div>
-                  <div className="hl-mobile-content p-5">
-                    <h3 className="font-serif-th text-xl font-bold leading-snug">{route.name}</h3>
-                    <p className="mt-2 text-sm leading-6 text-[#c8d3cc] sm:line-clamp-3">{route.summary}</p>
-                    <span className="mt-3 block text-sm font-bold text-[#efd276]">ดูรายละเอียดเส้นทาง →</span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing" className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
-        <div className="hl-shell">
-          <span className="hl-kicker">ราคาปัจจุบัน</span>
-          <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">ราคารถรับ–ส่งและเหมาทริปจากเวียงจันทน์</h2>
-          <p className="mb-8 mt-5 max-w-[820px] leading-8 text-[#59645d]">รวมราคาที่ HUGLAO ยืนยันแล้วสำหรับรถเก๋ง/SUV และรถตู้</p>
-          <PublishedPriceTable rows={getCurrentPriceRows()} />
-        </div>
-      </section>
-
-      <section className="bg-[#f7f3e9] py-[clamp(52px,9vw,110px)]">
-        <div className="hl-shell grid gap-12 lg:grid-cols-[.75fr_1.25fr]">
-          <div>
-            <span className="hl-kicker">เตรียมข้อมูลก่อนขอราคา</span>
-            <h2 className="mt-5 font-serif-th text-[clamp(2.2rem,5vw,4rem)] font-bold leading-tight text-[#071d13]">รายละเอียดครบ ช่วยให้เลือกรถและเสนอราคาได้ตรงขึ้น</h2>
-            <p className="mt-5 leading-8 text-[#59645d]">ไม่จำเป็นต้องมีแผนสมบูรณ์ตั้งแต่ครั้งแรก ส่งข้อมูลที่ทราบก่อน แล้วทีมงานจะช่วยตรวจรายการที่ยังต้องยืนยัน</p>
-          </div>
-          <ChecklistPanel title="ข้อมูลที่ควรส่งมา" items={QUOTE_DETAILS} />
-        </div>
-      </section>
-
-      <section className="bg-white py-[clamp(48px,8vw,100px)]">
-        <div className="hl-shell">
-          <span className="hl-kicker">จุดรับหลักฝั่งเวียงจันทน์</span>
-          <h2 className="mt-5 max-w-[760px] font-serif-th text-[clamp(2.1rem,4.5vw,3.7rem)] font-bold leading-tight text-[#071d13]">เลือกจุดนัดหมายให้ตรงกับการเดินทางของคุณ</h2>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {PICKUP_POINTS.map((point) => {
-              const media = getMedia(point.mediaId);
-              return (
-                <article key={point.slug} className="hl-mobile-media-card overflow-hidden rounded-[24px] border border-[#ddd4c1] bg-white">
-                  <div className="hl-mobile-media relative aspect-[16/10] overflow-hidden bg-[#e8e1d2]">
-                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 44vw, (max-width: 1023px) 50vw, 25vw" className="object-cover" />
-                  </div>
-                  <div className="hl-mobile-content p-5">
-                    <h3 className="font-semibold text-[#0a2d20]">{point.name}</h3>
-                    <p className="mt-2 text-sm leading-6 text-[#59645d]">{point.detail}</p>
-                    <p className="mt-3 text-xs leading-6 text-[#86611a]">ทีมงานจะยืนยันตำแหน่งและเวลานัดพบในข้อเสนอก่อนเดินทาง</p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <LineCta title="พร้อมวางแผนเที่ยวลาวในแบบของคุณ?" description="ส่งวันเดินทาง จำนวนคน สัมภาระ จุดรับ และเส้นทางที่สนใจผ่าน LINE เพื่อให้ทีมงานตรวจรถและจัดทำข้อเสนอ" />
-    </main>
-  );
+  return <main>
+    <PageHero eyebrow="Travel your way" title="เที่ยวลาวด้วยตัวเอง ให้คนท้องถิ่นพาไป" description="เลือกเส้นทางที่อยากไป แวะธรรมชาติ คาเฟ่ หรือสถานที่ที่สนใจ แล้ววางจังหวะการเดินทางให้เหมาะกับวันหยุดของคุณ" breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "เที่ยวลาวกับเรา" }]} />
+    <RouteListCards />
+    <section className="bg-[#f7f3e9] py-10 sm:py-14"><div className="hl-shell"><h2 className="font-serif-th text-2xl font-bold text-[#0a2d20] sm:text-3xl">มีเส้นทางที่อยากไปแล้ว?</h2><p className="mt-3 max-w-2xl text-sm leading-7 text-[#59645d]">บอกจุดหมาย วันเดินทาง และเวลาที่มี ให้ HUGLAO ช่วยเรียบเรียงจุดแวะและแผนเที่ยวในแบบคุณ</p><a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary mt-5">คุยแผนเที่ยวผ่าน LINE</a></div></section>
+  </main>;
 }

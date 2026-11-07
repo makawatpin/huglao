@@ -351,7 +351,7 @@ export default function WatSiMuangArticlePage() {
               วัดสีเมืองอยู่ในย่านใจกลางเมืองเวียงจันทน์ เขตจันทะบุรี เดินทางสะดวกจากโรงแรมในตัวเมือง ให้ค้นหา “Wat Si Muang” หรือ “ວັດສີເມືອງ” ใน Google Maps เวลาด้านล่างเป็นค่าประมาณด้วยรถยนต์ ซึ่งเปลี่ยนตามการจราจรและช่วงเวลา
             </p>
             <div className="mt-6 overflow-x-auto rounded-[22px] border border-[#ddd4c1]">
-              <table className="w-full min-w-[520px] border-collapse text-[.93rem]">
+              <table className="hl-data-table w-full  border-collapse text-[.93rem]">
                 <thead className="bg-[#0a2d20] text-left text-white">
                   <tr><th className="px-4 py-3 font-semibold">ออกจาก</th><th className="px-4 py-3 font-semibold">เวลาโดยประมาณ</th><th className="px-4 py-3 font-semibold">หมายเหตุ</th></tr>
                 </thead>

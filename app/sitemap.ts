@@ -1,3 +1,4 @@
+import { PICKUP_GUIDES } from "@/data/pickup-guides";
 import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/contentful";
 import { LOCAL_ARTICLES } from "@/data/articles";
@@ -6,13 +7,23 @@ import { ROUTE_GROUPS, SERVICE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site"
 export const dynamic = "force-static";
 
 const STATIC_PATHS = [
+  "/articles/lao-art-museum-vientiane",
   "",
   "/vientiane",
+  "/vang-vieng",
+  "/luang-prabang",
   "/car-with-driver",
   "/services",
   "/travel-with-us",
   "/van-laos",
   "/articles",
+  "/articles/farsai-mookata-vientiane",
+  "/articles/patuxai-vientiane",
+  "/articles/pha-that-luang-vientiane",
+  "/articles/pho-zap-vientiane",
+  "/articles/the-mini-cafe-vang-vieng",
+  "/articles/bannam-cafe-vang-vieng",
+  "/articles/tham-chang-cave-vang-vieng",
   "/articles/review-one-day-trip-vientiane-2500",
   "/articles/border-pass-vs-passport-laos",
   "/articles/nam-pien-yorla-pa",
@@ -29,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = (path: string) => `${SITE.website}${path || ""}/`;
 
   return [
+    ...PICKUP_GUIDES.map(p => ({ url: url(`/articles/${p.slug}`) })),
     ...STATIC_PATHS.map((path) => ({
       url: url(path),
     })),
@@ -38,7 +50,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...ROUTE_GROUPS.map((route) => ({
       url: url(`/routes/${route.slug}`),
     })),
-    ...SERVICE_GROUPS.map((service) => ({
+    // These partner pages retain their existing noindex review status after moving.
+    ...SERVICE_GROUPS.filter((service) => service.slug !== "temporary-border-pass" && service.slug !== "xl-parking").map((service) => ({
       url: url(`/services/${service.slug}`),
     })),
     ...articles.filter((article) => !LOCAL_ARTICLES.some((local) => local.slug === article.slug)).map((article) => ({

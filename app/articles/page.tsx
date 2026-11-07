@@ -25,7 +25,7 @@ export default async function ArticlesPage() {
       <section className="bg-[#f7f3e9] py-[clamp(48px,8vw,110px)]">
         <div className="hl-shell">
           <div className="mb-6 max-w-[760px] sm:mb-8">
-            <span className="hl-kicker">บทความล่าสุด</span>
+            <span className="hl-kicker">อ่านก่อนไปลาว</span>
             <h2 className="mt-3 font-serif-th text-[clamp(1.65rem,4vw,3.2rem)] font-bold leading-tight text-[#071d13] sm:mt-5">อ่านก่อนออกเดินทาง</h2>
             <p className="mt-2 text-[.95rem] leading-7 text-[#59645d] sm:mt-4 sm:text-base sm:leading-8">รีวิวทริปจริง เอกสารข้ามแดน และสถานที่น่าเที่ยวในลาว เลือกหมวดที่สนใจได้เลย</p>
           </div>

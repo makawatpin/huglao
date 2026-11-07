@@ -480,3 +480,100 @@
 main:has(> .hl-page-cta:last-child) + footer .hl-footer-cta {
   display: none;
 }
+
+/* Partner fleet albums: preserve the whole photograph, including its watermark. */
+.bus-album-grid { display:grid; gap:18px; margin-top:20px; }
+.bus-album-exterior { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.bus-album-interior { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.bus-album-photo { min-width:0; overflow:hidden; border:1px solid #ddd4c1; border-radius:20px; background:#fff; }
+.bus-album-photo a { display:block; }
+.bus-album-image { position:relative; aspect-ratio:3/2; background:#ece8df; }
+.bus-album-exterior .bus-album-photo:nth-child(n+3) .bus-album-image { aspect-ratio:4/5; }
+.bus-album-interior .bus-album-image { aspect-ratio:3/4; }
+.bus-album-photo figcaption { padding:16px 20px; color:#59645d; font-size:14px; line-height:1.8; }
+.bus-photo-zoom { position:absolute; right:12px; top:12px; border-radius:50%; background:#071d13dc; color:white; width:36px; height:36px; display:grid; place-items:center; transition:transform .2s; }
+.bus-album-photo a:hover .bus-photo-zoom { transform:scale(1.12); }
+.bus-album-photo a:focus-visible { outline:3px solid #b38c31; outline-offset:-3px; }
+.bus-lightbox { position:fixed; inset:0; margin:auto; width:min(1120px,96vw); max-width:none; height:min(900px,94dvh); max-height:94dvh; border:1px solid #ffffff30; border-radius:20px; background:#091b14; color:#fff; padding:16px; }
+.bus-lightbox::backdrop { background:#000d; backdrop-filter:blur(6px); }
+.bus-lightbox[open] { display:flex; flex-direction:column; }
+.bus-lightbox-bar { display:flex; justify-content:space-between; align-items:center; color:#efd276; }
+.bus-lightbox button { cursor:pointer; border:1px solid #ffffff40; border-radius:12px; background:#ffffff10; color:#fff; padding:8px 16px; }
+.bus-lightbox button:focus-visible { outline:3px solid #efd276; outline-offset:2px; }
+.bus-lightbox-stage { display:grid; grid-template-columns:44px minmax(0,1fr) 44px; align-items:center; gap:12px; height:calc(100% - 176px); margin:12px 0; }
+.bus-lightbox-stage button { padding:6px; font-size:32px; }
+.bus-lightbox-stage img { height:100%; width:100%; min-height:0; object-fit:contain; }
+.bus-lightbox [data-caption] { text-align:center; font-size:14px; line-height:1.8; min-height:28px; }
+.bus-lightbox-thumbs { display:flex; justify-content:center; gap:8px; margin-top:10px; }
+.bus-lightbox-thumbs button { padding:3px; width:68px; height:58px; }
+.bus-lightbox-thumbs img { width:100%; height:100%; object-fit:contain; }
+.bus-lightbox-thumbs button[aria-pressed=true] { border-color:#efd276; background:#efd27630; }
+.bus-section-nav { display:flex; flex-wrap:wrap; gap:8px; padding-top:20px; padding-bottom:20px; }
+.bus-section-nav a { display:inline-flex; align-items:center; min-height:44px; border:1px solid #ddd4c1; border-radius:24px; padding:8px 16px; font-size:14px; color:#0a2d20; }
+.bus-fleet-page summary { min-height:44px; }
+.bus-lightbox-stage button { min-height:44px; }
+.bus-lightbox-stage { touch-action:pan-y; flex:1; min-height:0; }
+body.huglao-review-page .bus-fleet-hero { padding-top:40px; }
+@media(max-width:767px) {
+  .bus-album-grid { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:12px; gap:12px; }
+  .bus-album-photo { flex:0 0 86%; scroll-snap-align:start; }
+  .bus-album-exterior .bus-album-image,.bus-album-exterior .bus-album-photo:nth-child(n+3) .bus-album-image { aspect-ratio:4/3; }
+  .bus-album-interior .bus-album-image { aspect-ratio:4/5; }
+  .bus-lightbox { padding:12px; border-radius:14px; }
+  .bus-lightbox-stage { position:relative; display:flex; }
+  .bus-lightbox-stage button { position:absolute; z-index:1; top:50%; transform:translateY(-50%); width:44px; font-size:26px; padding:4px; background:#071d13dd; }
+  .bus-lightbox-stage [data-prev] { left:0; }
+  .bus-lightbox-stage [data-next] { right:0; }
+  .bus-lightbox-thumbs button { flex:1; min-width:0; max-width:68px; }
+}
+/* Shared table presentation for prices, vehicle comparisons and articles. */
+.hl-data-table { width:100%; border-collapse:collapse; text-align:left; color:#34483c; background:#fff; font-size:.875rem; line-height:1.8; }
+.hl-data-table thead { background:#f7f3e9; color:#0a2d20; }
+.hl-data-table thead th { padding:12px 16px; vertical-align:top; font-weight:600; }
+.hl-data-table tbody th,.hl-data-table tbody td { padding:12px 16px; vertical-align:top; border-color:#e8e4db; }
+.hl-data-table tbody th { color:#0a2d20; }
+.hl-data-table:not([data-city-table]) tbody tr { border-bottom:1px solid #e8e4db; background:#fff; }
+.hl-data-table:not([data-city-table]) tbody tr:nth-child(even) { background:#faf8f2; }
+.hl-data-table td.text-right { color:#34483c; font-variant-numeric:tabular-nums; }
+.hl-data-table td.font-bold { color:#0a2d20; }
+.hl-price-table thead { background:#0a2d20; color:#fffaf0; }
+.hl-price-table thead th.text-right { color:#efd276; font-weight:700; }
+.hl-price-table tbody td.text-right { color:#86611a; font-weight:700; }
+@media(max-width:639px) {
+  .hl-data-table { font-size:.75rem; }
+  .hl-data-table thead th { padding:12px 10px; }
+  .hl-data-table tbody th,.hl-data-table tbody td { padding:10px 10px; overflow-wrap:break-word; }
+  .hl-data-table td.text-right,.hl-data-table th.text-right { padding-inline:8px; }
+}
+.city-section { padding-block: clamp(48px, 7vw, 96px); color: #0a2d20; }
+.city-heading { font-family: var(--font-serif-thai), serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; line-height: 1.4; }
+.city-service-page input:focus-visible, .city-service-page select:focus-visible, .city-service-page textarea:focus-visible { outline: 3px solid #d8af4a; outline-offset: 3px; }
+
+/* Shared navigation cards: the whole card is a single touch target. */
+.hl-touch-card { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid #ddd4c1; border-radius:20px; background:#fff; color:#0a2d20; text-decoration:none; transition:border-color .2s, box-shadow .2s; }
+.hl-touch-card:hover { border-color:#b18a2f; box-shadow:0 8px 24px #071d1310; }
+.hl-touch-card:focus-visible { outline:3px solid #b18a2f; outline-offset:4px; }
+.hl-touch-card-media { position:relative; aspect-ratio:16/10; overflow:hidden; background:#f0eadf; }
+.hl-touch-card-content { display:flex; flex:1; flex-direction:column; align-items:flex-start; gap:10px; min-width:0; padding:20px; }
+.hl-touch-card-content h2,.hl-touch-card-content h3 { margin:0; font-family:var(--font-serif-thai),serif; font-size:1.25rem; font-weight:700; line-height:1.5; overflow-wrap:anywhere; }
+.hl-touch-card-content p { margin:0; color:#59645d; font-size:.9rem; line-height:1.8; }
+.hl-touch-card-eyebrow,.hl-touch-card-meta { color:#756340; font-size:.75rem; line-height:1.6; }
+.hl-touch-card-action { margin-top:auto; padding-top:4px; color:#86611a; font-size:.875rem; line-height:1.6; font-weight:700; }
+@media(max-width:639px) {
+  .hl-touch-card { display:grid; grid-template-columns:minmax(88px,32%) minmax(0,1fr); align-items:start; gap:12px; padding:12px; border-radius:16px; }
+  .hl-touch-card-media { aspect-ratio:4/3; border-radius:10px; }
+  .hl-touch-card-content { gap:5px; padding:0; }
+  .hl-touch-card-content h2,.hl-touch-card-content h3 { font-size:1rem; line-height:1.55; }
+  .hl-touch-card-content p { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; font-size:.8125rem; line-height:1.7; }
+  .hl-touch-card-meta { display:none; }
+  .hl-touch-card-action { padding-top:3px; font-size:.8125rem; }
+  .hl-touch-card-text { grid-template-columns:minmax(0,1fr); min-height:104px; padding:16px; }
+  .hl-touch-card.hl-touch-card-tile { display:flex; flex-direction:column; align-items:stretch; gap:0; padding:0; box-shadow:0 4px 16px #071d1308; }
+  .hl-touch-card-tile .hl-touch-card-media { aspect-ratio:2/1; border-radius:0; }
+  .hl-touch-card-tile .hl-touch-card-content { flex:1; gap:4px; padding:9px; }
+  .hl-touch-card-tile .hl-touch-card-content h3 { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; font-size:.8125rem; line-height:1.5; }
+  .hl-touch-card-tile .hl-touch-card-eyebrow { display:none; }
+  .hl-touch-card-tile .hl-touch-card-action { font-size:.75rem; padding-top:2px; }
+  .hl-home > section:not(:first-of-type) { padding-block:32px; }
+  .hl-home .city-heading { font-size:1.65rem; }
+}

@@ -24,10 +24,10 @@ const notoSansThai = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.website),
   title: {
-    default: "รถพร้อมคนขับเที่ยวลาว ทริปส่วนตัว | HUGLAO",
+    default: "เที่ยวลาว ทริปส่วนตัว และบริการเดินทาง | HUGLAO",
     template: "%s | HUGLAO",
   },
-  description: "HUGLAO ช่วยจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์สำหรับทริปส่วนตัวในลาว เลือกเส้นทาง เวลา และจุดแวะได้ตามแผนของคุณ",
+  description: "วางแผนเที่ยวลาวและการเดินทางส่วนตัวกับ HUGLAO เริ่มจากเวียงจันทน์ วังเวียง หรือหลวงพระบาง พร้อมเส้นทางแนะนำ รถพร้อมคนขับ และบริการเสริมตามแผน",
   applicationName: SITE.name,
   keywords: [
     "รถพร้อมคนขับลาว",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "รถพร้อมคนขับเที่ยวลาว ทริปส่วนตัว | HUGLAO",
-    description: "บริการตัวกลางจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ เลือกเส้นทาง เวลา และจุดแวะได้ตามแผนของคุณ",
+    title: "เที่ยวลาว ทริปส่วนตัว และบริการเดินทาง | HUGLAO",
+    description: "วางแผนเที่ยวลาว เลือกเมืองเริ่มต้น เส้นทาง และบริการเดินทางให้เหมาะกับคุณกับ HUGLAO",
     url: SITE.website,
     siteName: SITE.name,
     locale: "th_TH",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "รถพร้อมคนขับเที่ยวลาว ทริปส่วนตัว | HUGLAO",
+    title: "เที่ยวลาว ทริปส่วนตัว และบริการเดินทาง | HUGLAO",
     description: "เลือกเส้นทาง เวลา และจุดแวะได้ตามแผนของคุณ",
     images: ["/og.jpg"],
   },
@@ -80,7 +80,7 @@ const organizationSchema = {
     addressCountry: "TH",
   },
   description:
-    "บริษัทตัวกลางจัดหาและประสานรถพร้อมคนขับจากพาร์ตเนอร์ สำหรับทริปส่วนตัวจากเวียงจันทน์และการเดินทางในลาว",
+    "HUGLAO ให้บริการวางแผนเที่ยวลาวและการเดินทางส่วนตัว มีบริการเริ่มรับในเวียงจันทน์ วังเวียง และหลวงพระบาง พร้อมรถพร้อมคนขับและบริการเสริมตามรายการที่ตกลง",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",

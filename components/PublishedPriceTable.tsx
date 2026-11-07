@@ -1,3 +1,5 @@
+import { formatRouteLabel } from "@/lib/route-label";
+import ServiceTermsList from "@/components/ServiceTermsList";
 import {
   PRICE_TERMS,
   PRICE_INCLUDES,
@@ -21,7 +23,7 @@ type PublishedPriceTableProps = {
 type PriceVehicle = (typeof PRICE_VEHICLES)[number];
 
 const CATEGORY_LABELS: Record<PriceCategory, string> = {
-  transfer: "ตารางรับ–ส่งฉบับรวม",
+  transfer: "รับ–ส่งเที่ยวเดียว",
   charter: "ราคาเหมารถเที่ยว",
 };
 
@@ -57,18 +59,18 @@ function MobilePriceCards({ rows, vehicles, RouteHeading }: { rows: PriceRow[]; 
 
   return (
     <div className="overflow-hidden rounded-[20px] border border-[#d8d0be] bg-white shadow-[0_12px_34px_rgba(7,29,19,.06)] md:hidden">
-      <div className={`grid ${gridClass} items-center gap-x-3 bg-[#0a2d20] px-4 py-2.5 text-xs font-bold text-white`} aria-hidden="true">
+      <div className={`grid ${gridClass} items-center gap-x-3 bg-[#0a2d20] px-4 py-3 text-xs font-bold text-[#fffaf0]`} aria-hidden="true">
         <span>เส้นทาง / ระยะเวลา</span>
         {vehicles.map((vehicle) => <span key={vehicle.key} className="text-right text-[#efd276]">{MOBILE_VEHICLE_LABELS[vehicle.key]}</span>)}
       </div>
 
       <div className="divide-y divide-[#ece6d9]">
         {routeGroups.map((group) => (
-          <div key={group.routeName} className="px-4 py-3 odd:bg-white even:bg-[#fcfaf5]">
-            <RouteHeading className="text-[.92rem] font-semibold leading-6 text-[#0a2d20]">{group.routeName}</RouteHeading>
+          <div key={group.routeName} className="px-4 py-5 odd:bg-white even:bg-[#faf8f2]">
+            <RouteHeading className="text-[.92rem] font-semibold leading-6 text-[#0a2d20]">{formatRouteLabel(group.routeName)}</RouteHeading>
             {group.rows.map((row) => (
               <div key={row.id} className={`mt-1 grid ${gridClass} items-baseline gap-x-3`}>
-                <span className="text-[.8rem] leading-5 text-[#687169]">{row.duration}</span>
+                <span className="text-[.8rem] leading-5 text-[#687169]">{row.category === "charter" ? row.duration : ""}</span>
                 {vehicles.map((vehicle) => (
                   <span key={vehicle.key} aria-label={`${vehicle.name} ${formatPrice(row.prices[vehicle.key])}`} className="whitespace-nowrap text-right text-sm font-bold tabular-nums text-[#86611a]">
                     {isSingleVehicle ? formatPrice(row.prices[vehicle.key]) : formatMobilePrice(row.prices[vehicle.key])}
@@ -86,19 +88,18 @@ function MobilePriceCards({ rows, vehicles, RouteHeading }: { rows: PriceRow[]; 
 function DesktopPriceTable({ rows, vehicles }: { rows: PriceRow[]; vehicles: readonly PriceVehicle[] }) {
   return (
     <div className="hidden overflow-x-auto rounded-[24px] border border-[#d8d0be] bg-white shadow-[0_16px_45px_rgba(7,29,19,.06)] md:block">
-      <table className="w-full min-w-[640px] border-collapse text-left">
+      <table className="hl-data-table hl-price-table w-full min-w-[640px] border-collapse text-left">
         <thead className="bg-[#0a2d20] text-white">
           <tr>
-            <th className="p-4 lg:p-5">เส้นทาง</th>
-            <th className="p-4 lg:p-5">ระยะเวลา</th>
+            <th colSpan={2} className="p-4 lg:p-5">เส้นทาง / ระยะเวลา</th>
             {vehicles.map((vehicle) => <th key={vehicle.key} className="p-4 lg:p-5 text-right">{vehicle.name}</th>)}
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
             <tr key={row.id} className="border-b border-[#ece6d9] odd:bg-white even:bg-[#fbf9f3] last:border-0">
-              <td className="p-4 lg:p-5 font-semibold text-[#0a2d20]">{row.routeName}</td>
-              <td className="whitespace-nowrap p-4 lg:p-5 text-[#59645d]">{row.duration}</td>
+              <td colSpan={row.category === "transfer" ? 2 : 1} className="p-4 lg:p-5 font-semibold text-[#0a2d20]">{formatRouteLabel(row.routeName)}</td>
+              {row.category === "charter" && <td className="whitespace-nowrap p-4 lg:p-5 text-[#59645d]">{row.duration}</td>}
               {vehicles.map((vehicle) => (
                 <td key={vehicle.key} className="p-4 lg:p-5 text-right"><PriceValue row={row} vehicleKey={vehicle.key} /></td>
               ))}
@@ -175,17 +176,7 @@ export default function PublishedPriceTable({
           <span className="h-2.5 w-2.5 rounded-full bg-[#d8af4a]" />
           <h3 id="price-terms-title" className="font-serif-th text-[1.55rem] font-bold text-[#0a2d20]">ราคาและเงื่อนไขการใช้รถ</h3>
         </div>
-        <ol className="overflow-hidden rounded-[20px] border border-[#d8d0be] bg-white shadow-[0_12px_32px_rgba(7,29,19,.05)] divide-y divide-[#e8e1d3]">
-          {PRICE_TERMS.map((term, index) => (
-            <li key={term.title} className="flex items-start gap-4 px-4 py-4 odd:bg-white even:bg-[#fcfaf5] sm:items-center sm:px-5">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0a2d20] text-xs font-bold text-[#efd276]">{index + 1}</span>
-              <div className="min-w-0 flex-1 sm:grid sm:grid-cols-[170px_minmax(0,1fr)] sm:items-center sm:gap-5">
-                <h4 className="text-sm font-bold text-[#0a2d20]">{term.title}</h4>
-                <p className="mt-1 text-sm leading-6 text-[#59645d] sm:mt-0">{term.detail}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <ServiceTermsList items={PRICE_TERMS.map(term => [term.title, term.detail] as const)} />
       </section>
 
     </div>

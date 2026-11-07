@@ -1,25 +1,25 @@
+import JourneyCards from "@/components/JourneyCards";
+import CityPriceTables from "@/components/CityPriceTables";
+import ServicePriceOverview from "@/components/ServicePriceOverview";
+import CityServiceLinks from "@/components/CityServiceLinks";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import LineCta from "@/components/LineCta";
 import PageHero from "@/components/PageHero";
-import PublishedPriceTable from "@/components/PublishedPriceTable";
 import VanAlbum from "@/components/VanAlbum";
 import { getMedia, type MediaId } from "@/data/media";
 import {
   PRICES_UPDATED_AT,
-  PRICE_INCLUDES,
   PRICE_INCLUDES_SHORT,
   PRICE_TERMS,
   THAI_SIDE_PICKUP_FEES,
   formatPrice,
-  formatPricesUpdatedAt,
   getAggregateOfferSchema,
   getCurrentPriceRows,
   getPriceRow,
   getStartingPrice,
 } from "@/data/pricing";
-import { BOOKING_STEPS, ROUTE_GROUPS, SITE, VEHICLE_GROUPS } from "@/data/site";
+import { BOOKING_STEPS, SITE, VEHICLE_GROUPS } from "@/data/site";
 
 const PAGE_PATH = "/van-laos";
 const VAN_SEATS = VEHICLE_GROUPS.find((vehicle) => vehicle.slug === "van")!.capacity;
@@ -31,13 +31,6 @@ const TITLE = `เหมารถตู้เที่ยวลาว พร้�
 const DESCRIPTION = `เหมารถตู้เที่ยวลาวพร้อมคนขับ ${VAN_SEATS} รับ–ส่งเริ่ม ${VAN_FROM} บาท เที่ยวเวียงจันทน์ 1 วัน ${van("vientiane-city-1d")} ไปวังเวียง เมืองเฟือง น้ำงึม รับจากด่านหนองคายหรืออุดรธานีได้ ราคา${PRICE_INCLUDES_SHORT}`;
 
 /** Plain-text price summary near the top, so the key numbers can be read (and quoted) without the full table. */
-const PRICE_SUMMARY = [
-  { label: "ด่านท่านาแล้ง / สนามบินวัตไต → ตัวเมือง", price: van("thanaleng-city") },
-  { label: "เที่ยวในเวียงจันทน์ 1 วัน", price: van("vientiane-city-1d") },
-  { label: "เวียงจันทน์–วังเวียง ไป–กลับ 1 วัน", price: van("vientiane-vang-vieng-1d") },
-  { label: "เวียงจันทน์–เมืองเฟือง ไป–กลับ 1 วัน", price: van("vientiane-muang-feuang-1d") },
-  { label: "เวียงจันทน์–วังเวียง 2 วัน 1 คืน", price: van("vientiane-vang-vieng-2d1n") },
-] as const;
 
 const term = (title: (typeof PRICE_TERMS)[number]["title"]) => PRICE_TERMS.find((priceTerm) => priceTerm.title === title)!.detail;
 const SERVICE_HOURS = `เวลาบริการ${term("เวลาบริการ")} เกินเวลา ${term("เกินเวลาบริการ")}`;
@@ -57,18 +50,7 @@ export const metadata: Metadata = {
   },
 };
 
-const FEATURED_ROUTE_SLUGS = [
-  "vientiane-city",
-  "vientiane-nam-ngum",
-  "vientiane-vang-vieng",
-  "vientiane-muang-feuang",
-] as const;
 
-const VAN_PREVIEW_IDS = [
-  "huglaoHiaceSideDoorOpen",
-  "huglaoHiaceAisle",
-  "huglaoHiaceTailgateOpen",
-] as const;
 
 const VAN_ALBUM_GROUPS = [
   {
@@ -104,7 +86,6 @@ const VAN_ALBUM_GROUPS = [
   },
 ] as const satisfies readonly { title: string; items: readonly { mediaId: MediaId; caption: string }[] }[];
 
-const VAN_ALBUM_COUNT = VAN_ALBUM_GROUPS.reduce((total, group) => total + group.items.length, 0);
 
 const VAN_FAQS = [
   {
@@ -134,10 +115,8 @@ const VAN_FAQS = [
 ] as const;
 
 export default function VanLaosPage() {
-  const routes = ROUTE_GROUPS.filter((route) =>
-    FEATURED_ROUTE_SLUGS.includes(route.slug as (typeof FEATURED_ROUTE_SLUGS)[number]),
-  );
-  const vanMedia = getMedia("huglaoHiaceFrontQuarter");
+
+
 
   return (
     <main>
@@ -179,26 +158,15 @@ export default function VanLaosPage() {
       <PageHero
         eyebrow="Van travel in Laos"
         title="รถตู้เที่ยวลาวพร้อมคนขับ"
-        description={`รถตู้ ${VAN_SEATS} พร้อมคนขับ เริ่มต้นจากเวียงจันทน์ รับที่ด่านท่านาแล้ง สนามบินวัตไต สถานีรถไฟ หรือรับจากฝั่งไทยที่หนองคายและอุดรธานี`}
+        description="รถตู้พร้อมคนขับ มีบริการเริ่มรับในเวียงจันทน์ วังเวียง และหลวงพระบาง ดูราคาแยกเมืองและขอบเขตบริการก่อนจอง"
         breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "รถตู้เที่ยวลาว" }]}
       />
 
       <section className="bg-[#071d13] pb-10 text-white" aria-labelledby="van-price-summary-title">
         <div className="hl-shell">
-          <div className="max-w-[820px] rounded-[22px] border border-[#d8af4a]/35 bg-white/[.055] p-5 sm:rounded-[26px] sm:p-7">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h2 id="van-price-summary-title" className="font-serif-th text-xl font-bold text-[#fffaf0] sm:text-2xl">สรุปราคารถตู้เที่ยวลาว</h2>
-              <p className="text-xs text-[#afbeb5]">ราคาต่อคัน · อัปเดต <time dateTime={PRICES_UPDATED_AT}>{formatPricesUpdatedAt()}</time></p>
-            </div>
-            <dl className="mt-4 divide-y divide-white/10 border-y border-white/10">
-              {PRICE_SUMMARY.map((item) => (
-                <div key={item.label} className="flex items-baseline justify-between gap-4 py-3">
-                  <dt className="text-sm leading-6 text-[#d5ddd7] sm:text-base">{item.label}</dt>
-                  <dd className="shrink-0 font-bold tabular-nums text-[#efd276] sm:text-lg">{item.price}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-4 text-sm font-semibold leading-6 text-[#efd276]">✓ ราคารวม{PRICE_INCLUDES}แล้ว</p>
+          <div className="max-w-[820px]">
+            <ServicePriceOverview vanOnly title="สรุปราคารถตู้เที่ยวลาว แยกเมือง" />
+            <p className="mt-5 text-xs leading-6 text-[#afbeb5]">ข้อมูลต่อไปนี้สำหรับบริการเริ่มรับจากเวียงจันทน์ ส่วนอีกสองเมืองดูเงื่อนไขตามรายการข้างต้น</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {PRICE_FACTS.map((fact) => (
                 <li key={fact} className="rounded-full bg-white/[.08] px-3 py-1.5 text-xs font-semibold leading-5 text-[#e4ebe6]">{fact}</li>
@@ -216,46 +184,16 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-[#071d13] pb-[clamp(56px,8vw,92px)] text-white" aria-labelledby="van-options-title">
-        <div className="hl-shell">
-          <article className="grid overflow-hidden rounded-[24px] border border-white/10 bg-white/[.055] sm:rounded-[28px] md:grid-cols-[minmax(280px,.85fr)_minmax(0,1fr)]">
-            <div className="bg-[#071d13] p-3 sm:p-4" aria-label="อัลบั้มรถตู้ คนขับ และทีมงาน HUGLAO">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-[#eee9de] sm:rounded-[22px]">
-                <Image src={vanMedia.src} alt={vanMedia.alt} fill priority sizes="(max-width: 767px) 100vw, 45vw" className="object-cover" />
-              </div>
-              <div className="mt-2 grid grid-cols-3 gap-2 sm:mt-3 sm:gap-3">
-                {VAN_PREVIEW_IDS.map((mediaId) => {
-                  const media = getMedia(mediaId);
-                  return (
-                    <figure key={mediaId} className="overflow-hidden rounded-[12px] border border-white/10 bg-[#eee9de] sm:rounded-[16px]">
-                      <div className="relative aspect-square">
-                        <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 33vw, 15vw" className="object-cover" />
-                      </div>
-                    </figure>
-                  );
-                })}
-              </div>
-              <p className="mt-3 px-1 text-xs leading-5 text-[#afbeb5]">ภาพรถตู้จริงของทีม HUGLAO · <Link href="#van-album" className="font-semibold text-[#efd276]">ดูอัลบั้มทั้งหมด {VAN_ALBUM_COUNT} ภาพ</Link> · <Link href="/image-credits" className="font-semibold text-[#efd276]">ดูเครดิตภาพ</Link></p>
-            </div>
-            <div className="flex flex-col justify-center p-6 sm:p-9">
-              <h2 id="van-options-title" className="font-serif-th text-3xl font-bold">รถตู้เที่ยวลาว</h2>
-              <p className="mt-4 leading-8 text-[#c8d3cc]">เหมาะสำหรับครอบครัว กลุ่มเพื่อน หรือคณะที่ต้องการเดินทางร่วมกัน ทีมงานจะตรวจจำนวนผู้โดยสาร สัมภาระ ผังที่นั่ง และรถที่ว่างก่อนเสนอราคา</p>
-              <Link href="#pricing" className="mt-6 inline-flex w-fit rounded-full border border-[#d8af4a] px-5 py-2.5 text-sm font-bold text-[#efd276] transition hover:bg-[#d8af4a] hover:text-[#071d13]">
-                ดูราคารถตู้เที่ยวลาว →
-              </Link>
-            </div>
-          </article>
-        </div>
-      </section>
+      
 
       <section className="bg-[#f7f3e9] py-[clamp(44px,8vw,104px)]" id="pricing" aria-labelledby="van-pricing-title">
         <div className="hl-shell">
           <span className="hl-kicker">ราคารถตู้เที่ยวลาว</span>
           <h2 id="van-pricing-title" className="mt-4 max-w-[880px] font-serif-th text-[clamp(2rem,5vw,3.8rem)] font-bold leading-tight text-[#071d13]">
-            ราคารถตู้เที่ยวลาว แสดงแยกตามเส้นทาง
+            ราคาราคารถตู้เที่ยวลาว แยกเมืองและเส้นทาง
           </h2>
           <p className="mb-8 mt-4 max-w-[820px] leading-8 text-[#59645d]">ตารางนี้แสดงราคารถตู้เที่ยวลาวตามเส้นทางที่ยืนยันแล้ว รุ่นรถ ผังที่นั่ง และพื้นที่สัมภาระจริงจะตรวจตามรถที่ว่างในวันเดินทาง</p>
-          <PublishedPriceTable rows={getCurrentPriceRows()} vehicleSlug="van" />
+          <CityPriceTables vanOnly />
         </div>
       </section>
 
@@ -264,8 +202,7 @@ export default function VanLaosPage() {
           <span className="hl-kicker">อัลบั้มรถตู้</span>
           <h2 id="van-album-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">ภาพรถตู้จริงของทีม HUGLAO</h2>
           <p className="mt-4 max-w-[820px] leading-8 text-[#59645d]">ดูภายนอก ห้องโดยสาร และพื้นที่สัมภาระของรถจริง รุ่นรถและผังที่นั่งจริงทีมงานจะแจ้งตามรถที่ว่างในวันเดินทาง</p>
-          <VanAlbum
-            groups={VAN_ALBUM_GROUPS.map((group) => ({
+          <VanAlbum imageFit="contain" groups={VAN_ALBUM_GROUPS.map((group) => ({
               title: group.title,
               items: group.items.map(({ mediaId, caption }) => {
                 const media = getMedia(mediaId);
@@ -276,28 +213,7 @@ export default function VanLaosPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f3e9] py-[clamp(44px,7vw,92px)]" aria-labelledby="van-routes-title">
-        <div className="hl-shell">
-          <span className="hl-kicker">เส้นทางยอดนิยม</span>
-          <h2 id="van-routes-title" className="mt-4 font-serif-th text-[clamp(2rem,4vw,3.3rem)] font-bold text-[#071d13]">เลือกรถตู้ แล้ววางเส้นทางตามแผนของคุณ</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {routes.map((route) => {
-              const media = getMedia(route.mediaId);
-              return (
-                <Link key={route.slug} href={`/routes/${route.slug}`} className="group overflow-hidden rounded-[20px] border border-[#ddd4c1] bg-[#f9f6ef] transition hover:-translate-y-1 hover:border-[#d8af4a]">
-                  <div className="relative aspect-[16/9] overflow-hidden">
-                    <Image src={media.src} alt={media.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw" className="object-cover transition duration-300 group-hover:scale-[1.03]" />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-semibold leading-6 text-[#0a2d20]">{route.name}</h3>
-                    <span className="mt-3 block text-sm font-bold text-[#86611a]">ดูเส้นทาง →</span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <JourneyCards id="van-routes" title="เลือกเส้นทาง แล้วปรับจังหวะให้เป็นของคุณ" />
 
       <section className="bg-[#efe8d9] py-[clamp(44px,7vw,88px)]" aria-labelledby="van-booking-title">
         <div className="hl-shell">
@@ -336,6 +252,7 @@ export default function VanLaosPage() {
         title="กำลังมองหารถตู้เที่ยวลาวสำหรับทริปของคุณ?"
         description="ส่งวันเดินทาง จำนวนคน สัมภาระ จุดรับ และเส้นทางผ่าน LINE เพื่อให้ทีมตรวจรถตู้เที่ยวลาวที่เหมาะกับทริป"
       />
+      <CityServiceLinks />
     </main>
   );
 }

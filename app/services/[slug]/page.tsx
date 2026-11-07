@@ -12,7 +12,7 @@ import { formatPrice } from "@/data/pricing";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SERVICE_GROUPS.map((service) => ({ slug: service.slug }));
+  return SERVICE_GROUPS.filter((service) => service.slug !== "temporary-border-pass" && service.slug !== "xl-parking" && service.slug !== "laos-domestic-flights" && service.slug !== "train-ticket").map((service) => ({ slug: service.slug }));
 }
 
 function getService(slug: string) {
@@ -79,7 +79,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         eyebrow="Additional service"
         title={seo?.heading ?? service.name}
         description={`${service.summary} บริการนี้ต้องตรวจความพร้อมและยืนยันรายละเอียดก่อนทุกครั้ง`}
-        breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บริการอื่น ๆ", href: "/services" }, { label: service.name }]}
+        breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บริการเดินทาง", href: "/services" }, { label: service.name }]}
       />
       <section className="bg-[#071d13] pb-[clamp(52px,8vw,88px)]">
         <div className="hl-shell">

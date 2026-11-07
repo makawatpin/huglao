@@ -78,7 +78,7 @@ export default function BottomTabBar() {
       <a
         href={SITE.lineUrl}
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         className="flex-1 flex flex-col items-center gap-[3px] pt-2 min-h-[44px] text-xs no-underline"
         style={{ color: "#8a9c90" }}
       >
