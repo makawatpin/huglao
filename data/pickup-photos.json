@@ -181,5 +181,16 @@
       "date": "2010-05-23",
       "original": "Luang-Prabang Laos Lao-Airlines-at-Luang-Prabang-Airport-01.jpg"
     }
+  ],
+  "vangvieng": [
+    {
+      "src": "/images/pickup-guides/vang-vieng-station.webp",
+      "source": "https://www.huglao.com/articles/vang-vieng-railway-station/",
+      "author": "HUGLAO",
+      "license": "ภาพจากเจ้าของเว็บไซต์ HUGLAO",
+      "licenseUrl": "https://www.huglao.com/terms/",
+      "date": "",
+      "original": "Vang Vieng Railway Station"
+    }
   ]
 }

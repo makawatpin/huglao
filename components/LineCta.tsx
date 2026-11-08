@@ -17,7 +17,7 @@ export default function LineCta({
           <h2 className="mt-5 font-serif-th text-[clamp(2.1rem,5vw,4rem)] font-bold leading-tight">{title}</h2>
           <p className="mt-5 max-w-[700px] text-lg leading-8 text-[#c8d3cc]">{description}</p>
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#aebcb3]">
-            <span>เริ่มจากเวียงจันทน์</span><span>•</span><span>ตรวจรถก่อนยืนยัน</span><span>•</span><span>เลือกแผนเอง</span>
+            <span>เลือกเมืองเริ่มเดินทาง</span><span>•</span><span>ตรวจรถก่อนยืนยัน</span><span>•</span><span>เลือกแผนเอง</span>
           </div>
         </div>
         <a href={SITE.lineUrl} target="_blank" rel="noopener noreferrer" className="hl-button-primary min-h-14 px-8 lg:min-w-[220px]">ส่งรายละเอียดผ่าน LINE</a>

@@ -20,7 +20,7 @@ export default function CityServicePage({ slug }: { slug: CitySlug }) {
   const local = slug !== "vientiane";
   const includes = local ? LOCAL_VAN_TERMS.includes : `รถ และ${PRICE_INCLUDES}`;
   const overtime = local ? `${LOCAL_VAN_TERMS.overtime} บาท/ชั่วโมง` : PRICE_TERMS.find(t => t.title === "เกินเวลาบริการ")!.detail;
-  const destination = slug === "vientiane" ? getMedia("vientianePatuxai") : slug === "vang-vieng" ? getMedia("vangVieng") : null;
+  const destination = slug === "vientiane" ? getMedia("vientianePatuxai") : slug === "vang-vieng" ? getMedia("vangViengRiver") : null;
   const faqs = [
     ...(!local ? [{ q: "เหมารถเที่ยวเวียงจันทร์มีรถประเภทไหนให้เลือก?", a: "มีรถตู้สำหรับครอบครัวและกลุ่มเพื่อน รถเก๋ง/SUV สำหรับกลุ่มเล็ก และมินิบัส/รถบัสสำหรับคณะใหญ่ เลือกตามจำนวนคน สัมภาระ และเส้นทาง รถตู้และเก๋ง/SUV มีตารางราคา ส่วนมินิบัส/รถบัสตรวจรถและราคาตามแผนก่อนยืนยัน" }] : []),
     { q: "เลือกแผนเที่ยวเองได้ไหม?", a: "ได้ เป็นรถส่วนตัวพร้อมคนขับ ลูกค้าเลือกจุดแวะและเส้นทางตามเวลา โดยกำหนดรายละเอียดก่อนจอง ไม่ใช่กรุ๊ปทัวร์และไม่มีบริการขับเอง" },

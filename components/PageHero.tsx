@@ -37,7 +37,7 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs, sho
             <p className="mt-6 max-w-[760px] text-[clamp(1rem,2vw,1.2rem)] leading-8 text-[#c8d3cc]">{description}</p>
           </div>
           {showServiceFacts && <dl className="hidden rounded-[24px] border border-white/10 bg-white/[.055] p-6 text-sm backdrop-blur-sm lg:block">
-            <div className="border-b border-white/10 pb-4"><dt className="text-[#91a198]">จุดเริ่มต้นบริการ</dt><dd className="mt-1 font-semibold text-white">เวียงจันทน์</dd></div>
+            <div className="border-b border-white/10 pb-4"><dt className="text-[#91a198]">จุดเริ่มต้นบริการ</dt><dd className="mt-1 font-semibold text-white">เลือกเมืองตามแผนเดินทาง</dd></div>
             <div className="border-b border-white/10 py-4"><dt className="text-[#91a198]">รูปแบบการเดินทาง</dt><dd className="mt-1 font-semibold text-white">ทริปส่วนตัวตามแผนคุณ</dd></div>
             <div className="pt-4"><dt className="text-[#91a198]">การยืนยัน</dt><dd className="mt-1 font-semibold text-[#efd276]">ตรวจรถและราคาก่อนจอง</dd></div>
           </dl>}

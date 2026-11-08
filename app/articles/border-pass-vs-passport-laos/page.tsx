@@ -61,7 +61,7 @@ const FAQS = [
   },
   {
     q: "ทำบัตรผ่านแดนใช้เวลานานไหม?",
-    a: "ทำได้ภายในวันเดินทางและรับบัตรที่ด่านได้เลย หากใช้บริการ HUGLAO ค่าบริการ 100 บาทต่อคน เหมารวมทุกอย่าง",
+    a: "ทำได้ภายในวันเดินทางและรับบัตรที่ด่านได้เลย หากใช้บริการ HUGLAO ค่าบริการทำบัตรผ่านแดน 100 บาทต่อคน",
   },
   {
     q: "เด็กที่ยังไม่มีบัตรประชาชนใช้บัตรผ่านแดนได้ไหม?",
@@ -217,7 +217,7 @@ export default function BorderPassVsPassportArticlePage() {
 
         <aside className="h-fit rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6 lg:sticky lg:top-28">
           <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">ให้ HUGLAO ช่วย</span>
-          <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• ทำบัตรผ่านแดน 100 บาท/คน เหมารวมทุกอย่าง</li><li>• รถรับที่ด่านท่านาแล้งฝั่งลาว</li><li>• เหมารถเที่ยวในนครหลวงเวียงจันทน์</li></ul>
+          <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• ค่าบริการทำบัตรผ่านแดน 100 บาท/คน</li><li>• รถรับที่ด่านท่านาแล้งฝั่งลาว</li><li>• เหมารถเที่ยวในนครหลวงเวียงจันทน์</li></ul>
           <Link href="/services/temporary-border-pass" className="mt-4 block py-2 font-bold text-[#86611a] hover:text-[#0a2d20]">บริการทำบัตรผ่านแดน →</Link>
           <Link href="/routes/vientiane-city" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">เส้นทางเที่ยวในนครหลวงเวียงจันทน์ →</Link>
           <Link href="/vientiane/" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์ รับที่ด่านท่านาแล้ง →</Link>

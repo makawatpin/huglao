@@ -81,3 +81,15 @@ Reports:
 
 ## Release follow-up — 8 November 2026
 Authorized release includes restoring border-pass indexing and sitemap membership, adding permanent redirects from /luangprabang[/] and /van/luangprabang[/] to /luang-prabang/, and publishing the preceding audit fixes. See the release record for deployment and Git commit verification. Earlier observations above describe the pre-release state.
+
+## Search Console submissions completed — 8 November 2026
+- Resubmitted https://www.huglao.com/sitemap.xml; Google displayed “Sitemap submitted successfully”. Submission date changed to 8 November 2026; last-read date and discovered-page totals had not yet refreshed at observation.
+- Border-pass LIVE TEST at 18:34 displayed “URL is available to Google / Page can be indexed”, confirming the deployed noindex fix.
+- Google displayed “Indexing requested” and confirmed addition to the priority crawl queue for all five URLs:
+  1. https://www.huglao.com/services/temporary-border-pass/
+  2. https://www.huglao.com/luang-prabang/
+  3. https://www.huglao.com/articles/wat-sisaket-vientiane/
+  4. https://www.huglao.com/articles/nem-nuong-sihom-vientiane/
+  5. https://www.huglao.com/articles/pho-soumuntha-vientiane/
+- Before submission, Luang Prabang and Nem Nuong Sihom were discovered but not indexed. Wat Sisaket was unknown to Google. Soumuntha showed discovered/not indexed.
+- Request acceptance is not confirmation of indexing or ranking. No repeat requests for the same URL were sent.
