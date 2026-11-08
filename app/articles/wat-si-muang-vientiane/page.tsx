@@ -9,7 +9,7 @@ import { SITE } from "@/data/site";
 
 const SLUG = "wat-si-muang-vientiane";
 const ARTICLE_PATH = `/articles/${SLUG}`;
-const TITLE = "วัดสีเมือง (ວັດສີເມືອງ) เวียงจันทน์ รีวิว ไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง";
+const TITLE = "วัดสีเมือง (Wat Si Muang · ວັດສີເມືອງ) เวียงจันทน์ รีวิว ไหว้ขอพรเรื่องงาน หลักเมือง และวิธีเดินทาง";
 const DESCRIPTION =
   "รีวิวไหว้วัดสีเมือง เวียงจันทน์ จากประสบการณ์ทีม HUGLAO ประวัติหลักเมือง ความเชื่อเรื่องขอพรให้การงานราบรื่น ขั้นตอนไหว้ เซียมซี มารยาท และวิธีเดินทางพร้อมรถคนขับ";
 const COVER = "/assets/huglao-wat-si-muang-cover.webp";
@@ -36,7 +36,7 @@ const TOC = [
   { id: "summary", label: "สรุปก่อนไป" },
   { id: "history", label: "ประวัติวัดสีเมือง" },
   { id: "belief", label: "ความเชื่อ: ขอพรเรื่องงาน" },
-  { id: "walkthrough", label: "เดินชมวัดตามภาพ" },
+  { id: "walkthrough", label: "เดินชมภายในวัด" },
   { id: "how-to-pray", label: "ขั้นตอนไหว้และเซียมซี" },
   { id: "etiquette", label: "มารยาทที่ควรรู้" },
   { id: "getting-there", label: "ที่ตั้งและการเดินทาง" },
@@ -278,7 +278,7 @@ export default function WatSiMuangArticlePage() {
           </section>
 
           <section id="walkthrough" className="mt-14 scroll-mt-28">
-            <SectionHead kicker="เดินชมวัดตามภาพ" title="ภายในวัด: แท่นบูชา หลักเมือง และซุ้มประดับกระจกสี" />
+            <SectionHead kicker="เดินชมภายในวัด" title="ภายในวัด: แท่นบูชา หลักเมือง และซุ้มประดับกระจกสี" />
             <p className="mt-6 leading-8 text-[#4f5d54]">
               ภายในอาคารเพดานทาสีแดงสดและลายทองเต็มผืน เสาใหญ่สีทองรับน้ำหนักหลังคา ผนังด้านหลังเป็นจิตรกรรมพุทธประวัติสีสด หน้าแท่นมีพระพุทธรูปหลายปางเรียงลดหลั่น ขนาบด้วยเทียนขี้ผึ้งแท่งใหญ่ และงาช้างประดับพวงมาลัยซึ่งสะท้อนความเคารพแบบลาวดั้งเดิม
             </p>

@@ -80,7 +80,7 @@ export default function NamPienYorlaPaArticlePage() {
               <span className="text-[#efd276]">น้ำเปี่ยนยอละปา</span>
             </nav>
             <span className="hl-kicker !text-[#efd276]">Nature guide from Vientiane</span>
-            <h1 className="mt-5 font-serif-th text-[clamp(2.35rem,5.7vw,5rem)] font-bold leading-[1.08]">น้ำเปี่ยนยอละปา</h1>
+            <h1 className="mt-5 font-serif-th text-[clamp(2.35rem,5.7vw,5rem)] font-bold leading-[1.08]">น้ำเปี่ยนยอละปา (Nam Pien Yorla Pa)</h1>
             <p className="mt-6 max-w-[720px] text-lg leading-8 text-[#c8d3cc]">วางแผนวันพักกลางป่าฝน เลือกกิจกรรมตามสไตล์ของคุณ และจัดรถรับ–ส่งจากเวียงจันทน์ให้ลงตัว</p>
             <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2 text-sm text-[#aebcb3]"><span>HUGLAO</span><span>•</span><time dateTime={publishedIso}>8 สิงหาคม 2569</time><span>•</span><span>อ่านประมาณ 6 นาที</span></div>
           </div>
@@ -147,7 +147,7 @@ export default function NamPienYorlaPaArticlePage() {
         <aside className="h-fit rounded-[24px] border border-[#ddd4c1] bg-[#f7f3e9] p-6 lg:sticky lg:top-28">
           <span className="text-xs font-bold uppercase tracking-[.16em] text-[#86611a]">ข้อมูลที่ควรยืนยัน</span>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#59645d]"><li>• วันและเวลาเปิดบริการ</li><li>• กิจกรรมที่เปิดในวันเดินทาง</li><li>• เงื่อนไขผู้เล่นและอุปกรณ์</li><li>• ค่าเข้าและค่าแพ็กเกจ</li><li>• เวลานัดรถเที่ยวกลับ</li></ul>
-          <a href="https://nampienyorlapa.com/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex py-2 font-bold text-[#86611a] hover:text-[#0a2d20]">ตรวจข้อมูลเว็บไซต์ทางการ →</a>
+          <a href="https://nampienyorlapa.com/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex py-2 font-bold text-[#86611a] hover:text-[#0a2d20]">เว็บไซต์ Nam Pien Yorla Pa →</a><a href="https://www.facebook.com/profile.php?id=100066604300632" target="_blank" rel="noopener noreferrer" className="ml-4 inline-flex min-h-11 items-center font-bold text-[#86611a] underline">ดูเพจสถานที่ ↗</a>
           <Link href="/routes/vientiane-nam-pien-yorla-pa" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">ดูหน้าเส้นทางและราคารถ →</Link>
           <Link href="/vientiane/" className="block py-2 font-bold text-[#0a2d20] hover:text-[#86611a]">เช่ารถตู้เวียงจันทน์พร้อมคนขับ →</Link>
         </aside>

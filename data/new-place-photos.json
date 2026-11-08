@@ -1,0 +1,134 @@
+{
+  "wat-sisaket-vientiane": [
+    {
+      "src": "/images/wat-sisaket-vientiane/temple-building.webp",
+      "alt": "สิมวัดสีสะเกด",
+      "caption": "สิมวัดสีสะเกด",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/wat-sisaket-vientiane/temple-sign.webp",
+      "alt": "ป้ายชื่อวัดสีสะเกด",
+      "caption": "ป้ายชื่อวัดสีสะเกด",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/wat-sisaket-vientiane/buddha-cloister.webp",
+      "alt": "พระพุทธรูปตามระเบียงคด",
+      "caption": "พระพุทธรูปตามระเบียงคด",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/wat-sisaket-vientiane/sim-exterior.webp",
+      "alt": "ด้านข้างสิมวัดสีสะเกด",
+      "caption": "ด้านข้างสิมวัดสีสะเกด",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/wat-sisaket-vientiane/courtyard.webp",
+      "alt": "ลานและระเบียงคดวัดสีสะเกด",
+      "caption": "ลานและระเบียงคดวัดสีสะเกด",
+      "width": 960,
+      "height": 1280
+    }
+  ],
+  "nem-nuong-sihom-vientiane": [
+    {
+      "src": "/images/nem-nuong-sihom-vientiane/shop-front.webp",
+      "alt": "หน้าร้านแหนมเนืองสีหอม",
+      "caption": "หน้าร้านแหนมเนืองสีหอม",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/nem-nuong-sihom-vientiane/nem-nuong.webp",
+      "alt": "แหนมเนืองหั่นชิ้น",
+      "caption": "แหนมเนืองหั่นชิ้น",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/nem-nuong-sihom-vientiane/meal.webp",
+      "alt": "แหนมเนืองและเครื่องเคียง",
+      "caption": "แหนมเนืองและเครื่องเคียง",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/nem-nuong-sihom-vientiane/grill.webp",
+      "alt": "บริเวณเตาย่างของร้าน",
+      "caption": "บริเวณเตาย่างของร้าน",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/nem-nuong-sihom-vientiane/spring-rolls.webp",
+      "alt": "ปอเปี๊ยะทอด",
+      "caption": "ปอเปี๊ยะทอด",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/nem-nuong-sihom-vientiane/food-menu.webp",
+      "alt": "เมนูแหนมเนืองและอาหาร",
+      "caption": "เมนูแหนมเนืองและอาหาร",
+      "width": 960,
+      "height": 1280
+    },
+    {
+      "src": "/images/nem-nuong-sihom-vientiane/other-menu.webp",
+      "alt": "เมนูอาหารและเครื่องดื่ม",
+      "caption": "เมนูอาหารและเครื่องดื่ม",
+      "width": 960,
+      "height": 1280
+    }
+  ],
+  "pho-soumuntha-vientiane": [
+    {
+      "src": "/images/pho-soumuntha-vientiane/shop-sign.webp",
+      "alt": "ป้ายร้านเฝอสุมนทรา",
+      "caption": "ป้ายร้านเฝอสุมนทรา",
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "src": "/images/pho-soumuntha-vientiane/menu.webp",
+      "alt": "ป้ายเมนูและบริเวณบริการอาหาร",
+      "caption": "ป้ายเมนูและบริเวณบริการอาหาร",
+      "width": 1280,
+      "height": 960
+    },
+    {
+      "src": "/images/pho-soumuntha-vientiane/grilled-meat.webp",
+      "alt": "เนื้อย่างเสียบไม้พร้อมน้ำจิ้ม",
+      "caption": "เนื้อย่างเสียบไม้พร้อมน้ำจิ้ม",
+      "width": 1280,
+      "height": 1707
+    },
+    {
+      "src": "/images/pho-soumuntha-vientiane/lao-dish.webp",
+      "alt": "อาหารลาวที่ร้านเฝอสุมนทรา",
+      "caption": "อาหารลาวที่ร้านเฝอสุมนทรา",
+      "width": 1280,
+      "height": 960
+    },
+    {
+      "src": "/images/pho-soumuntha-vientiane/meatballs.webp",
+      "alt": "ลูกชิ้นเสิร์ฟแยกจาน",
+      "caption": "ลูกชิ้นเสิร์ฟแยกจาน",
+      "width": 1280,
+      "height": 1707
+    },
+    {
+      "src": "/images/pho-soumuntha-vientiane/meal.webp",
+      "alt": "เฝอและอาหารร่วมโต๊ะ",
+      "caption": "เฝอและอาหารร่วมโต๊ะ",
+      "width": 1280,
+      "height": 1707
+    }
+  ]
+}

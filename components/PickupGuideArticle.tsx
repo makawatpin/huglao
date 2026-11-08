@@ -39,7 +39,7 @@ export default function PickupGuideArticle({ guide }: { guide: PickupGuide }) {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
     <PageHero eyebrow={`จุดรับและการเดินทาง · ${CITY_NAMES[guide.city]}`} title={guide.name} description={guide.description} breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บทความ", href: "/articles/" }, { label: guide.name }]} />
     <article className="bg-[#f7f3e9] py-7 sm:py-12"><div className="hl-shell max-w-[1000px]">
-      <p className="mb-4 text-sm text-[#59645d]">{guide.english} · ตรวจทานข้อมูล 6 พฤศจิกายน 2569</p>
+      <p className="mb-4 text-sm text-[#59645d]">ชื่อสำหรับค้นหา: {guide.english}</p>
       <figure><Image src={images[0].src} alt={images[0].alt} width={1280} height={800} priority sizes="(max-width: 1000px) 94vw, 960px" className="max-h-[480px] w-full rounded-2xl object-cover" /><figcaption className="mt-2 text-xs leading-6 text-[#59645d]">{images[0].caption} · <a href={images[0].source} className="underline">ต้นฉบับและเครดิต</a></figcaption></figure>
       <nav aria-label="หัวข้อในบทความ" className="my-6 flex flex-wrap gap-2">{[["location", "แผนที่"], ["history", "ประวัติ"], ["pickup", "วิธีนัดรับ"], ["conditions", "ข้อควรรู้"]].map(([id, label]) => <a key={id} href={`#${id}`} className="rounded-full border border-[#ddd4c1] bg-white px-4 py-3 text-sm font-semibold text-[#0a2d20]">{label}</a>)}</nav>
       <div className="space-y-5 text-[#0a2d20]">

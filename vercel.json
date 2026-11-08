@@ -1,6 +1,26 @@
 {
   "redirects": [
     {
+      "source": "/luangprabang",
+      "destination": "https://www.huglao.com/luang-prabang/",
+      "permanent": true
+    },
+    {
+      "source": "/luangprabang/",
+      "destination": "https://www.huglao.com/luang-prabang/",
+      "permanent": true
+    },
+    {
+      "source": "/van/luangprabang",
+      "destination": "https://www.huglao.com/luang-prabang/",
+      "permanent": true
+    },
+    {
+      "source": "/van/luangprabang/",
+      "destination": "https://www.huglao.com/luang-prabang/",
+      "permanent": true
+    },
+    {
       "source": "/articles/laos-china-train-booking-guide",
       "destination": "/services/train-ticket/",
       "permanent": true

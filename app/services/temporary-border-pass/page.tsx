@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: ARTICLE_PATH },
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
   openGraph: { title: TITLE, description: DESCRIPTION, url: ARTICLE_PATH, type: "article", locale: "th_TH", publishedTime: "2026-11-04", modifiedTime: "2026-11-04", images: [{ url: PHOTO, width: 1200, height: 750, alt: "ภาพประกอบพาสปอร์ตและบัตรผ่านแดนสำหรับเตรียมเดินทางจากหนองคาย" }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [PHOTO] },
 };

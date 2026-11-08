@@ -1,3 +1,4 @@
+import { NEW_PLACE_ARTICLES } from "./new-place-articles";
 import { LANDMARKS } from "./vientiane-landmarks";
 import { PICKUP_GUIDES, getPickupPhotos, CITY_NAMES } from "./pickup-guides";
 
@@ -27,10 +28,11 @@ export function getArticleCategory(article: ArticlePreview): ArticleCategory {
 }
 
 export const LOCAL_ARTICLES: ArticlePreview[] = [
-  { title: "ลาวอาร์ตมิวเซียม เวียงจันทน์ ค่าเข้า เช่าชุด และแผนเที่ยว", slug: "lao-art-museum-vientiane", category: "ที่เที่ยว", cover: "/images/lao-art-museum/lao-costumes-golden-hall.webp", coverAlt: "ผู้เข้าชมสวมชุดลาวสีดำทองในโถงเสาสีทองของลาวอาร์ตมิวเซียม", author: "HUGLAO", publishDate: "7 พฤศจิกายน 2569", tags: ["เวียงจันทน์", "ลาวอาร์ตมิวเซียม"], excerpt: "ชมงานไม้และโถงสีทอง พร้อมค่าเข้า แผนที่ การเช่าชุด จุดพัก และราคาเหมารถเที่ยวเต็มวันรวมลาวอาร์ต" },
+  ...Object.entries(NEW_PLACE_ARTICLES).map(([slug,p]): ArticlePreview => ({title:p.title,slug,cover:p.photos[0].src,coverAlt:p.photos[0].alt,author:"HUGLAO",publishDate:"8 พฤศจิกายน 2569",tags:["เวียงจันทน์"],category:p.category,excerpt:p.description})),
+  { title: "ลาวอาร์ตมิวเซียม เวียงจันทน์ ค่าเข้า เช่าชุด และแผนเที่ยว", slug: "lao-art-museum-vientiane", category: "ที่เที่ยว", cover: "/images/lao-art-museum/golden-hall.webp", coverAlt: "โถงเสาแกะสลักและเพดานลวดลายสีทองของลาวอาร์ตมิวเซียม", author: "HUGLAO", publishDate: "7 พฤศจิกายน 2569", tags: ["เวียงจันทน์", "ลาวอาร์ตมิวเซียม"], excerpt: "เที่ยว Lao Art Museum พร้อมค่าเข้า แผนที่ การแต่งชุดลาว และราคาเหมารถเต็มวันรวมลาวอาร์ต" },
   { title: "ฟ้าใสหมูกระทะ เวียงจันทน์ มื้อเย็นชิ้นดาดลาว (Sindard Farsai)", slug: "farsai-mookata-vientiane", category: "ร้านอาหารและคาเฟ่", cover: "/images/farsai-vientiane/table-and-grill.webp", coverAlt: "เตาชิ้นดาดพร้อมจานเนื้อและเครื่องเคียงที่ร้านฟ้าใส", author: "HUGLAO", publishDate: "7 พฤศจิกายน 2569", tags: ["เวียงจันทน์", "ร้านอาหาร", "หมูกระทะ"], excerpt: "รู้จักชิ้นดาดฟ้าใส พร้อมภาพอาหารจริง วิธีวางแผนมื้อเย็น แผนที่ เวลาเปิดและเบอร์โทรก่อนแวะ" },
   ...Object.values(LANDMARKS).map((p): ArticlePreview => ({ title: p.title, slug: p.slug, category: "ที่เที่ยว", cover: p.photos[0].src, coverAlt: p.photos[0].alt, author: "HUGLAO", publishDate: "7 พฤศจิกายน 2569", tags: ["เวียงจันทน์", p.name], excerpt: p.description })),
-  { title: "เฝอแซ่บ เวียงจันทน์ ร้านแนะนำใกล้ประตูชัย (Pho Zap)", slug: "pho-zap-vientiane", category: "ร้านอาหารและคาเฟ่", cover: "/images/pho-zap-vientiane/pho-meal.webp", coverAlt: "เฝอ ปอเปี๊ยะทอด และเครื่องเคียงจากมื้อที่ไปกินร้านเฝอแซ่บ", author: "HUGLAO", publishDate: "7 พฤศจิกายน 2569", tags: ["เวียงจันทน์", "ร้านอาหาร", "เฝอแซ่บ"], excerpt: "แนะนำจากการไปกินจริง พร้อมภาพเฝอ ปอเปี๊ยะทอด เมนูและราคาในภาพ และข้อมูลหลายสาขาก่อนแวะ" },
+  { title: "เฝอแซ่บ เวียงจันทน์ ร้านแนะนำใกล้ประตูชัย (Pho Zap)", slug: "pho-zap-vientiane", category: "ร้านอาหารและคาเฟ่", cover: "/images/pho-zap-vientiane/pho-meal.webp", coverAlt: "เฝอ ปอเปี๊ยะทอด และเครื่องเคียงจากมื้อที่ไปกินร้านเฝอแซ่บ", author: "HUGLAO", publishDate: "7 พฤศจิกายน 2569", tags: ["เวียงจันทน์", "ร้านอาหาร", "เฝอแซ่บ"], excerpt: "ร้านเฝอที่ HUGLAO เคยแวะกินใกล้ประตูชัย พร้อมเมนู งบประมาณ และข้อมูลเลือกสาขาก่อนเดินทาง" },
   ...PICKUP_GUIDES.map((p): ArticlePreview => ({ title: `${p.name}: แผนที่ ประวัติ และข้อมูลนัดรับ`, slug: p.slug, category: "การเดินทาง", cover: getPickupPhotos(p)[0].src, coverAlt: getPickupPhotos(p)[0].alt, author: "HUGLAO", publishDate: "6 พฤศจิกายน 2569", tags: [CITY_NAMES[p.city], "จุดรับ", "การเดินทาง"], excerpt: p.description })),
   {
     title: "ถ้ำจัง วังเวียง (Tham Chang Cave) เดินชมถ้ำและธรรมชาติ",
@@ -52,7 +54,7 @@ export const LOCAL_ARTICLES: ArticlePreview[] = [
     author: "HUGLAO",
     publishDate: "6 พฤศจิกายน 2569",
     tags: ["วังเวียง", "คาเฟ่", "สถานที่แนะนำ"],
-    excerpt: "พักในคาเฟ่โทนอบอุ่น ชมโคมไฟสาน งานไม้ และรายละเอียดพื้นเมือง พร้อมภาพร้านและมุมนั่งพักริมน้ำ",
+    excerpt: "แวะบ้านน้ำคาเฟ่ วังเวียง เลือกนั่งในร้านหรือริมน้ำ พร้อมแผนที่และข้อแนะนำสำหรับจัดเวลาแวะ",
   },
   {
     title: "The Mini Cafe & Restaurant วังเวียง คาเฟ่วิวภูเขาและทุ่งนา",

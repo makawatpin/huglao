@@ -11,3 +11,5 @@
 - Scope: Preview only; no production promotion or git push.
 
 Validation: changed-file ESLint passed; webpack production build + TypeScript passed (60 static pages). Mobile 390x844 and desktop 1366x900: no horizontal overflow, images loaded, anchor links resolved, one H1. Canonical and sitemap checked. Preview READY: https://huglao-review-1xlf4y287-huglao.vercel.app/articles/lao-art-museum-vientiane/
+
+8 November 2026 photo update: added 9 new owner-supplied museum photos from attachment 20E25644-8A97-4866-B856-0FF884E15FF6. Golden hall is article/card/OG cover. All 9 available in mobile album with full image containment and descriptive captions. Previous costume portrait retained under costume section. Images resized and converted to WebP only; no visual editing. Existing factual review date and prices unchanged. New gallery credits added to MEDIA_LIBRARY.

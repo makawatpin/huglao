@@ -21,7 +21,7 @@ export default function LandmarkArticle({ placeKey }: { placeKey: LandmarkKey })
   const schema = { "@context": "https://schema.org", "@type": "Article", headline: place.title, description: place.description, image: place.photos.map(p => `${SITE.website}${p.src}`), author: { "@type": "Organization", name: "HUGLAO" }, publisher: { "@id": `${SITE.website}/#organization` }, mainEntityOfPage: `${SITE.website}${path}`, about: { "@type": "Place", name: place.name, hasMap: map } };
   return <main>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
-    <PageHero eyebrow="HUGLAO แนะนำ · ที่เที่ยวเวียงจันทน์" title={place.name} description={place.lead} breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บทความ", href: "/articles/" }, { label: place.name }]} />
+    <PageHero eyebrow="HUGLAO แนะนำ · ที่เที่ยวเวียงจันทน์" title={`${place.name} (${place.english})`} description={place.lead} breadcrumbs={[{ label: "หน้าแรก", href: "/" }, { label: "บทความ", href: "/articles/" }, { label: place.name }]} />
     <article className="bg-[#f7f3e9] py-7 sm:py-12"><div className="hl-shell max-w-[1000px]">
       <figure><Image src={place.photos[0].src} alt={place.photos[0].alt} width={1280} height={960} priority sizes="(max-width: 1024px) 92vw, 960px" className="max-h-[620px] w-full rounded-2xl object-contain bg-[#ebe5d8]" /><figcaption className="mt-2 text-xs leading-6 text-[#687169]">{place.photos[0].caption} · ภาพจากเจ้าของ HUGLAO</figcaption></figure>
       <p className="mt-6 text-lg leading-9 text-[#364b3d]">{place.intro}</p>

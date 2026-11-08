@@ -1,3 +1,5 @@
+import newPlacePhotos from "./new-place-photos.json";
+import { LAO_ART_PHOTOS } from "./lao-art-photos";
 import { CITY_SERVICES } from "@/data/city-services";
 
 const ownerVanPhoto = (city: "vang-vieng" | "luang-prabang", index: number) => ({
@@ -10,7 +12,13 @@ const ownerVanPhoto = (city: "vang-vieng" | "luang-prabang", index: number) => (
   changes: "แปลงเป็น WebP โดยคงสัดส่วน โลโก้ และรายละเอียดรถเดิม",
 });
 
+const laoArtOwnerGallery = Object.fromEntries(LAO_ART_PHOTOS.map((photo,index) => [`laoArtGallery${index+1}`, { ...photo, title: photo.caption, author: "เจ้าของเว็บไซต์ HUGLAO", sourceUrl: "https://www.huglao.com/articles/lao-art-museum-vientiane/", license: "เจ้าของส่งภาพและอนุญาตให้ใช้บนเว็บไซต์ HUGLAO", licenseUrl: "https://www.huglao.com/terms/", changes: "ย่อขนาดและแปลง WebP คงสัดส่วนและรายละเอียดเดิม" }]));
+
+const newPlaceCredits = Object.fromEntries(Object.entries(newPlacePhotos).flatMap(([slug,photos]) => photos.map((photo,index) => [`${slug}-${index}`, {...photo,title:photo.caption,author:"HUGLAO",sourceUrl:`https://www.huglao.com/articles/${slug}/`,license:"เจ้าของส่งภาพและอนุญาตให้ใช้บนเว็บไซต์ HUGLAO",licenseUrl:"https://www.huglao.com/terms/",changes:"ย่อขนาดและแปลง WebP คงสัดส่วนเดิม"}])));
+
 export const MEDIA_LIBRARY = {
+  ...newPlaceCredits,
+  ...laoArtOwnerGallery,
   trainBookingBanner: { src: "/images/laos-china-train-guide/booking-banner.webp", alt: "ภาพกราฟิก HUGLAO จองตั๋วรถไฟลาว–จีน", title: "จองตั๋วรถไฟลาว–จีน", author: "เจ้าของเว็บไซต์ HUGLAO", sourceUrl: "https://www.huglao.com/services/train-ticket/", license: "เจ้าของส่งภาพและอนุญาตให้ใช้บนเว็บไซต์ HUGLAO", licenseUrl: "https://www.huglao.com/terms/", changes: "ย่อขนาดและแปลง WebP" },
   laoArtOwnerPhoto: { src: "/images/lao-art-museum/lao-costumes-golden-hall.webp", alt: "ผู้เข้าชมแต่งชุดลาวในโถงสีทองของลาวอาร์ตมิวเซียม", title: "แต่งชุดลาวที่ลาวอาร์ตมิวเซียม", author: "เจ้าของเว็บไซต์ HUGLAO", sourceUrl: "https://www.huglao.com/articles/lao-art-museum-vientiane/", license: "เจ้าของส่งภาพและอนุญาตให้ใช้บนเว็บไซต์ HUGLAO", licenseUrl: "https://www.huglao.com/terms/", changes: "แปลงเป็น WebP คงสัดส่วนและรายละเอียดภาพเดิม" },
   laoDomesticAircraft: { src: "/images/laos-domestic-flights/lao-airlines-luang-prabang.webp", alt: "เครื่องบิน ATR 72-500 ของ Lao Airlines จอดที่สนามบินหลวงพระบางในปี 2016", title: "Lao Airlines ที่สนามบินหลวงพระบาง", author: "Ekrem Canli", sourceUrl: "https://commons.wikimedia.org/wiki/File:Laoairlines.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/", changes: "ย่อขนาดและแปลง WebP ภายใต้ใบอนุญาตเดียวกัน" },
